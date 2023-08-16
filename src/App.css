@@ -73,15 +73,55 @@ body {
   color: #FFF;
 }
 
-#nav-drawer {
-  width: 250px;
-  height: 100%;
-  position: absolute;
-  top: 0;
-  left: -250px;
-  background-color: black !important;
-  color: white;
-  box-shadow: 2px 0px 5px rgba(0, 0, 0, 0.3);
-  transition: left 0.3s ease-in-out;
+.MuiModal-root {
+  display: flex; 
+  position: fixed; /* Use fixed position to keep the modal in place */
+  top: 0; /* Position from the top */
+  left: -250px; /* Initially position the modal off-screen to the left */
+  animation: slideInModal 0.3s forwards; /* Apply the slide animation */
 }
 
+/* Define the keyframe animation */
+@keyframes slideInModal {
+  from {
+    left: -250px; /* Start position off-screen to the left */
+  }
+  to {
+    left: 0; /* End position to be fully visible */
+  }
+}
+
+/* Add a new keyframe animation for sliding out the modal */
+@keyframes slideOutModal {
+  from {
+    left: 0; /* Start position fully visible */
+  }
+  to {
+    left: -250px; /* End position off-screen to the left */
+  }
+}
+
+.modal-content {
+  width: 250px;
+  background-color: black;
+  box-shadow: 2px 0px 5px rgba(0, 0, 0, 0.3);
+  padding: 20px;
+  color: white;
+  outline: none;
+}
+
+.modal-list {
+  padding: 0;
+}
+
+.modal-item {
+  color: white;
+  padding: 10px;
+  transition: background-color 0.3s;
+  background-color: black;
+}
+
+.modal-item:hover {
+ 
+  background-color: #222 !important;
+}

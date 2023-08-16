@@ -1,43 +1,53 @@
 import React, { useState } from 'react';
 import './App.css';
 import './LandingPage.css';
-import Drawer from '@mui/material/Drawer';
+import Modal from '@mui/material/Modal';
 import List from '@mui/material/List';
 import ListItem from '@mui/material/ListItem';
 import ListItemText from '@mui/material/ListItemText';
 import MenuIcon from '@mui/icons-material/Menu';
 import LandingPage from './LandingPage';
 
-
-
 const App: React.FC = () => {
-  const [drawerOpen, setDrawerOpen] = useState(false);
-  const toggleDrawer = () => {
-    setDrawerOpen(!drawerOpen);
+  const [modalOpen, setModalOpen] = useState(false);
+
+  const openModal = () => {
+    setModalOpen(true);
   };
-  
-  const closeDrawer = () => {
-    setDrawerOpen(false);
+
+  const closeModal = () => {
+    setModalOpen(false);
   };
+
+  const handleItemClick = () => {
+    closeModal(); // Close the modal
+    // Optionally, add more logic based on the item clicked
+  };
+
   return (
     <div className="App">
-      <div className="menu-button" onClick={toggleDrawer}>
-          <MenuIcon fontSize="large" />
-        </div>
-  
-        <Drawer anchor="left" id="nav-drawer" open={drawerOpen} onClose={closeDrawer}>
-          <List>
-            <ListItem button onClick={closeDrawer}>
+      <div className="menu-button" onClick={openModal}>
+        <MenuIcon fontSize="large" />
+      </div>
+      <Modal
+        open={modalOpen}
+        onClose={closeModal}
+        className={modalOpen ? 'modal-open' : 'modal-closed'} // Apply the correct animation class
+      >
+        <div className="modal-content">
+          <List className="modal-list">
+            <ListItem className="modal-item" button onClick={handleItemClick}>
               <ListItemText primary="Products" />
             </ListItem>
-            <ListItem button onClick={closeDrawer}>
+            <ListItem className="modal-item" button onClick={handleItemClick}>
               <ListItemText primary="About Us" />
             </ListItem>
-            <ListItem button onClick={closeDrawer}>
+            <ListItem className="modal-item" button onClick={handleItemClick}>
               <ListItemText primary="Contact Us" />
             </ListItem>
           </List>
-        </Drawer>
+        </div>
+      </Modal>
       <div className="black-bar left"></div>
       <div className="black-bar right"></div>
       <LandingPage />

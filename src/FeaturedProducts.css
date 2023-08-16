@@ -17,7 +17,12 @@
     opacity: 1; /* Opacity value for visible content */
   }
   
+  .product-card:first-child {
+    z-index: 2; /* Set a higher z-index for the first product card */
+  }
+  
   .product-card {
+    margin-top: 100px;
     width: auto;
     height: auto; /* Adjusted to 'auto' for content-based height */
     display: flex;
