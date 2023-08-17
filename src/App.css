@@ -48,7 +48,7 @@ body {
 }
 
 .black-bar {
-  width: 100px;
+  width: var(--black-bar-width);
   background-color: black;
   position: absolute;
   top: 0;
@@ -58,19 +58,31 @@ body {
 
 .black-bar.left {
   left: 0;
+  display: flex;
+  align-items: center;
+  padding-left: 10px; /* Add some padding to the black bar to make space for the button */
 }
 
 .black-bar.right {
   right: 0;
+  display: flex;
+  align-items: center;
+  padding-right: 10px; /* Add some padding to the black bar to make space for the button */
 }
 
 .menu-button {
-  position: absolute;
-  top: 20px;
-  left: 20px;
   cursor: pointer;
   z-index: 1000;
   color: #FFF;
+  font-size: calc(var(--menu-button-size) * 0.8);
+  position: absolute;
+  top: 10px; /* Adjust the top position */
+  left: 10px;
+  max-width: calc(var(--black-bar-width) - 10px);
+  max-height: calc(var(--black-bar-width) - 10px);
+  white-space: nowrap; /* Prevent text from wrapping */
+  overflow: hidden; /* Hide overflow text */
+  text-overflow: ellipsis; /* Display ellipsis for overflow text */
 }
 
 .MuiModal-root {
@@ -121,7 +133,30 @@ body {
   background-color: black;
 }
 
+.modal-item::before {
+  content: "";
+  display: inline-block;
+  width: var(--menu-button-size);
+  height: var(--menu-button-size);
+  background-image: url('./img/bean.png'); /* Replace with your image source path */
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  margin-right: 10px; /* Add some space between the image and text */
+}
+
 .modal-item:hover {
- 
   background-color: #222 !important;
+}
+
+:root {
+  --black-bar-width: 100px;
+  --menu-button-size: 24px; /* Set the default size of the menu button */
+}
+
+@media (max-width: 600px) {
+  :root {
+    --black-bar-width: 10vw;
+    --menu-button-size: 18px; /* Adjust the value as needed */
+  }
 }

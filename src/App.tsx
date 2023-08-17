@@ -1,15 +1,18 @@
 import React, { useState } from 'react';
 import './App.css';
 import './LandingPage.css';
-import Modal from '@mui/material/Modal';
-import List from '@mui/material/List';
-import ListItem from '@mui/material/ListItem';
-import ListItemText from '@mui/material/ListItemText';
+import { Modal, List, ListItem, ListItemText } from '@mui/material';
 import MenuIcon from '@mui/icons-material/Menu';
+import { Link, Routes, Route, useParams, useNavigate } from 'react-router-dom';
 import LandingPage from './LandingPage';
+import AboutUsPage from './AboutUsPage';
+import ContactUsPage from './ContactUsPage'; // Import the ContactUsPage component
+//import ProductsPage from './ProductsPage'; // Import the ProductsPage component
 
 const App: React.FC = () => {
   const [modalOpen, setModalOpen] = useState(false);
+  const navigate = useNavigate();
+  const { path } = useParams();
 
   const openModal = () => {
     setModalOpen(true);
@@ -19,9 +22,9 @@ const App: React.FC = () => {
     setModalOpen(false);
   };
 
-  const handleItemClick = () => {
-    closeModal(); // Close the modal
-    // Optionally, add more logic based on the item clicked
+  const handleItemClick = (newPath: string) => {
+    closeModal();
+    navigate(newPath);
   };
 
   return (
@@ -32,17 +35,20 @@ const App: React.FC = () => {
       <Modal
         open={modalOpen}
         onClose={closeModal}
-        className={modalOpen ? 'modal-open' : 'modal-closed'} // Apply the correct animation class
+        className={modalOpen ? 'modal-open' : 'modal-closed'}
       >
         <div className="modal-content">
           <List className="modal-list">
-            <ListItem className="modal-item" button onClick={handleItemClick}>
+            <ListItem className="modal-item" button onClick={() => handleItemClick('/')}>
+              <ListItemText primary="Home" />
+            </ListItem>
+            <ListItem className="modal-item" button disabled> {/* Disable the "Products" button */}
               <ListItemText primary="Products" />
             </ListItem>
-            <ListItem className="modal-item" button onClick={handleItemClick}>
+            <ListItem className="modal-item" button onClick={() => handleItemClick('/about-us')}>
               <ListItemText primary="About Us" />
             </ListItem>
-            <ListItem className="modal-item" button onClick={handleItemClick}>
+            <ListItem className="modal-item" button onClick={() => handleItemClick('/contact-us')}>
               <ListItemText primary="Contact Us" />
             </ListItem>
           </List>
@@ -50,7 +56,12 @@ const App: React.FC = () => {
       </Modal>
       <div className="black-bar left"></div>
       <div className="black-bar right"></div>
-      <LandingPage />
+      <Routes>
+        <Route path="/" element={<LandingPage />} />
+        <Route path="/products" element={<div />} /> {/* Route to the placeholder ProductsPage */}
+        <Route path="/about-us" element={<AboutUsPage />} />
+        <Route path="/contact-us" element={<ContactUsPage />} />
+      </Routes>
     </div>
   );
 };
