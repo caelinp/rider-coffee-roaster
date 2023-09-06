@@ -7,7 +7,8 @@ import { Link, Routes, Route, useParams, useNavigate } from 'react-router-dom';
 import LandingPage from './LandingPage';
 import AboutUsPage from './AboutUsPage';
 import ContactUsPage from './ContactUsPage'; // Import the ContactUsPage component
-//import ProductsPage from './ProductsPage'; // Import the ProductsPage component
+import FeaturedProductsPage from './FeaturedProductsPage'; // Import the ContactUsPage component
+import AllProductsPage from './AllProductsPage'; // Import the ProductsPage component
 
 const App: React.FC = () => {
   const [modalOpen, setModalOpen] = useState(false);
@@ -39,16 +40,16 @@ const App: React.FC = () => {
       >
         <div className="modal-content">
           <List className="modal-list">
-            <ListItem className="modal-item" button onClick={() => handleItemClick('/')}>
+            <ListItem className="modal-item" onClick={() => handleItemClick('/')}>
               <ListItemText primary="Home" />
             </ListItem>
-            <ListItem className="modal-item" button disabled> {/* Disable the "Products" button */}
+            <ListItem className="modal-item" onClick={() => handleItemClick('/products')}>
               <ListItemText primary="Products" />
             </ListItem>
-            <ListItem className="modal-item" button onClick={() => handleItemClick('/about-us')}>
+            <ListItem className="modal-item" onClick={() => handleItemClick('/about-us')}>
               <ListItemText primary="About Us" />
             </ListItem>
-            <ListItem className="modal-item" button onClick={() => handleItemClick('/contact-us')}>
+            <ListItem className="modal-item" onClick={() => handleItemClick('/contact-us')}>
               <ListItemText primary="Contact Us" />
             </ListItem>
           </List>
@@ -58,9 +59,10 @@ const App: React.FC = () => {
       <div className="black-bar right"></div>
       <Routes>
         <Route path="/" element={<LandingPage />} />
-        <Route path="/products" element={<div />} /> {/* Route to the placeholder ProductsPage */}
+        <Route path="/products" element={<AllProductsPage />} /> 
         <Route path="/about-us" element={<AboutUsPage />} />
         <Route path="/contact-us" element={<ContactUsPage />} />
+        <Route path="/featured-products" element={<FeaturedProductsPage />} />
       </Routes>
     </div>
   );

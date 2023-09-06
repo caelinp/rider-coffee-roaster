@@ -1,0 +1,78 @@
+/* FeaturedProductsPage.css */
+body, html {
+  margin: 0;
+  padding: 0;
+}
+
+.featured-products-page {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  min-height: 100vh;
+  justify-content: center;
+  align-items: center;
+  background-image: url('./img/background-no-logo.png');
+  background-size: cover;
+  background-position: center;
+  position: relative;
+}
+
+.featured-products-container {
+  width: 100%;
+  max-width: 1200px; /* Adjust the max width as needed */
+  margin: 0 auto; /* Center-align the container horizontally */
+  padding: 20px;
+  display: flex;
+  flex-direction: column; /* Stack product cards in a column */
+  align-items: center; /* Center-align the cards horizontally */
+  gap: 20px;
+  overflow-y: auto; /* Enable vertical scroll if content exceeds container */
+  max-height: calc(100vh - 100px); /* Adjust the max height as needed */
+}
+
+.product-card {
+  width: 50%; /* Each product card takes up 50% of the container width */
+  background-color: black;
+  color: white;
+  margin: 20px 0; /* Add margin for spacing between cards */
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: auto; /* Set height to auto to wrap content */
+}
+
+.product-image {
+  width: 100%; /* The image takes up 100% of the product card width */
+  height: auto; /* Allow the image to adjust its height proportionally */
+  max-height: 60vh; /* Set a max height for the image if needed */
+  object-fit: contain; /* Maintain aspect ratio and fit within the container */
+}
+
+.product-details {
+  text-align: center;
+  margin-top: 10px;
+}
+
+.product-name {
+  font-size: 1.5rem;
+}
+
+.product-price {
+  font-size: 1.2rem;
+}
+
+/* Hide the scrollbar for Firefox */
+.featured-products-container {
+  scrollbar-width: thin;
+  scrollbar-color: transparent transparent;
+}
+
+/* Hide the scrollbar for Chrome, Edge, and Safari */
+.featured-products-container::-webkit-scrollbar {
+  width: 6px; /* Adjust the width as needed */
+}
+
+.featured-products-container::-webkit-scrollbar-thumb {
+  background-color: transparent;
+}

@@ -1,13 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import './LandingPage.css';
 import './App.css';
-import FeaturedProducts from './FeaturedProducts';
+import FeaturedProducts from './FeaturedProductsPage';
+import { Link } from 'react-router-dom'; // Import Link
 
 import logo from './img/icon-with-text.png';
 
 const LandingPage: React.FC = () => {
-  const [showProducts, setShowProducts] = useState(false);
-  const [contentVisible, setContentVisible] = useState(true);
 
   useEffect(() => {
     // Delay before showing the logo
@@ -53,14 +52,9 @@ const LandingPage: React.FC = () => {
     };
   }, []);
 
-  const showProductsHandler = () => {
-    setShowProducts(true);
-    setContentVisible(false);
-  };
-
   return (
-    <div className={`landing-page ${showProducts ? 'fade-out' : ''}`}>
-      {contentVisible && (
+    <div className={`landing-page`}>
+      {
         <div className="landing-content">
           <img src={logo} alt="Rider Coffee Roaster Logo" className="logo" />
           <h1 className="mantra">One for the ride</h1>
@@ -76,13 +70,11 @@ const LandingPage: React.FC = () => {
           <p className="mission3">
             Coffee is culture and community.
           </p>
-          <button className="enter-button" onClick={showProductsHandler}>
-            Enter
-          </button>
+          <Link to="/featured-products"> {/* Use Link to navigate */}
+            <button className="enter-button">Enter</button>
+          </Link>
         </div>
-      )}
-
-      {showProducts && <FeaturedProducts show={showProducts} />}
+      }
     </div>
   );
 };

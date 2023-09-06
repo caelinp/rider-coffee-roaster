@@ -1,0 +1,88 @@
+/* AllProductsPage.css */
+.all-products-page {
+    height: 100vh;
+    text-align: left;
+    padding: 0 15%;
+    min-height: calc(100vh - 100px);
+    background-image: url('./img/background-no-logo.png');
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+  
+  .search-container {
+    background-color: black; /* Black bar */
+    width: fit-content;
+    max-width: calc(100% - 30px); /* Limit the max width to its container minus padding */
+    position: sticky; /* Make the container sticky */
+    top: 0; /* Stick to the top of the page */
+    z-index: 1; /* Ensure it's above the product cards */
+    padding: 10px; /* Add some padding to the container */
+    align-items: center;
+  }
+  
+  .search-bar {
+    width: 100%;
+    padding: 10px;
+    font-size: 1rem;
+  }
+  
+  .products-grid {
+    overflow-y: auto; /* Enable vertical scroll if content exceeds container */
+    max-height: calc(100vh - 100px); /* Adjust the max height as needed */
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); /* Adjust column width as needed */
+    gap: 20px;
+  }
+  
+  .product-link {
+    text-decoration: none;
+    color: inherit;
+  }
+  
+  .product-card {
+    background-color: black;
+    color: white;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: auto; /* Set height to auto to wrap content */
+  }
+  
+  .product-image {
+    width: 80%; /* Set the width to 80% of the product card width */
+    height: 80%; /* Set the height to 80% of the product card height */
+    object-fit: contain; /* Maintain aspect ratio and fit within the container */
+  }
+  
+  .product-details {
+    text-align: center;
+    margin-top: 10px;
+  }
+  
+  .product-name {
+    font-size: 1rem;
+    font-weight: bold;
+  }
+  
+  .product-price {
+    font-size: 0.9rem;
+  }
+  
+  /* Hide the scrollbar for Firefox */
+  .products-grid {
+    scrollbar-width: thin;
+    scrollbar-color: transparent transparent;
+  }
+  
+  /* Hide the scrollbar for Chrome, Edge, and Safari */
+  .products-grid::-webkit-scrollbar {
+    width: 6px; /* Adjust the width as needed */
+  }
+  
+  .products-grid::-webkit-scrollbar-thumb {
+    background-color: transparent;
+  }
+  

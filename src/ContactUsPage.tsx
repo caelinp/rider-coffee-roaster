@@ -1,3 +1,4 @@
+// ContactUsPage.tsx
 import React, { useState } from 'react';
 import './ContactUsPage.css';
 import productImage1 from './img/product1.jpg'
@@ -36,9 +37,9 @@ const ContactUsPage: React.FC = () => {
     country: '',
     postalCode: '',
     products: [
-      { name: "Surf's Up Roast", price: 19.99, roast: 'Medium', ground: false, quantity: 0, image: productImage1},
-      { name: 'Midnight Rider Roast', price: 23.99, roast: 'Medium', ground: false, quantity: 0, image: productImage2},
-      { name: 'Chill Slopes Roast', price: 16.99, roast: 'Medium', ground: false, quantity: 0, image: productImage3}
+      { name: "Trail Rider", price: 19.99, roast: 'Medium', ground: false, quantity: 0, image: productImage1 },
+      { name: 'Low Rider', price: 23.99, roast: 'Medium', ground: false, quantity: 0, image: productImage2 },
+      { name: 'Easy Rider', price: 16.99, roast: 'Medium', ground: false, quantity: 0, image: productImage3 }
       // Add more sample products as needed
     ],
     isSubmitDisabled: true,
@@ -140,35 +141,51 @@ const ContactUsPage: React.FC = () => {
           <form>
             <div className="form-field">
               <label>Email *</label>
-              <input type="email" required />
+              <div className="form-field-input">
+                <input type="email" required />
+              </div>
             </div>
             <div className="form-field">
               <label>First Name *</label>
-              <input type="text" required />
+              <div className="form-field-input">
+                <input type="text" required />
+              </div>
             </div>
             <div className="form-field">
               <label>Last Name *</label>
-              <input type="text" required />
+              <div className="form-field-input">
+                <input type="text" required />
+              </div>
             </div>
             <div className="form-field">
               <label>Street Address *</label>
-              <input type="text" required />
+              <div className="form-field-input">
+                <input type="text" required />
+              </div>
             </div>
             <div className="form-field">
               <label>City *</label>
-              <input type="text" required />
+              <div className="form-field-input">
+                <input type="text" required />
+              </div>
             </div>
             <div className="form-field">
               <label>Province/State *</label>
-              <input type="text" required />
+              <div className="form-field-input">
+                <input type="text" required />
+              </div>
             </div>
             <div className="form-field">
               <label>Country *</label>
-              <input type="text" required />
+              <div className="form-field-input">
+                <input type="text" required />
+              </div>
             </div>
             <div className="form-field">
               <label>Postal Code *</label>
-              <input type="text" required />
+              <div className="form-field-input">
+                <input type="text" required />
+              </div>
             </div>
           </form>
           <table className="product-table">
@@ -184,10 +201,8 @@ const ContactUsPage: React.FC = () => {
               {formData.products.map((product, index) => (
                 <tr key={index}>
                   <td className="product-cell">
-                    <div className="product-image-container">
-                      <img src={product.image} alt={product.name} className="product-image" />
-                    </div>
                     <div className="product-info">
+                      <img src={product.image} alt='' className="product-image-small" />
                       <p>{product.name}</p>
                       <p className="product-price">${product.price.toFixed(2)}</p>
                     </div>
