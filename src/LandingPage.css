@@ -40,12 +40,12 @@ body, html {
 }
 
 .logo {
-  max-width: 35%;
+  max-width: 30%;
 }
 
 .mantra {
   font-size: 3rem;
-  margin-top: 1px;
+  margin-top: 0px;
   margin-bottom: 30px;
   margin-left: max(10px, 100px); /* Ensure at least 10px from left or 100px from left black bar */
   margin-right: max(10px, 100px); /* Ensure at least 10px from right or 100px from right black bar */
@@ -82,7 +82,7 @@ body, html {
 }
 
 .enter-button {
-  margin-top: 20px;
+  margin-top: 0px;
   margin-bottom: 80px;
   padding: 10px 20px;
   background-color: black;
