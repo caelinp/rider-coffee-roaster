@@ -2,15 +2,24 @@ import React, { useState } from 'react';
 import './AllProductsPage.css';
 import { Link } from 'react-router-dom';
 
-import productImage from './img/product1.jpg'; // Use the same image for all products
+import productImage1 from './img/product1.jpg'; // Use the same image for all products
+import productImage2 from './img/product2.jpg'; // Use the same image for all products
+import productImage3 from './img/product3.jpg'; // Use the same image for all products
+
+const images: string[]= [
+  productImage1,
+  productImage2,
+  productImage3,
+]
 
 const AllProductsPage = () => {
+
   // Sample product data
   const products = Array.from({ length: 20 }, (_, index) => ({
     id: index + 1,
     name: `Product ${index + 1}`,
     price: `$19.99`,
-    imageUrl: productImage,
+    imageUrl: images[index % images.length],
   }));
 
   // State for the search input
@@ -28,29 +37,34 @@ const AllProductsPage = () => {
 
   return (
     <div className="all-products-page">
-      <div className="search-container">
-        <div className="search-bar">
-          <input
-            type="text"
-            placeholder="Search All Products"
-            value={searchQuery}
-            onChange={handleSearchChange}
-          />
+      <div className="all-products-content">
+        <h1 className="all-products-header">
+          All Products
+        </h1>
+        <div className="search-container">
+          <div className="search-bar">
+            <input
+              type="text"
+              placeholder="Search All Products"
+              value={searchQuery}
+              onChange={handleSearchChange}
+            />
+          </div>
         </div>
-      </div>
-      <div className="products-container">
-        <div className="products-grid">
-          {filteredProducts.map((product) => (
-            <Link to={`/sample-product`} key={product.id} className="product-link"> {/* update this once you have the ability to multiple product pages*/}
-              <div className="product-card">
-                <img src={product.imageUrl} alt={product.name} className="product-image" />
-                <div className="product-details">
-                  <h2 className="product-name">{product.name}</h2>
-                  <p className="product-price">{product.price}</p>
+        <div className="products-container">
+          <div className="products-grid">
+            {filteredProducts.map((product) => (
+              <Link to={`/sample-product`} key={product.id} className="product-link"> {/* update this once you have the ability to multiple product pages*/}
+                <div className="product-card">
+                  <img src={product.imageUrl} alt={product.name} className="product-image-gridview" />
+                  <div className="product-details">
+                    <h2 className="product-name">{product.name}</h2>
+                    <p className="product-price">{product.price}</p>
+                  </div>
                 </div>
-              </div>
-            </Link>
-          ))}
+              </Link>
+            ))}
+          </div>
         </div>
       </div>
     </div>

@@ -4,6 +4,10 @@ body, html {
   padding: 0;
 }
 
+h1 {
+  font-size:5vh;
+}
+
 .contact-us-page {
   height: 100vh;
   text-align: left;
@@ -41,11 +45,12 @@ body, html {
 }
 
 .sub-section h2 {
-  font-size: 1.5rem;
+  font-size: 2rem;
   margin-bottom: 10px;
 }
 
 .sub-section p {
+  font-size: 1.4rem;
   margin-bottom: 10px;
   line-height: 1.6;
 }
@@ -53,28 +58,33 @@ body, html {
 .product-info {
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
+  align-items: center;
 }
 
 .product-image-small {
+  padding: 10px;
   width: 100px;
   height: 100px;
 }
 
 .product-table {
+  margin-top: 5rem;
   border-collapse: collapse;
   width: 100%;
 }
 
 .product-table th,
 .product-table td {
-  border: 1px solid #ddd;
+  border: 1px solid black;
   padding: 8px;
-  text-align: left;
+  align-items: center;
+  text-align: center;
 }
 
+
 .product-table th {
-  background-color: #f2f2f2;
+  background-color: black;
+  color: white;
 }
 
 .product-cell {
@@ -82,27 +92,31 @@ body, html {
   align-items: center;
 }
 
-.product-info {
+.product-info-small {
   flex-grow: 1;
-  padding-left: 10px;
+  width: 100%;
+  align-items: center;
+  background: black;
+  color: white;
 }
 
 .form-field {
   display: flex;
-  align-items: left; /* Align labels and inputs at the top */
+  align-items: center; /* Align labels and inputs on the same line */
   margin-bottom: 20px;
   margin-top: 25px;
 }
 
 .form-field label {
-  flex: 1;
+  width: 25ch; /* Set a fixed width for labels, e.g., 25 characters */
   text-align: left;
   margin-right: 20px;
   font-weight: bold;
+  font-size: 1.2rem;
 }
 
 .form-field-input {
-  flex: 2;
+  flex: 1; /* Let the input fields take up the remaining space */
   display: flex;
   flex-direction: column; /* Stack label and input vertically */
   align-items: left; /* Align input to the left */
@@ -116,6 +130,19 @@ body, html {
   border: 1px solid #ddd;
   border-radius: 4px;
   text-align: left;
+  max-width: 500px; /* Set a maximum width for the input fields */
+}
+
+.roast-select {
+  margin-left: 20px;
+  margin-right: 20px;
+  padding: 10px 20px;
+  background-color: black;
+  color: white;
+  border: none;
+  cursor: pointer;
+  font-size: 20px;
+  border-radius: 20px;
 }
 
 .form-field input[type="checkbox"] {
@@ -143,4 +170,45 @@ button {
   cursor: pointer;
   font-size: 20px;
   border-radius: 20px;
+}
+
+.check-box {
+  transform: scale(2); /* Make the checkbox larger */
+  appearance: none; /* Remove default styles */
+  -webkit-appearance: none; /* For older versions of WebKit browsers */
+  background-color: white; /* Set the checkbox color to grey by default */
+  border: 2px solid rgb(0, 0, 0); /* Add a white border to the checkbox */
+  border-radius: 5px; /* Add rounded edges to the checkbox */
+  width: 20px; /* Set a fixed width */
+  height: 20px; /* Set a fixed height */
+  cursor: pointer; /* Add a pointer cursor */
+}
+
+/* Style the checkbox when checked */
+.check-box:checked {
+  background-color: rgb(34, 29, 29); /* Change the background color to black when checked */
+  border: 2px solid black; /* Change the border color to black when checked */
+}
+
+.quantity-input {
+  background-color: black;
+  color: white;
+  border: none;
+  cursor: pointer;
+  font-size: 20px;
+  border-radius: 10px;
+  width: 8vh;
+}
+
+/* For Chrome, Safari, and newer versions of Opera */
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  appearance: none;
+  margin: 0; /* Remove default margins */
+}
+
+/* For Firefox */
+input[type="number"] {
+  -moz-appearance: textfield; /* Restore the appearance to a regular text field */
 }

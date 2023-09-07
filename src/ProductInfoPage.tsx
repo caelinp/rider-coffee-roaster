@@ -53,7 +53,6 @@ const ProductInfoPage = () => {
   };
 
   return (
-    <div className = "product-info-content">
     <div className="product-info-page">
       <div className="product-info-container">
         <div className="product-main-image-container">
@@ -67,6 +66,17 @@ const ProductInfoPage = () => {
             onClick={handleImageClick}
             ref={imgRef}
           />
+          <div className="image-dots">
+            {product.images.map((_, index) => (
+              <div
+                key={index}
+                className={`image-dot ${currentImageIndex === index ? 'active' : ''}`}
+              ></div>
+            ))}
+          </div>
+          <div className="add-to-cart-button">
+            <button>Add to Cart</button>
+          </div>
         </div>
         <div className="product-info">
           <div className="info-field">
@@ -101,13 +111,9 @@ const ProductInfoPage = () => {
             <h2>Notes</h2>
             <p>{product.notes}</p>
           </div>
-          <div className="add-to-cart-button">
-            <button>Add to Cart</button>
-          </div>
-          </div>
         </div>
       </div>
-      </div>
+    </div>
   );
 };
 

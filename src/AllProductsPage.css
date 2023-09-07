@@ -3,12 +3,16 @@
     height: 100vh;
     text-align: left;
     padding: 0 15%;
-    min-height: calc(100vh - 100px);
+    min-height: calc(100vh);
     background-image: url('./img/background-no-logo.png');
     overflow-y: auto;
     display: flex;
     flex-direction: column;
     justify-content: center;
+  }
+
+  .all-products-content {
+    min-height: 100vh; /* Adjust the max height as needed */
   }
   
   .search-container {
@@ -20,6 +24,7 @@
     z-index: 1; /* Ensure it's above the product cards */
     padding: 10px; /* Add some padding to the container */
     align-items: center;
+    margin-bottom: 2rem;
   }
   
   .search-bar {
@@ -31,6 +36,7 @@
   .products-grid {
     overflow-y: auto; /* Enable vertical scroll if content exceeds container */
     max-height: calc(100vh - 100px); /* Adjust the max height as needed */
+    min-height: calc(100vh - 400px); /* Adjust the max height as needed */
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); /* Adjust column width as needed */
     gap: 20px;
@@ -51,9 +57,10 @@
     height: auto; /* Set height to auto to wrap content */
   }
   
-  .product-image {
+  .product-image-gridview {
     width: 80%; /* Set the width to 80% of the product card width */
     height: 80%; /* Set the height to 80% of the product card height */
+    max-width: 500px;
     object-fit: contain; /* Maintain aspect ratio and fit within the container */
   }
   

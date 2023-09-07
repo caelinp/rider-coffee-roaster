@@ -15,7 +15,7 @@ const LandingPage: React.FC = () => {
       if (logoElement) {
         logoElement.classList.add('show');
       }
-    }, 1000); // Adjust the delay as needed
+    }, 200); // Adjust the delay as needed
 
     // Delay before showing the mantra
     const mantraTimeout = setTimeout(() => {
@@ -23,10 +23,10 @@ const LandingPage: React.FC = () => {
       if (mantraElement) {
         mantraElement.classList.add('show');
       }
-    }, 2000); // Adjust the delay as needed
+    }, 1000); // Adjust the delay as needed
 
     // Delay before showing the missions
-    const missionDelays = [3500, 4500, 5500, 6500]; // Adjust the delays as needed
+    const missionDelays = [1500, 2500, 3500, 4500]; // Adjust the delays as needed
     for (let i = 0; i < missionDelays.length; i++) {
       const missionTimeout = setTimeout(() => {
         const missionElement = document.querySelector(`.mission${i}`);
@@ -42,7 +42,7 @@ const LandingPage: React.FC = () => {
       if (enterButton) {
         enterButton.classList.add('show');
       }
-    }, 7500); // Adjust the delay as needed
+    }, 5000); // Adjust the delay as needed
 
     return () => {
       clearTimeout(logoTimeout);

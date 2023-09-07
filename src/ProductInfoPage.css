@@ -18,17 +18,9 @@ body, html {
   position: relative;
 }
 
-.product-info-content {
-  max-width: 95%; /* Adjust this percentage as needed */
-  width: 100%;
-  display: flex;
-  align-items: flex-start;
-  flex-direction: row;
-  justify-content: space-between;
-}
-
 .product-info-container {
-  padding: 1rem 10rem;
+  max-width: 70%;
+  padding: 1rem 5rem;
   display: flex;
   flex-direction: row;
   align-items: flex-start;
@@ -63,15 +55,18 @@ body, html {
 
 .product-info {
   margin-top: 10rem;
+  align-items: flex-start;
 }
 
 .info-field {
-  margin-bottom: 1rem;
   text-align: left;
+}
+p {
+  font-size: 1.2rem;
 }
 
 .info-field h2 {
-  font-size: 1.2rem;
+  font-size: 2rem;
   font-weight: bold;
   margin-bottom: 0.5rem;
 }
@@ -95,14 +90,42 @@ body, html {
   background-color: transparent;
 }
 
-/* Media query for screens less than 768 pixels wide */
-@media (max-width: 768px) {
+.image-dots {
+  display: flex;
+  justify-content: center;
+  margin-top: 1rem;
+}
+
+.image-dot {
+  width: 10px;
+  height: 10px;
+  margin: 0 5px;
+  border-radius: 50%;
+  background-color: #ccc;
+  transition: background-color 0.3s ease;
+}
+
+.image-dot.active {
+  background-color: #333;
+}
+
+@media (max-width: 1536px) {
   .product-info-container {
     flex-direction: column; /* Change to column layout */
-    padding: 10rem;
+    align-items: center;
+    padding: 1rem; /* Adjust padding as needed */
   }
 
   .product-main-image-container {
-    padding: 10rem;
+    padding: 1rem;
+    max-width: 100%; /* Allow the image to take full width in column layout */
+  }
+
+  .product-main-image {
+    width: 100%; /* Set the image width to 100% for responsiveness */
+    height: auto; /* Maintain aspect ratio */
+  }
+  .product-info {
+    margin-top: 1rem;
   }
 }

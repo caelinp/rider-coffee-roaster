@@ -119,13 +119,24 @@ const ContactUsPage: React.FC = () => {
   };
 
   const calculateTotal = () => {
-    return formData.products.reduce((acc, product) => acc + product.price * product.quantity, 0);
+    const total = formData.products.reduce((acc, product) => {
+      // Use parseFloat to convert the quantity to a number
+      const quantity = product.quantity;
+  
+      // Check if quantity is NaN or an empty string and replace with 0
+      const validQuantity = !isNaN(quantity) ? quantity : 0;
+  
+      return acc + product.price * validQuantity;
+    }, 0);
+  
+    return isNaN(total) ? 0 : total;
   };
-
   return (
     <div className="contact-us-page">
       <div className="contact-us-content">
         <h1>Contact Us</h1>
+        <br></br>
+        <br></br>
         <div className="sub-section">
           <h2>Delivery Policy</h2>
           <p>We deliver to customers in Greater Vancouver every Friday.</p>
@@ -201,14 +212,14 @@ const ContactUsPage: React.FC = () => {
               {formData.products.map((product, index) => (
                 <tr key={index}>
                   <td className="product-cell">
-                    <div className="product-info">
+                    <div className="product-info-small">
                       <img src={product.image} alt='' className="product-image-small" />
                       <p>{product.name}</p>
                       <p className="product-price">${product.price.toFixed(2)}</p>
                     </div>
                   </td>
                   <td>
-                    <select
+                    <select className="roast-select"
                       value={product.roast}
                       onChange={(e) => handleProductChange(index, 'roast', e.target.value)}
                     >
@@ -218,15 +229,16 @@ const ContactUsPage: React.FC = () => {
                     </select>
                   </td>
                   <td>
-                    <input
+                    <input className="check-box"
                       type="checkbox"
                       checked={product.ground}
                       onChange={(e) => handleProductChange(index, 'ground', e.target.checked)}
                     />
                   </td>
                   <td className="quantity-cell">
+                    <br></br><br></br><br></br>
                     <button onClick={() => decreaseQuantity(index)}>-</button>
-                    <input
+                    <input className="quantity-input"
                       type="number"
                       min="0"
                       value={product.quantity}

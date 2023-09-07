@@ -30,8 +30,8 @@ body, html {
   max-height: calc(100vh - 100px); /* Adjust the max height as needed */
 }
 
-.product-card {
-  width: 50%; /* Each product card takes up 50% of the container width */
+.product-card-featured {
+  min-width: 50%; /* Each product card takes up 50% of the container width */
   background-color: black;
   color: white;
   margin: 20px 0; /* Add margin for spacing between cards */
@@ -43,9 +43,8 @@ body, html {
 }
 
 .product-image {
-  width: 100%; /* The image takes up 100% of the product card width */
-  height: auto; /* Allow the image to adjust its height proportionally */
-  max-height: 60vh; /* Set a max height for the image if needed */
+  max-width: 500px;
+  min-width: 500px;
   object-fit: contain; /* Maintain aspect ratio and fit within the container */
 }
 

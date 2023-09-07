@@ -153,9 +153,9 @@ body {
   --menu-button-size: 24px; /* Set the default size of the menu button */
 }
 
-@media (max-width: 600px) {
+@media (max-width: 868px) {
   :root {
     --black-bar-width: 10vw;
-    --menu-button-size: 18px; /* Adjust the value as needed */
+    --menu-button-size: 10px; /* Adjust the value as needed */
   }
 }

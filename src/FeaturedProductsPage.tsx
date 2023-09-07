@@ -35,7 +35,7 @@ const FeaturedProductsPage = () => {
       <div className="featured-products-container">
         {products.map((product) => (
           <Link to={`/sample-product`} key={product.id} className="product-link"> {/* update this once you have the ability to multiple product pages*/}
-          <div className="product-card" key={product.id}>
+          <div className="product-card-featured" key={product.id}>
             <img src={product.imageUrl} alt={product.name} className="product-image" />
             <div className="product-details">
               <h2 className="product-name">{product.name}</h2>
