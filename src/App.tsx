@@ -8,7 +8,8 @@ import LandingPage from './LandingPage';
 import AboutUsPage from './AboutUsPage';
 import ContactUsPage from './ContactUsPage'; // Import the ContactUsPage component
 import FeaturedProductsPage from './FeaturedProductsPage'; // Import the ContactUsPage component
-import AllProductsPage from './AllProductsPage'; // Import the ProductsPage component
+import AllProductsPage from './AllProductsPage'; // Import the AllProductsPage component
+import ProductInfoPage from './ProductInfoPage'; // Import the ProductInfoPage component
 
 const App: React.FC = () => {
   const [modalOpen, setModalOpen] = useState(false);
@@ -63,6 +64,7 @@ const App: React.FC = () => {
         <Route path="/about-us" element={<AboutUsPage />} />
         <Route path="/contact-us" element={<ContactUsPage />} />
         <Route path="/featured-products" element={<FeaturedProductsPage />} />
+        <Route path="/sample-product" element={<ProductInfoPage />} />
       </Routes>
     </div>
   );

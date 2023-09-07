@@ -4,6 +4,8 @@ import './FeaturedProductsPage.css';
 import productImage1 from './img/product1.jpg'
 import productImage2 from './img/product2.jpg'
 import productImage3 from './img/product3.jpg'
+import { Link } from 'react-router-dom';
+
 
 const FeaturedProductsPage = () => {
   const products = [
@@ -32,6 +34,7 @@ const FeaturedProductsPage = () => {
     <div className="featured-products-page">
       <div className="featured-products-container">
         {products.map((product) => (
+          <Link to={`/sample-product`} key={product.id} className="product-link"> {/* update this once you have the ability to multiple product pages*/}
           <div className="product-card" key={product.id}>
             <img src={product.imageUrl} alt={product.name} className="product-image" />
             <div className="product-details">
@@ -39,6 +42,7 @@ const FeaturedProductsPage = () => {
               <p className="product-price">{product.price}</p>
             </div>
           </div>
+          </Link>
         ))}
       </div>
     </div>

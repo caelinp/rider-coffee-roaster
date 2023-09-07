@@ -1,0 +1,108 @@
+/* ProductInfoPage.css */
+body, html {
+  margin: 0;
+  padding: 0;
+  font-size: 16px;
+}
+
+.product-info-page {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  min-height: 100vh;
+  justify-content: center;
+  align-items: center;
+  background-image: url('./img/background-no-logo.png');
+  background-size: cover;
+  background-position: center;
+  position: relative;
+}
+
+.product-info-content {
+  max-width: 95%; /* Adjust this percentage as needed */
+  width: 100%;
+  display: flex;
+  align-items: flex-start;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.product-info-container {
+  padding: 1rem 10rem;
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  gap: 2rem;
+  overflow-y: auto;
+  max-height: calc(100vh - 100px);
+}
+
+.product-header {
+  margin-bottom: 1rem;
+  text-align: center;
+  margin-top: 1rem;
+}
+
+.product-main-image-container {
+  padding: 1rem 5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  margin-top: 1rem;
+}
+
+.product-main-image {
+  width: 500px; /* Set a fixed width of 90% of the container width */
+  height: auto; /* Maintain the aspect ratio of the original image */
+  max-width: none; /* Remove the max-width restriction */
+  border: 1px solid #ddd;
+  margin: 0 1rem; /* Margin on both sides of the image */
+}
+
+.product-info {
+  margin-top: 10rem;
+}
+
+.info-field {
+  margin-bottom: 1rem;
+  text-align: left;
+}
+
+.info-field h2 {
+  font-size: 1.2rem;
+  font-weight: bold;
+  margin-bottom: 0.5rem;
+}
+
+.add-to-cart-button {
+  margin-top: 1rem;
+}
+
+/* Hide the scrollbar for Firefox */
+.product-info-container {
+  scrollbar-width: thin;
+  scrollbar-color: transparent transparent;
+}
+
+/* Hide the scrollbar for Chrome, Edge, and Safari */
+.product-info-container::-webkit-scrollbar {
+  width: 6px;
+}
+
+.product-info-container::-webkit-scrollbar-thumb {
+  background-color: transparent;
+}
+
+/* Media query for screens less than 768 pixels wide */
+@media (max-width: 768px) {
+  .product-info-container {
+    flex-direction: column; /* Change to column layout */
+    padding: 10rem;
+  }
+
+  .product-main-image-container {
+    padding: 10rem;
+  }
+}

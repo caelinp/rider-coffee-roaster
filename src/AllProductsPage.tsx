@@ -41,7 +41,7 @@ const AllProductsPage = () => {
       <div className="products-container">
         <div className="products-grid">
           {filteredProducts.map((product) => (
-            <Link to={`/products/${product.id}`} key={product.id} className="product-link">
+            <Link to={`/sample-product`} key={product.id} className="product-link"> {/* update this once you have the ability to multiple product pages*/}
               <div className="product-card">
                 <img src={product.imageUrl} alt={product.name} className="product-image" />
                 <div className="product-details">
