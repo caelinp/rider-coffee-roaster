@@ -36,7 +36,10 @@
   .search-bar {
     width: 100%;
     padding: 10px;
-    font-size: 1rem;
+  }
+
+  .search-input {
+    font-size: 1.5rem;
   }
   
   .products-grid {

@@ -43,7 +43,7 @@ const AllProductsPage = () => {
         </h1>
         <div className="search-container">
           <div className="search-bar">
-            <input
+            <input className="search-input"
               type="text"
               placeholder="Search All Products"
               value={searchQuery}
