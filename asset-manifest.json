@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/rider-coffee-roaster/static/css/main.fad693af.css",
-    "main.js": "/rider-coffee-roaster/static/js/main.88b153d5.js",
+    "main.css": "/rider-coffee-roaster/static/css/main.089058f4.css",
+    "main.js": "/rider-coffee-roaster/static/js/main.b141540e.js",
     "static/media/background-no-logo.png": "/rider-coffee-roaster/static/media/background-no-logo.c086bf629000e652e25d.png",
     "static/media/image1.jpg": "/rider-coffee-roaster/static/media/image1.5526a9453b7d30e92d22.jpg",
     "static/media/product2.jpg": "/rider-coffee-roaster/static/media/product2.c29c0a9febb674c0dfdd.jpg",
@@ -9,13 +9,14 @@
     "static/media/product3.jpg": "/rider-coffee-roaster/static/media/product3.eb34c8684aeff60cbca9.jpg",
     "static/media/product1.jpg": "/rider-coffee-roaster/static/media/product1.9127b0c922577599c503.jpg",
     "static/media/image2.jpg": "/rider-coffee-roaster/static/media/image2.4335eacca3ad5ea640f4.jpg",
+    "static/media/icon-light-grey.png": "/rider-coffee-roaster/static/media/icon-light-grey.25c74cbefa596a3b21e1.png",
     "static/media/icon-with-text.png": "/rider-coffee-roaster/static/media/icon-with-text.721c08636e87fd6acef8.png",
     "index.html": "/rider-coffee-roaster/index.html",
-    "main.fad693af.css.map": "/rider-coffee-roaster/static/css/main.fad693af.css.map",
-    "main.88b153d5.js.map": "/rider-coffee-roaster/static/js/main.88b153d5.js.map"
+    "main.089058f4.css.map": "/rider-coffee-roaster/static/css/main.089058f4.css.map",
+    "main.b141540e.js.map": "/rider-coffee-roaster/static/js/main.b141540e.js.map"
   },
   "entrypoints": [
-    "static/css/main.fad693af.css",
-    "static/js/main.88b153d5.js"
+    "static/css/main.089058f4.css",
+    "static/js/main.b141540e.js"
   ]
 }
