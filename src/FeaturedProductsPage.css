@@ -4,6 +4,10 @@ body, html {
   padding: 0;
 }
 
+.featured-header {
+  font-size: 4rem;
+}
+
 .featured-products-page {
   width: 100%;
   height: 100vh;
@@ -19,8 +23,9 @@ body, html {
 
 .featured-products-container {
   width: 100%;
-  max-width: 80%; /* Adjust the max width as needed */
-  margin: 0 auto; /* Center-align the container horizontally */
+  margin-left: 8vw;
+  margin-right: 8vw;
+  margin-top: 80px;
   padding: 20px;
   display: flex;
   flex-direction: column; /* Stack product cards in a column */
@@ -76,4 +81,11 @@ body, html {
 
 .featured-products-container::-webkit-scrollbar-thumb {
   background-color: transparent;
+}
+
+@media (max-width: 768px) {
+
+  .featured-header {
+    font-size: 2.5rem;
+  }
 }

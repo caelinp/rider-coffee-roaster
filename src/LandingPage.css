@@ -91,12 +91,12 @@ body, html {
   color: white;
   border: none;
   cursor: pointer;
-  font-size: 16px;
+  font-size: 30px;
   border-radius: 20px;
 }
 
 .enter-button:hover {
-  background-color: #222 !important;
+  background-color: #555;
 }
 
 /* Hide the scrollbar for Firefox */
