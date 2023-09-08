@@ -5,13 +5,12 @@ body, html {
 }
 
 h1 {
-  font-size:5vh;
+  font-size:4rem;
 }
 
 .contact-us-page {
   height: 100vh;
   text-align: left;
-  padding: 0 15%;
   min-height: calc(100vh - 100px);
   background-image: url('./img/background-no-logo.png');
   overflow-y: auto;
@@ -21,9 +20,11 @@ h1 {
 }
 
 .contact-us-content {
+  margin-top: 80px;
+  margin-left: 8vw;
+  margin-right: 8vw;
   overflow: hidden;
   text-align: left;
-  padding: 50px;
   max-height: calc(100vh - 100px);
   overflow-y: auto;
 }
@@ -71,6 +72,7 @@ h1 {
   margin-top: 5rem;
   border-collapse: collapse;
   width: 100%;
+  max-width: calc(100vw - 200px);
 }
 
 .product-table th,
@@ -105,6 +107,7 @@ h1 {
   align-items: center; /* Align labels and inputs on the same line */
   margin-bottom: 20px;
   margin-top: 25px;
+  flex-direction: row;
 }
 
 .form-field label {
@@ -211,4 +214,30 @@ input[type="number"]::-webkit-outer-spin-button {
 /* For Firefox */
 input[type="number"] {
   -moz-appearance: textfield; /* Restore the appearance to a regular text field */
+}
+
+@media (max-width: 768px) {
+  .form-field {
+    flex-direction: column;
+  }
+  .contact-us-content {
+    margin-left: 15vw;
+    margin-right: 15vw;
+  }
+  h1 {
+    font-size: 2rem;
+  }
+
+  .sub-section h2 {
+    font-size: 1.5rem;
+  }
+  
+  .sub-section p {
+    font-size: 1rem;
+  }
+  
+  .form-field label {
+    font-size: 1.2rem;
+  }
+  
 }

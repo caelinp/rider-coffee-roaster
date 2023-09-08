@@ -54,7 +54,7 @@ const ProductInfoPage = () => {
 
   return (
     <div className="product-info-page">
-      <div className="product-info-container">
+      <div className="product-info-content">
         <div className="product-main-image-container">
           <div className="product-header">
             <h1>{product.name}</h1>

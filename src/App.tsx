@@ -10,7 +10,7 @@ import ContactUsPage from './ContactUsPage'; // Import the ContactUsPage compone
 import FeaturedProductsPage from './FeaturedProductsPage'; // Import the ContactUsPage component
 import AllProductsPage from './AllProductsPage'; // Import the AllProductsPage component
 import ProductInfoPage from './ProductInfoPage'; // Import the ProductInfoPage component
-
+import logo from "./img/icon-light-grey.png";
 const App: React.FC = () => {
   const [modalOpen, setModalOpen] = useState(false);
   const navigate = useNavigate();
@@ -42,22 +42,27 @@ const App: React.FC = () => {
         <div className="modal-content">
           <List className="modal-list">
             <ListItem className="modal-item" onClick={() => handleItemClick('/')}>
-              <ListItemText primary="Home" />
+              <ListItemText className="modal-item-text" primary="Home" />
             </ListItem>
             <ListItem className="modal-item" onClick={() => handleItemClick('/products')}>
-              <ListItemText primary="Products" />
+              <ListItemText className="modal-item-text" primary="Products" />
             </ListItem>
             <ListItem className="modal-item" onClick={() => handleItemClick('/about-us')}>
-              <ListItemText primary="About Us" />
+              <ListItemText className="modal-item-text" primary="About Us" />
             </ListItem>
             <ListItem className="modal-item" onClick={() => handleItemClick('/contact-us')}>
-              <ListItemText primary="Contact Us" />
+              <ListItemText className="modal-item-text" primary="Contact Us" />
             </ListItem>
           </List>
         </div>
       </Modal>
-      <div className="black-bar left"></div>
-      <div className="black-bar right"></div>
+      <div className="black-bar-top">
+        <Link to="/">
+          <img src={logo} alt="Rider Coffee Roaster Logo" className="logo-small" />
+        </Link>
+      </div>
+      <div className="black-bar-side left"></div>
+      <div className="black-bar-side right"></div>
       <Routes>
         <Route path="/" element={<LandingPage />} />
         <Route path="/rider-coffee-roaster" element={<LandingPage />} />

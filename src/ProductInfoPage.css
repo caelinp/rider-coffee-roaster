@@ -18,9 +18,10 @@ body, html {
   position: relative;
 }
 
-.product-info-container {
-  max-width: 70%;
-  padding: 1rem 5rem;
+.product-info-content {
+  margin-top: 80px;
+  margin-left: 8vw;
+  margin-right: 8vw;
   display: flex;
   flex-direction: row;
   align-items: flex-start;
@@ -76,17 +77,17 @@ p {
 }
 
 /* Hide the scrollbar for Firefox */
-.product-info-container {
+.product-info-content {
   scrollbar-width: thin;
   scrollbar-color: transparent transparent;
 }
 
 /* Hide the scrollbar for Chrome, Edge, and Safari */
-.product-info-container::-webkit-scrollbar {
+.product-info-content::-webkit-scrollbar {
   width: 6px;
 }
 
-.product-info-container::-webkit-scrollbar-thumb {
+.product-info-content::-webkit-scrollbar-thumb {
   background-color: transparent;
 }
 
@@ -110,7 +111,7 @@ p {
 }
 
 @media (max-width: 1536px) {
-  .product-info-container {
+  .product-info-content {
     flex-direction: column; /* Change to column layout */
     align-items: center;
     padding: 1rem; /* Adjust padding as needed */
@@ -127,5 +128,12 @@ p {
   }
   .product-info {
     margin-top: 1rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .product-info-content {
+    margin-left: 15vw;
+    margin-right: 15vw;
   }
 }

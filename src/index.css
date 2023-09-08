@@ -1,8 +1,15 @@
 body {
   margin: 0;
-  font-family: 'Montserrat Alternates', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+h1, h2 {
+  font-family: 'PlayFair Display SC', serif;
+  text-transform: uppercase;
+}
+p, h3, button, input {
+  font-family: 'Montserrat Alternates', sans-serif;
 }
 
 code {

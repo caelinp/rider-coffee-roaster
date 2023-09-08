@@ -19,7 +19,7 @@ body, html {
 
 .featured-products-container {
   width: 100%;
-  max-width: 1200px; /* Adjust the max width as needed */
+  max-width: 80%; /* Adjust the max width as needed */
   margin: 0 auto; /* Center-align the container horizontally */
   padding: 20px;
   display: flex;
@@ -31,7 +31,9 @@ body, html {
 }
 
 .product-card-featured {
-  min-width: 50%; /* Each product card takes up 50% of the container width */
+  width: 600px; /* Each product card takes up 50% of the container width */
+  max-width: 90%;
+  max-width: calc(100vw - 200px);
   background-color: black;
   color: white;
   margin: 20px 0; /* Add margin for spacing between cards */
@@ -43,8 +45,8 @@ body, html {
 }
 
 .product-image {
-  max-width: 500px;
-  min-width: 500px;
+  width: 500px;
+  max-width: 90%;
   object-fit: contain; /* Maintain aspect ratio and fit within the container */
 }
 

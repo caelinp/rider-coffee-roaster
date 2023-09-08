@@ -47,7 +47,7 @@ body {
   position: relative;
 }
 
-.black-bar {
+.black-bar-side {
   width: var(--black-bar-width);
   background-color: black;
   position: absolute;
@@ -56,14 +56,31 @@ body {
   z-index: 1;
 }
 
-.black-bar.left {
+.black-bar-top {
+  height: 70px;
+  background-color: black;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1;
+}
+
+.logo-small {
+  display: block; /* Ensure the image is treated as a block element */
+  max-height: 100%; /* Set the maximum height to 90% of the container */
+  max-width: 100%; /* Ensure the image doesn't exceed the container's width */
+  margin: 0 auto; /* Center the image horizontally using margin */
+}
+
+.black-bar-side.left {
   left: 0;
   display: flex;
   align-items: center;
   padding-left: 10px;
 }
 
-.black-bar.right {
+.black-bar-side.right {
   right: 0;
   display: flex;
   align-items: center;
@@ -125,6 +142,11 @@ body {
   padding: 0;
 }
 
+.MuiTypography-root {
+  font-size: 1.5rem !important;
+  font-family: 'PlayFair Display SC', serif !important;
+}
+
 .modal-item {
   color: white;
   padding: 10px;
@@ -135,8 +157,8 @@ body {
 .modal-item::before {
   content: "";
   display: inline-block;
-  width: var(--menu-button-size);
-  height: var(--menu-button-size);
+  width: 2rem;
+  height: 2rem;
   background-image: url('./img/bean.png'); /* Replace with your image source path */
   background-size: contain;
   background-repeat: no-repeat;
@@ -149,11 +171,11 @@ body {
 }
 
 :root {
-  --black-bar-width: 100px;
+  --black-bar-width: 5vw;
   --menu-button-size: 24px; /* Set the default size of the menu button */
 }
 
-@media (max-width: 868px) {
+@media (max-width: 768px) {
   :root {
     --black-bar-width: 10vw;
     --menu-button-size: 10px; /* Adjust the value as needed */

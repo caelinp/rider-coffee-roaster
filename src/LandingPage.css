@@ -17,6 +17,9 @@ body, html {
 
 .landing-content {
   text-align: center;
+  margin-top: 70px;
+  margin-right: 8vw;
+  margin-left: 8vw;
   padding: 50px;
   max-height: calc(100vh - 100px); /* Adjust the value as needed */
   overflow-y: auto; /* Add vertical scroll if content exceeds max height */
@@ -40,16 +43,15 @@ body, html {
 }
 
 .logo {
-  max-width: 30%;
+  width: 500px;
+  max-width: 60%;
 }
 
 .mantra {
+  font-style: italic;
   font-size: 3rem;
   margin-top: 0px;
   margin-bottom: 30px;
-  margin-left: max(10px, 100px); /* Ensure at least 10px from left or 100px from left black bar */
-  margin-right: max(10px, 100px); /* Ensure at least 10px from right or 100px from right black bar */
-
 }
 
 .mission0,
@@ -59,8 +61,8 @@ body, html {
 .mission4 {
   font-size: 1.4rem;
   margin-top: 10px;
-  max-width: 60%; /* Set maximum width to 50% of the screen width */
-  margin-left: auto; /* Align additional mission text to the center horizontally */
+  max-width: 90%;
+  margin-left: auto;
   margin-right: auto;
   text-align: center;
   opacity: 0;
@@ -95,4 +97,40 @@ body, html {
 
 .enter-button:hover {
   background-color: #222 !important;
+}
+
+/* Hide the scrollbar for Firefox */
+.landing-content {
+  scrollbar-width: thin;
+  scrollbar-color: transparent transparent;
+}
+
+/* Hide the scrollbar for Chrome, Edge, and Safari */
+.landing-content::-webkit-scrollbar {
+  width: 6px; /* Adjust the width as needed */
+}
+
+.landing-content::-webkit-scrollbar-thumb {
+  background-color: transparent;
+}
+  
+@media (max-width: 768px) {
+  .mantra {
+    font-size: 1.5rem;
+    margin-left: max(5px, 10px); /* Ensure at least 10px from left or 100px from left black bar */
+    margin-right: max(5px, 10px); /* Ensure at least 10px from right or 100px from right black bar */
+  }
+
+  .logo {
+    max-width: 90%;
+  }
+  .mission0,
+  .mission1,
+  .mission2,
+  .mission3,
+  .mission4 {
+    font-size: 1rem;
+    text-align: justify-content;
+  }
+  
 }

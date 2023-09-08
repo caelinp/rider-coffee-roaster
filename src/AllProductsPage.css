@@ -1,6 +1,5 @@
 /* AllProductsPage.css */
 .all-products-page {
-    height: 100vh;
     text-align: left;
     padding: 0 15%;
     min-height: calc(100vh);
@@ -12,9 +11,16 @@
   }
 
   .all-products-content {
+    margin-top: 70px;
+    margin-left: 3vw;
+    margin-right: 3vw;
     min-height: 100vh; /* Adjust the max height as needed */
   }
   
+  .all-products-header {
+    font-size: 4rem;
+  }
+
   .search-container {
     background-color: black; /* Black bar */
     width: fit-content;
@@ -93,3 +99,8 @@
     background-color: transparent;
   }
   
+  @media (max-width: 768px) {
+    .all-products-header {
+      font-size: 2rem;
+    }
+  }
