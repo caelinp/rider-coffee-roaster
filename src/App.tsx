@@ -60,6 +60,7 @@ const App: React.FC = () => {
       <div className="black-bar right"></div>
       <Routes>
         <Route path="/" element={<LandingPage />} />
+        <Route path="/rider-coffee-roaster" element={<LandingPage />} />
         <Route path="/products" element={<AllProductsPage />} /> 
         <Route path="/about-us" element={<AboutUsPage />} />
         <Route path="/contact-us" element={<ContactUsPage />} />
