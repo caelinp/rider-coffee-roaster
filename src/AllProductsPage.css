@@ -34,11 +34,13 @@
   }
   
   .search-bar {
-    width: 100%;
-    padding: 10px;
+    max-width: 90%;
+    margin-left: 10px;
+    margin-right: 10px;
   }
 
   .search-input {
+    max-width: 100%;
     font-size: 1.5rem;
   }
   
