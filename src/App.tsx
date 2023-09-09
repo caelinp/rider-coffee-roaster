@@ -1,3 +1,4 @@
+/* App.tsx */
 import React, { useState } from 'react';
 import './App.css';
 import './LandingPage.css';
@@ -11,6 +12,7 @@ import FeaturedProductsPage from './FeaturedProductsPage'; // Import the Contact
 import AllProductsPage from './AllProductsPage'; // Import the AllProductsPage component
 import ProductInfoPage from './ProductInfoPage'; // Import the ProductInfoPage component
 import logo from "./img/icon-light-grey.png";
+
 const App: React.FC = () => {
   const [modalOpen, setModalOpen] = useState(false);
   const navigate = useNavigate();
@@ -31,15 +33,15 @@ const App: React.FC = () => {
 
   return (
     <div className="App">
-      <div className="menu-button" onClick={openModal}>
-        <MenuIcon fontSize="large" />
-      </div>
       <Modal
         open={modalOpen}
         onClose={closeModal}
         className={modalOpen ? 'modal-open' : 'modal-closed'}
       >
         <div className="modal-content">
+          <br></br>
+          <br></br>
+          <br></br>
           <List className="modal-list">
             <ListItem className="modal-item" onClick={() => handleItemClick('/')}>
               <ListItemText className="modal-item-text" primary="Home" />
@@ -62,6 +64,9 @@ const App: React.FC = () => {
         </Link>
       </div>
       <div className="black-bar-side left"></div>
+      <div className="menu-button" onClick={openModal}>
+        <MenuIcon fontSize="large" />
+      </div>
       <div className="black-bar-side right"></div>
       <Routes>
         <Route path="/" element={<LandingPage />} />

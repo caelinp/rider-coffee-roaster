@@ -22,12 +22,13 @@ body, html {
   margin-top: 80px;
   margin-left: 8vw;
   margin-right: 8vw;
+  margin-bottom: 100px;
   display: flex;
   flex-direction: row;
   align-items: flex-start;
   gap: 2rem;
   overflow-y: auto;
-  max-height: calc(100vh - 100px);
+  max-height: calc(100vh - 300px);
 }
 
 .product-header {
@@ -135,5 +136,7 @@ p {
   .product-info-content {
     margin-left: 15vw;
     margin-right: 15vw;
+    margin-bottom: 200px;
   }
+  
 }
