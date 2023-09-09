@@ -1,4 +1,3 @@
-// ProductInfoPage.tsx
 import React, { useState, useRef, MouseEvent } from 'react';
 import './ProductInfoPage.css';
 
@@ -7,11 +6,10 @@ import productImage2 from './img/product2.jpg';
 import productImage3 from './img/product3.jpg';
 
 const ProductInfoPage = () => {
-  // Sample product data
   const product = {
     name: 'Trail Rider',
     images: [
-      productImage1, // Replace with actual image URLs
+      productImage1,
       productImage2,
       productImage3,
     ],
@@ -25,26 +23,30 @@ const ProductInfoPage = () => {
     notes: 'grapefruit, clove, cinnamon, cacao, vanilla bean',
   };
 
+  const weightOptions = ['250 grams', '340 grams', '500 grams'];
+  const grindSizeOptions = ['Whole Bean', 'Coarse', 'Medium-Coarse', 'Medium', 'Fine', 'Extra Fine'];
+  const [selectedWeight, setSelectedWeight] = useState('340 grams');
+  const [selectedGrindSize, setSelectedGrindSize] = useState('Whole Bean');
+  const [quantity, setQuantity] = useState(1);
+
+  const weightPrices: { [key: string]: number }= {
+    '250 grams': 18,
+    '340 grams': 25,
+    '500 grams': 30,
+  };
+
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
   const imgRef = useRef<HTMLImageElement | null>(null);
 
   const handleImageClick = (e: MouseEvent<HTMLImageElement>) => {
-    // Ensure imgRef.current is not null before accessing its properties
     if (imgRef.current) {
-      // Get the image width
       const imageWidth = imgRef.current.clientWidth;
-
-      // Calculate the click position relative to the image width
       const relativeClickX = e.nativeEvent.offsetX / imageWidth;
-
-      // Determine if the left or right half of the image was clicked
       if (relativeClickX < 0.5) {
-        // Clicked on the left half, go to the previous image
         setCurrentImageIndex((prevIndex) =>
           prevIndex === 0 ? product.images.length - 1 : prevIndex - 1
         );
       } else {
-        // Clicked on the right half, go to the next image
         setCurrentImageIndex((prevIndex) =>
           prevIndex === product.images.length - 1 ? 0 : prevIndex + 1
         );
@@ -55,7 +57,7 @@ const ProductInfoPage = () => {
   return (
     <div className="product-info-page">
       <div className="product-info-content">
-        <div className="product-main-image-container">
+        <div className="product-info-order-panel">
           <div className="product-header">
             <h1>{product.name}</h1>
           </div>
@@ -74,10 +76,86 @@ const ProductInfoPage = () => {
               ></div>
             ))}
           </div>
+          
+          <div className="order-options">
+            <div className="option">
+              <label className="label-weight" htmlFor="weight">Weight:</label>
+              <select className="option-input-field"
+                id="weight"
+                value={selectedWeight}
+                onChange={(e) => setSelectedWeight(e.target.value)}
+              >
+                {weightOptions.map((option) => (
+                  <option key={option} value={option}>
+                    {option}
+                  </option>
+                ))}
+              </select>
+            </div>
+            <div className="option">
+              <label className="label-grind-size" htmlFor="grindSize">Grind Size:</label>
+              <select className="option-input-field"
+                id="grindSize"
+                value={selectedGrindSize}
+                onChange={(e) => setSelectedGrindSize(e.target.value)}
+              >
+                {grindSizeOptions.map((option) => (
+                  <option key={option} value={option}>
+                    {option}
+                  </option>
+                ))}
+              </select>
+            </div>
+            <div className="option">
+              <label className="label-quantity" htmlFor="quantity">Quantity:</label>
+              <div className="quantity-input">
+                <button
+                  className="quantity-control"
+                  onClick={() => setQuantity(Math.max(0, quantity - 1))}
+                >
+                  -
+                </button>
+                <input className="option-input-field"
+                  id="quantity"
+                  type="number"
+                  value={quantity}
+                  onChange={(e) => setQuantity(Math.max(0, Number(e.target.value)))}
+                />
+                <button
+                  className="quantity-control"
+                  onClick={() => setQuantity(quantity + 1)}
+                >
+                  +
+                </button>
+              </div>
+            </div>
+            <div className="total">
+              <label className="label-total">Total:</label>
+              <span className="total-price-text">${(quantity * weightPrices[selectedWeight]).toFixed(2)}</span>
+            </div>
+          </div>
+          <div className="subscribe-button">
+            <button>Subscribe and Save</button>
+          </div>
           <div className="add-to-cart-button">
-            <button>Add to Cart</button>
+            <button
+              disabled={quantity < 1}
+              style={{ backgroundColor: quantity < 1 ? 'grey' : '' }}
+              onClick={() => {
+                const orderConfig = {
+                  'Product name': product.name,
+                  'Quantity': quantity,
+                  'Grind Size': selectedGrindSize,
+                  'Weight': selectedWeight,
+                };
+                console.log(orderConfig);
+              }}
+            >
+              Add to Cart
+            </button>
           </div>
         </div>
+
         <div className="product-info">
           <div className="info-field">
             <h2>Description</h2>

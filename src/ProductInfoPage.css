@@ -28,7 +28,7 @@ body, html {
   align-items: flex-start;
   gap: 2rem;
   overflow-y: auto;
-  max-height: calc(100vh - 300px);
+  max-height: calc(100vh - 200px);
 }
 
 .product-header {
@@ -37,7 +37,7 @@ body, html {
   margin-top: 1rem;
 }
 
-.product-main-image-container {
+.product-image-order-panel {
   padding: 1rem 5rem;
   display: flex;
   flex-direction: column;
@@ -96,6 +96,7 @@ p {
   display: flex;
   justify-content: center;
   margin-top: 1rem;
+  margin-bottom: 2rem
 }
 
 .image-dot {
@@ -111,6 +112,76 @@ p {
   background-color: #333;
 }
 
+.quantity-input {
+  flex-direction: row;
+}
+
+.option {
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+}
+
+.order-options {
+  justify-content: left;
+}
+
+.label-weight {
+  font-size: 1.5rem;
+  margin-right: 1rem;
+}
+
+.label-grind-size {
+  font-size: 1.5rem;
+  margin-right: 1rem;
+}
+
+.label-quantity {
+  font-size: 1.5rem;
+  margin-top: 1rem;
+}
+
+.quantity-control {
+  padding: 3px 10px;
+  background-color: black;
+  color: white;
+  border: none;
+  cursor: pointer;
+  font-size: 20px;
+  border-radius: 20px;
+}
+
+.label-total {
+  font-size: 2rem;
+  margin-right: 1rem;
+}
+
+.total-price-text {
+  font-size: 2rem;
+  margin-left: 1rem;
+  font-family: 'Montserrat Alternates', sans-serif !important;
+}
+
+.option-input-field {
+  margin-left: 20px;
+  margin-right: 20px;
+  padding: 5px 10px;
+  background-color: black;
+  color: white;
+  border: none;
+  cursor: pointer;
+  font-size: 20px;
+  border-radius: 20px;
+}
+
+.add-to-cart-button {
+  margin-top: 0;
+}
+
+.subscribe-button {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
 @media (max-width: 1536px) {
   .product-info-content {
     flex-direction: column; /* Change to column layout */
@@ -118,7 +189,7 @@ p {
     padding: 1rem; /* Adjust padding as needed */
   }
 
-  .product-main-image-container {
+  .product-image-order-panel {
     padding: 1rem;
     max-width: 100%; /* Allow the image to take full width in column layout */
   }
@@ -136,7 +207,7 @@ p {
   .product-info-content {
     margin-left: 15vw;
     margin-right: 15vw;
-    margin-bottom: 200px;
+    margin-bottom: 100px;
   }
   
 }

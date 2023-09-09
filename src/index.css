@@ -8,7 +8,7 @@ h1, h2 {
   font-family: 'PlayFair Display SC', serif;
   text-transform: uppercase;
 }
-p, h3, button, input {
+p, h3, button, input, label, select {
   font-family: 'Montserrat Alternates', sans-serif;
 }
 

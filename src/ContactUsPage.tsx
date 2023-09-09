@@ -238,7 +238,7 @@ const ContactUsPage: React.FC = () => {
                   <td className="quantity-cell">
                     <br></br><br></br><br></br>
                     <button onClick={() => decreaseQuantity(index)}>-</button>
-                    <input className="quantity-input"
+                    <input className="quantity-input-edit"
                       type="number"
                       min="0"
                       value={product.quantity}

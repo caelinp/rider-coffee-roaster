@@ -193,7 +193,7 @@ button {
   border: 2px solid black; /* Change the border color to black when checked */
 }
 
-.quantity-input {
+.quantity-input-edit {
   background-color: black;
   color: white;
   border: none;
