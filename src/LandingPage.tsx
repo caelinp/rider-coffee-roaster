@@ -70,7 +70,7 @@ const LandingPage: React.FC = () => {
           <p className="mission3">
             Coffee is culture and community.
           </p>
-          <Link to="/featured-products"> {/* Use Link to navigate */}
+          <Link to="/rider-coffee-roaster/featured-products">
             <button className="enter-button">Enter</button>
           </Link>
         </div>

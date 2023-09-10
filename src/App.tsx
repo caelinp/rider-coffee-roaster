@@ -43,23 +43,23 @@ const App: React.FC = () => {
           <br></br>
           <br></br>
           <List className="modal-list">
-            <ListItem className="modal-item" onClick={() => handleItemClick('/')}>
+            <ListItem className="modal-item" onClick={() => handleItemClick('/rider-coffee-roaster/')}>
               <ListItemText className="modal-item-text" primary="Home" />
             </ListItem>
-            <ListItem className="modal-item" onClick={() => handleItemClick('/products')}>
+            <ListItem className="modal-item" onClick={() => handleItemClick('/rider-coffee-roaster/products')}>
               <ListItemText className="modal-item-text" primary="Products" />
             </ListItem>
-            <ListItem className="modal-item" onClick={() => handleItemClick('/about-us')}>
+            <ListItem className="modal-item" onClick={() => handleItemClick('/rider-coffee-roaster/about-us')}>
               <ListItemText className="modal-item-text" primary="About Us" />
             </ListItem>
-            <ListItem className="modal-item" onClick={() => handleItemClick('/contact-us')}>
+            <ListItem className="modal-item" onClick={() => handleItemClick('/rider-coffee-roaster/contact-us')}>
               <ListItemText className="modal-item-text" primary="Contact Us" />
             </ListItem>
           </List>
         </div>
       </Modal>
       <div className="black-bar-top">
-        <Link to="/">
+        <Link to="/rider-coffee-roaster">
           <img src={logo} alt="Rider Coffee Roaster Logo" className="logo-small" />
         </Link>
       </div>
