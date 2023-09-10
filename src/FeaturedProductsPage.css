@@ -88,4 +88,9 @@ body, html {
   .featured-header {
     font-size: 2.5rem;
   }
+
+  .featured-products-container {
+    margin-bottom: 100px;
+    max-height: calc(100vh - 200px); /* Adjust the max height as needed */
+  }
 }

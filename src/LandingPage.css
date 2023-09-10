@@ -132,5 +132,10 @@ body, html {
     font-size: 1rem;
     text-align: justify-content;
   }
+
+  .landing-content {
+    margin-bottom: 100px;
+    max-height: calc(100vh - 200px); /* Adjust the value as needed */
+  }
   
 }
