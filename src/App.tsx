@@ -71,10 +71,15 @@ const App: React.FC = () => {
       <Routes>
         <Route path="/" element={<LandingPage />} />
         <Route path="/rider-coffee-roaster" element={<LandingPage />} />
+        <Route path="/rider-coffee-roaster/products" element={<AllProductsPage />} /> 
         <Route path="/products" element={<AllProductsPage />} /> 
+        <Route path="/rider-coffee-roaster/about-us" element={<AboutUsPage />} />
         <Route path="/about-us" element={<AboutUsPage />} />
+        <Route path="/rider-coffee-roaster/contact-us" element={<ContactUsPage />} />
         <Route path="/contact-us" element={<ContactUsPage />} />
+        <Route path="/rider-coffee-roaster/featured-products" element={<FeaturedProductsPage />} />
         <Route path="/featured-products" element={<FeaturedProductsPage />} />
+        <Route path="/rider-coffee-roaster/sample-product" element={<ProductInfoPage />} />
         <Route path="/sample-product" element={<ProductInfoPage />} />
       </Routes>
     </div>

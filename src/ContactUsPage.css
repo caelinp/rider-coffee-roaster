@@ -113,7 +113,6 @@ h1 {
 .form-field label {
   width: 25ch; /* Set a fixed width for labels, e.g., 25 characters */
   text-align: left;
-  margin-right: 20px;
   font-weight: bold;
   font-size: 1.2rem;
 }
@@ -237,6 +236,7 @@ input[type="number"] {
   }
   
   .form-field label {
+    margin-left: 50px;
     font-size: 1.2rem;
   }
   

@@ -38,6 +38,8 @@ body, html {
 }
 
 .product-image-order-panel {
+  margin-left: 11vw;
+  margin-right: 11vw;
   padding: 1rem 5rem;
   display: flex;
   flex-direction: column;
@@ -50,7 +52,6 @@ body, html {
 .product-main-image {
   width: 500px; /* Set a fixed width of 90% of the container width */
   height: auto; /* Maintain the aspect ratio of the original image */
-  max-width: none; /* Remove the max-width restriction */
   border: 1px solid #ddd;
   margin: 0 1rem; /* Margin on both sides of the image */
 }
@@ -63,6 +64,7 @@ body, html {
 .info-field {
   text-align: left;
 }
+
 p {
   font-size: 1.2rem;
 }
@@ -117,6 +119,8 @@ p {
 }
 
 .option {
+  margin-left: 100px;
+  margin-right: 100px;
   margin-top: 1rem;
   margin-bottom: 1rem;
 }
@@ -125,19 +129,11 @@ p {
   justify-content: left;
 }
 
-.label-weight {
-  font-size: 1.5rem;
-  margin-right: 1rem;
-}
-
-.label-grind-size {
-  font-size: 1.5rem;
-  margin-right: 1rem;
-}
-
+.label-weight,
+.label-grind-size,
 .label-quantity {
   font-size: 1.5rem;
-  margin-top: 1rem;
+  margin-right: 0.5rem;
 }
 
 .quantity-control {
@@ -152,7 +148,7 @@ p {
 
 .label-total {
   font-size: 2rem;
-  margin-right: 1rem;
+  margin-right: 0.5rem;
 }
 
 .total-price-text {
@@ -171,6 +167,10 @@ p {
   cursor: pointer;
   font-size: 20px;
   border-radius: 20px;
+}
+
+#quantity {
+  width: 75px;
 }
 
 .add-to-cart-button {
@@ -205,9 +205,23 @@ p {
 
 @media (max-width: 768px) {
   .product-info-content {
-    margin-left: 15vw;
-    margin-right: 15vw;
+    margin-left: 11vw;
+    margin-right: 11vw;
     margin-bottom: 100px;
   }
-  
+
+  .product-image-order-panel {
+    margin-left: 15vw;
+    margin-right: 15vw;
+  }
+
+  .label-weight,
+  .label-grind-size,
+  .label-quantity {
+  font-size: 1.5rem;
+  margin-right: 0.5rem;
+}
+.product-main-image {
+  max-width: calc(100vw - 150px); 
+}
 }

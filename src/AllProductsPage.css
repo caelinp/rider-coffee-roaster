@@ -23,21 +23,22 @@
   }
 
   .search-container {
-    background-color: black; /* Black bar */
+    background-color: black;
     width: fit-content;
-    max-width: calc(100% - 30px); /* Limit the max width to its container minus padding */
+    max-width: 100%;
     position: sticky; /* Make the container sticky */
     top: 0; /* Stick to the top of the page */
     z-index: 1; /* Ensure it's above the product cards */
     padding: 10px; /* Add some padding to the container */
     align-items: center;
+    justify-content: center;
     margin-bottom: 2rem;
   }
   
   .search-bar {
-    max-width: 90%;
-    margin-left: 10px;
-    margin-right: 10px;
+    width: 100%;
+    max-width: 100%;
+    justify-content: center;
   }
 
   .search-input {
@@ -109,7 +110,7 @@
       font-size: 2.5rem;
     }
     .search-input {
-      max-width: 100%;
       font-size: 1rem;
     }
+
   }
