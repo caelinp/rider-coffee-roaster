@@ -11,9 +11,7 @@
   }
 
   .all-products-content {
-    max-height: calc(100vh-300px);
     margin-top: 80px;
-    margin-bottom: 500px;
     margin-left: 3vw;
     margin-right: 3vw;
   }
@@ -52,7 +50,6 @@
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); /* Adjust column width as needed */
     gap: 20px;
-    margin-bottom: 100px;
   }
   
   .product-link {
@@ -113,5 +110,12 @@
     .search-input {
       font-size: 1rem;
     }
+    .all-products-content {
+      margin-bottom: 500px;
+      max-height: calc(100vh-300px);
+    }
 
+    .products-grid {
+      margin-bottom: 100px;
+    }
   }

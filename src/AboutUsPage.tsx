@@ -17,6 +17,9 @@ const AboutUsPage: React.FC = () => {
         <h2>Bean Sourcing</h2>
         <img src={image2} alt="Image 2" className="content-image" />
         <p>At Rider Coffee Roasters, we believe in sharing our love for coffee with the world. Whether you're a seasoned coffee aficionado or a curious newcomer, we invite you to join us on a journey of discovery. From bean to cup, our dedication to quality and authenticity shines through in every sip. Cheers to the perfect cup of coffee!</p>
+        <br></br>
+        <br></br>
+        <br></br>
       </div>
     </div>
   );

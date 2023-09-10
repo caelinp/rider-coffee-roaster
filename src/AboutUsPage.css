@@ -41,7 +41,6 @@ body, html {
   margin-left: 8vw;
   margin-right: 8vw;
   margin-top: 80px;
-  margin-bottom: 100px;
   max-width: 80%;
 }
 
@@ -92,6 +91,7 @@ body, html {
   .about-us-content {
     margin-left: 15vw;
     margin-right: 15vw;
+    margin-bottom: 100px;
   }
 
   .content-image {
