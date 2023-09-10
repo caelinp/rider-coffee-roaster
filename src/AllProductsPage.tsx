@@ -62,6 +62,10 @@ const AllProductsPage = () => {
                     <p className="product-price">{product.price}</p>
                   </div>
                 </div>
+              <br></br>
+              <br></br>
+              <br></br>
+              <br></br>
               </Link>
             ))}
           </div>

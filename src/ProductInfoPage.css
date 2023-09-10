@@ -29,6 +29,7 @@ body, html {
   gap: 2rem;
   overflow-y: auto;
   max-height: calc(100vh - 200px);
+  overflow-x: hidden;
 }
 
 .product-header {
@@ -38,8 +39,6 @@ body, html {
 }
 
 .product-image-order-panel {
-  margin-left: 11vw;
-  margin-right: 11vw;
   padding: 1rem 5rem;
   display: flex;
   flex-direction: column;
@@ -133,7 +132,7 @@ p {
 .label-grind-size,
 .label-quantity {
   font-size: 1.5rem;
-  margin-right: 0.5rem;
+  margin-left: 1rem;
 }
 
 .quantity-control {
@@ -219,9 +218,11 @@ p {
   .label-grind-size,
   .label-quantity {
   font-size: 1.5rem;
-  margin-right: 0.5rem;
-}
-.product-main-image {
-  max-width: calc(100vw - 150px); 
-}
+  }
+  .product-main-image {
+    max-width: calc(100vw - 150px); 
+  }
+  body {
+    overflow-x: hidden;
+  }
 }
