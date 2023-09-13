@@ -56,140 +56,143 @@ const ProductInfoPage = () => {
 
   return (
     <div className="product-info-page">
-      <div className="product-info-content">
-        <div className="product-info-order-panel">
-          <div className="product-header">
-            <h1>{product.name}</h1>
-          </div>
-          <img
-            src={product.images[currentImageIndex]}
-            alt={product.name}
-            className="product-main-image"
-            onClick={handleImageClick}
-            ref={imgRef}
-          />
-          <div className="image-dots">
-            {product.images.map((_, index) => (
-              <div
-                key={index}
-                className={`image-dot ${currentImageIndex === index ? 'active' : ''}`}
-              ></div>
-            ))}
-          </div>
-          
-          <div className="order-options">
-            <div className="option">
-              <label className="label-weight" htmlFor="weight">Weight:</label>
-              <select className="option-input-field"
-                id="weight"
-                value={selectedWeight}
-                onChange={(e) => setSelectedWeight(e.target.value)}
-              >
-                {weightOptions.map((option) => (
-                  <option key={option} value={option}>
-                    {option}
-                  </option>
-                ))}
-              </select>
+      <div className="product-info-content-and-bottom">
+        <div className="product-info-content">
+          <div className="product-info-order-panel">
+            <div className="product-header">
+              <h1>{product.name}</h1>
             </div>
-            <div className="option">
-              <label className="label-grind-size" htmlFor="grindSize">Grind Size:</label>
-              <select className="option-input-field"
-                id="grindSize"
-                value={selectedGrindSize}
-                onChange={(e) => setSelectedGrindSize(e.target.value)}
-              >
-                {grindSizeOptions.map((option) => (
-                  <option key={option} value={option}>
-                    {option}
-                  </option>
-                ))}
-              </select>
+            <img
+              src={product.images[currentImageIndex]}
+              alt={product.name}
+              className="product-main-image"
+              onClick={handleImageClick}
+              ref={imgRef}
+            />
+            <div className="image-dots">
+              {product.images.map((_, index) => (
+                <div
+                  key={index}
+                  className={`image-dot ${currentImageIndex === index ? 'active' : ''}`}
+                ></div>
+              ))}
             </div>
-            <div className="option">
-              <label className="label-quantity" htmlFor="quantity">Quantity:</label>
-              <div className="quantity-input">
-                <button
-                  className="quantity-control"
-                  onClick={() => setQuantity(Math.max(0, quantity - 1))}
+            
+            <div className="order-options">
+              <div className="option">
+                <label className="label-weight" htmlFor="weight">Weight:</label>
+                <select className="option-input-field"
+                  id="weight"
+                  value={selectedWeight}
+                  onChange={(e) => setSelectedWeight(e.target.value)}
                 >
-                  -
-                </button>
-                <input className="option-input-field"
-                  id="quantity"
-                  type="number"
-                  value={quantity}
-                  onChange={(e) => setQuantity(Math.max(0, Number(e.target.value)))}
-                />
-                <button
-                  className="quantity-control"
-                  onClick={() => setQuantity(quantity + 1)}
+                  {weightOptions.map((option) => (
+                    <option key={option} value={option}>
+                      {option}
+                    </option>
+                  ))}
+                </select>
+              </div>
+              <div className="option">
+                <label className="label-grind-size" htmlFor="grindSize">Grind Size:</label>
+                <select className="option-input-field"
+                  id="grindSize"
+                  value={selectedGrindSize}
+                  onChange={(e) => setSelectedGrindSize(e.target.value)}
                 >
-                  +
-                </button>
+                  {grindSizeOptions.map((option) => (
+                    <option key={option} value={option}>
+                      {option}
+                    </option>
+                  ))}
+                </select>
+              </div>
+              <div className="option">
+                <label className="label-quantity" htmlFor="quantity">Quantity:</label>
+                <div className="quantity-input">
+                  <button
+                    className="quantity-control"
+                    onClick={() => setQuantity(Math.max(0, quantity - 1))}
+                  >
+                    -
+                  </button>
+                  <input className="option-input-field"
+                    id="quantity"
+                    type="number"
+                    value={quantity}
+                    onChange={(e) => setQuantity(Math.max(0, Number(e.target.value)))}
+                  />
+                  <button
+                    className="quantity-control"
+                    onClick={() => setQuantity(quantity + 1)}
+                  >
+                    +
+                  </button>
+                </div>
+              </div>
+              <div className="total">
+                <label className="label-total">Total:</label>
+                <span className="total-price-text">${(quantity * weightPrices[selectedWeight]).toFixed(2)}</span>
               </div>
             </div>
-            <div className="total">
-              <label className="label-total">Total:</label>
-              <span className="total-price-text">${(quantity * weightPrices[selectedWeight]).toFixed(2)}</span>
+            <div className="subscribe-button">
+              <button>Subscribe and Save</button>
+            </div>
+            <div className="add-to-cart-button">
+              <button
+                disabled={quantity < 1}
+                style={{ backgroundColor: quantity < 1 ? 'grey' : '' }}
+                onClick={() => {
+                  const orderConfig = {
+                    'Product name': product.name,
+                    'Quantity': quantity,
+                    'Grind Size': selectedGrindSize,
+                    'Weight': selectedWeight,
+                  };
+                  console.log(orderConfig);
+                }}
+              >
+                Add to Cart
+              </button>
             </div>
           </div>
-          <div className="subscribe-button">
-            <button>Subscribe and Save</button>
-          </div>
-          <div className="add-to-cart-button">
-            <button
-              disabled={quantity < 1}
-              style={{ backgroundColor: quantity < 1 ? 'grey' : '' }}
-              onClick={() => {
-                const orderConfig = {
-                  'Product name': product.name,
-                  'Quantity': quantity,
-                  'Grind Size': selectedGrindSize,
-                  'Weight': selectedWeight,
-                };
-                console.log(orderConfig);
-              }}
-            >
-              Add to Cart
-            </button>
-          </div>
-        </div>
 
-        <div className="product-info">
-          <div className="info-field">
-            <h2>Description</h2>
-            <p>{product.description}</p>
-          </div>
-          <div className="info-field">
-            <h2>Farmer</h2>
-            <p>{product.farmer}</p>
-          </div>
-          <div className="info-field">
-            <h2>Farm</h2>
-            <p>{product.farm}</p>
-          </div>
-          <div className="info-field">
-            <h2>Origin</h2>
-            <p>{product.origin}</p>
-          </div>
-          <div className="info-field">
-            <h2>Altitude</h2>
-            <p>{product.altitude}</p>
-          </div>
-          <div className="info-field">
-            <h2>Process</h2>
-            <p>{product.process}</p>
-          </div>
-          <div className="info-field">
-            <h2>Varietal</h2>
-            <p>{product.varietal}</p>
-          </div>
-          <div className="info-field">
-            <h2>Notes</h2>
-            <p>{product.notes}</p>
+          <div className="product-info">
+            <div className="info-field">
+              <h2>Description</h2>
+              <p>{product.description}</p>
+            </div>
+            <div className="info-field">
+              <h2>Farmer</h2>
+              <p>{product.farmer}</p>
+            </div>
+            <div className="info-field">
+              <h2>Farm</h2>
+              <p>{product.farm}</p>
+            </div>
+            <div className="info-field">
+              <h2>Origin</h2>
+              <p>{product.origin}</p>
+            </div>
+            <div className="info-field">
+              <h2>Altitude</h2>
+              <p>{product.altitude}</p>
+            </div>
+            <div className="info-field">
+              <h2>Process</h2>
+              <p>{product.process}</p>
+            </div>
+            <div className="info-field">
+              <h2>Varietal</h2>
+              <p>{product.varietal}</p>
+            </div>
+            <div className="info-field">
+              <h2>Notes</h2>
+              <p>{product.notes}</p>
+            </div>
           </div>
         </div>
+        <div className="black-bar-bottom"></div>
       </div>
     </div>
   );

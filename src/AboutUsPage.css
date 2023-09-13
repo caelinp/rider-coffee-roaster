@@ -4,20 +4,43 @@ body, html {
 }
 
 .about-us-page {
+  width: 100vw;
   height: 100vh;
   text-align: left;
-  min-height: calc(100vh - 100px); /* Use min-height instead of max-height */
-  background-image: url('./img/background-no-logo.png');
+  background: black;
   overflow-y: auto;
+  overflow-x: hidden;
   display: flex;
   flex-direction: column;
   justify-content: center;
 }
 
-.about-us-page h1 {
+.about-us-content-and-bottom {
+  position: relative;
+  height: 100vh;
+}
+
+.about-us-content {
+  margin-top: var(--black-bar-top-height);
+  margin-right: var(--black-bar-width);
+  margin-left: var(--black-bar-width);
+  overflow-x: hidden;
+  overflow-y: auto;
+  text-align: left;
+  background-image: url('./img/background-no-logo.png');
+  scrollbar-width: none;
+}
+
+.about-us-text-content {
+  padding: 0 10%;
+  width: calc(100% - 2 * var(--black-bar-width));
+  overflow-x: hidden;
+}
+
+.about-us-header {
   font-size: 4rem;
   margin-bottom: 20px;
-  margin-top: 50px;
+  text-align: left;
 }
 
 .about-us-page h2{
@@ -27,21 +50,10 @@ body, html {
 }
 
 .about-us-page p {
+  width: 90%;
   margin-bottom: 20px;
   font-size: 1.4rem;
   line-height: 1.6;
-}
-
-.about-us-content {
-  overflow: hidden;
-  text-align: left;
-  max-height: calc(100vh - 100px); /* Adjust the value as needed */
-  overflow-y: auto; /* Add vertical scroll if content exceeds max height */
-  scrollbar-width: none;
-  margin-left: 8vw;
-  margin-right: 8vw;
-  margin-top: 80px;
-  max-width: 80%;
 }
 
 /* Hide Webkit scrollbars (Chrome, Safari, newer versions of Opera) */
@@ -64,17 +76,16 @@ body, html {
 }
 
 .content-image {
-  max-width: 60%;
+  max-width: 50%;
   height: auto;
   margin-top: 10px;
   margin-bottom: 10px;
-  width: 100%; /* Add this rule to make the image scale */
   object-fit: contain; /* Maintain aspect ratio and fit within the container */
 }
 
 @media (max-width: 768px) {
-  .about-us-page h1 {
-    font-size: 2.5rem;
+  .about-us-header {
+    font-size: 2.3rem;
     margin-bottom: 20px;
   }
   .about-us-page h2{

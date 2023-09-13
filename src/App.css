@@ -55,7 +55,7 @@ body {
 }
 
 .black-bar-top {
-  height: 70px;
+  height: var(--black-bar-top-height);
   background-color: black;
   position: absolute;
   top: 0;
@@ -83,6 +83,14 @@ body {
   display: flex;
   align-items: center;
   padding-right: 10px;
+}
+
+.black-bar-bottom {
+  height: var(--black-bar-bottom-height);
+  background-color: black;
+  position: absolute;
+  width: 100%;
+  z-index: 1;
 }
 
 .menu-button {
@@ -182,8 +190,10 @@ body {
 }
 
 :root {
+  --black-bar-bottom-height: 100px;
   --black-bar-width: 5vw;
   --menu-button-size: 24px; /* Set the default size of the menu button */
+  --black-bar-top-height: 70px;
 }
 
 @media (max-width: 768px) {

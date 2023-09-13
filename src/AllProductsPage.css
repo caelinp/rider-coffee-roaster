@@ -1,121 +1,136 @@
-/* AllProductsPage.css */
+body, html {
+  margin: 0;
+  padding: 0;
+}
+
 .all-products-page {
-    text-align: left;
-    padding: 0 15%;
-    min-height: calc(100vh);
-    background-image: url('./img/background-no-logo.png');
-    overflow-y: auto;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-  }
+  background: black;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 100%;
+}
 
-  .all-products-content {
-    margin-top: 80px;
-    margin-left: 3vw;
-    margin-right: 3vw;
-  }
-  
+.all-products-content {
+  background-image: url('./img/background-no-logo.png');
+  margin-top: var(--black-bar-top-height);
+  margin-left: var(--black-bar-width);
+  margin-right: var(--black-bar-width);
+  height: 100vh;
+  position: relative;
+  flex-direction: column;
+}
+
+.all-products-header {
+  font-size: 4rem;
+}
+
+.search-header-container {
+  text-align: left;
+  padding: 0 15%;
+  height: var(--search-header-container-height);
+}
+
+.search-container {
+  background-color: black;
+  width: fit-content;
+  max-width: 100%;
+  position: sticky;
+  top: 0;
+  z-index: 1;
+  padding: 10px;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 2rem;
+}
+
+.search-bar {
+  width: 100%;
+  max-width: 100%;
+  justify-content: center;
+}
+
+.search-input {
+  max-width: 100%;
+  font-size: 1.5rem;
+}
+
+.products-container {
+  overflow-y: auto;
+  height: calc(100% - var(--search-header-container-height) - var(--black-bar-top-height) );
+}
+
+.products-grid {
+  padding: 0 15%;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); 
+  gap: 20px;
+  height: calc(100% - var(--black-bar-bottom-height));
+  margin-bottom: 200px;
+}
+
+.product-link {
+  text-decoration: none;
+  color: inherit;
+}
+
+.product-card {
+  background-color: black;
+  color: white;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: auto; /* Set height to auto to wrap content */
+}
+
+.product-image-gridview {
+  width: 80%; /* Set the width to 80% of the product card width */
+  height: 80%; /* Set the height to 80% of the product card height */
+  max-width: 500px;
+  object-fit: contain; /* Maintain aspect ratio and fit within the container */
+}
+
+.product-details {
+  text-align: center;
+  margin-top: 10px;
+}
+
+.product-name {
+  font-size: 1rem;
+  font-weight: bold;
+}
+
+.product-price {
+  font-size: 0.9rem;
+}
+
+
+/* Hide the scrollbar for Firefox */
+.products-container {
+  scrollbar-width: thin;
+  scrollbar-color: transparent transparent;
+}
+
+/* Hide the scrollbar for Chrome, Edge, and Safari */
+.products-container::-webkit-scrollbar {
+  width: 6px; /* Adjust the width as needed */
+}
+
+.products-container::-webkit-scrollbar-thumb {
+  background-color: transparent;
+}
+
+:root {
+  --search-header-container-height: 200px;
+}
+
+@media (max-width: 768px) {
   .all-products-header {
-    font-size: 4rem;
+    font-size: 2rem;
   }
-
-  .search-container {
-    background-color: black;
-    width: fit-content;
-    max-width: 100%;
-    position: sticky; /* Make the container sticky */
-    top: 0; /* Stick to the top of the page */
-    z-index: 1; /* Ensure it's above the product cards */
-    padding: 10px; /* Add some padding to the container */
-    align-items: center;
-    justify-content: center;
-    margin-bottom: 2rem;
-  }
-  
-  .search-bar {
-    width: 100%;
-    max-width: 100%;
-    justify-content: center;
-  }
-
   .search-input {
-    max-width: 100%;
-    font-size: 1.5rem;
+    font-size: 0.8rem;
   }
-  
-  .products-grid {
-    overflow-y: auto; /* Enable vertical scroll if content exceeds container */
-    height: calc(100vh - 400px);
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); /* Adjust column width as needed */
-    gap: 20px;
-  }
-  
-  .product-link {
-    text-decoration: none;
-    color: inherit;
-  }
-  
-  .product-card {
-    background-color: black;
-    color: white;
-    padding: 20px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    height: auto; /* Set height to auto to wrap content */
-  }
-  
-  .product-image-gridview {
-    width: 80%; /* Set the width to 80% of the product card width */
-    height: 80%; /* Set the height to 80% of the product card height */
-    max-width: 500px;
-    object-fit: contain; /* Maintain aspect ratio and fit within the container */
-  }
-  
-  .product-details {
-    text-align: center;
-    margin-top: 10px;
-  }
-  
-  .product-name {
-    font-size: 1rem;
-    font-weight: bold;
-  }
-  
-  .product-price {
-    font-size: 0.9rem;
-  }
-  
-  /* Hide the scrollbar for Firefox */
-  .products-grid {
-    scrollbar-width: thin;
-    scrollbar-color: transparent transparent;
-  }
-  
-  /* Hide the scrollbar for Chrome, Edge, and Safari */
-  .products-grid::-webkit-scrollbar {
-    width: 6px; /* Adjust the width as needed */
-  }
-  
-  .products-grid::-webkit-scrollbar-thumb {
-    background-color: transparent;
-  }
-  
-  @media (max-width: 768px) {
-    .all-products-header {
-      font-size: 2.5rem;
-    }
-    .search-input {
-      font-size: 1rem;
-    }
-    .all-products-content {
-      margin-bottom: 500px;
-      max-height: calc(100vh-300px);
-    }
-
-    .products-grid {
-      margin-bottom: 100px;
-    }
-  }
+}

@@ -32,22 +32,25 @@ const FeaturedProductsPage = () => {
 
   return (
     <div className="featured-products-page">
-      <div className="featured-products-container">
-        <h1 className="featured-header">Featured Roasts</h1>
-        {products.map((product) => (
-          <Link to={`/rider-coffee-roaster/sample-product`} key={product.id} className="product-link"> {/* update this once you have the ability to multiple product pages*/}
-          <div className="product-card-featured" key={product.id}>
-            <img src={product.imageUrl} alt={product.name} className="product-image" />
-            <div className="product-details">
-              <h2 className="product-name">{product.name}</h2>
-              <p className="product-price">{product.price}</p>
+      <div className="featured-products-and-bottom-container">
+        <div className="featured-products-container">
+          <h1 className="featured-header">Featured Roasts</h1>
+          {products.map((product) => (
+            <Link to={`/rider-coffee-roaster/sample-product`} key={product.id} className="product-link"> {/* update this once you have the ability to multiple product pages*/}
+            <div className="product-card-featured" key={product.id}>
+              <img src={product.imageUrl} alt={product.name} className="product-image" />
+              <div className="product-details">
+                <h2 className="product-name">{product.name}</h2>
+                <p className="product-price">{product.price}</p>
+              </div>
             </div>
-          </div>
-          <br></br>
-          <br></br>
-          <br></br>
-          </Link>
-        ))}
+            <br></br>
+            <br></br>
+            <br></br>
+            </Link>
+          ))}
+        </div>
+        <div className="black-bar-bottom"></div>
       </div>
     </div>
   );

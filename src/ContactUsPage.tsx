@@ -133,126 +133,129 @@ const ContactUsPage: React.FC = () => {
   };
   return (
     <div className="contact-us-page">
-      <div className="contact-us-content">
-        <h1>Contact Us</h1>
-        <br></br>
-        <br></br>
-        <div className="sub-section">
-          <h2>Delivery Policy</h2>
-          <p>We deliver to customers in Greater Vancouver every Friday.</p>
-          <p>Contact us at delivery@ridercoffee.com for more information.</p>
-        </div>
-        <div className="sub-section">
-          <h2>Business Inquiries</h2>
-          <p>For business inquiries, please contact us at business@ridercoffee.com.</p>
-          <p>We're excited to work with you!</p>
-        </div>
-        <div className="sub-section">
-          <h2>Order Now</h2>
-          <form>
-            <div className="form-field">
-              <label>Email *</label>
-              <div className="form-field-input">
-                <input type="email" required />
+      <div className="contact-us-content-and-bottom">
+        <div className="contact-us-content">
+          <h1 className="contact-us-header">Contact Us</h1>
+          <br></br>
+          <br></br>
+          <div className="sub-section">
+            <h2>Delivery Policy</h2>
+            <p>We deliver to customers in Greater Vancouver every Friday.</p>
+            <p>Contact us at delivery@ridercoffee.com for more information.</p>
+          </div>
+          <div className="sub-section">
+            <h2>Business Inquiries</h2>
+            <p>For business inquiries, please contact us at business@ridercoffee.com.</p>
+            <p>We're excited to work with you!</p>
+          </div>
+          <div className="sub-section">
+            <h2>Order Now</h2>
+            <form>
+              <div className="form-field">
+                <label>Email *</label>
+                <div className="form-field-input">
+                  <input type="email" required />
+                </div>
               </div>
-            </div>
-            <div className="form-field">
-              <label>First Name *</label>
-              <div className="form-field-input">
-                <input type="text" required />
+              <div className="form-field">
+                <label>First Name *</label>
+                <div className="form-field-input">
+                  <input type="text" required />
+                </div>
               </div>
-            </div>
-            <div className="form-field">
-              <label>Last Name *</label>
-              <div className="form-field-input">
-                <input type="text" required />
+              <div className="form-field">
+                <label>Last Name *</label>
+                <div className="form-field-input">
+                  <input type="text" required />
+                </div>
               </div>
-            </div>
-            <div className="form-field">
-              <label>Street Address *</label>
-              <div className="form-field-input">
-                <input type="text" required />
+              <div className="form-field">
+                <label>Street Address *</label>
+                <div className="form-field-input">
+                  <input type="text" required />
+                </div>
               </div>
-            </div>
-            <div className="form-field">
-              <label>City *</label>
-              <div className="form-field-input">
-                <input type="text" required />
+              <div className="form-field">
+                <label>City *</label>
+                <div className="form-field-input">
+                  <input type="text" required />
+                </div>
               </div>
-            </div>
-            <div className="form-field">
-              <label>Province/State *</label>
-              <div className="form-field-input">
-                <input type="text" required />
+              <div className="form-field">
+                <label>Province/State *</label>
+                <div className="form-field-input">
+                  <input type="text" required />
+                </div>
               </div>
-            </div>
-            <div className="form-field">
-              <label>Country *</label>
-              <div className="form-field-input">
-                <input type="text" required />
+              <div className="form-field">
+                <label>Country *</label>
+                <div className="form-field-input">
+                  <input type="text" required />
+                </div>
               </div>
-            </div>
-            <div className="form-field">
-              <label>Postal Code *</label>
-              <div className="form-field-input">
-                <input type="text" required />
+              <div className="form-field">
+                <label>Postal Code *</label>
+                <div className="form-field-input">
+                  <input type="text" required />
+                </div>
               </div>
-            </div>
-          </form>
-          <table className="product-table">
-            <thead>
-              <tr>
-                <th>Product</th>
-                <th>Roast</th>
-                <th>Ground</th>
-                <th>Quantity</th>
-              </tr>
-            </thead>
-            <tbody>
-              {formData.products.map((product, index) => (
-                <tr key={index}>
-                  <td className="product-cell">
-                    <div className="product-info-small">
-                      <img src={product.image} alt='' className="product-image-small" />
-                      <p>{product.name}</p>
-                      <p className="product-price">${product.price.toFixed(2)}</p>
-                    </div>
-                  </td>
-                  <td>
-                    <select className="roast-select"
-                      value={product.roast}
-                      onChange={(e) => handleProductChange(index, 'roast', e.target.value)}
-                    >
-                      <option value="Light">Light</option>
-                      <option value="Medium">Medium</option>
-                      <option value="Dark">Dark</option>
-                    </select>
-                  </td>
-                  <td>
-                    <input className="check-box"
-                      type="checkbox"
-                      checked={product.ground}
-                      onChange={(e) => handleProductChange(index, 'ground', e.target.checked)}
-                    />
-                  </td>
-                  <td className="quantity-cell">
-                    <br></br><br></br><br></br>
-                    <button onClick={() => decreaseQuantity(index)}>-</button>
-                    <input className="quantity-input-edit"
-                      type="number"
-                      min="0"
-                      value={product.quantity}
-                      onChange={(e) => handleProductChange(index, 'quantity', parseInt(e.target.value))}
-                    />
-                    <button onClick={() => increaseQuantity(index)}>+</button>
-                  </td>
+            </form>
+            <table className="product-table">
+              <thead>
+                <tr>
+                  <th>Product</th>
+                  <th>Roast</th>
+                  <th>Ground</th>
+                  <th>Quantity</th>
                 </tr>
-              ))}
-            </tbody>
-          </table>
-          <p className="total-label">Total: ${calculateTotal().toFixed(2)}</p>
-          <button disabled={formData.isSubmitDisabled}>Submit Order</button>
+              </thead>
+              <tbody>
+                {formData.products.map((product, index) => (
+                  <tr key={index}>
+                    <td className="product-cell">
+                      <div className="product-info-small">
+                        <img src={product.image} alt='' className="product-image-small" />
+                        <p>{product.name}</p>
+                        <p className="product-price">${product.price.toFixed(2)}</p>
+                      </div>
+                    </td>
+                    <td>
+                      <select className="roast-select"
+                        value={product.roast}
+                        onChange={(e) => handleProductChange(index, 'roast', e.target.value)}
+                      >
+                        <option value="Light">Light</option>
+                        <option value="Medium">Medium</option>
+                        <option value="Dark">Dark</option>
+                      </select>
+                    </td>
+                    <td>
+                      <input className="check-box"
+                        type="checkbox"
+                        checked={product.ground}
+                        onChange={(e) => handleProductChange(index, 'ground', e.target.checked)}
+                      />
+                    </td>
+                    <td className="quantity-cell">
+                      <br></br><br></br><br></br>
+                      <button onClick={() => decreaseQuantity(index)}>-</button>
+                      <input className="quantity-input-edit"
+                        type="number"
+                        min="0"
+                        value={product.quantity}
+                        onChange={(e) => handleProductChange(index, 'quantity', parseInt(e.target.value))}
+                      />
+                      <button onClick={() => increaseQuantity(index)}>+</button>
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+            <p className="total-label">Total: ${calculateTotal().toFixed(2)}</p>
+            <button disabled={formData.isSubmitDisabled}>Submit Order</button>
+          </div>
         </div>
+        <div className="black-bar-bottom"></div>
       </div>
     </div>
   );

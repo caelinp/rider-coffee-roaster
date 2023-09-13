@@ -6,56 +6,62 @@ body, html {
 }
 
 .product-info-page {
-  width: 100%;
+  width: 100vw;
   height: 100vh;
   display: flex;
-  min-height: 100vh;
   justify-content: center;
   align-items: center;
-  background-image: url('./img/background-no-logo.png');
-  background-size: cover;
-  background-position: center;
+  background: black;
+  overflow-y: auto;
+  overflow-x: hidden;
+
+}
+
+.product-info-content-and-bottom {
   position: relative;
+  height: 100vh;
 }
 
 .product-info-content {
-  margin-top: 80px;
-  margin-left: 8vw;
-  margin-right: 8vw;
+  margin-top: var(--black-bar-top-height);
+  margin-left: var(--black-bar-width);
+  margin-right: var(--black-bar-width);
   display: flex;
   flex-direction: row;
-  align-items: flex-start;
   gap: 2rem;
   overflow-y: auto;
-  max-height: calc(100vh - 100px);
   overflow-x: hidden;
+  background-image: url('./img/background-no-logo.png');
 }
 
 .product-header {
+  padding: 20%;
   margin-bottom: 1rem;
   text-align: center;
-  margin-top: 1rem;
+  font-size: 1.5rem;
 }
 
 .product-image-order-panel {
-  padding: 1rem 5rem;
   display: flex;
+  width: 50%;
   flex-direction: column;
-  align-items: center;
+  align-items: flex-start;
   justify-content: center;
   position: relative;
-  margin-top: 1rem;
+  overflow-y: auto;
+  overflow-x: hidden;
 }
 
 .product-main-image {
   width: 500px; /* Set a fixed width of 90% of the container width */
+  max-width: 80%;
   height: auto; /* Maintain the aspect ratio of the original image */
   border: 1px solid #ddd;
-  margin: 0 1rem; /* Margin on both sides of the image */
 }
 
 .product-info {
   margin-top: 10rem;
+  width: 50%;
   align-items: flex-start;
 }
 
@@ -181,47 +187,24 @@ p {
 }
 
 @media (max-width: 1000px) {
+  .product-main-image {
+    width: 60%;
+  }
   .product-info-content {
     flex-direction: column; /* Change to column layout */
     align-items: center;
     padding: 1rem; /* Adjust padding as needed */
   }
 
-  .product-image-order-panel {
-    padding: 1rem;
-    max-width: 100%; /* Allow the image to take full width in column layout */
-  }
-
-  .product-main-image {
-    width: 100%; /* Set the image width to 100% for responsiveness */
-    height: auto; /* Maintain aspect ratio */
-  }
-  .product-info {
-    margin-top: 1rem;
-  }
 }
 
 @media (max-width: 768px) {
-  .product-info-content {
-    margin-left: 11vw;
-    margin-right: 11vw;
-    margin-bottom: 100px;
-    max-height: calc(100vh - 200px);
-  }
-
-  .product-image-order-panel {
-    margin-left: 15vw;
-    margin-right: 15vw;
-  }
-
   .label-weight,
   .label-grind-size,
   .label-quantity {
-  font-size: 1.5rem;
+    font-size: 1.5rem;
   }
-  .product-main-image {
-    max-width: calc(100vw - 150px); 
-  }
+
   body {
     overflow-x: hidden;
   }

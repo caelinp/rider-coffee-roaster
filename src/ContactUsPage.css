@@ -4,29 +4,36 @@ body, html {
   padding: 0;
 }
 
-h1 {
-  font-size:4rem;
+.contact-us-header {
+  font-size: 4rem;
 }
 
 .contact-us-page {
+  width: 100%;
   height: 100vh;
   text-align: left;
-  min-height: calc(100vh - 100px);
-  background-image: url('./img/background-no-logo.png');
   overflow-y: auto;
   display: flex;
   flex-direction: column;
   justify-content: center;
+  background: black;
+}
+
+.contact-us-content-and-bottom {
+  position: relative;
+  height: 100vh;
+  width: 100vw;
+  overflow-x: hidden;
 }
 
 .contact-us-content {
-  margin-top: 80px;
-  margin-left: 8vw;
-  margin-right: 8vw;
-  overflow: hidden;
+  margin-top: var(--black-bar-top-height);
+  margin-left: var(--black-bar-width);
+  margin-right: var(--black-bar-width);
   text-align: left;
-  max-height: calc(100vh - 100px);
   overflow-y: auto;
+  padding: 0 10%;
+  background-image: url('./img/background-no-logo.png');
 }
 
 /* Hide Webkit scrollbars (Chrome, Safari, newer versions of Opera) */
@@ -69,6 +76,7 @@ h1 {
 }
 
 .product-table {
+  overflow-x: auto;
   margin-top: 5rem;
   border-collapse: collapse;
   width: 100%;
@@ -107,11 +115,10 @@ h1 {
   align-items: center; /* Align labels and inputs on the same line */
   margin-bottom: 20px;
   margin-top: 25px;
-  flex-direction: row;
 }
 
 .form-field label {
-  width: 25ch; /* Set a fixed width for labels, e.g., 25 characters */
+  width: 20ch; /* Set a fixed width for labels, e.g., 25 characters */
   text-align: left;
   font-weight: bold;
   font-size: 1.2rem;
@@ -223,7 +230,7 @@ input[type="number"] {
     margin-left: 15vw;
     margin-right: 15vw;
   }
-  h1 {
+  .contact-us-header {
     font-size: 2.5rem;
   }
 
