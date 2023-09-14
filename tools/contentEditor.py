@@ -1,6 +1,7 @@
 import json
 import os 
 import re
+import copy
 
 RED = '\033[91m'
 GREEN = '\033[92m'
@@ -91,7 +92,7 @@ def print_product_details(product, level=0):
             print(BLUE + "\n" + "  " * level + camel_to_words(key) + ":" + RESET)
             print_product_details(value, level + 1)
         else:
-            print(BLUE + "  " * level + camel_to_words(key) + ":\n"+ "  " * (level + 1) + ORANGE + str(value) + RESET)
+            print(BLUE + "\n" + "  " * level + camel_to_words(key) + ":\n"+ "  " * (level + 1) + ORANGE + str(value) + RESET)
 
 def edit_product(product, products_data, add=False):
     if add:
@@ -109,22 +110,19 @@ def edit_product(product, products_data, add=False):
             print(RED + f"An error occurred: {e}" + RESET)
             return
         product = products_data['products'][0]
-        updated_product = product.copy() # If we are adding a new product, then copy the sample product for editing.
+        updated_product = copy.deepcopy(product) # If we are adding a new product, then copy the sample product for editing.
 
     else:
         print(GREEN + "\nEditing Product: " + camel_to_words(product.get("productName")) + "\n" + RESET)
-        updated_product = product.copy()  # Create a copy to store the updates
+        updated_product = copy.deepcopy(product)  # Create a copy to store the updates
 
     def edit_properties(obj, obj_copy):
-        for field in obj:
+        for field, value in obj.items():
             if field == "id":
                 continue
-
-            value = obj.get(field)
-            
-            if isinstance(value, dict):
-                print(value)
-                edit_option = input(YELLOW + f"Do you want to edit {camel_to_words(field)}? (yes/no): " + RESET).lower()
+            if isinstance(value, dict) or isinstance(value, list):
+                print_product_details(value)
+                edit_option = input(YELLOW + f"\nDo you want to edit {camel_to_words(field)}? (yes/no): " + RESET).lower()
                 if edit_option == "yes":
                     obj_copy[field] = {}
                     edit_properties(value, obj_copy[field])
@@ -132,7 +130,7 @@ def edit_product(product, products_data, add=False):
                     obj_copy[field] = value
                     continue
             else:
-                if not add and field != "productName":
+                if not (add and field == "productName"):
                     print(BLUE + "\n" + camel_to_words(field) + ":" + RESET)
                     print(ORANGE + str(value) + "\n" + RESET)
                 
@@ -171,7 +169,16 @@ def edit_product(product, products_data, add=False):
                         if date_pattern.match(new_value.strip()):
                             obj_copy[field] = new_value.strip()
                             break
-                
+                elif field =="price":
+                    while True:
+                        new_value = input(YELLOW + f"Edit {camel_to_words(field)}. Enter a price in the following format: \"19.99\" or \"20\". Price must be numerical. (Press Enter to keep current value): " + RESET)
+                        if not new_value.strip(): 
+                            obj_copy[field] = value
+                            break
+                        price = validate_and_format_price(new_value.strip())
+                        if price:
+                            obj_copy[field] = price
+                            break
                 else:
                     new_value = input(YELLOW + f"Edit {camel_to_words(field)} (Press Enter to keep current value): " + RESET)
                     
@@ -324,6 +331,23 @@ def camel_to_words(camel_case_string):
     result = ' '.join(word.capitalize() for word in words)
     
     return result
+
+def validate_and_format_price(price_str):
+    # Regular expression pattern for valid prices
+    price_pattern = r'^\d+(\.\d{1,2})?$'
+
+    # Check if the input matches the price pattern
+    if re.match(price_pattern, price_str):
+        # If it's a valid price, format it to have exactly 2 decimal places
+        if '.' in price_str:
+            dollars, cents = price_str.split('.')
+            cents = cents.ljust(2, '0')  # Ensure there are always 2 decimal places
+            formatted_price = f"{dollars}.{cents}"
+        else:
+            formatted_price = f"{price_str}.00"  # Add .00 for prices without decimal places
+        return formatted_price
+    else:
+        return None
 
 def load_product_content_editor():
     print(YELLOW + "\nYou have selected Product Editor Utility.\n" + RESET)
