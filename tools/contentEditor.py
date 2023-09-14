@@ -119,6 +119,15 @@ def edit_product(product, products_data, add=False):
     def edit_properties(obj, obj_copy):
         for field, value in obj.items():
             if field == "id":
+                if add:
+                    highest_id = max(int(product['id']) for product in products_data['products']) if products_data['products'] else -1
+                    if highest_id == -1:
+                        print(RED + "\nError generating new product ID: could not load existing products. Product has not been added. Exiting.\n" + RESET)
+                        return
+                    new_id = str(highest_id + 1)
+                    updated_product["id"] = new_id
+                continue
+            if field == "url":
                 continue
             if isinstance(value, dict) or isinstance(value, list):
                 print_product_details(value)
@@ -146,17 +155,17 @@ def edit_product(product, products_data, add=False):
                         if is_product_name_valid(new_value, products_data): # This ensures the user enters a unique name, if they choose to edit the Product Name
                             obj_copy[field] = new_value.strip()
                             break
-                elif field in ["active", "inStock"]:
+                elif field == "active" or field == "inStock":
                     while True:
                         new_value = input(YELLOW + f"Edit {camel_to_words(field)}. Enter T for for True or F for False (Press Enter to keep current value): " + RESET)
                         if not new_value.strip():
                             obj_copy[field] = value                     
                             break
-                        if new_value.strip().lower() in ["true", "t"]:
-                            obj_copy[field] = "True"
+                        if new_value.strip().lower() == "true" or new_value.strip().lower() == "t":
+                            obj_copy[field] = True
                             break
-                        elif new_value.strip().lower() in ["false", "f"]:
-                            obj_copy[field] = "False"
+                        elif new_value.strip().lower() == "false" or new_value.strip().lower() =="f":
+                            obj_copy[field] = False
                             break
 
                 elif field == "dateAdded":
@@ -188,6 +197,8 @@ def edit_product(product, products_data, add=False):
                         obj_copy[field] = value
     
     edit_properties(updated_product, updated_product)
+    
+    updated_product["url"] = updated_product["id"] + "/" + format_url_string(updated_product["productName"])
 
     # Display the updated product
     if add:
@@ -202,12 +213,9 @@ def edit_product(product, products_data, add=False):
         save_option = input(YELLOW + "\nDo you want to save changes? (yes/no): " + RESET).lower()
         if save_option == "yes":
             if add:
-                highest_id = max(int(product['id']) for product in products_data['products']) if products_data['products'] else -1
-                if highest_id == -1:
-                    print(RED + "\nError generating new product ID: could not load existing products. Product has not been added. Exiting.\n" + RESET)
-                products_data['products'].append(new_product)
+                products_data['products'].append(updated_product)
                 print(GREEN + "Product added successfully.")
-
+                break
             else:
                 # Update the original product with the changes
                 product.update(updated_product)
@@ -349,6 +357,23 @@ def validate_and_format_price(price_str):
     else:
         return None
 
+def format_url_string(input_string):
+    # Replace whitespace with hyphens, remove non-alphanumeric characters,
+    # and convert to lowercase using regular expressions.
+    formatted_string = re.sub(r'\s+', '-', input_string)  # Replace whitespace with hyphens
+    formatted_string = re.sub(r'[^a-zA-Z0-9-]', '', formatted_string)  # Remove non-alphanumeric characters except hyphens
+    formatted_string = formatted_string.lower()  # Convert to lowercase
+
+    return formatted_string
+
+def add_url_to_products(json_obj):
+    if "products" in json_obj:
+        products = json_obj["products"]
+        for product in products:
+            if "productName" in product:
+                product["url"] = product["id"] + "/" + format_url_string(product["productName"])
+
+
 def load_product_content_editor():
     print(YELLOW + "\nYou have selected Product Editor Utility.\n" + RESET)
     products_data = load_json(PRODUCTS_JSON_FILEPATH)
@@ -367,6 +392,7 @@ def load_product_content_editor():
         sub_choice = input(GREEN + "\nEnter your choice (1/2/3/4/5): " + RESET)
 
         if sub_choice == '1':
+            add_url_to_products(products_data)
             view_products(products_data)
             # You can add editing code here
         elif sub_choice == '2':
