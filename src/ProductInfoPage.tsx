@@ -1,13 +1,10 @@
-import React, { useState, useRef, MouseEvent } from 'react';
+import React, { useState, useRef, MouseEvent, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import './ProductInfoPage.css';
 import DynamicImage from './DynamicImage';
-
-
-import productImage1 from './img/product1.jpg';
-import productImage2 from './img/product2.jpg';
-import productImage3 from './img/product3.jpg';
 import productsData from './json/products.json'; // Import the JSON file
+
+const DEFAULT_WEIGHT: string = "340g";
 
 interface Product {
   id: string;
@@ -54,18 +51,16 @@ const ProductInfoPage = () => {
    })),
   };
 
+  // this is the initial weight value in the weight dropdown, and the associated price will be the first shown. size2 is 340g for now.
+  const initialWeight = foundProductData?.pricing?.size2?.weight || DEFAULT_WEIGHT;
+
   const imagesArray: string[] = Object.values(product.images);
   const grindSizeOptions = ['Whole Bean', 'Coarse', 'Medium-Coarse', 'Medium', 'Fine', 'Extra Fine'];
   const [selectedGrindSize, setSelectedGrindSize] = useState('Whole Bean');
   const [quantity, setQuantity] = useState(1);
-  console.log(product.farmer);
-
-  console.log(decodeURIComponent(product.farmer));
+  const [totalPrice, setTotalPrice] = useState(0);
   
   const weightPrices: { [weight: string]: string } = {}; // map of weight price key value pairs
-
-  const [selectedWeight, setSelectedWeight] = useState(weightPrices[0]);
-  
   for (const key in product.pricing) {
     if (product.pricing.hasOwnProperty(key)) {
       const weight = product.pricing[key].weight;
@@ -74,7 +69,16 @@ const ProductInfoPage = () => {
     }
   }
 
+  const [selectedWeight, setSelectedWeight] = useState(initialWeight);
   console.log(weightPrices);
+
+  useEffect(() => {
+    // Calculate the total price whenever quantity or weight changes
+    const calculatedTotalPrice = quantity * parseFloat(weightPrices[selectedWeight]);
+    setTotalPrice(isNaN(calculatedTotalPrice) ? 0 : calculatedTotalPrice);
+  }, [quantity, selectedWeight, weightPrices, product]);
+
+
 
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
   const imgRef = useRef<HTMLImageElement | null>(null);
@@ -170,7 +174,9 @@ const ProductInfoPage = () => {
               </div>
               <div className="total">
                 <label className="label-total">Total:</label>
-                <span className="total-price-text">${(quantity * parseFloat(weightPrices[selectedWeight])).toFixed(2)}</span>
+                <span className="total-price-text">
+                {"$" + totalPrice.toFixed(2)}
+              </span>
               </div>
             </div>
             <div className="subscribe-button">

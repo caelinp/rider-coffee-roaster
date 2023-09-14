@@ -14,7 +14,6 @@ body, html {
   background: black;
   overflow-y: auto;
   overflow-x: hidden;
-
 }
 
 .product-info-content-and-bottom {
@@ -35,22 +34,19 @@ body, html {
 }
 
 .product-header {
-  padding: 20%;
-  margin-bottom: 1rem;
+  padding: 30px;
   text-align: center;
   font-size: 1.5rem;
   overflow-x: hidden;
 }
 
 .product-image-order-panel {
-  display: flex;
-  width: 50%;
-  flex-direction: column;
+  width: 60%;
   align-items: flex-start;
-  justify-content: center;
+  justify-content: left;
+  text-align: left;
   position: relative;
   overflow-y: auto;
-  overflow-x: hidden;
   border: 5px solid black;
 }
 
@@ -68,7 +64,7 @@ body, html {
   margin-top: 10rem;
   padding: 20px;
   width: 50%;
-  height: auto;
+  height: fit-content;
   align-items: flex-start;
 }
 
