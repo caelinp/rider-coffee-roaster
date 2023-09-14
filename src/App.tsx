@@ -12,6 +12,7 @@ import FeaturedProductsPage from './FeaturedProductsPage'; // Import the Contact
 import AllProductsPage from './AllProductsPage'; // Import the AllProductsPage component
 import ProductInfoPage from './ProductInfoPage'; // Import the ProductInfoPage component
 import logo from "./img/icon-light-grey.png";
+import formatString from './AllProductsPage';
 
 const App: React.FC = () => {
   const [modalOpen, setModalOpen] = useState(false);
@@ -81,6 +82,8 @@ const App: React.FC = () => {
         <Route path="/featured-products" element={<FeaturedProductsPage />} />
         <Route path="/rider-coffee-roaster/sample-product" element={<ProductInfoPage />} />
         <Route path="/sample-product" element={<ProductInfoPage />} />
+        <Route path="/rider-coffee-roaster/products/:id/:productName" element={<ProductInfoPage />} />
+        <Route path="/products/:id/:productName" element={<ProductInfoPage />} />
       </Routes>
     </div>
   );

@@ -38,7 +38,6 @@ body, html {
   max-width: 100%;
   position: sticky;
   top: 0;
-  z-index: 1;
   padding: 10px;
   align-items: center;
   justify-content: center;
@@ -78,34 +77,68 @@ body, html {
 .product-card {
   background-color: black;
   color: white;
-  padding: 20px;
+  padding: 10%;
   display: flex;
   flex-direction: column;
   align-items: center;
-  height: auto; /* Set height to auto to wrap content */
+  height: 300px;
+  border: 3px solid #FFF; 
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.product-card:hover {
+  background:rgb(29, 17, 11);
+}
+
+.product-image-gridview-container {
+  width: 200px;
+  height: 200px;
+  overflow: hidden;
 }
 
 .product-image-gridview {
-  width: 80%; /* Set the width to 80% of the product card width */
-  height: 80%; /* Set the height to 80% of the product card height */
-  max-width: 500px;
-  object-fit: contain; /* Maintain aspect ratio and fit within the container */
+  width: 80%;
+  height: 80%;
+  object-fit: cover;
+  border: 1px solid #FFF;
+  border-radius: 3px;
+}
+
+.product-image-gridview:hover {
+  width: 85%;
+  height: 85%;
 }
 
 .product-details {
-  text-align: center;
-  margin-top: 10px;
+  margin-top: 0;
+  width: 100%;
+  height: 100px; /* Set the height of your container */
+  display: column;
+  align-items: center; /* Vertically center the text */
+  justify-content: center; /* Horizontally center the text */
+  overflow: hidden; /* Hide overflowing text */
 }
 
 .product-name {
-  font-size: 1rem;
-  font-weight: bold;
+  padding: 0 10%;
+  height: 2.2em; /* Adjust this value to control the height of two lines */
+  line-height: 1.1em; /* Half of max-height to create two lines */
+  margin-top: 0;
+  font-size: clamp(0.5rem, 5vw, 1.5rem); /* Set the font size within a range */
+  max-width: 100%; /* Ensure the text doesn't overflow horizontally */
+  white-space: normal; /* Prevent the text from wrapping to the next line */
+  text-overflow: ellipsis; /* Add ellipsis (...) if the text overflows vertically */
+  overflow: hidden; /* Hide overflowing text */
+  border: 1px solid #FFF;
+  border-radius: 3px;
 }
 
 .product-price {
   font-size: 0.9rem;
+  border: 1px solid #FFF;
+  border-radius: 3px;
 }
-
 
 /* Hide the scrollbar for Firefox */
 .products-container {

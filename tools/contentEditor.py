@@ -23,7 +23,7 @@ def load_json(file_path):
 
 def save_json(file_path, data):
     with open(file_path, 'w') as file:
-        json.dump(data, file, indent=2)
+        json.dump(data, file, indent=2, ensure_ascii=False)
 
 def view_products(products_data):
     while True:

@@ -39,6 +39,7 @@ body, html {
   margin-bottom: 1rem;
   text-align: center;
   font-size: 1.5rem;
+  overflow-x: hidden;
 }
 
 .product-image-order-panel {
@@ -50,22 +51,29 @@ body, html {
   position: relative;
   overflow-y: auto;
   overflow-x: hidden;
+  border: 5px solid black;
 }
 
 .product-main-image {
   width: 500px; /* Set a fixed width of 90% of the container width */
   max-width: 80%;
   height: auto; /* Maintain the aspect ratio of the original image */
-  border: 1px solid #ddd;
+  border: 1px solid black;
+  border-radius: 5px;
 }
 
-.product-info {
+.product-info-panel {
+  border: 1px solid black;
+  border-radius: 5px;
   margin-top: 10rem;
+  padding: 20px;
   width: 50%;
+  height: auto;
   align-items: flex-start;
 }
 
 .info-field {
+
   text-align: left;
 }
 
@@ -77,6 +85,7 @@ p {
   font-size: 2rem;
   font-weight: bold;
   margin-bottom: 0.5rem;
+  border-bottom: 1px solid black;;
 }
 
 .add-to-cart-button {

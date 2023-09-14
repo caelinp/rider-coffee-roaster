@@ -56,18 +56,20 @@ const LandingPage: React.FC = () => {
           <div className="landing-content">
             <img src={logo} alt="Rider Coffee Roaster Logo" className="logo" />
             <h1 className="mantra">One for the ride</h1>
-            <p className="mission0">
-              Great coffee doesn’t have to be difficult.
-            </p>
-            <p className="mission1">
-              Rider Coffee Roaster believes in making specialty coffee accessible to every lifestyle. We roast highly traceable specialty grade coffee in a way that reflects the novelty of its origin. Our roast profiles are thoughtfully developed to meet the diverse palette of today’s coffee drinker. Commited to building sustainable relationships from farm to cup, we exist to link growers of exceptional coffee with the diverse community of coffee lovers.
-            </p>
-            <p className="mission2">
-              We love culture and community.
-            </p>
-            <p className="mission3">
-              Coffee is culture and community.
-            </p>
+            <div className="missions">
+              <p className="mission0">
+                Great coffee doesn’t have to be difficult.
+              </p>
+              <p className="mission1">
+                Rider Coffee Roaster believes in making specialty coffee accessible to every lifestyle. We roast highly traceable specialty grade coffee in a way that reflects the novelty of its origin. Our roast profiles are thoughtfully developed to meet the diverse palette of today’s coffee drinker. Commited to building sustainable relationships from farm to cup, we exist to link growers of exceptional coffee with the diverse community of coffee lovers.
+              </p>
+              <p className="mission2">
+                We love culture and community.
+              </p>
+              <p className="mission3">
+                Coffee is culture and community.
+              </p>
+            </div>
             <Link to="/rider-coffee-roaster/featured-products">
               <button className="enter-button">Enter</button>
             </Link>

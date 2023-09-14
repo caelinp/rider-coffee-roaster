@@ -28,6 +28,7 @@ body, html {
 }
 
 .featured-products-container {
+  padding: 0 10%;
   background-image: url('./img/background-no-logo.png');
   margin-left: var(--black-bar-width);
   margin-right: var(--black-bar-width);
@@ -37,39 +38,107 @@ body, html {
   align-items: center; /* Center-align the cards horizontally */
   gap: 20px;
   overflow-y: auto; /* Enable vertical scroll if content exceeds container */
+  justify-content: center;
 }
 
 .product-card-featured {
-  width: 600px; /* Each product card takes up 50% of the container width */
-  max-width: 90%;
-  max-width: calc(100vw - 200px);
+  max-width: 350px;
+  width: 100%;
   background-color: black;
   color: white;
-  margin: 20px 0; /* Add margin for spacing between cards */
-  padding: 20px;
   display: flex;
   flex-direction: column;
   align-items: center;
-  height: auto; /* Set height to auto to wrap content */
+  justify-content: center;
+  border: 3px solid #FFF; /* Add a border to the container for visualization */
+  border-radius: 10px;
+  height: auto;
+
 }
 
-.product-image {
-  width: 500px;
-  max-width: 90%;
-  object-fit: contain; /* Maintain aspect ratio and fit within the container */
+.product-card-featured:hover {
+  background:rgb(25, 15, 10);
+  max-width: 355px;
+  height: auto;
 }
 
-.product-details {
-  text-align: center;
+.product-image-featured {
   margin-top: 10px;
+  width: 90%;
+  height: 90%;
+  object-fit: cover;
+  border: 1px solid #FFF; /* Add a border to the container for visualization */
+  border-radius: 5px;
 }
 
-.product-name {
+.product-image-featured:hover {
+  opacity: 90%;
+}
+
+.product-image-featured-container {
+  padding: 10px;
+  width: 100%;
+  height: 100%;
+  border: 3px solid #FFF; /* Add a border to the container for visualization */
+  border-radius: 10px;
+}
+
+.product-details-featured {
+  align-items: center;
+  height: auto;
+  text-align: center;
+  justify-content: center;
+}
+
+.product-details-featured:hover,
+.product-details-featured h1:hover,
+.product-details-featured h2:hover,
+.product-details-featured h3:hover,
+.product-details-featured p:hover
+  {
+  color: rgb(237, 231, 231);
+}
+
+.product-name-featured {
+  margin-right: 10px;
+  margin-left: 10px;
+  padding: 0 10px;
+  font-size: 2.4rem;
+  font-family: 'Montserrat Alternates', sans-serif;
+  border: 1px solid white;
+  border-radius: 3px;
+}
+
+.product-farm-featured {
+  margin-right: 10px;
+  margin-left: 10px;
   font-size: 1.5rem;
+  padding: 0;
+  font-family: 'PlayFair Display SC', serif;
+  border: 1px solid white;
+  border-radius: 3px;
+  padding: 0 10px;
+  max-width: 500px;
 }
 
-.product-price {
-  font-size: 1.2rem;
+.product-notes-featured {
+  margin-left: 10px;
+  margin-right: 10px;
+  font-size: 1rem;
+  text-align: center;
+  border: 1px solid white;
+  border-radius: 3px;
+  padding: 0 10px;
+}
+
+.product-roast-featured {
+  margin-left: 10px;
+  margin-right: 10px;
+  font-size: 1.4rem;
+  text-align: center;
+  text-align: center;
+  border: 1px solid white;
+  border-radius: 3px;
 }
 
 /* Hide the scrollbar for Firefox */
@@ -89,8 +158,27 @@ body, html {
 
 @media (max-width: 768px) {
 
+  .product-image-featured {
+    margin-top: 0;
+  }
+
   .featured-header {
     font-size: 2.5rem;
+  }
+  .product-name-featured {
+    font-size: 2rem;
+    font-family: 'Montserrat Alternates', sans-serif;
+  }
+
+  .product-farm-featured {
+    font-size: 1rem;
+    padding: 0;
+    font-family: 'PlayFair Display SC', serif;
+  }
+
+  .product-notes-featured {
+    font-size: 0.8rem;
+    font-family: 'Montserrat Alternates', sans-serif;
   }
 
 }
