@@ -28,7 +28,6 @@ interface Product {
 const ProductInfoPage = () => {
   const {id, productName } = useParams();
   const foundProductData = productsData.products.find((product) => product.id === id);
-  console.log(foundProductData);
   
   const product: Product = {
     id: decodeURIComponent(foundProductData?.id || ""),
@@ -70,7 +69,6 @@ const ProductInfoPage = () => {
   }
 
   const [selectedWeight, setSelectedWeight] = useState(initialWeight);
-  console.log(weightPrices);
 
   useEffect(() => {
     // Calculate the total price whenever quantity or weight changes
@@ -135,10 +133,10 @@ const ProductInfoPage = () => {
                   ))}
                 </select>
               </div>
-              <div className="option">
+              <div className="option" id="quantity-option">
                 <label className="label-grind-size" htmlFor="grindSize">Grind Size:</label>
                 <select className="option-input-field"
-                  id="grindSize"
+                  id="grind-size"
                   value={selectedGrindSize}
                   onChange={(e) => setSelectedGrindSize(e.target.value)}
                 >
@@ -149,11 +147,11 @@ const ProductInfoPage = () => {
                   ))}
                 </select>
               </div>
-              <div className="option">
+              <div className="quantity-option">
                 <label className="label-quantity" htmlFor="quantity">Quantity:</label>
                 <div className="quantity-input">
                   <button
-                    className="quantity-control"
+                    className="quantity-control" id="decrease-quantity-control"
                     onClick={() => setQuantity(Math.max(0, quantity - 1))}
                   >
                     -
@@ -165,7 +163,7 @@ const ProductInfoPage = () => {
                     onChange={(e) => setQuantity(Math.max(0, Number(e.target.value)))}
                   />
                   <button
-                    className="quantity-control"
+                    className="quantity-control" id="increase-quantity-control"
                     onClick={() => setQuantity(quantity + 1)}
                   >
                     +
