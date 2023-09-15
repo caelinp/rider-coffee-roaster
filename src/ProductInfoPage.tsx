@@ -99,8 +99,6 @@ const ProductInfoPage = () => {
       }
     }
   };
-  
-
   return (
     <div className="product-info-page">
       <div className="product-info-content-and-bottom">
