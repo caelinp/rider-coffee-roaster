@@ -1,4 +1,4 @@
-import React, { useState, useRef, MouseEvent, useEffect } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import './ProductInfoPage.css';
 import DynamicImage from './DynamicImage';
@@ -157,7 +157,7 @@ const ProductInfoPage = () => {
                   <input className="option-input-field"
                     id="quantity"
                     type="number"
-                    value={quantity}
+                    value={quantity === 0 ? "0" : quantity.toString().replace(/^0+/, '')}
                     onChange={(e) => setQuantity(Math.max(0, Number(e.target.value)))}
                   />
                   <button

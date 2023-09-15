@@ -38,6 +38,7 @@ body, html {
 }
 
 .product-header h1 {
+  font-size: 3rem;
   overflow-wrap: break-word;
 }
 
@@ -154,7 +155,7 @@ p {
 }
 
 #quantity-option {
-  max-height: fit-content;
+  max-height: 6rem;
 }
 
 .order-options {
@@ -195,31 +196,28 @@ p {
   margin-left: 1rem;
 }
 
-#total {
-  border: 1px solid black;
-  overflow: auto;
-  max-width: 95vw;
-}
 
 .total-price-text {
+  width: 15ch;
   font-size: 2rem;
   margin-left: 1rem;
   text-align: right;
   font-family: 'Montserrat Alternates', sans-serif !important;
+  overflow: auto;
 }
 
 /* Hide the scrollbar for Firefox */
-#total {
+.total-price-text {
   scrollbar-width: thin;
   scrollbar-color: transparent transparent;
 }
 
 /* Hide the scrollbar for Chrome, Edge, and Safari */
-#total::-webkit-scrollbar {
+.total-price-text::-webkit-scrollbar {
   width: 6px; /* Adjust the width as needed */
 }
 
-#total::-webkit-scrollbar-thumb {
+.total-price-text::-webkit-scrollbar-thumb {
   background-color: transparent;
 }
 
@@ -284,9 +282,6 @@ p {
     text-align: center;
     max-width: 100vw;
   }
-  #quantity-option {
-    height: 6rem;
-  }
 
 }
 
@@ -295,6 +290,10 @@ p {
   .label-grind-size,
   .label-quantity {
     font-size: 1.1rem;
+  }
+
+  .total-price-text {
+    width: 5ch;
   }
 
   #quantity {
@@ -308,8 +307,8 @@ p {
   }
  
   .product-header h1 {
-    font-size: 1.5rem;
-    padding: 0 20%;
+    font-size: 2rem;
+    padding: 0 15%;
   }
 
   .option-input-field {
