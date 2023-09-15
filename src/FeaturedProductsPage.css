@@ -41,6 +41,10 @@ body, html {
   justify-content: center;
 }
 
+.product-card-all-products-link {
+  text-decoration: none;
+}
+
 .product-card-featured {
   max-width: 350px;
   width: 100%;

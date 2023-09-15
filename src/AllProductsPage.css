@@ -134,6 +134,10 @@ body, html {
   border-radius: 3px;
 }
 
+.product-card-all-products-link {
+  text-decoration: none;
+}
+
 .product-price {
   font-size: 0.9rem;
   border: 1px solid #FFF;

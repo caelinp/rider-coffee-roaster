@@ -8,12 +8,12 @@ import productsData from './json/products.json';
 
 interface Product {
   id: string;
-  productName: string;
+  name: string;
   imageUrl: string;
   price: string;
 }
 
-const formatString = (inputString: string) => {
+export const formatString = (inputString: string) => {
   // Replace whitespace with hyphens, remove non-alphanumeric characters,
   // and convert to lowercase using regular expressions.
   const formattedString = inputString
@@ -28,7 +28,7 @@ const AllProductsPage = () => {
   // Create Product objects based on productsData.products
   const products: Product[] = productsData.products.map((productData, index) => ({
     id: productData.id || `${index + 1}`,
-    productName: productData.productName || `Product ${index + 1}`,
+    name: productData.productName || `Product ${index + 1}`,
     imageUrl: productData.images.bagImage || '',
     price: productData.pricing.size2.price || "99.99"
   }));
@@ -42,7 +42,7 @@ const AllProductsPage = () => {
 
   // Filter products based on the search query
   const filteredProducts = products.filter((product) =>
-    product.productName.toLowerCase().includes(searchQuery.toLowerCase())
+    product.name.toLowerCase().includes(searchQuery.toLowerCase())
   );
 
   return (
@@ -67,16 +67,17 @@ const AllProductsPage = () => {
           <div className="products-grid">
             {filteredProducts.map((product) => (
               <Link
-                to={`/rider-coffee-roaster/products/` + product.id + "/" + formatString(product.productName) }
+                id="product-card-all-products-link"
+                to={`/rider-coffee-roaster/products/` + product.id + "/" + formatString(product.name) }
                 key={product.id}
                 className="product-link"
               >
                 <div className="product-card">
                   <div className="product-image-gridview-container">
-                    <DynamicImage className="product-image-gridview" imageUrl={product.imageUrl} alt={product.productName} />
+                    <DynamicImage className="product-image-gridview" imageUrl={product.imageUrl} alt={product.name} />
                   </div>
                   <div className="product-details">
-                    <h3 className="product-name">{product.productName}</h3>
+                    <h3 className="product-name">{product.name}</h3>
                     <p className="product-price">{product.price}</p>
                   </div>
                 </div>
@@ -95,3 +96,4 @@ const AllProductsPage = () => {
 };
 
 export default AllProductsPage;
+

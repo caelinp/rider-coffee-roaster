@@ -2,6 +2,9 @@ import React, { useState, useRef, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import './ProductInfoPage.css';
 import DynamicImage from './DynamicImage';
+import { useDispatch } from 'react-redux';
+import { addItem, addCoffeeBagItem } from './CartSlice'
+
 import productsData from './json/products.json'; // Import the JSON file
 
 const DEFAULT_WEIGHT: string = "340g";
@@ -27,6 +30,15 @@ interface Product {
 
 const ProductInfoPage = () => {
   const {id, productName } = useParams();
+
+
+  const dispatch = useDispatch();
+  
+    // add handlers that use reducers
+    //const handleAddItem = (item: string) => {
+      //dispatch(addItem(item));
+    //};
+  
   const foundProductData = productsData.products.find((product) => product.id === id);
   
   const product: Product = {
@@ -81,8 +93,20 @@ const ProductInfoPage = () => {
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
   const imgRef = useRef<HTMLImageElement | null>(null);
 
+  const handleLeftArrowClick = () => {
+    setCurrentImageIndex((prevIndex) =>
+      prevIndex === 0 ? imagesArray.length - 1 : prevIndex - 1
+    );
+  };
+
+  const handleRightArrowClick = () => {
+    setCurrentImageIndex((prevIndex) =>
+      prevIndex === imagesArray.length - 1 ? 0 : prevIndex + 1
+    );
+  };
+
+  
   const handleImageClick = (e: React.MouseEvent<HTMLImageElement>) => {
-    console.log("here");
     e.preventDefault(); // Prevent the default behavior if needed
     if (imgRef.current) {
       const imageWidth = imgRef.current.clientWidth;
@@ -109,12 +133,14 @@ const ProductInfoPage = () => {
             </div>
             <DynamicImage className="product-main-image" imageUrl={imagesArray[currentImageIndex]} alt={product.name} onClick={handleImageClick} imgRef={imgRef} />
             <div className="image-dots">
-            {Object.keys(product.images).map((key, index) => (
-              <div
-                key={index}
-                className={`image-dot ${currentImageIndex === index ? 'active' : ''}`}
-              ></div>
-            ))}
+              <div className="image-arrow-left" id="left-arrow" onClick={handleLeftArrowClick}></div>
+              {Object.keys(product.images).map((key, index) => (
+                <div
+                  key={index}
+                  className={`image-dot ${currentImageIndex === index ? 'active' : ''}`}
+                ></div>
+              ))}
+              <div className="image-arrow-right" id="right-arrow" onClick={handleRightArrowClick}></div>
             </div>
             <div className="order-options">
               <div className="option">

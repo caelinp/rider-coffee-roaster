@@ -109,7 +109,6 @@ p {
 
 }
 
-
 /* Hide the scrollbar for Firefox */
 .product-info-content {
   scrollbar-width: thin;
@@ -133,12 +132,65 @@ p {
 }
 
 .image-dot {
+  padding: 2px;
   width: 10px;
   height: 10px;
   margin: 0 5px;
   border-radius: 50%;
   background-color: #ccc;
   transition: background-color 0.3s ease;
+}
+
+.image-arrow-left {
+  padding: 0px;
+  border: none;
+  cursor: pointer;
+  color: grey;
+  width: 15px;
+  height: 15px;
+  font-size: 15px; /* Adjust the font size as needed */
+  margin: 0 10px; /* Add some spacing between arrows and dots */
+  background-image: url("./img/left_arrow.png");
+  background-size: contain; /* Scale the image to fit while maintaining aspect ratio */
+  background-repeat: no-repeat; /* Prevent image repetition */
+}
+
+.image-arrow-right {
+  padding: 0px;
+  border: none;
+  cursor: pointer;
+  color: grey;
+  width: 15px;
+  height: 15px;
+  font-size: 15px; /* Adjust the font size as needed */
+  margin: 0 10px; /* Add some spacing between arrows and dots */
+  background-image: url("./img/right_arrow.png");
+  background-size: contain; /* Scale the image to fit while maintaining aspect ratio */
+  background-repeat: no-repeat; /* Prevent image repetition */
+}
+
+#left_arrow {
+  background-image: url("./img/left_arrow.png");
+  background-size: cover; /* Scale the image to fit while maintaining aspect ratio */
+  background-repeat: no-repeat; /* Prevent image repetition */
+  background-position: center; /* Center the image horizontally and vertically */
+  width: auto;
+  z-index: 1;
+  border: 1px solid black; /* Remove the default button border */
+  font-size: 16px; /* Set font size */
+  cursor: pointer; /* Add a pointer cursor on hover */
+}
+
+#right_arrow {
+  background-image: url("./img/right_arrow.png");
+  background-size: contain; /* Scale the image to fit while maintaining aspect ratio */
+  background-repeat: no-repeat; /* Prevent image repetition */
+  background-position: center; /* Center the image horizontally and vertically */
+  width: 20px; /* Set the width and height of the button */
+  height: 20px;
+  border: none; /* Remove the default button border */
+  font-size: 16px; /* Set font size */
+  cursor: pointer; /* Add a pointer cursor on hover */
 }
 
 .image-dot.active {

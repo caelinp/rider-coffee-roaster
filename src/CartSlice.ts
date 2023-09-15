@@ -1,14 +1,7 @@
 // CartSlice.ts
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-
-interface OrderItem {
-  id: number;
-  product: string;
-  quantity: number;
-  price: number;
-  groundSize: string;
-  bagSize: string;
-}
+import { OrderItem } from './OrderItem'
+import CoffeeBagOrderItem from './OrderItem'
 
 interface CartState {
   items: OrderItem[];
@@ -41,8 +34,30 @@ const cartSlice = createSlice({
         state.items[index] = updatedOrder;
       }
     },
+    addCoffeeBagItem: (state, action: PayloadAction<CoffeeBagOrderItem>) => {
+      state.items.push(action.payload);
+    },
+
+    removeCoffeeBagItem: (state, action: PayloadAction<number>) => {
+      state.items = state.items.filter(
+        (item) => !(item instanceof CoffeeBagOrderItem && item.id === action.payload)
+      );
+    },
+
+    updateCoffeeBagItem: (
+      state,
+      action: PayloadAction<{ id: number; updatedOrder: CoffeeBagOrderItem }>
+    ) => {
+      const { id, updatedOrder } = action.payload;
+      const index = state.items.findIndex(
+        (item) => item instanceof CoffeeBagOrderItem && item.id === id
+      );
+      if (index !== -1) {
+        state.items[index] = updatedOrder;
+      }
+    },
   },
 });
 
-export const { addItem, removeItem, clearCart, getAllItems, updateItem } = cartSlice.actions;
+export const { addItem, removeItem, clearCart, getAllItems, updateItem, addCoffeeBagItem, removeCoffeeBagItem, updateCoffeeBagItem } = cartSlice.actions;
 export default cartSlice.reducer;
