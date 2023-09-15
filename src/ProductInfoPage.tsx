@@ -131,7 +131,7 @@ const ProductInfoPage = () => {
                   ))}
                 </select>
               </div>
-              <div className="option" id="quantity-option">
+              <div className="option">
                 <label className="label-grind-size" htmlFor="grindSize">Grind Size:</label>
                 <select className="option-input-field"
                   id="grind-size"
@@ -145,7 +145,7 @@ const ProductInfoPage = () => {
                   ))}
                 </select>
               </div>
-              <div className="quantity-option">
+              <div className="option" id="quantity-option">
                 <label className="label-quantity" htmlFor="quantity">Quantity:</label>
                 <div className="quantity-input">
                   <button
@@ -168,32 +168,35 @@ const ProductInfoPage = () => {
                   </button>
                 </div>
               </div>
-              <div className="total">
+              <div className="option" id="total">
                 <label className="label-total">Total:</label>
                 <span className="total-price-text">
                 {"$" + totalPrice.toFixed(2)}
               </span>
               </div>
             </div>
-            <div className="subscribe-button">
-              <button>Subscribe and Save</button>
-            </div>
-            <div className="add-to-cart-button">
-              <button
-                disabled={quantity < 1}
-                style={{ backgroundColor: quantity < 1 ? 'grey' : '' }}
-                onClick={() => {
-                  const orderConfig = {
-                    'Product name': product.name,
-                    'Quantity': quantity,
-                    'Grind Size': selectedGrindSize,
-                    'Weight': selectedWeight,
-                  };
-                  console.log(orderConfig);
-                }}
-              >
-                Add to Cart
-              </button>
+            <div className="add-and-subscribe-button-container">
+              <div className="subscribe-button-container">
+                <button id="subscribe-button">Subscribe and Save</button>
+              </div>
+              <div className="add-to-cart-button-container">
+                <button
+                  id="add-to-cart-button"
+                  disabled={quantity < 1}
+                  style={{ backgroundColor: quantity < 1 ? 'grey' : '' }}
+                  onClick={() => {
+                    const orderConfig = {
+                      'Product name': product.name,
+                      'Quantity': quantity,
+                      'Grind Size': selectedGrindSize,
+                      'Weight': selectedWeight,
+                    };
+                    console.log(orderConfig);
+                  }}
+                >
+                  Add to Cart
+                </button>
+              </div>
             </div>
           </div>
 
