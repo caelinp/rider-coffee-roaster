@@ -308,6 +308,9 @@ p {
     align-items: center;
     padding: 1rem; /* Adjust padding as needed */
   }
+  .product-info-order-panel {
+    border: none;
+  }
 }
 
 @media (max-width: 1000px) {
@@ -317,7 +320,6 @@ p {
   .product-info-order-panel {
     margin-left: 4vw;
     margin-right: 4vw;
-    border: none;
     margin-top: 0;
   }
   .product-info-panel {

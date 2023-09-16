@@ -18,7 +18,7 @@ const cartSlice = createSlice({
     addItem: (state, action: PayloadAction<OrderItem>) => {
       state.items.push(action.payload);
     },
-    removeItem: (state, action: PayloadAction<number>) => {
+    removeItem: (state, action: PayloadAction<string>) => {
       state.items = state.items.filter((item) => item.id !== action.payload);
     },
     clearCart: (state) => {
@@ -27,7 +27,7 @@ const cartSlice = createSlice({
     getAllItems: (state, action: PayloadAction<OrderItem[]>) => {
       state.items = action.payload;
     },
-    updateItem: (state, action: PayloadAction<{ id: number; updatedOrder: OrderItem }>) => {
+    updateItem: (state, action: PayloadAction<{ id: string; updatedOrder: OrderItem }>) => {
       const { id, updatedOrder } = action.payload;
       const index = state.items.findIndex((item) => item.id === id);
       if (index !== -1) {
@@ -38,7 +38,7 @@ const cartSlice = createSlice({
       state.items.push(action.payload);
     },
 
-    removeCoffeeBagItem: (state, action: PayloadAction<number>) => {
+    removeCoffeeBagItem: (state, action: PayloadAction<string>) => {
       state.items = state.items.filter(
         (item) => !(item instanceof CoffeeBagOrderItem && item.id === action.payload)
       );
@@ -46,7 +46,7 @@ const cartSlice = createSlice({
 
     updateCoffeeBagItem: (
       state,
-      action: PayloadAction<{ id: number; updatedOrder: CoffeeBagOrderItem }>
+      action: PayloadAction<{ id: string; updatedOrder: CoffeeBagOrderItem }>
     ) => {
       const { id, updatedOrder } = action.payload;
       const index = state.items.findIndex(

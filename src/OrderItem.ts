@@ -1,31 +1,34 @@
-// orderItem.ts
+// OrderItem.ts
 
+/**
+ * Interface for generic order item, can be implemented into a class for any new product type
+ */
 interface OrderItem {
-    id: number;
+    id: string;
     product: string;
     quantity: number;
   }
 
+  /**
+   * Class for Coffee Bag Order Item
+   */
 class CoffeeBagOrderItem implements OrderItem {
-  id: number;
+  id: string;
   product: string;
   quantity: number;
-  price: number;
   groundSize: string;
   bagSize: string;
 
   constructor(
-    id: number,
+    id: string,
     product: string,
     quantity: number,
-    price: number,
     groundSize: string,
     bagSize: string
   ) {
     this.id = id;
     this.product = product;
     this.quantity = quantity;
-    this.price = price;
     this.groundSize = groundSize;
     this.bagSize = bagSize;
   }

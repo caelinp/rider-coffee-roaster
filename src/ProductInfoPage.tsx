@@ -3,7 +3,9 @@ import { useParams } from 'react-router-dom';
 import './ProductInfoPage.css';
 import DynamicImage from './DynamicImage';
 import { useDispatch } from 'react-redux';
-import { addItem, addCoffeeBagItem } from './CartSlice'
+import { addItem, addCoffeeBagItem, getAllItems } from './CartSlice'
+import CoffeeBagItem from './OrderItem';
+import OrderItem from './OrderItem';
 
 import productsData from './json/products.json'; // Import the JSON file
 
@@ -33,22 +35,24 @@ const ProductInfoPage = () => {
 
 
   const dispatch = useDispatch();
-  
-    // add handlers that use reducers
-    //const handleAddItem = (item: string) => {
-      //dispatch(addItem(item));
-    //};
+
+  const handleAddItem = (item: CoffeeBagItem) => {
+    dispatch(addCoffeeBagItem(item));
+    let allOrderItems: OrderItem[] = [];
+    dispatch(getAllItems(allOrderItems));
+    console.log(allOrderItems);
+  };
   
   const foundProductData = productsData.products.find((product) => product.id === id);
   
   const product: Product = {
-    id: decodeURIComponent(foundProductData?.id || ""),
-    name: decodeURIComponent(foundProductData?.productName || ""),
+    id: foundProductData?.id || "",
+    name: foundProductData?.productName || "",
     images: Object.entries(foundProductData?.images || {}).reduce((acc, [key, value]) => {
-     acc[key] = decodeURIComponent(value);
+     acc[key] = value;
      return acc;
    }, {} as { [key: string]: string }),
-    description: decodeURIComponent(foundProductData?.description || ""),
+    description: foundProductData?.description || "",
     farmer: foundProductData?.farmer || "",
     farm: foundProductData?.farm || "",
     origin: foundProductData?.origin || "",
@@ -210,15 +214,8 @@ const ProductInfoPage = () => {
                   id="add-to-cart-button"
                   disabled={quantity < 1}
                   style={{ backgroundColor: quantity < 1 ? 'grey' : '' }}
-                  onClick={() => {
-                    const orderConfig = {
-                      'Product name': product.name,
-                      'Quantity': quantity,
-                      'Grind Size': selectedGrindSize,
-                      'Weight': selectedWeight,
-                    };
-                    console.log(orderConfig);
-                  }}
+                  onClick={()=>(handleAddItem(new CoffeeBagItem(product.id, product.name, quantity, selectedGrindSize, selectedWeight)))
+                  }
                 >
                   Add to Cart
                 </button>
