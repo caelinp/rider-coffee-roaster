@@ -1,0 +1,297 @@
+{
+  "products": [
+    {
+      "id": "0",
+      "productName": "Trail Rider",
+      "description": "This Pacamara from our friends at La Haciendita is stunningly complex and full of beauty. Floral aromas, with a delicate body and a balanced acidity. Notes of grapefruit, vanilla bean, masala spices, and cacao.",
+      "farmer": "Doña María Cristina Llach",
+      "farm": "La Haciendita",
+      "origin": "Cerro El Tigre, Usulután, El Salvador",
+      "altitude": "1300-1650m",
+      "process": "Washed",
+      "varietal": "Pacamara",
+      "notes": "grapefruit, clove, cinnamon, cacao, vanilla bean",
+      "inStock": true,
+      "active": true,
+      "dateAdded": "2023-09-13",
+      "roast": "Medium Roast",
+      "pricing": {
+        "size1": {
+          "weight": "250g",
+          "price": "11.99"
+        },
+        "size2": {
+          "weight": "340g",
+          "price": "18.99"
+        },
+        "size3": {
+          "weight": "500g",
+          "price": "24.99"
+        }
+      },
+      "images": {
+        "bagImage": "product1.jpg",
+        "graphicImage": "product2.jpg",
+        "farmImage": "product3.jpg"
+      },
+      "url": "0/trail-rider"
+    },
+    {
+      "id": "1",
+      "productName": "Low Rider",
+      "description": "The first harvest of Geisha from our friends at La Haciendita, this luxurious coffee is pure joy in every cup. Its distinct Jasmine aroma, mild acidity, and notes of peach, orchid, and honeycomb, all make for an alluring experience cup after cup. What truly sets this coffee apart is its velvety smooth body. It's comforting and lavish, and more than a little bit addictive.",
+      "farmer": "Doña María Cristina Llach",
+      "farm": "La Haciendita",
+      "origin": "Cerro El Tigre, Usulután, El Salvador",
+      "altitude": "1300-1650m",
+      "process": "Washed",
+      "varietal": "Geisha",
+      "notes": "jasmine, peach, orchid, Honeycomb",
+      "inStock": true,
+      "active": true,
+      "dateAdded": "2023-08-15",
+      "roast": "Medium Roast",
+      "pricing": {
+        "size1": {
+          "weight": "250g",
+          "price": "11.99"
+        },
+        "size2": {
+          "weight": "340g",
+          "price": "18.99"
+        },
+        "size3": {
+          "weight": "500g",
+          "price": "24.99"
+        }
+      },
+      "images": {
+        "bagImage": "product1.jpg",
+        "graphicImage": "product2.jpg",
+        "farmImage": "product3.jpg"
+      },
+      "url": "1/low-rider"
+    },
+    {
+      "id": "2",
+      "productName": "Easy Rider",
+      "description": "Our flagship espresso, this Bourbon is everything you want in a good shot of ‘spro. Chocolate aromatics and a bright yet balanced acidity, with notes of Caramel, Vanilla, and Raspberry. Pairs well with milk, and delightful all on its own, it's an espresso roast thats easy to love.",
+      "farmer": "Doña María Cristina Llach",
+      "farm": "La Haciendita",
+      "origin": "Cerro El Tigre, Usulután, El Salvador",
+      "altitude": "1300-1650m",
+      "process": "Washed",
+      "varietal": "Bourbon",
+      "notes": "Caramel, Vanilla, Chocolate, Raspberry",
+      "inStock": true,
+      "active": true,
+      "dateAdded": "2023-08-15",
+      "roast": "Espresso",
+      "pricing": {
+        "size1": {
+          "weight": "250g",
+          "price": "15.99"
+        },
+        "size2": {
+          "weight": "340g",
+          "price": "21.99"
+        },
+        "size3": {
+          "weight": "500g",
+          "price": "27.99"
+        }
+      },
+      "images": {
+        "bagImage": "product1.jpg",
+        "graphicImage": "product2.jpg",
+        "farmImage": "product3.jpg"
+      },
+      "url": "2/easy-rider"
+    },
+    {
+      "id": "3",
+      "productName": "Monkey Rider",
+      "description": "This Pacamara from our friends at La Haciendita is stunningly complex and full of beauty. Floral aromas, with a delicate body and a balanced acidity. Notes of grapefruit, vanilla bean, masala spices, and cacao.",
+      "farmer": "Doña María Cristina Llach",
+      "farm": "La Haciendita",
+      "origin": "Cerro El Tigre, Usulután, El Salvador",
+      "altitude": "1300-1650m",
+      "process": "Washed",
+      "varietal": "Pacamara",
+      "notes": "grapefruit, clove, cinnamon, cacao, vanilla bean",
+      "inStock": true,
+      "active": true,
+      "dateAdded": "2023-09-13",
+      "roast": "Medium Roast",
+      "pricing": {
+        "size1": {
+          "weight": "250g",
+          "price": "11.99"
+        },
+        "size2": {
+          "weight": "340g",
+          "price": "18.99"
+        },
+        "size3": {
+          "weight": "500g",
+          "price": "24.99"
+        }
+      },
+      "images": {
+        "bagImage": "product1.jpg",
+        "graphicImage": "product2.jpg",
+        "farmImage": "product3.jpg"
+      },
+      "url": "3/monkey-rider"
+    },
+    {
+      "id": "4",
+      "productName": "Alligator Rider",
+      "description": "This Pacamara from our friends at La Haciendita is stunningly complex and full of beauty. Floral aromas, with a delicate body and a balanced acidity. Notes of grapefruit, vanilla bean, masala spices, and cacao.",
+      "farmer": "Doña María Cristina Llach",
+      "farm": "La Haciendita",
+      "origin": "Cerro El Tigre, Usulután, El Salvador",
+      "altitude": "1300-1650m",
+      "process": "Washed",
+      "varietal": "Pacamara",
+      "notes": "grapefruit, clove, cinnamon, cacao, vanilla bean",
+      "inStock": true,
+      "active": true,
+      "dateAdded": "2023-09-13",
+      "roast": "Medium Roast",
+      "pricing": {
+        "size1": {
+          "weight": "250g",
+          "price": "11.99"
+        },
+        "size2": {
+          "weight": "340g",
+          "price": "18.99"
+        },
+        "size3": {
+          "weight": "500g",
+          "price": "24.99"
+        }
+      },
+      "images": {
+        "bagImage": "product1.jpg",
+        "graphicImage": "product2.jpg",
+        "farmImage": "product3.jpg"
+      },
+      "url": "4/alligator-rider"
+    },
+    {
+      "id": "5",
+      "productName": "Crocodile Rider",
+      "description": "This Pacamara from our friends at La Haciendita is stunningly complex and full of beauty. Floral aromas, with a delicate body and a balanced acidity. Notes of grapefruit, vanilla bean, masala spices, and cacao.",
+      "farmer": "Doña María Cristina Llach",
+      "farm": "La Haciendita",
+      "origin": "Cerro El Tigre, Usulután, El Salvador",
+      "altitude": "1300-1650m",
+      "process": "Washed",
+      "varietal": "Pacamara",
+      "notes": "grapefruit, clove, cinnamon, cacao, vanilla bean",
+      "inStock": true,
+      "active": true,
+      "dateAdded": "2023-09-13",
+      "roast": "Medium Roast",
+      "pricing": {
+        "size1": {
+          "weight": "250g",
+          "price": "11.99"
+        },
+        "size2": {
+          "weight": "340g",
+          "price": "18.99"
+        },
+        "size3": {
+          "weight": "500g",
+          "price": "24.99"
+        }
+      },
+      "images": {
+        "bagImage": "product1.jpg",
+        "graphicImage": "product2.jpg",
+        "farmImage": "product3.jpg"
+      },
+      "url": "5/crocodile-rider"
+    },
+    {
+      "id": "6",
+      "productName": "Zebra Rider",
+      "description": "This Pacamara from our friends at La Haciendita is stunningly complex and full of beauty. Floral aromas, with a delicate body and a balanced acidity. Notes of grapefruit, vanilla bean, masala spices, and cacao.",
+      "farmer": "Doña María Cristina Llach",
+      "farm": "La Haciendita",
+      "origin": "Cerro El Tigre, Usulután, El Salvador",
+      "altitude": "1300-1650m",
+      "process": "Washed",
+      "varietal": "Pacamara",
+      "notes": "grapefruit, clove, cinnamon, cacao, vanilla bean",
+      "inStock": true,
+      "active": true,
+      "dateAdded": "2023-09-13",
+      "roast": "Medium Roast",
+      "pricing": {
+        "size1": {
+          "weight": "250g",
+          "price": "11.99"
+        },
+        "size2": {
+          "weight": "340g",
+          "price": "18.99"
+        },
+        "size3": {
+          "weight": "500g",
+          "price": "24.99"
+        }
+      },
+      "images": {
+        "bagImage": "product1.jpg",
+        "graphicImage": "product2.jpg",
+        "farmImage": "product3.jpg"
+      },
+      "url": "6/zebra-rider"
+    },
+    {
+      "id": "7",
+      "productName": "Horse Rider",
+      "description": "This Pacamara from our friends at La Haciendita is stunningly complex and full of beauty. Floral aromas, with a delicate body and a balanced acidity. Notes of grapefruit, vanilla bean, masala spices, and cacao.",
+      "farmer": "Doña María Cristina Llach",
+      "farm": "La Haciendita",
+      "origin": "Cerro El Tigre, Usulután, El Salvador",
+      "altitude": "1300-1650m",
+      "process": "Washed",
+      "varietal": "Pacamara",
+      "notes": "grapefruit, clove, cinnamon, cacao, vanilla bean",
+      "inStock": true,
+      "active": true,
+      "dateAdded": "2023-09-13",
+      "roast": "Medium Roast",
+      "pricing": {
+        "size1": {
+          "weight": "250g",
+          "price": "11.99"
+        },
+        "size2": {
+          "weight": "340g",
+          "price": "18.99"
+        },
+        "size3": {
+          "weight": "500g",
+          "price": "24.99"
+        }
+      },
+      "images": {
+        "bagImage": "product1.jpg",
+        "graphicImage": "product2.jpg",
+        "farmImage": "product3.jpg"
+      },
+      "url": "7/horse-rider"
+    }
+  ],
+  "featuredProducts": [
+    "0",
+    "1",
+    "2"
+  ]
+}

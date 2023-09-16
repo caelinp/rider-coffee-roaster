@@ -1,3 +1,4 @@
+
 body, html {
   margin: 0;
   padding: 0;
@@ -57,6 +58,7 @@ body, html {
 
 .products-container {
   overflow-y: auto;
+  max-height: fit-content;
   height: calc(100% - var(--search-header-container-height) - var(--black-bar-top-height) );
 }
 
@@ -65,8 +67,7 @@ body, html {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); 
   gap: 20px;
-  height: calc(100% - var(--black-bar-bottom-height));
-  margin-bottom: 200px;
+  height: 100%;
 }
 
 .product-link {
@@ -132,10 +133,6 @@ body, html {
   overflow: hidden; /* Hide overflowing text */
   border: 1px solid #FFF;
   border-radius: 3px;
-}
-
-.product-card-all-products-link {
-  text-decoration: none;
 }
 
 .product-price {
