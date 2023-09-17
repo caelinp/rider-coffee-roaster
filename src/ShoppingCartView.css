@@ -65,7 +65,7 @@
 
 .order-item {
     display: flex;
-    border: 1px solid black;
+    border-bottom: 1px solid black;
     width: fit-content;
 }
 
@@ -152,6 +152,21 @@ input[type="number"] {
   background-color: #0056b3;
 }
 
+/* Hide the scrollbar for Firefox */
+.order-items-container {
+    scrollbar-width: thin;
+    scrollbar-color: transparent transparent;
+  }
+  
+  /* Hide the scrollbar for Chrome, Edge, and Safari */
+  .order-items-container::-webkit-scrollbar {
+    width: 6px; /* Adjust the width as needed */
+  }
+  
+  .order-items-container::-webkit-scrollbar-thumb {
+    background-color: transparent;
+  }
+
 @media (max-width: 768px) {
 
     .order-item {
@@ -159,7 +174,7 @@ input[type="number"] {
         width: 100%;
         overflow: hidden;
         justify-content: center;
-        align-items: center;;
+        align-items: center;
     }
 
     .order-items-container {
