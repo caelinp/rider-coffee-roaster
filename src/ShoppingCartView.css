@@ -155,6 +155,16 @@ input[type="number"] {
 @media (max-width: 768px) {
 
     .order-item {
-        display: column;
+        flex-direction: column;
+        width: 100%;
+        overflow: hidden;
+        justify-content: center;
+        align-items: center;;
+    }
+
+    .order-items-container {
+        width: 100%;
+        overflow-x: hidden;
+
     }
 }
