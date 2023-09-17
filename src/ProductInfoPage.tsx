@@ -1,11 +1,12 @@
-import React, { useState, useRef, useEffect } from 'react';
+import React, { useState, useRef, useEffect, useMemo } from 'react';
 import { useParams } from 'react-router-dom';
 import './ProductInfoPage.css';
 import DynamicImage from './DynamicImage';
-import { useDispatch } from 'react-redux';
-import { addItem, addCoffeeBagItem, getAllItems } from './CartSlice'
+import { useDispatch, useSelector } from 'react-redux';
+import { addCoffeeBagItem, CartState } from './CartSlice'
 import CoffeeBagItem from './OrderItem';
-import OrderItem from './OrderItem';
+import { createSelector } from 'reselect'; // Import createSelector
+
 
 import productsData from './json/products.json'; // Import the JSON file
 
@@ -33,16 +34,31 @@ interface Product {
 const ProductInfoPage = () => {
   const {id, productName } = useParams();
 
-
+  // Set up Redux store access
   const dispatch = useDispatch();
 
+  
+  // Create Memoized selector to get all cart items
+  const selectCartItems = useMemo(() => {
+    return createSelector(
+      (state: { cart: CartState }) => state.cart.items,
+      (items) => JSON.parse(items)
+    );
+  }, []);
+
+  // Use the memoized selector function with useSelector
+  const cartItems = useSelector((state: { cart: CartState }) => selectCartItems(state));
+
+  useEffect(() => {
+    // This code will run whenever cartItems changes
+    console.log(cartItems);
+  }, [cartItems]); // The array of dependencies ensures this only runs when cartItems changes
+
   const handleAddItem = (item: CoffeeBagItem) => {
-    dispatch(addCoffeeBagItem(item));
-    let allOrderItems: OrderItem[] = [];
-    dispatch(getAllItems(allOrderItems));
-    console.log(allOrderItems);
+    dispatch(addCoffeeBagItem(item.toJSONString()))
   };
   
+  // Parse JSON product data to get data for product in question
   const foundProductData = productsData.products.find((product) => product.id === id);
   
   const product: Product = {
@@ -90,7 +106,7 @@ const ProductInfoPage = () => {
     // Calculate the total price whenever quantity or weight changes
     const calculatedTotalPrice = quantity * parseFloat(weightPrices[selectedWeight]);
     setTotalPrice(isNaN(calculatedTotalPrice) ? 0 : calculatedTotalPrice);
-  }, [quantity, selectedWeight, weightPrices, product]);
+  }, [quantity, selectedWeight, weightPrices]);
 
 
 
