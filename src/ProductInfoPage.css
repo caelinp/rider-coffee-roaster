@@ -286,7 +286,8 @@ p {
 }
 
 #quantity {
-  width: 50%; 
+  width: 30%; 
+  padding-left: 15px;
 }
 
 #add-to-cart-button {

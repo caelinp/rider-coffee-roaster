@@ -118,7 +118,7 @@ const YourCart = () => {
                     </div>
                     <div className="item-option" id="quantity-option-cart">
                         <label>Quantity:</label><br></br>
-                        <input className="option-input-field-cart"
+                        <input className="option-input-field-cart" id="quantity-input-cart"
                             type="number"
                             value={item.quantity === 0 ? "0" : item.quantity.toString().replace(/^0+/, '')}
                             onChange={(e) => handleQuantityChange(e, item.id)}

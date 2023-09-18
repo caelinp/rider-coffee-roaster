@@ -133,6 +133,9 @@ input[type="number"] {
 #price-label-and-text-cart {
     width: 10ch;
 }
+#quantity-input-cart {
+    padding-left: 10px;
+}
 
 .option-input-field-cart {
     padding: 3px 10px;
