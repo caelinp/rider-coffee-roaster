@@ -70,8 +70,8 @@ const App: React.FC = () => {
       </div>
       <div className="black-bar-side right"></div>
       <Routes>
-        <Route path="/" element={<ShoppingCartView/>/*<LandingPage />*/} />
-        <Route path="/rider-coffee-roaster" element={<ShoppingCartView/>/*<LandingPage />*/} />
+        <Route path="/" element={/*<ShoppingCartView/>*/<LandingPage />} />
+        <Route path="/rider-coffee-roaster" element={/*<ShoppingCartView/>*/<LandingPage />} />
         <Route path="/rider-coffee-roaster/products" element={<AllProductsPage />} /> 
         <Route path="/products" element={<AllProductsPage />} /> 
         <Route path="/rider-coffee-roaster/about-us" element={<AboutUsPage />} />

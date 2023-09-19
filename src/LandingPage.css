@@ -18,11 +18,11 @@ body, html {
 .landing-content-and-bottom {
   position: relative;
   width: 100vw;
-  height: 100vh;
+  height: fit-content;
 }
 
 .landing-content {
-  height: 100vh;
+  height: fit-content;
   margin-top: var(--black-bar-top-height);
   margin-left: var(--black-bar-width);
   margin-right: var(--black-bar-width);
