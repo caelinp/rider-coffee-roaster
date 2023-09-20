@@ -11,8 +11,9 @@ import ContactUsPage from './ContactUsPage'; // Import the ContactUsPage compone
 import FeaturedProductsPage from './FeaturedProductsPage'; // Import the ContactUsPage component
 import AllProductsPage from './AllProductsPage'; // Import the AllProductsPage component
 import ProductInfoPage from './ProductInfoPage'; // Import the ProductInfoPage component
-import ShoppingCartView from './ShoppingCartView';
+import ShoppingCartPage from './ShoppingCartPage';
 import logo from "./img/icon-light-grey.png";
+import shoppingCartIcon from "./img/shopping-cart.png";
 
 const App: React.FC = () => {
   const [modalOpen, setModalOpen] = useState(false);
@@ -63,15 +64,22 @@ const App: React.FC = () => {
         <Link to="/rider-coffee-roaster">
           <img src={logo} alt="Rider Coffee Roaster Logo" className="logo-small" />
         </Link>
+
       </div>
       <div className="black-bar-side left"></div>
       <div className="menu-button" onClick={openModal}>
-        <MenuIcon fontSize="large" />
+        <MenuIcon fontSize="large" id="menu-icon" />
       </div>
+
       <div className="black-bar-side right"></div>
+      <Link to="/rider-coffee-roaster/shopping-cart">
+          <img src={shoppingCartIcon} alt="shopping cart button" className="shopping-cart-button" />
+      </Link>
       <Routes>
-        <Route path="/" element={/*<ShoppingCartView/>*/<LandingPage />} />
-        <Route path="/rider-coffee-roaster" element={/*<ShoppingCartView/>*/<LandingPage />} />
+        <Route path="/" element={<LandingPage />} />
+        <Route path="/rider-coffee-roaster" element={<LandingPage />} />
+        <Route path="/shopping-cart" element={<ShoppingCartPage/>} />
+        <Route path="/rider-coffee-roaster/shopping-cart" element={<ShoppingCartPage/>} />
         <Route path="/rider-coffee-roaster/products" element={<AllProductsPage />} /> 
         <Route path="/products" element={<AllProductsPage />} /> 
         <Route path="/rider-coffee-roaster/about-us" element={<AboutUsPage />} />

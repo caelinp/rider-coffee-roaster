@@ -7,9 +7,9 @@ import './index.css';
 
 const root = createRoot(document.getElementById('root')!);
 root.render(
-  <Provider store={store}> {/* Wrap your App with the Provider */}
     <BrowserRouter>
-      <App />
+      <Provider store={store}> {/* Wrap your App with the Provider */}
+        <App />
+      </Provider>
     </BrowserRouter>
-  </Provider>
 );

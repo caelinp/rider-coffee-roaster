@@ -1,8 +1,7 @@
 import React, { useState } from 'react';
 import './AllProductsPage.css';
 import { Link } from 'react-router-dom';
-import DynamicImage from './DynamicImage'
-
+import DynamicImage from './DynamicImage';
 // Import the JSON data
 import productsData from './json/products.json';
 

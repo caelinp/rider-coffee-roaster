@@ -71,6 +71,12 @@ body {
   margin: 0 auto; /* Center the image horizontally using margin */
 }
 
+.shopping-cart-button {
+  display: block; /* Ensure the image is treated as a block element */
+  height: 50px;
+  width: 50px;
+}
+
 .black-bar-side.left {
   left: 0;
   display: flex;
@@ -96,17 +102,26 @@ body {
 .menu-button {
   cursor: pointer;
   z-index: 1000;
-  color: #FFF;
   font-size: 48px;
   margin-left: 10px;
   position: absolute;
+  color: #AFAFAF;
   top: 10px;
   left: 10px;
   width: var(--menu-button-size);
   max-width: calc(var(--black-bar-width) - 10px);
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
+}
+
+.shopping-cart-button {
+  cursor: pointer;
+  z-index: 1000;
+  margin-left: 10px;
+  position: absolute;
+  color: #AFAFAF;
+  top: 5px;
+  right: 30px;
+  width: auto;
+  height: calc(var(--black-bar-top-height) - 5px);
 }
 
 .MuiModal-root {
@@ -200,6 +215,10 @@ body {
 @media (max-width: 768px) {
   :root {
     --black-bar-width: 10vw;
+  }
+  .shopping-cart-button {
+    right: 20px;
+    height: calc(var(--black-bar-top-height) - 15px);
   }
 }
 

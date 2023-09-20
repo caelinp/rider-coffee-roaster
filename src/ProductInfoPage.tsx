@@ -7,7 +7,6 @@ import { addCoffeeBagItem, CartState } from './CartSlice'
 import CoffeeBagItem from './OrderItem';
 import { createSelector } from 'reselect'; // Import createSelector
 
-
 import productsData from './json/products.json'; // Import the JSON file
 
 const DEFAULT_WEIGHT: string = "340g";
@@ -15,7 +14,7 @@ const DEFAULT_WEIGHT: string = "340g";
 interface Product {
   id: string;
   name: string;
-  images: {[key: string] : string};
+  images: { [key: string]: string };
   description: string;
   farmer: string;
   farm: string;
@@ -24,11 +23,7 @@ interface Product {
   process: string;
   varietal: string;
   notes: string;
-  pricing:
-  Array<{
-      weight: string;
-      price: string;
-    }>;
+  pricing: { [key: string]: string };
 }
 
 const ProductInfoPage = () => {
@@ -76,10 +71,12 @@ const ProductInfoPage = () => {
     process: foundProductData?.process || "",
     varietal: foundProductData?.varietal || "",
     notes: foundProductData?.notes || "",
-    pricing: Object.entries(foundProductData?.pricing || {}).map(([key, value]) => ({
-     weight: value.weight || '',
-     price: value.price || '',
-   })),
+    pricing: Object.entries(foundProductData?.pricing || {}).reduce((acc, [key, value]) => {
+      if (value?.weight) {
+        acc[value.weight] = value.price || '';
+      }
+      return acc;
+    }, {} as { [key: string]: string }),
   };
 
   // this is the initial weight value in the weight dropdown, and the associated price will be the first shown. size2 is 340g for now.
@@ -90,23 +87,13 @@ const ProductInfoPage = () => {
   const [selectedGrindSize, setSelectedGrindSize] = useState('Whole Bean');
   const [quantity, setQuantity] = useState(1);
   const [totalPrice, setTotalPrice] = useState(0);
-  
-  const weightPrices: { [weight: string]: string } = {}; // map of weight price key value pairs
-  for (const key in product.pricing) {
-    if (product.pricing.hasOwnProperty(key)) {
-      const weight = product.pricing[key].weight;
-      const price = product.pricing[key].price;
-      weightPrices[weight] = price;
-    }
-  }
-
   const [selectedWeight, setSelectedWeight] = useState(initialWeight);
 
   useEffect(() => {
     // Calculate the total price whenever quantity or weight changes
-    const calculatedTotalPrice = quantity * parseFloat(weightPrices[selectedWeight]);
+    const calculatedTotalPrice = quantity * parseFloat(product.pricing[selectedWeight]);
     setTotalPrice(isNaN(calculatedTotalPrice) ? 0 : calculatedTotalPrice);
-  }, [quantity, selectedWeight, weightPrices]);
+  }, [quantity, selectedWeight, product.pricing]);
 
 
 
@@ -170,7 +157,7 @@ const ProductInfoPage = () => {
                   value={selectedWeight}
                   onChange={(e) => setSelectedWeight(e.target.value)}
                 >
-                  {Object.keys(weightPrices).map((option) => (
+                  {Object.keys(product.pricing).map((option) => (
                     <option key={option} value={option}>
                       {option}
                     </option>
@@ -230,7 +217,7 @@ const ProductInfoPage = () => {
                   id="add-to-cart-button"
                   disabled={quantity < 1}
                   style={{ backgroundColor: quantity < 1 ? 'grey' : '' }}
-                  onClick={()=>(handleAddItem(new CoffeeBagItem(product.id, product.name, quantity, selectedGrindSize, selectedWeight)))
+                  onClick={()=>(handleAddItem(new CoffeeBagItem("0", product.id, quantity, selectedGrindSize, selectedWeight)))
                   }
                 >
                   Add to Cart

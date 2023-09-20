@@ -33,9 +33,60 @@ class CoffeeBagOrderItem implements OrderItem {
     this.bagSize = bagSize;
   }
 
+  // Method to set the id of the order item
+  // This should be called before the order item is inserted into a list, and needs to have a unique id
+  setOrderId(id: string) {
+    this.id = id;
+  }
+
+  // Method to set the quantity of this order item
+  setOrderQuantity(quantity: number) {
+    this.quantity = quantity;
+  }
+
+  // Method to set the quantity of this order item
+  setOrderGroundSize(groundSize: string) {
+    this.groundSize = groundSize;
+  }
+
+  // Method to set the quantity of this order item
+  setOrderBagSize(bagSize: string) {
+    this.bagSize = bagSize;
+  }
+
+  // Method to compare two CoffeeBagOrderItem objects for equality (excluding id and quantity)
+  isEqualTo(otherItem: CoffeeBagOrderItem): boolean {
+    return (
+      this.productId === otherItem.productId &&
+      this.groundSize === otherItem.groundSize &&
+      this.bagSize === otherItem.bagSize
+    );
+  }
+
+  // Method to add the quantity of another CoffeeBagOrderItem to this item
+  addToQuantity(otherItem: CoffeeBagOrderItem): void {
+    if (this.isEqualTo(otherItem)) {
+      this.quantity += otherItem.quantity;
+    } else {
+      throw new Error('Items are not equal and cannot be combined.');
+    }
+  }
+  
+
   // Method to convert an object to a JSON string
   toJSONString(): string {
     return JSON.stringify(this);
+  }
+
+  // Constructor to create a CoffeeBagOrderItem from a generic object
+  static fromObject(obj: any): CoffeeBagOrderItem {
+    return new CoffeeBagOrderItem(
+      obj.id,
+      obj.productId,
+      obj.quantity,
+      obj.groundSize,
+      obj.bagSize
+    );
   }
 
   // Static method to create an instance from a JSON string

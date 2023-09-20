@@ -22,6 +22,7 @@ body, html {
 }
 
 .landing-content {
+  min-height: calc(100vh - var(--black-bar-top-height));
   height: fit-content;
   margin-top: var(--black-bar-top-height);
   margin-left: var(--black-bar-width);
