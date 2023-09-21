@@ -45,6 +45,7 @@ body, html {
   margin-left: 3vw;
   border-radius: 5px;
   margin-top: 5rem;
+  margin-bottom: 5rem;
   padding: 20px;
   width: 90%;
   height: fit-content;
@@ -72,6 +73,7 @@ body, html {
   width: 90%;
   height: fit-content;
   background-image: url('./img/background0-no-logo.jpg');
+  margin-bottom: 5rem;
 }
 
 .info-field {
@@ -375,18 +377,17 @@ p {
     padding: 1rem; /* Adjust padding as needed */
   }
   .product-info-order-panel {
-    margin-top: 0;
-    margin-left: 0;
-    margin-right: 0;
+    margin: 0;
     max-width: 80vw;
+    margin-bottom: 0;
   }
 
   .add-to-cart-button-container {
     margin-bottom: 0;
   }
+  
   .product-info-panel {
-    margin-left: 0;
-    margin-right: 0;
+    margin: 0;
     max-width: 80vw;
   }
 }

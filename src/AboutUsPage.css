@@ -32,8 +32,13 @@ body, html {
 }
 
 .about-us-text-content {
-  padding: 0 10%;
+  margin: 5% 10%;
+  padding: 20px;
   overflow-x: hidden;
+  background-image: url('./img/background0-no-logo.jpg');
+  border: 1px solid black;
+  border-radius: 15px;
+
 }
 
 .about-us-header {

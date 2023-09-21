@@ -116,8 +116,7 @@ body {
   color: #AFAFAF;
   top: 10px;
   left: 10px;
-  width: var(--menu-button-size);
-  max-width: calc(var(--black-bar-width) - 10px);
+  max-width: calc(var(--black-bar-top-height) - 15px);
 }
 
 .menu-button:hover, .logo-small:hover, #shopping-cart-button:hover {
@@ -252,7 +251,6 @@ input[type="number"] {
 :root {
   --black-bar-bottom-height: 200px;
   --black-bar-width: 5vw;
-  --menu-button-size: 50px; /* Set the default size of the menu button */
   --black-bar-top-height: 70px;
 }
 
@@ -265,6 +263,5 @@ input[type="number"] {
 @media (max-width: 400px) {
   :root {
     --black-bar-width: 0;
-    --menu-button-size: 40px; /* Adjust the value as needed */
   }
 }

@@ -50,7 +50,6 @@ const AllProductsPage = () => {
         <div className="all-products-content">
           <div className="search-header-container">
             <h1 className="all-products-header">All Products</h1>
-            <div className="search-container">
               <input
                 className="search-input" 
                 id = "product-search"
@@ -59,7 +58,6 @@ const AllProductsPage = () => {
                 value={searchQuery}
                 onChange={handleSearchChange}
               />
-            </div>
           </div>
           <div className="products-container">
             <div className="products-grid">
@@ -68,16 +66,14 @@ const AllProductsPage = () => {
                   id="product-card-all-products-link"
                   to={`/rider-coffee-roaster/products/` + product.id + "/" + formatString(product.name) }
                   key={product.id}
-                  className="product-link"
+                  className="product-card"
                 >
-                  <div className="product-card">
-                    <div className="product-image-gridview-container">
-                      <DynamicImage className="product-image-gridview" imageUrl={product.imageUrl} alt={product.name} />
-                    </div>
-                    <div className="product-details">
-                      <h3 className="product-name">{product.name}</h3>
-                      <p className="product-price">{product.price}</p>
-                    </div>
+                  <div className="product-image-gridview-container">
+                    <DynamicImage className="product-image-gridview" imageUrl={product.imageUrl} alt={product.name} />
+                  </div>
+                  <div className="product-details">
+                    <h3 className="product-name">{product.name}</h3>
+                    <p className="product-price">{product.price}</p>
                   </div>
                 </Link>
               ))}
