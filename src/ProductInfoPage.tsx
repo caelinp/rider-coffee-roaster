@@ -28,7 +28,7 @@ interface Product {
 }
 
 const ProductInfoPage = () => {
-  const {id, productName } = useParams();
+  const {id} = useParams();
 
   // Set up Redux store access
   const dispatch = useDispatch();
@@ -47,12 +47,31 @@ const ProductInfoPage = () => {
 
   useEffect(() => {
     // This code will run whenever cartItems changes
-    console.log(cartItems);
   }, [cartItems]); // The array of dependencies ensures this only runs when cartItems changes
 
   const handleAddItem = (item: CoffeeBagItem) => {
-    dispatch(addCoffeeBagItem(item.toJSONString()))
-  };
+    // Get the shopping cart button element by its id
+    const cartButton = document.getElementById('shopping-cart-button');
+  
+    if (cartButton) {
+      // Apply the scaling up effect by adding the CSS class
+      cartButton.classList.add('scaling-up');
+  
+      // Remove the scaling up class after 1 second
+      setTimeout(() => {
+        cartButton.classList.remove('scaling-up');
+  
+        // Apply the scaling down effect by adding the CSS class
+        cartButton.classList.add('scaling-down');
+  
+        // Remove the scaling down class after another 1 second
+        setTimeout(() => {
+          cartButton.classList.remove('scaling-down');
+        }, 200);
+      }, 200);
+    }
+    dispatch(addCoffeeBagItem(JSON.stringify(item)));
+  }
   
   // Parse JSON product data to get data for product in question
   const foundProductData = productsData.products.find((product) => product.id === id);

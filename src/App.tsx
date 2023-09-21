@@ -4,7 +4,7 @@ import './App.css';
 import './LandingPage.css';
 import { Modal, List, ListItem, ListItemText } from '@mui/material';
 import MenuIcon from '@mui/icons-material/Menu';
-import { Link, Routes, Route, useParams, useNavigate } from 'react-router-dom';
+import { Link, Routes, Route, useNavigate } from 'react-router-dom';
 import LandingPage from './LandingPage';
 import AboutUsPage from './AboutUsPage';
 import ContactUsPage from './ContactUsPage'; // Import the ContactUsPage component
@@ -18,7 +18,6 @@ import shoppingCartIcon from "./img/shopping-cart.png";
 const App: React.FC = () => {
   const [modalOpen, setModalOpen] = useState(false);
   const navigate = useNavigate();
-  const { path } = useParams();
 
   const openModal = () => {
     setModalOpen(true);
@@ -73,7 +72,7 @@ const App: React.FC = () => {
 
       <div className="black-bar-side right"></div>
       <Link to="/rider-coffee-roaster/shopping-cart">
-          <img src={shoppingCartIcon} alt="shopping cart button" className="shopping-cart-button" />
+        <img src={shoppingCartIcon} alt="shopping cart button" id="shopping-cart-button" />
       </Link>
       <Routes>
         <Route path="/" element={<LandingPage />} />

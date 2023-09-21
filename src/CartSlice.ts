@@ -1,6 +1,5 @@
 // CartSlice.ts
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { createSelector } from 'reselect'; // Import createSelector
 import CoffeeBagOrderItem from './OrderItem';
 
 export interface CartState {
@@ -69,7 +68,6 @@ const cartSlice = createSlice({
       }
     
       state.items = JSON.stringify(itemsObj);
-      console.log(state.items);
     },
     
 
@@ -91,7 +89,6 @@ const cartSlice = createSlice({
       const updatedItemIndex = itemsObj.findIndex(
         (item: { id: string }) => item.id === id
       );
-      console.log(updatedItemIndex);
     
       if (updatedItemIndex !== -1) {    
         // Temporarily remove the item to be updated from the list for comparison
@@ -114,7 +111,6 @@ const cartSlice = createSlice({
         }        
       }
       state.items = JSON.stringify(itemsObj);
-      console.log(state.items);
     },
   },
 });

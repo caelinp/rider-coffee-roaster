@@ -1,6 +1,6 @@
-import React, { useState, useEffect, useMemo, useCallback } from 'react';
+import React, { useState, useEffect, useMemo, useCallback, useLayoutEffect} from 'react';
 import './ShoppingCartPage.css';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { createSelector } from 'reselect';
 import { useDispatch, useSelector } from 'react-redux';
 import productsData from './json/products.json';
@@ -36,6 +36,8 @@ const ShoppingCartPage = () => {
   const dispatch = useDispatch();
   // State variable to track if the email is valid
   const [isEmailValid, setIsEmailValid] = useState(true);
+
+  const navigate = useNavigate();
   // Create Memoized selector to get all cart items
   const selectCartItems = useMemo(() => {
     return createSelector(
@@ -108,9 +110,9 @@ const ShoppingCartPage = () => {
       setTotalPrice(totalPrice);
     }
   }, [cartItemsWithProductInfo]);
-  
+
   const handleCloseCart = () => {
-    // Implement your close cart logic here
+    navigate('/products');
   };
 
   const handleWeightChange = (e: React.ChangeEvent<HTMLSelectElement>, orderItem: CoffeeBagOrderItem) => {
@@ -135,9 +137,17 @@ const ShoppingCartPage = () => {
     }
   };
 
-  const handleKeyPress = (event: React.KeyboardEvent<HTMLInputElement>, orderItem: CoffeeBagOrderItem) => {
+  const handleKeyPressQuantity = (event: React.KeyboardEvent<HTMLInputElement>, orderItem: CoffeeBagOrderItem) => {
     if (event.key === 'Enter' && orderItem.quantity === 0) {
       dispatch(removeCoffeeBagItem(orderItem.id));
+    }
+  };
+
+  const handleKeyPressFormField = (event: React.KeyboardEvent<HTMLInputElement>) => {
+    console.log("here we are");
+    if (event.key === 'Enter') {
+      console.log("here we are");
+      handleSubmitOrder();
     }
   };
 
@@ -195,6 +205,8 @@ const ShoppingCartPage = () => {
 
   // Handler function for submitting the order
   const handleSubmitOrder = () => {
+    console.log("here we are");
+
     // Check if all required fields are filled
     if (
       email.trim() === '' ||
@@ -256,6 +268,7 @@ const ShoppingCartPage = () => {
    // Helper function to render order items or empty cart message
   const renderOrderItems = () => {
     if (cartItemsWithProductInfo.length === 0) {
+      
       // Render an empty cart message
       return (
         <div className="empty-cart-message">
@@ -279,48 +292,51 @@ const ShoppingCartPage = () => {
               <DynamicImage className="order-item-image" imageUrl={item!.product?.image} alt={item!.product.name} />
             </div>
           </Link>
-          <div className="item-option" id="weight-option-cart">
-            <label>Weight:</label>
-            <select className="option-input-field-cart" value={item!.coffeeBagOrderItem!.bagSize} onChange={(e) => handleWeightChange(e, item!.coffeeBagOrderItem)}>
-              {Object.keys(item!.product.pricing || {}).map((option) => (
-                <option key={option} value={option}>
-                  {option}
-                </option>
-              ))}
-            </select>
-          </div>
-          <div className="item-option" id="grind-size-option-cart">
-            <label>Grind Size:</label>
-            <select className="option-input-field-cart" value={item!.coffeeBagOrderItem!.groundSize} onChange={(e) => handleGrindSizeChange(e, item!.coffeeBagOrderItem)}>
-              {grindSizeOptions.map((option) => (
-                <option key={option} value={option}>
-                  {option}
-                </option>
-              ))}
-            </select>
-          </div>
-          <div className="item-option" id="quantity-option-cart">
-            <label>Quantity:</label>
-            <input
-              className="option-input-field-cart"
-              id="quantity-input-cart"
-              type="number"
-              value={item!.coffeeBagOrderItem!.quantity === 0 ? "0" : item!.coffeeBagOrderItem!.quantity.toString().replace(/^0+/, '')}
-              onChange={(e) => handleQuantityChange(e, item!.coffeeBagOrderItem)}
-              onBlur={() => handleQuantityBlur(item!.coffeeBagOrderItem)}
-              onKeyDown={(e) => handleKeyPress(e, item!.coffeeBagOrderItem)}
-            />
-          </div>
-          <div className="item-option" id="subscription-option-cart">
-            <label>Subscription:</label>
-            <select className="option-input-field-cart" value={item!.coffeeBagOrderItem!.subscriptionFrequency} onChange={(e) => handleSubscriptionChange(e, item!.coffeeBagOrderItem)}>
-              {subscriptionFrequencyOptions.map((option) => (
-                <option key={option} value={option}>
-                  {option}
-                </option>
-              ))}
-            </select>
-          </div>
+          <div className="item-options">
+            <div className="item-option" id="weight-option-cart">
+              <label>Weight:</label>
+              <select className="option-input-field-cart" value={item!.coffeeBagOrderItem!.bagSize} onChange={(e) => handleWeightChange(e, item!.coffeeBagOrderItem)}>
+                {Object.keys(item!.product.pricing || {}).map((option) => (
+                  <option key={option} value={option}>
+                    {option}
+                  </option>
+                ))}
+              </select>
+            </div>
+            <div className="item-option" id="grind-size-option-cart">
+              <label>Grind Size:</label>
+              <select className="option-input-field-cart" value={item!.coffeeBagOrderItem!.groundSize} onChange={(e) => handleGrindSizeChange(e, item!.coffeeBagOrderItem)}>
+                {grindSizeOptions.map((option) => (
+                  <option key={option} value={option}>
+                    {option}
+                  </option>
+                ))}
+              </select>
+            </div>
+            <div className="item-option" id="quantity-option-cart">
+              <label>Quantity:</label>
+              <input
+                className="option-input-field-cart"
+                id="quantity-input-cart"
+                type="number"
+                value={item!.coffeeBagOrderItem!.quantity === 0 ? "0" : item!.coffeeBagOrderItem!.quantity.toString().replace(/^0+/, '')}
+                onChange={(e) => handleQuantityChange(e, item!.coffeeBagOrderItem)}
+                onBlur={() => handleQuantityBlur(item!.coffeeBagOrderItem)}
+                onKeyDown={(e) => handleKeyPressQuantity(e, item!.coffeeBagOrderItem)}
+              />
+            </div>
+            <div className="item-option" id="subscription-option-cart">
+              <label>Subscription:</label>
+              <select className="option-input-field-cart" value={item!.coffeeBagOrderItem!.subscriptionFrequency} onChange={(e) => handleSubscriptionChange(e, item!.coffeeBagOrderItem)}>
+                {subscriptionFrequencyOptions.map((option) => (
+                  <option key={option} value={option}>
+                    {option}
+                  </option>
+                ))}
+              </select>
+            </div>
+        </div>
+        <div className="price-and-remove-container">
           <div className="item-option" id="price-label-and-text-cart">
             <label>Price:</label>
             <p className="price-text">${parseFloat(item.price).toFixed(2)}</p>
@@ -329,6 +345,7 @@ const ShoppingCartPage = () => {
             <button className="remove-button" onClick={() => handleRemoveItem(item!.coffeeBagOrderItem)}></button>
           </div>
         </div>
+      </div>
       ));
     }
   };
@@ -350,15 +367,19 @@ const ShoppingCartPage = () => {
   const handleCheckout = () => {
     // Show the email form when the "Proceed to checkout" button is clicked
     setIsEmailFormVisible(true);
+    scrollToEmailForm();
   };
 
+  // Create the ref for the email form
+  const emailFormRef = React.useRef<HTMLFormElement | null>(null);
   // Render the email form when it's visible
   const renderEmailForm = () => {
     if (isEmailFormVisible) {
-      console.log("rendering");
+      // Function to scroll the email form into view
       return (
-        <form>
+        <form ref={emailFormRef} className="order-form">
           <h1>Order Form</h1>
+          <p id="order-form-instructions">Please fill out all required fields. When you are done, press Submit Order.<br></br><br></br></p>
           <div className="form-field">
             <label>Email *</label>
             <div className="form-field-input">
@@ -367,6 +388,7 @@ const ShoppingCartPage = () => {
                 required
                 value={email}
                 onChange={handleEmailChange}
+                onKeyDown={(e) => handleKeyPressFormField(e)}
               />
             </div>
           </div>
@@ -378,6 +400,7 @@ const ShoppingCartPage = () => {
                 required
                 value={name}
                 onChange={handleNameChange}
+                onKeyDown={(e) => handleKeyPressFormField(e)}
               />
             </div>
           </div>
@@ -389,6 +412,7 @@ const ShoppingCartPage = () => {
                 required
                 value={streetAddress}
                 onChange={handleStreetAddressChange}
+                onKeyDown={(e) => handleKeyPressFormField(e)}
               />
             </div>
           </div>
@@ -400,6 +424,7 @@ const ShoppingCartPage = () => {
                 required
                 value={city}
                 onChange={handleCityChange}
+                onKeyDown={(e) => handleKeyPressFormField(e)}
               />
             </div>
           </div>
@@ -411,6 +436,7 @@ const ShoppingCartPage = () => {
                 required
                 value={province}
                 onChange={handleProvinceChange}
+                onKeyDown={(e) => handleKeyPressFormField(e)}
               />
             </div>
           </div>
@@ -422,6 +448,7 @@ const ShoppingCartPage = () => {
                 required
                 value={country}
                 onChange={handleCountryChange}
+                onKeyDown={(e) => handleKeyPressFormField(e)}
               />
             </div>
           </div>
@@ -433,6 +460,7 @@ const ShoppingCartPage = () => {
                 required
                 value={postalCode}
                 onChange={handlePostalCodeChange}
+                onKeyDown={(e) => handleKeyPressFormField(e)}
               />
             </div>
           </div>
@@ -441,6 +469,16 @@ const ShoppingCartPage = () => {
     }
     return null;
   };
+
+  const scrollToEmailForm = () => {
+    emailFormRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  };
+
+  useLayoutEffect(() => {
+    if (isEmailFormVisible) {
+      scrollToEmailForm();
+    }
+  }, [isEmailFormVisible]);
   
   return (
     <div className="cart-page">
@@ -455,7 +493,10 @@ const ShoppingCartPage = () => {
             <p className="cart-item-count">
               {cartItemsWithProductInfo.length + (cartItemsWithProductInfo.length === 1 ? " Item in Cart" : " Items in Cart")} 
             </p>
-            <button className="clear-cart-button" onClick={handleClearCart}>
+            <button 
+              className="clear-cart-button" onClick={handleClearCart} 
+              disabled={cartItemsWithProductInfo.length === 0}
+            >
               Clear Cart
             </button>
           </div>
@@ -471,7 +512,6 @@ const ShoppingCartPage = () => {
           <button
               className="checkout-button"
               onClick={handleCheckout}
-              style={{ backgroundColor: !isCheckoutEnabled ? 'grey' : '' }}
               disabled={!isCheckoutEnabled} // Disable the button when the cart is empty
             >
               Proceed to checkout

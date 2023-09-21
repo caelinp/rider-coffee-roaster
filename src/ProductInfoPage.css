@@ -311,31 +311,40 @@ p {
   margin-bottom: 1rem;
 }
 
-#add-to-cart-button:hover {
+#add-to-cart-button:not([disabled]):hover, .quantity-control:hover {
   background:rgb(29, 17, 11);
   transform: scale(1.05);
+}
+
+#add-to-cart-button:not([disabled]):active {
+  background:rgb(57, 33, 22);
+  transform: scale(1.07);
 }
 
 #subscribe-checkbox {
   width: 2rem;
   height: 2rem;
   border-radius: 10px;
-  background-color: black;
+  background-color: white;
   appearance: none;
   -webkit-appearance: none;
   -moz-appearance: none;
   outline: none;
-  border: none;
+  border: 3px solid black;
   cursor: pointer;
   margin: 0 10px;
+  display: flex; /* Make the checkbox container a flex container */
+  justify-content: center; /* Center horizontally */
+  align-items: center; /* Center vertically */
+  /* Adjust line-height and font-size for the checkmark */
+  font-size: 1.2rem;
+  line-height: 2rem; /* Should be equal to the height for vertical centering */
 }
 
 /* Custom checkmark */
 #subscribe-checkbox:checked::before {
   content: '✔'; /* White checkmark */
-  font-size: 1rem; /* Adjust the size of the checkmark */
-  line-height: 24px; /* Center vertically */
-  color: white;
+  color: black;
   display: block;
   text-align: center;
 }
@@ -353,7 +362,7 @@ p {
 }
 
 #subscription-dropdown {
-  font-size: 1rem;
+  font-size: 1.3rem;
 }
 
 @media (max-width: 1200px) {

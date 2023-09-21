@@ -52,6 +52,8 @@ body {
   top: 0;
   bottom: 0;
   z-index: 1;
+  border: 1px solid #AFAFAF;
+  border-radius: 5px;
 }
 
 .black-bar-top {
@@ -61,7 +63,18 @@ body {
   top: 0;
   left: 0;
   right: 0;
-  z-index: 1;
+  z-index: 1000;
+  border-radius: 5px;
+  border: 1px solid #AFAFAF;
+}
+
+.black-bar-bottom {
+  border-radius: 5px;
+  border: 1px solid #AFAFAF;
+  border-top: none;
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+
 }
 
 .logo-small {
@@ -107,11 +120,11 @@ body {
   max-width: calc(var(--black-bar-width) - 10px);
 }
 
-.menu-button:hover, .logo-small:hover, .shopping-cart-button:hover {
+.menu-button:hover, .logo-small:hover, #shopping-cart-button:hover {
   transform: scale(1.05);
 }
 
-.shopping-cart-button {
+#shopping-cart-button {
   cursor: pointer;
   z-index: 1000;
   margin-left: 10px;
@@ -121,6 +134,17 @@ body {
   right: 30px;
   height: calc(var(--black-bar-top-height) - 15px);
   width: auto;
+  transition: 0.2s ease-in-out;
+}
+
+/* CSS class for scaling up */
+#shopping-cart-button.scaling-up {
+  transform: scale(1.2);
+}
+
+/* CSS class for scaling down */
+#shopping-cart-button.scaling-down {
+  transform: scale(1);
 }
 
 .MuiModal-root {
@@ -191,6 +215,8 @@ body {
 
 .modal-item:hover {
   transform: scale(1.1);
+  background:rgb(29, 17, 11)!important;
+  z-index: 1000;
 }
 
 .modal-item::before {
@@ -203,10 +229,6 @@ body {
   background-repeat: no-repeat;
   background-position: center;
   margin-right: 10px; /* Add some space between the image and text */
-}
-
-.modal-item:hover {
-  background-color: #222 !important;
 }
 
 /* For Chrome, Safari, and newer versions of Opera */
@@ -231,14 +253,10 @@ input[type="number"] {
 }
 
 @media (max-width: 768px) {
-  :root {
-    --black-bar-width: 10vw;
-  }
-  .shopping-cart-button {
+  #shopping-cart-button {
     right: 20px;
   }
 }
-
 
 @media (max-width: 400px) {
   :root {
