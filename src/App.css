@@ -71,11 +71,6 @@ body {
   margin: 0 auto; /* Center the image horizontally using margin */
 }
 
-.shopping-cart-button {
-  display: block; /* Ensure the image is treated as a block element */
-  height: 50px;
-  width: 50px;
-}
 
 .black-bar-side.left {
   left: 0;
@@ -112,6 +107,10 @@ body {
   max-width: calc(var(--black-bar-width) - 10px);
 }
 
+.menu-button:hover, .logo-small:hover, .shopping-cart-button:hover {
+  transform: scale(1.05);
+}
+
 .shopping-cart-button {
   cursor: pointer;
   z-index: 1000;
@@ -120,8 +119,8 @@ body {
   color: #AFAFAF;
   top: 5px;
   right: 30px;
+  height: calc(var(--black-bar-top-height) - 15px);
   width: auto;
-  height: calc(var(--black-bar-top-height) - 5px);
 }
 
 .MuiModal-root {
@@ -187,6 +186,11 @@ body {
   padding: 10px;
   transition: background-color 0.3s;
   background-color: black;
+  cursor: pointer;
+}
+
+.modal-item:hover {
+  transform: scale(1.1);
 }
 
 .modal-item::before {
@@ -205,6 +209,20 @@ body {
   background-color: #222 !important;
 }
 
+/* For Chrome, Safari, and newer versions of Opera */
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  appearance: none;
+  margin: 0; /* Remove default margins */
+}
+
+/* For Firefox */
+input[type="number"] {
+  -moz-appearance: textfield; /* Restore the appearance to a regular text field */
+  appearance: textfield; /* Restore the appearance to a regular text field */
+}
+
 :root {
   --black-bar-bottom-height: 100px;
   --black-bar-width: 5vw;
@@ -218,7 +236,6 @@ body {
   }
   .shopping-cart-button {
     right: 20px;
-    height: calc(var(--black-bar-top-height) - 15px);
   }
 }
 

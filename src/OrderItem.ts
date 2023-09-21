@@ -18,19 +18,22 @@ class CoffeeBagOrderItem implements OrderItem {
   quantity: number;
   groundSize: string;
   bagSize: string;
+  subscriptionFrequency: string;
 
   constructor(
     id: string,
     productId: string,
     quantity: number,
     groundSize: string,
-    bagSize: string
+    bagSize: string,
+    subscriptionFrequency: string
   ) {
     this.id = id;
     this.productId = productId;
     this.quantity = quantity;
     this.groundSize = groundSize;
     this.bagSize = bagSize;
+    this.subscriptionFrequency = subscriptionFrequency;
   }
 
   // Method to set the id of the order item
@@ -54,12 +57,18 @@ class CoffeeBagOrderItem implements OrderItem {
     this.bagSize = bagSize;
   }
 
+  // Method to set the subscription frequency of this order item
+  setSubscriptionFrequency(subscriptionFrequency: string) {
+    this.subscriptionFrequency = subscriptionFrequency;
+  }
+
   // Method to compare two CoffeeBagOrderItem objects for equality (excluding id and quantity)
   isEqualTo(otherItem: CoffeeBagOrderItem): boolean {
     return (
       this.productId === otherItem.productId &&
       this.groundSize === otherItem.groundSize &&
-      this.bagSize === otherItem.bagSize
+      this.bagSize === otherItem.bagSize &&
+      this.subscriptionFrequency === otherItem.subscriptionFrequency
     );
   }
 
@@ -85,7 +94,8 @@ class CoffeeBagOrderItem implements OrderItem {
       obj.productId,
       obj.quantity,
       obj.groundSize,
-      obj.bagSize
+      obj.bagSize,
+      obj.subscriptionFrequency
     );
   }
 
@@ -98,7 +108,8 @@ class CoffeeBagOrderItem implements OrderItem {
         parsedObject.productId,
         parsedObject.quantity,
         parsedObject.groundSize,
-        parsedObject.bagSize
+        parsedObject.bagSize,
+        parsedObject.subscriptionFrequency
       );
     } else {
       throw new Error('Invalid JSON string for CoffeeBagOrderItem');

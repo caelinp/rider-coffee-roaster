@@ -90,6 +90,7 @@ body, html {
 
 .product-card:hover {
   background:rgb(29, 17, 11);
+  transform: scale(1.02) translateY(10px);
 }
 
 .product-image-gridview-container {
@@ -104,11 +105,6 @@ body, html {
   object-fit: cover;
   border: 1px solid #FFF;
   border-radius: 3px;
-}
-
-.product-image-gridview:hover {
-  width: 85%;
-  height: 85%;
 }
 
 .product-details {

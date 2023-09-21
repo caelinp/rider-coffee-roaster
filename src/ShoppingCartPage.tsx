@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useMemo } from 'react';
+import React, { useState, useEffect, useMemo, useCallback } from 'react';
 import './ShoppingCartPage.css';
 import { Link } from 'react-router-dom';
 import { createSelector } from 'reselect';
@@ -8,6 +8,8 @@ import { updateCoffeeBagItem, removeCoffeeBagItem, clearCart, CartState } from '
 import CoffeeBagOrderItem from './OrderItem';
 import DynamicImage from './DynamicImage';
 import {formatString} from './AllProductsPage';
+
+const COMPANY_EMAIL_ADDRESS: string = "prestoncaelin@gmail.com";
 
 interface Product {
   id: string;
@@ -19,11 +21,21 @@ interface Product {
 const ShoppingCartPage = () => {
   const [totalPrice, setTotalPrice] = useState(0);
   const grindSizeOptions = ['Whole Bean', 'Coarse', 'Medium-Coarse', 'Medium', 'Fine', 'Extra Fine'];
+  const subscriptionFrequencyOptions = ['none', 'every week', 'every 2 weeks', 'every month'];
   const [cartItemsWithProductInfo, setCartItemsWithProductInfo] = useState<{ product: Product; coffeeBagOrderItem: CoffeeBagOrderItem; price: string }[]>([]);
   const [coffeeBagOrderItems, setCoffeeBagOrderItems] = useState<CoffeeBagOrderItem[]>([]);
-
+  const [isCheckoutEnabled, setIsCheckoutEnabled] = useState(false); // State variable for enabling checkout
+  const [isEmailFormVisible, setIsEmailFormVisible] = useState(false); // State variable for rendering the email form
+  const [email, setEmail] = useState('');
+  const [name, setName] = useState('');
+  const [streetAddress, setStreetAddress] = useState('');
+  const [city, setCity] = useState('');
+  const [province, setProvince] = useState('');
+  const [country, setCountry] = useState('');
+  const [postalCode, setPostalCode] = useState('');
   const dispatch = useDispatch();
-
+  // State variable to track if the email is valid
+  const [isEmailValid, setIsEmailValid] = useState(true);
   // Create Memoized selector to get all cart items
   const selectCartItems = useMemo(() => {
     return createSelector(
@@ -55,7 +67,7 @@ const ShoppingCartPage = () => {
 
   // Create the shopping cart items list, each element being an object with a CoffeeBagOrderItem and its associated product
   // this gets updated every time coffeeBagOrderItems is updated.
-  const generateCartItemsWithProductInfo = (coffeeBagOrderItems: CoffeeBagOrderItem[]) => {
+  const generateCartItemsWithProductInfo = useCallback((coffeeBagOrderItems: CoffeeBagOrderItem[]) => {
     return coffeeBagOrderItems.map((coffeeBagItem) => {
       const foundProduct = findProductByProductId(coffeeBagItem.productId);
       if (foundProduct) {
@@ -80,11 +92,11 @@ const ShoppingCartPage = () => {
 
       return null; // Handle the case where the product is not found
     }).filter(Boolean) as { product: Product; coffeeBagOrderItem: CoffeeBagOrderItem; price: string }[]; // Remove any null entries
-  }
+  }, [])
 
   useEffect(() => {
     setCartItemsWithProductInfo(generateCartItemsWithProductInfo(coffeeBagOrderItems));
-  }, [coffeeBagOrderItems]);
+  }, [coffeeBagOrderItems, generateCartItemsWithProductInfo]);
 
   useEffect(() => {
     // Calculate the total price whenever cart items change
@@ -96,7 +108,7 @@ const ShoppingCartPage = () => {
       setTotalPrice(totalPrice);
     }
   }, [cartItemsWithProductInfo]);
-
+  
   const handleCloseCart = () => {
     // Implement your close cart logic here
   };
@@ -137,12 +149,112 @@ const ShoppingCartPage = () => {
     dispatch(clearCart());
   };
 
-  const handleCheckout = () => {
-    // Implement checkout logic here
+  const handleSubscriptionChange = (e: React.ChangeEvent<HTMLSelectElement>, orderItem: CoffeeBagOrderItem) => {
+    orderItem.setSubscriptionFrequency(e.target.value);
+    dispatch(updateCoffeeBagItem(orderItem.toJSONString()));
+  }
+
+  // Handler function for email input change
+  const handleEmailChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const inputEmail = e.target.value;
+    setEmail(inputEmail);
+
+    // Regular expression pattern for a valid email format
+    const emailPattern = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
+
+    // Check if the input email matches the pattern
+    const isValid = emailPattern.test(inputEmail);
+
+    // Update the state variable to track if the email is valid
+    setIsEmailValid(isValid);
   };
 
+  const handleNameChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setName(e.target.value);
+  };
+
+  const handleStreetAddressChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setStreetAddress(e.target.value);
+  };
+
+  const handleCityChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setCity(e.target.value);
+  };
+
+  const handleProvinceChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setProvince(e.target.value);
+  };
+
+  const handleCountryChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setCountry(e.target.value);
+  };
+
+  const handlePostalCodeChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setPostalCode(e.target.value);
+  };
+
+  // Handler function for submitting the order
+  const handleSubmitOrder = () => {
+    // Check if all required fields are filled
+    if (
+      email.trim() === '' ||
+      name.trim() === '' ||
+      streetAddress.trim() === '' ||
+      city.trim() === '' ||
+      province.trim() === '' ||
+      country.trim() === '' ||
+      postalCode.trim() === ''
+    ) {
+      // If any required field is empty, do not proceed with the submission
+      return;
+    }
+
+    // Construct the email subject
+    const emailSubject = 'Coffee Order';
+
+    // Construct the email content using cartItemsWithProductInfo and form fields
+    const emailContent =
+      'Order Details:\n' +
+      cartItemsWithProductInfo.map((item) => {
+        return (
+          '\tProduct: ' + item.product.name + '\n' +
+          '\tQuantity: ' + item.coffeeBagOrderItem.quantity + '\n' +
+          '\tBag Size: ' + item.coffeeBagOrderItem.bagSize + '\n' +
+          '\tGrind Size: ' + item.coffeeBagOrderItem.groundSize + '\n' +
+          '\tSubscription Frequency: ' + item.coffeeBagOrderItem.subscriptionFrequency + '\n' +
+          '\tPrice: $' + parseFloat(item.price).toFixed(2) + '\n'
+        );
+      }).join('\n') +
+      '\n Order Total: ' + totalPrice + '\n' + 
+      '\nCustomer Information:\n' +
+      '\tEmail: ' + email + '\n' +
+      '\tName: ' + name + '\n' +
+      '\tStreet Address: ' + streetAddress + '\n' +
+      '\tCity: ' + city + '\n' +
+      '\tProvince/State: ' + province + '\n' +
+      '\tCountry: ' + country + '\n' +
+      '\tPostal Code: ' + postalCode + '\n\n';
+
+    // Construct the mailto link
+    const mailtoLink = 'mailto:' + COMPANY_EMAIL_ADDRESS + '?subject=' + encodeURIComponent(emailSubject) + '&body=' + encodeURIComponent(emailContent);
+
+    // Open the default email client with the mailto link
+    window.location.href = mailtoLink;
+  };
+
+  // Check if all required form fields are filled
+  const isFormComplete =
+    isEmailValid &&
+    email.trim() !== '' &&
+    name.trim() !== '' &&
+    streetAddress.trim() !== '' &&
+    city.trim() !== '' &&
+    province.trim() !== '' &&
+    country.trim() !== '' &&
+    postalCode.trim() !== '';
+
    // Helper function to render order items or empty cart message
-   const renderOrderItems = () => {
+  const renderOrderItems = () => {
     if (cartItemsWithProductInfo.length === 0) {
       // Render an empty cart message
       return (
@@ -199,6 +311,16 @@ const ShoppingCartPage = () => {
               onKeyDown={(e) => handleKeyPress(e, item!.coffeeBagOrderItem)}
             />
           </div>
+          <div className="item-option" id="subscription-option-cart">
+            <label>Subscription:</label>
+            <select className="option-input-field-cart" value={item!.coffeeBagOrderItem!.subscriptionFrequency} onChange={(e) => handleSubscriptionChange(e, item!.coffeeBagOrderItem)}>
+              {subscriptionFrequencyOptions.map((option) => (
+                <option key={option} value={option}>
+                  {option}
+                </option>
+              ))}
+            </select>
+          </div>
           <div className="item-option" id="price-label-and-text-cart">
             <label>Price:</label>
             <p className="price-text">${parseFloat(item.price).toFixed(2)}</p>
@@ -211,6 +333,115 @@ const ShoppingCartPage = () => {
     }
   };
 
+  useEffect(() => {
+    // Calculate the total price whenever cart items change
+    if (cartItemsWithProductInfo) {
+      const totalPrice = cartItemsWithProductInfo.reduce((total, item) => {
+        return total + parseFloat(item.price || "0");
+      }, 0);
+      // Update the total price in your component state
+      setTotalPrice(totalPrice);
+
+      // Enable checkout if cart is not empty
+      setIsCheckoutEnabled(cartItemsWithProductInfo.length > 0);
+    }
+  }, [cartItemsWithProductInfo]);
+
+  const handleCheckout = () => {
+    // Show the email form when the "Proceed to checkout" button is clicked
+    setIsEmailFormVisible(true);
+  };
+
+  // Render the email form when it's visible
+  const renderEmailForm = () => {
+    if (isEmailFormVisible) {
+      console.log("rendering");
+      return (
+        <form>
+          <h1>Order Form</h1>
+          <div className="form-field">
+            <label>Email *</label>
+            <div className="form-field-input">
+              <input
+                type="email"
+                required
+                value={email}
+                onChange={handleEmailChange}
+              />
+            </div>
+          </div>
+          <div className="form-field">
+            <label>Name *</label>
+            <div className="form-field-input">
+              <input
+                type="text"
+                required
+                value={name}
+                onChange={handleNameChange}
+              />
+            </div>
+          </div>
+          <div className="form-field">
+            <label>Street Address *</label>
+            <div className="form-field-input">
+              <input
+                type="text"
+                required
+                value={streetAddress}
+                onChange={handleStreetAddressChange}
+              />
+            </div>
+          </div>
+          <div className="form-field">
+            <label>City *</label>
+            <div className="form-field-input">
+              <input
+                type="text"
+                required
+                value={city}
+                onChange={handleCityChange}
+              />
+            </div>
+          </div>
+          <div className="form-field">
+            <label>Province/State *</label>
+            <div className="form-field-input">
+              <input
+                type="text"
+                required
+                value={province}
+                onChange={handleProvinceChange}
+              />
+            </div>
+          </div>
+          <div className="form-field">
+            <label>Country *</label>
+            <div className="form-field-input">
+              <input
+                type="text"
+                required
+                value={country}
+                onChange={handleCountryChange}
+              />
+            </div>
+          </div>
+          <div className="form-field">
+            <label>Postal Code *</label>
+            <div className="form-field-input">
+              <input
+                type="text"
+                required
+                value={postalCode}
+                onChange={handlePostalCodeChange}
+              />
+            </div>
+          </div>
+        </form>
+      );
+    }
+    return null;
+  };
+  
   return (
     <div className="cart-page">
     <div className="cart-content-and-bottom">
@@ -237,10 +468,27 @@ const ShoppingCartPage = () => {
             <label>{"Total: "}</label>
             <p>${totalPrice.toFixed(2)}</p>
           </div>
-          <button className="checkout-button" onClick={handleCheckout}>
-            Checkout
-          </button>
-        </div>
+          <button
+              className="checkout-button"
+              onClick={handleCheckout}
+              style={{ backgroundColor: !isCheckoutEnabled ? 'grey' : '' }}
+              disabled={!isCheckoutEnabled} // Disable the button when the cart is empty
+            >
+              Proceed to checkout
+            </button>
+          </div>
+          {/* Render the email form */}
+          {renderEmailForm()}
+          {isEmailFormVisible && (
+            <button 
+              className="submit-order-button"           
+              onClick={handleSubmitOrder}
+              style={{ backgroundColor: !isCheckoutEnabled || !isFormComplete ? 'grey' : '' }}
+              disabled={!isCheckoutEnabled || !isFormComplete} // Disable the button if the form is not complete
+          >
+              Submit Order
+            </button>
+          )}
       </div>
     </div>
   </div>

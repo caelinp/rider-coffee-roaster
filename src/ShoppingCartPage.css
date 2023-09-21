@@ -35,11 +35,13 @@
     color: black;
     border: 1px solid black;
     border-radius: 5px;
+    max-height: 80%;
+    background-image: url('./img/background0-no-logo.jpg');
+
 }
 
 .order-items-container {
     width: 100%;
-    max-height: 80vh;
     border: 1px solid black;
     overflow: auto;
     min-height: 1rem;
@@ -54,7 +56,7 @@
 }
 
 .cart-header h1 {
-    margin: 0 5%;
+    margin: 2%;
     font-style: bold;
 }
 
@@ -67,6 +69,10 @@
     width: 40px;
     height: 40px;
     margin: 10px;
+}
+
+.close-button:hover {
+    transform: scale(1.1);
 }
 
 .order-item {
@@ -114,6 +120,10 @@ input[type="number"] {
     align-self:flex-end;
 }
 
+.remove-button:hover {
+    transform: scale(1.1);
+}
+
 .cart-total {
     text-align: left;
     display: flex;
@@ -136,6 +146,10 @@ input[type="number"] {
 
 #quantity-option-cart {
     width: 10ch;
+}
+
+#subscription-option-cart {
+    width: 20ch;
 }
 #price-label-and-text-cart {
     width: 10ch;
@@ -187,23 +201,22 @@ input[type="number"] {
     color: #fff;
     cursor: pointer;
     font-size: 16px;
-    position: absolute;
-    right: 1%;
-    margin: 0;
-    bottom: 5px;
+    margin: 0 10px 5px;
 }
 
 /* Style for the item count text */
 .cart-item-count {
     font-weight: bold;
     font-size: 18px;
-    left: 1%;
-    position: absolute;
+    margin: 0 0 0 10px;
 }
 
 .cart-item-count-and-clear {
-    position: relative;
-    height: 50px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: fit-content;
+    margin-bottom: 0;
 }
 
 /* Style for the cart summary section */
@@ -211,7 +224,50 @@ input[type="number"] {
     display: column;
 }
   
+.form-field {
+  display: flex;
+  align-items: center; /* Align labels and inputs on the same line */
+  margin-bottom: 20px;
+  margin-top: 25px;
+  margin-left: 20px;
+}
+
+.form-field label {
+  width: 20ch;
+  text-align: left;
+  font-weight: bold;
+  font-size: 1.2rem;
+}
+
+.form-field-input {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: left; 
+}
+
+.form-field-input input {
+    color: white;
+    background-color: black;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+.form-field input,
+.form-field select,
+.form-field textarea {
+  width: 100%;
+  padding: 5px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  text-align: left;
+  max-width: 500px; 
+}
+
 @media (max-width: 930px) {
+    #order-item-product-name-and-image-container {
+        margin: 20px 0 20px 0;
+    }
     .order-item {
         flex-direction: column;
         width: 100%;
@@ -223,6 +279,7 @@ input[type="number"] {
     .order-items-container {
         width: 100%;
         overflow-x: hidden;
+        height: 80%;
     }
 
     .cart-content {
@@ -296,5 +353,8 @@ input[type="number"] {
     .remove-button {
         margin-top: 5px;
         margin-bottom: 15px;
+    }
+    .form-field {
+      flex-direction: column;
     }
 }

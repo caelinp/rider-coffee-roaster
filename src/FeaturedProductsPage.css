@@ -62,8 +62,7 @@ body, html {
 
 .product-card-featured:hover {
   background:rgb(25, 15, 10);
-  max-width: 355px;
-  height: auto;
+  transform: scale(1.05);
 }
 
 .product-image-featured {
@@ -73,10 +72,6 @@ body, html {
   object-fit: cover;
   border: 1px solid #FFF; /* Add a border to the container for visualization */
   border-radius: 5px;
-}
-
-.product-image-featured:hover {
-  opacity: 90%;
 }
 
 .product-image-featured-container {

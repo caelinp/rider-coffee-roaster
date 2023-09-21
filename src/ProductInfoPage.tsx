@@ -10,6 +10,7 @@ import { createSelector } from 'reselect'; // Import createSelector
 import productsData from './json/products.json'; // Import the JSON file
 
 const DEFAULT_WEIGHT: string = "340g";
+const NO_SUBSCRIPTION: string = "none";
 
 interface Product {
   id: string;
@@ -84,10 +85,22 @@ const ProductInfoPage = () => {
 
   const imagesArray: string[] = Object.values(product.images);
   const grindSizeOptions = ['Whole Bean', 'Coarse', 'Medium-Coarse', 'Medium', 'Fine', 'Extra Fine'];
+  const subscriptionFrequencyOptions = ['every week', 'every 2 weeks', 'every month'];
   const [selectedGrindSize, setSelectedGrindSize] = useState('Whole Bean');
   const [quantity, setQuantity] = useState(1);
   const [totalPrice, setTotalPrice] = useState(0);
   const [selectedWeight, setSelectedWeight] = useState(initialWeight);
+  const [selectedSubscriptionFrequency, setSelectedSubscriptionFrequency] = useState(NO_SUBSCRIPTION);
+  const [isSubscriptionVisible, setIsSubscriptionVisible] = useState<boolean>(false);
+
+  const toggleSubscription = () => {
+    if (!isSubscriptionVisible) {
+      setSelectedSubscriptionFrequency(subscriptionFrequencyOptions[0]); // Set to the first option
+    } else {
+      setSelectedSubscriptionFrequency(NO_SUBSCRIPTION);
+    }
+    setIsSubscriptionVisible(!isSubscriptionVisible);
+  };
 
   useEffect(() => {
     // Calculate the total price whenever quantity or weight changes
@@ -130,6 +143,30 @@ const ProductInfoPage = () => {
       }
     }
   };
+
+  // Helper function to render the subscription dropdown
+  const renderSubscriptionDropdown = () => {
+    if (isSubscriptionVisible) {
+      return (
+        <div className="subscription-dropdown-container" >
+          <select 
+            className="option-input-field"
+            id="subscription-dropdown"
+            value={selectedSubscriptionFrequency}
+            onChange={(e) => setSelectedSubscriptionFrequency(e.target.value)}
+          >
+            {subscriptionFrequencyOptions.map((option) => (
+              <option key={option} value={option}>
+                {option}
+              </option>
+            ))}
+          </select>
+        </div>
+      );
+    }
+    return null; // Return null if the dropdown is not visible
+  };
+
   return (
     <div className="product-info-page">
       <div className="product-info-content-and-bottom">
@@ -209,15 +246,23 @@ const ProductInfoPage = () => {
               </div>
             </div>
             <div className="add-and-subscribe-button-container">
-              <div className="subscribe-button-container">
-                <button id="subscribe-button">Subscribe and Save</button>
+              <div className="subscribe-checkbox-container">
+                <label className="label-subscribe" htmlFor="subscribe-checkbox">Subscribe and Save:</label>
+                <input
+                  className="option-input-field"
+                  type="checkbox"
+                  id="subscribe-checkbox"
+                  onChange={toggleSubscription}
+                  checked={isSubscriptionVisible}
+                />
               </div>
+              {renderSubscriptionDropdown()}
               <div className="add-to-cart-button-container">
                 <button
                   id="add-to-cart-button"
                   disabled={quantity < 1}
                   style={{ backgroundColor: quantity < 1 ? 'grey' : '' }}
-                  onClick={()=>(handleAddItem(new CoffeeBagItem("0", product.id, quantity, selectedGrindSize, selectedWeight)))
+                  onClick={()=>(handleAddItem(new CoffeeBagItem("0", product.id, quantity, selectedGrindSize, selectedWeight, selectedSubscriptionFrequency)))
                   }
                 >
                   Add to Cart

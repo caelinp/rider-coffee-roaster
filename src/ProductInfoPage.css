@@ -59,6 +59,10 @@ body, html {
   border-radius: 5px;
 }
 
+.product-main-image:hover {
+  transform: scale(1.05);
+}
+
 .product-info-panel {
   border: 1px solid black;
   margin-right: 5vw;
@@ -195,7 +199,7 @@ p {
 }
 
 .image-dot.active {
-  background-color: #333;
+  background-color: #828282;
 }
 
 .option {
@@ -208,7 +212,8 @@ p {
 }
 
 #quantity-option {
-  max-height: 6rem;
+  display: flex;
+  height: fit-content;
 }
 
 .order-options {
@@ -222,6 +227,10 @@ p {
   font-size: 1.5rem;
   margin-left: 1rem;
   margin-top: 15px;
+}
+
+.label-subscribe {
+  font-size: 1.5rem;
 }
 
 .quantity-control {
@@ -239,6 +248,7 @@ p {
 .quantity-input {
   margin-left: 10px;
   margin-top: 0px;
+  height: fit-content;
 }
 
 .label-total {
@@ -288,6 +298,7 @@ p {
 #quantity {
   width: 30%; 
   padding-left: 15px;
+  padding-right: 15px;
 }
 
 #add-to-cart-button {
@@ -300,11 +311,49 @@ p {
   margin-bottom: 1rem;
 }
 
-#subscribe-button {
-  width: 20ch; /* Set a fixed width for labels, e.g., 25 characters */
-  margin-top: 1rem;
-  max-width: 90vw;
-  margin-bottom: 0.5rem;
+#add-to-cart-button:hover {
+  background:rgb(29, 17, 11);
+  transform: scale(1.05);
+}
+
+#subscribe-checkbox {
+  width: 2rem;
+  height: 2rem;
+  border-radius: 10px;
+  background-color: black;
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  outline: none;
+  border: none;
+  cursor: pointer;
+  margin: 0 10px;
+}
+
+/* Custom checkmark */
+#subscribe-checkbox:checked::before {
+  content: '✔'; /* White checkmark */
+  font-size: 1rem; /* Adjust the size of the checkmark */
+  line-height: 24px; /* Center vertically */
+  color: white;
+  display: block;
+  text-align: center;
+}
+
+.subscribe-checkbox-container {
+  display: flex;
+  justify-content: center; /* Horizontal centering */
+  align-items: center; /* Vertical centering */
+  height: fit-content;
+  margin-top: 40px;
+}
+
+.subscription-dropdown-container {
+  margin-top: 10px;
+}
+
+#subscription-dropdown {
+  font-size: 1rem;
 }
 
 @media (max-width: 1200px) {
@@ -325,7 +374,8 @@ p {
 
 @media (max-width: 1000px) {
   .product-main-image {
-    width: 50%;
+    width: 60%;
+    max-width: 80vw;
   }
   .product-info-order-panel {
     margin-left: 4vw;
@@ -354,6 +404,11 @@ p {
   .label-grind-size,
   .label-quantity {
     font-size: 1.1rem;
+    margin: 0 0 10px 0;
+  }
+
+  .label-subscribe {
+    font-size: 1.1rem;
   }
 
   .total-price-text {
@@ -361,25 +416,47 @@ p {
   }
 
   #quantity {
-    width: 30px;
-    margin-left: 5px;
-    margin-right: 5px;
+    width: 80px;
+    margin: 0;
   }
 
-  #grind-size, #weight, #quantity,  .quantity-control {
-    font-size: 0.9rem;
+  .quantity-input {
+    margin: 0;
+    height: fit-content;
   }
- 
+
+  .quantity-control {
+    margin: 0 10px;
+  }
+
   .product-header h1 {
     font-size: 2rem;
     padding: 0 15%;
   }
 
   .option-input-field {
-    font-size: 1rem;
+    font-size: 1.2rem;
   }
 
   body {
     overflow-x: hidden;
+  }
+  
+  .option {
+    align-items: center;
+    flex-direction: column;
+  }
+
+  .label-total {
+    text-align: center;
+    font-size: 2rem;
+    margin: 20px 0;
+  }
+  
+  .total-price-text {
+    width: 90%;
+    margin: 0;
+    font-size: 1.5rem;
+    text-align: center;
   }
 }
