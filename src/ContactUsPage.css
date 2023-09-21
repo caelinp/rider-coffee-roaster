@@ -6,6 +6,7 @@ body, html {
 
 .contact-us-header {
   font-size: 4rem;
+  border-bottom: 1px solid black;
 }
 
 .contact-us-page {

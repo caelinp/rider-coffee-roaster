@@ -191,9 +191,7 @@ const ProductInfoPage = () => {
       <div className="product-info-content-and-bottom">
         <div className="product-info-content">
           <div className="product-info-order-panel">
-            <div className="product-header">
-              <h1>{product.name}</h1>
-            </div>
+              <h1 className="product-header">{product.name}</h1>
             <DynamicImage className="product-main-image" imageUrl={imagesArray[currentImageIndex]} alt={product.name} onClick={handleImageClick} imgRef={imgRef} />
             <div className="image-dots">
               <div className="image-arrow-left" id="left-arrow" onClick={handleLeftArrowClick}></div>

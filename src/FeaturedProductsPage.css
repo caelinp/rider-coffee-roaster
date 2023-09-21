@@ -6,6 +6,8 @@ body, html {
 
 .featured-header {
   font-size: 4rem;
+  border-bottom: 1px solid black;
+  width: 100%;
 }
 
 .featured-products-page {
