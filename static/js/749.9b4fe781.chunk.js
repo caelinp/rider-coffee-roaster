@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkrider_coffee_roaster=self.webpackChunkrider_coffee_roaster||[]).push([[749],{4749:function(e,r,o){e.exports=o.p+"static/media/background-no-logo1.c086bf629000e652e25d.png"}}]);
