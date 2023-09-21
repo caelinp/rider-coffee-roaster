@@ -13,46 +13,51 @@ body, html {
   height: 100%;
 }
 
+.all-products-content-and-bottom {
+  position: relative;
+  height: 100vh;
+  width: 100vw;
+}
+
 .all-products-content {
   background-image: url('./img/background-no-logo.png');
   margin-top: var(--black-bar-top-height);
   margin-left: var(--black-bar-width);
   margin-right: var(--black-bar-width);
-  height: 100vh;
+  overflow-x: hidden;
   position: relative;
+  display: flex;
   flex-direction: column;
+  overflow-y: auto;
+  min-height: calc(100vh - var(--black-bar-top-height));
 }
 
 .all-products-header {
+  border-bottom: 1px solid black;
   font-size: 4rem;
+  max-width: 70vw;
 }
 
 .search-header-container {
   text-align: left;
   padding: 0 15%;
-  height: var(--search-header-container-height);
-  width: 100%;
+  width: 70%;
+  margin-bottom: 2rem;
 }
 
 .search-container {
-  width: 300px;
-  max-width: 60vw;
+  width: fit-content;
+  max-width: 90%;
   position: sticky;
   top: 0;
-  padding: 10px;
   align-items: center;
   justify-content: center;
   margin-bottom: 2rem;
 }
 
-.search-bar {
-  width: 100%;
-  max-width: 100%;
-  justify-content: center;
-}
-
 .search-input {
-  max-width: 100%;
+  width: 100%;
+  max-width: 80vw;
   font-size: 1.5rem;
   background-color: black;
   color: white;
@@ -61,20 +66,30 @@ body, html {
   font-size: 1.5rem;
   border-radius: 15px;
   padding: 7px;
+  border: 10px solid black;
+  border-radius: 20px;
+}
+
+.search-input:hover, .search-input:active {
+  transform: scale(1.05);
+  background:rgb(29, 17, 11);
 }
 
 .products-container {
-  overflow-y: auto;
-  max-height: fit-content;
-  height: calc(100% - var(--search-header-container-height) - var(--black-bar-top-height) );
+  margin: 0 15%;
+  background-image: url('./img/background0-no-logo.jpg');
+  border: 2px solid black;
+  border-radius: 10px;
+  flex-grow: 1;
+  margin-bottom: 100px;
 }
 
 .products-grid {
-  padding: 0 15%;
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); 
-  gap: 20px;
+  gap: 30px;
   height: 100%;
+  width: 100%;
 }
 
 .product-link {
@@ -85,14 +100,16 @@ body, html {
 .product-card {
   background-color: black;
   color: white;
-  padding: 10%;
+  padding: 5%;
   display: flex;
   flex-direction: column;
   align-items: center;
-  height: 300px;
+  height: fit-content;
   border: 3px solid #FFF; 
   border-radius: 10px;
   overflow: hidden;
+  width: 180px;
+  margin: 10%
 }
 
 .product-card:hover {
@@ -117,22 +134,21 @@ body, html {
 .product-details {
   margin-top: 0;
   width: 100%;
-  height: 100px; /* Set the height of your container */
   display: column;
   align-items: center; /* Vertically center the text */
   justify-content: center; /* Horizontally center the text */
-  overflow: hidden; /* Hide overflowing text */
+  word-wrap: break-word;
 }
 
 .product-name {
   padding: 0 10%;
-  height: 2.2em; /* Adjust this value to control the height of two lines */
+  height: fit-content;
   line-height: 1.1em; /* Half of max-height to create two lines */
   margin-top: 0;
-  font-size: clamp(0.5rem, 5vw, 1.5rem); /* Set the font size within a range */
+  font-size: 1.2rem;
   max-width: 100%; /* Ensure the text doesn't overflow horizontally */
   white-space: normal; /* Prevent the text from wrapping to the next line */
-  text-overflow: ellipsis; /* Add ellipsis (...) if the text overflows vertically */
+  text-overflow: hidden; /* Add ellipsis (...) if the text overflows vertically */
   overflow: hidden; /* Hide overflowing text */
   border: 1px solid #FFF;
   border-radius: 3px;
@@ -159,10 +175,6 @@ body, html {
   background-color: transparent;
 }
 
-:root {
-  --search-header-container-height: 200px;
-}
-
 @media (max-width: 768px) {
   .all-products-header {
     font-size: 3rem;
@@ -170,5 +182,11 @@ body, html {
   .search-input {
     width: 100%;
     font-size: 1rem;
+  }
+}
+
+@media (max-width: 500px) {
+  .all-products-header {
+    font-size: 2.3rem;
   }
 }

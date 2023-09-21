@@ -21,13 +21,13 @@ body, html {
   overflow-y: auto;
 }
 
-.featured-products-and-bottom-container {
+.featured-products-content-and-bottom {
   position: relative;
   height: 100vh;
   width: 100vw;
 }
 
-.featured-products-container {
+.featured-products-content {
   padding: 0 10%;
   background-image: url('./img/background-no-logo.png');
   margin-left: var(--black-bar-width);
@@ -39,6 +39,7 @@ body, html {
   gap: 20px;
   overflow-y: auto; /* Enable vertical scroll if content exceeds container */
   justify-content: center;
+  min-height: calc(100vh - var(--black-bar-top-height));
 }
 
 .product-card-all-products-link {
@@ -141,17 +142,17 @@ body, html {
 }
 
 /* Hide the scrollbar for Firefox */
-.featured-products-container {
+.featured-products-content {
   scrollbar-width: thin;
   scrollbar-color: transparent transparent;
 }
 
 /* Hide the scrollbar for Chrome, Edge, and Safari */
-.featured-products-container::-webkit-scrollbar {
+.featured-products-content::-webkit-scrollbar {
   width: 6px; /* Adjust the width as needed */
 }
 
-.featured-products-container::-webkit-scrollbar-thumb {
+.featured-products-content::-webkit-scrollbar-thumb {
   background-color: transparent;
 }
 

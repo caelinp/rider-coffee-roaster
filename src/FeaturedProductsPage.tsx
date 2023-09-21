@@ -36,8 +36,8 @@ const FeaturedProductsPage = () => {
 
   return (
     <div className="featured-products-page">
-      <div className="featured-products-and-bottom-container">
-        <div className="featured-products-container">
+      <div className="featured-products-content-and-bottom">
+        <div className="featured-products-content">
           <h1 className="featured-header">Featured Roasts</h1>
           {featuredProducts.map((product) => (
             <div className="link-container" key={product.id}>

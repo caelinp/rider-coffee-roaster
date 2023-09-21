@@ -310,6 +310,15 @@ input[type="number"] {
     transform: scale(1.05);
 }
 
+.option-input-field-cart:hover {
+    background:rgb(29, 17, 11);
+    transform: scale(1.05);
+}
+
+#order-item-product-name-and-image-container:hover {
+    transform: scale(1.05);
+}
+
 @media (max-width: 1150px) {
     #order-item-product-name-and-image-container {
         margin: 20px 0 20px 0;

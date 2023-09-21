@@ -47,14 +47,20 @@ const App: React.FC = () => {
             <ListItem className="modal-item" onClick={() => handleItemClick('/rider-coffee-roaster/')}>
               <ListItemText className="modal-item-text" primary="Home" />
             </ListItem>
-            <ListItem className="modal-item" onClick={() => handleItemClick('/rider-coffee-roaster/products')}>
+            <ListItem className="modal-item" onClick={() => handleItemClick('/rider-coffee-roaster/featured-products/')}>
+              <ListItemText className="modal-item-text" primary="Featured" />
+            </ListItem>
+            <ListItem className="modal-item" onClick={() => handleItemClick('/rider-coffee-roaster/products/')}>
               <ListItemText className="modal-item-text" primary="Products" />
             </ListItem>
-            <ListItem className="modal-item" onClick={() => handleItemClick('/rider-coffee-roaster/about-us')}>
+            <ListItem className="modal-item" onClick={() => handleItemClick('/rider-coffee-roaster/about-us/')}>
               <ListItemText className="modal-item-text" primary="About Us" />
             </ListItem>
-            <ListItem className="modal-item" onClick={() => handleItemClick('/rider-coffee-roaster/contact-us')}>
+            <ListItem className="modal-item" onClick={() => handleItemClick('/rider-coffee-roaster/contact-us/')}>
               <ListItemText className="modal-item-text" primary="Contact Us" />
+            </ListItem>
+            <ListItem className="modal-item" id="cart-modal-item" onClick={() => handleItemClick('/rider-coffee-roaster/shopping-cart/')}>
+              <ListItemText className="modal-item-text" primary="Your Cart" />
             </ListItem>
           </List>
         </div>
@@ -63,7 +69,6 @@ const App: React.FC = () => {
         <Link to="/rider-coffee-roaster">
           <img src={logo} alt="Rider Coffee Roaster Logo" className="logo-small" />
         </Link>
-
       </div>
       <div className="black-bar-side left"></div>
       <div className="menu-button" onClick={openModal}>

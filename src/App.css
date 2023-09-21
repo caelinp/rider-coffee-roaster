@@ -79,8 +79,8 @@ body {
 
 .logo-small {
   display: block; /* Ensure the image is treated as a block element */
-  max-height: 100%; /* Set the maximum height to 90% of the container */
-  max-width: 100%; /* Ensure the image doesn't exceed the container's width */
+  height: 100%;
+  width: auto;
   margin: 0 auto; /* Center the image horizontally using margin */
 }
 
@@ -130,9 +130,9 @@ body {
   margin-left: 10px;
   position: absolute;
   color: #AFAFAF;
-  top: 5px;
+  top: 7px;
   right: 30px;
-  height: calc(var(--black-bar-top-height) - 15px);
+  height: calc(var(--black-bar-top-height) - 16px);
   width: auto;
   transition: 0.2s ease-in-out;
 }
@@ -231,6 +231,10 @@ body {
   margin-right: 10px; /* Add some space between the image and text */
 }
 
+#cart-modal-item::before {
+  background-image: url('./img/shopping-cart.png'); /* Replace with your image source path */
+}
+
 /* For Chrome, Safari, and newer versions of Opera */
 input[type="number"]::-webkit-inner-spin-button,
 input[type="number"]::-webkit-outer-spin-button {
@@ -246,7 +250,7 @@ input[type="number"] {
 }
 
 :root {
-  --black-bar-bottom-height: 100px;
+  --black-bar-bottom-height: 500px;
   --black-bar-width: 5vw;
   --menu-button-size: 50px; /* Set the default size of the menu button */
   --black-bar-top-height: 70px;

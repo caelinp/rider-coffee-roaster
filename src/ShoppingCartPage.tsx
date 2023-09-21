@@ -222,30 +222,41 @@ const ShoppingCartPage = () => {
     }
 
     // Construct the email subject
-    const emailSubject = 'Coffee Order';
-
+    const emailSubject = 'Coffee Order for ' + name;
     // Construct the email content using cartItemsWithProductInfo and form fields
-    const emailContent =
-      'Order Details:\n' +
-      cartItemsWithProductInfo.map((item) => {
-        return (
-          '\tProduct: ' + item.product.name + '\n' +
-          '\tQuantity: ' + item.coffeeBagOrderItem.quantity + '\n' +
-          '\tBag Size: ' + item.coffeeBagOrderItem.bagSize + '\n' +
-          '\tGrind Size: ' + item.coffeeBagOrderItem.groundSize + '\n' +
-          '\tSubscription Frequency: ' + item.coffeeBagOrderItem.subscriptionFrequency + '\n' +
-          '\tPrice: $' + parseFloat(item.price).toFixed(2) + '\n'
-        );
-      }).join('\n') +
-      '\n Order Total: ' + totalPrice + '\n' + 
-      '\nCustomer Information:\n' +
-      '\tEmail: ' + email + '\n' +
-      '\tName: ' + name + '\n' +
-      '\tStreet Address: ' + streetAddress + '\n' +
-      '\tCity: ' + city + '\n' +
-      '\tProvince/State: ' + province + '\n' +
-      '\tCountry: ' + country + '\n' +
-      '\tPostal Code: ' + postalCode + '\n\n';
+    const emailContent = 
+`New coffee order received!
+    
+Customer Information:
+  Name: ${name}
+  Email: ${email}
+  Street Address: ${streetAddress}
+  City: ${city}
+  Province/State: ${province}
+  Country: ${country}
+  Postal Code: ${postalCode}
+
+Order Details:
+${cartItemsWithProductInfo
+  .map((item, index) => {
+    return `
+      Item ${index + 1}:
+        Product: ${item.product.name}
+        Quantity: ${item.coffeeBagOrderItem.quantity}
+        Bag Size: ${item.coffeeBagOrderItem.bagSize}
+        Grind Size: ${item.coffeeBagOrderItem.groundSize}
+        Subscription Frequency: ${item.coffeeBagOrderItem.subscriptionFrequency}
+        Price: $${parseFloat(item.price).toFixed(2)}
+    `;
+  })
+  .join('\n')}
+
+Order Total: ${totalPrice}
+
+Thank you and best regards
+
+`;
+  
 
     // Construct the mailto link
     const mailtoLink = 'mailto:' + COMPANY_EMAIL_ADDRESS + '?subject=' + encodeURIComponent(emailSubject) + '&body=' + encodeURIComponent(emailContent);
@@ -273,7 +284,7 @@ const ShoppingCartPage = () => {
       return (
         <div className="empty-cart-message">
           <p>
-            Your cart is empty
+            Your cart is empty.
           </p>
         </div>
       );

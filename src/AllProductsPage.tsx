@@ -46,11 +46,11 @@ const AllProductsPage = () => {
 
   return (
     <div className="all-products-page">
-      <div className="all-products-content">
-        <div className="search-header-container">
-          <h1 className="all-products-header">All Products</h1>
-          <div className="search-container">
-            <div className="search-bar">
+      <div className="all-products-content-and-bottom">
+        <div className="all-products-content">
+          <div className="search-header-container">
+            <h1 className="all-products-header">All Products</h1>
+            <div className="search-container">
               <input
                 className="search-input" 
                 id = "product-search"
@@ -61,34 +61,30 @@ const AllProductsPage = () => {
               />
             </div>
           </div>
-        </div>
-        <div className="products-container">
-          <div className="products-grid">
-            {filteredProducts.map((product) => (
-              <Link
-                id="product-card-all-products-link"
-                to={`/rider-coffee-roaster/products/` + product.id + "/" + formatString(product.name) }
-                key={product.id}
-                className="product-link"
-              >
-                <div className="product-card">
-                  <div className="product-image-gridview-container">
-                    <DynamicImage className="product-image-gridview" imageUrl={product.imageUrl} alt={product.name} />
+          <div className="products-container">
+            <div className="products-grid">
+              {filteredProducts.map((product) => (
+                <Link
+                  id="product-card-all-products-link"
+                  to={`/rider-coffee-roaster/products/` + product.id + "/" + formatString(product.name) }
+                  key={product.id}
+                  className="product-link"
+                >
+                  <div className="product-card">
+                    <div className="product-image-gridview-container">
+                      <DynamicImage className="product-image-gridview" imageUrl={product.imageUrl} alt={product.name} />
+                    </div>
+                    <div className="product-details">
+                      <h3 className="product-name">{product.name}</h3>
+                      <p className="product-price">{product.price}</p>
+                    </div>
                   </div>
-                  <div className="product-details">
-                    <h3 className="product-name">{product.name}</h3>
-                    <p className="product-price">{product.price}</p>
-                  </div>
-                </div>
-                <br />
-                <br />
-                <br />
-                <br />
-              </Link>
-            ))}
+                </Link>
+              ))}
+            </div>
           </div>
-          <div className="black-bar-bottom"></div>
         </div>
+        <div className="black-bar-bottom"></div>
       </div>
     </div>
   );

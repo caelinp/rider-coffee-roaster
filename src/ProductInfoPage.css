@@ -188,14 +188,14 @@ p {
 
 #right_arrow {
   background-image: url("./img/right_arrow.png");
-  background-size: contain; /* Scale the image to fit while maintaining aspect ratio */
-  background-repeat: no-repeat; /* Prevent image repetition */
-  background-position: center; /* Center the image horizontally and vertically */
-  width: 20px; /* Set the width and height of the button */
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center; 
+  width: 20px; 
   height: 20px;
-  border: none; /* Remove the default button border */
-  font-size: 16px; /* Set font size */
-  cursor: pointer; /* Add a pointer cursor on hover */
+  border: none; 
+  font-size: 16px;
+  cursor: pointer; 
 }
 
 .image-dot.active {
@@ -311,7 +311,7 @@ p {
   margin-bottom: 1rem;
 }
 
-#add-to-cart-button:not([disabled]):hover, .quantity-control:hover {
+#add-to-cart-button:not([disabled]):hover, .quantity-control:hover, .option-input-field:hover, .option-input-field:active {
   background:rgb(29, 17, 11);
   transform: scale(1.05);
 }
@@ -319,6 +319,10 @@ p {
 #add-to-cart-button:not([disabled]):active {
   background:rgb(57, 33, 22);
   transform: scale(1.07);
+}
+
+.image-arrow-left:hover, .image-arrow-right:hover {
+  transform: scale(1.2);
 }
 
 #subscribe-checkbox {
