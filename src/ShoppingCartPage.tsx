@@ -251,7 +251,7 @@ ${cartItemsWithProductInfo
   })
   .join('\n')}
 
-Order Total: ${totalPrice}
+Order Total:$ ${totalPrice}
 
 Thank you and best regards
 
