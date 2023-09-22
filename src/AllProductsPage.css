@@ -72,7 +72,6 @@ body, html {
   border-radius: 10px;
   flex-grow: 1;
   margin-bottom: 100px;
-  
 }
 
 .products-grid {
@@ -95,7 +94,6 @@ body, html {
   align-items: center;
   height: fit-content;
   width: 90%;
-  border: 3px solid #FFF; 
   border-radius: 10px;
   overflow: hidden;
 }

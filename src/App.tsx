@@ -1,5 +1,5 @@
 /* App.tsx */
-import React, { useState } from 'react';
+import React, { useState} from 'react';
 import './App.css';
 import './LandingPage.css';
 import { Modal, List, ListItem, ListItemText } from '@mui/material';

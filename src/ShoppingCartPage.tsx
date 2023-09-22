@@ -493,54 +493,57 @@ Thank you and best regards
   
   return (
     <div className="cart-page">
-    <div className="cart-content-and-bottom">
-      <div className="cart-content">
-        <div className="cart-summary">
-          <div className="cart-header">
-            <h1>Your Cart</h1>
-            <button className="close-button" onClick={handleCloseCart}></button>
+    <div className="cart-page-content-and-bottom">
+      <div className="cart-page-content">
+        <div className="cart-content">
+          <div className="cart-summary">
+            <div className="cart-header">
+              <h1>Your Cart</h1>
+              <button className="close-button" onClick={handleCloseCart}></button>
+            </div>
+            <div className="cart-item-count-and-clear">
+              <p className="cart-item-count">
+                {cartItemsWithProductInfo.length + (cartItemsWithProductInfo.length === 1 ? " Item in Cart" : " Items in Cart")} 
+              </p>
+              <button 
+                className="clear-cart-button" onClick={handleClearCart} 
+                disabled={cartItemsWithProductInfo.length === 0}
+              >
+                Clear Cart
+              </button>
+            </div>
           </div>
-          <div className="cart-item-count-and-clear">
-            <p className="cart-item-count">
-              {cartItemsWithProductInfo.length + (cartItemsWithProductInfo.length === 1 ? " Item in Cart" : " Items in Cart")} 
-            </p>
-            <button 
-              className="clear-cart-button" onClick={handleClearCart} 
-              disabled={cartItemsWithProductInfo.length === 0}
+          <div className="order-items-container">
+            {renderOrderItems()}
+          </div>
+          <div className="cart-summary">
+            <div className="cart-total">
+              <label>{"Total: "}</label>
+              <p>${totalPrice.toFixed(2)}</p>
+            </div>
+            <button
+                className="checkout-button"
+                onClick={handleCheckout}
+                disabled={!isCheckoutEnabled} // Disable the button when the cart is empty
+              >
+                Proceed to checkout
+              </button>
+            </div>
+            {/* Render the email form */}
+            {renderEmailForm()}
+            {isEmailFormVisible && (
+              <button 
+                className="submit-order-button"           
+                onClick={handleSubmitOrder}
+                style={{ backgroundColor: !isCheckoutEnabled || !isFormComplete ? 'grey' : '' }}
+                disabled={!isCheckoutEnabled || !isFormComplete} // Disable the button if the form is not complete
             >
-              Clear Cart
-            </button>
+                Submit Order
+              </button>
+            )}
           </div>
         </div>
-        <div className="order-items-container">
-          {renderOrderItems()}
-        </div>
-        <div className="cart-summary">
-          <div className="cart-total">
-            <label>{"Total: "}</label>
-            <p>${totalPrice.toFixed(2)}</p>
-          </div>
-          <button
-              className="checkout-button"
-              onClick={handleCheckout}
-              disabled={!isCheckoutEnabled} // Disable the button when the cart is empty
-            >
-              Proceed to checkout
-            </button>
-          </div>
-          {/* Render the email form */}
-          {renderEmailForm()}
-          {isEmailFormVisible && (
-            <button 
-              className="submit-order-button"           
-              onClick={handleSubmitOrder}
-              style={{ backgroundColor: !isCheckoutEnabled || !isFormComplete ? 'grey' : '' }}
-              disabled={!isCheckoutEnabled || !isFormComplete} // Disable the button if the form is not complete
-          >
-              Submit Order
-            </button>
-          )}
-      </div>
+      <div className="black-bar-bottom"></div>
     </div>
   </div>
 );

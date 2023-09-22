@@ -52,7 +52,7 @@ body {
   top: 0;
   bottom: 0;
   z-index: 1;
-  border: 1px solid #AFAFAF;
+  border-top: 1px solid #AFAFAF;
   border-radius: 5px;
 }
 
@@ -63,14 +63,13 @@ body {
   top: 0;
   left: 0;
   right: 0;
-  z-index: 1000;
+  z-index: 1001;
   border-radius: 5px;
   border: 1px solid #AFAFAF;
 }
 
 .black-bar-bottom {
   border-radius: 5px;
-  border: 1px solid #AFAFAF;
   border-top: none;
   border-top-left-radius: 0;
   border-top-right-radius: 0;
@@ -90,6 +89,10 @@ body {
   display: flex;
   align-items: center;
   padding-left: 10px;
+  border-left: 1px solid #AFAFAF;
+  border-radius: 5px;
+  z-index: 1000;
+
 }
 
 .black-bar-side.right {
@@ -97,6 +100,9 @@ body {
   display: flex;
   align-items: center;
   padding-right: 10px;
+  border-right: 1px solid #AFAFAF;
+  border-radius: 5px;
+  z-index: 1000;
 }
 
 .black-bar-bottom {
@@ -109,7 +115,7 @@ body {
 
 .menu-button {
   cursor: pointer;
-  z-index: 1000;
+  z-index: 1002;
   font-size: 48px;
   margin-left: 10px;
   position: absolute;
@@ -125,7 +131,7 @@ body {
 
 #shopping-cart-button {
   cursor: pointer;
-  z-index: 1000;
+  z-index: 1002;
   margin-left: 10px;
   position: absolute;
   color: #AFAFAF;
@@ -254,13 +260,25 @@ input[type="number"] {
   --black-bar-top-height: 70px;
 }
 
+button {
+  margin-top: 20px;
+  margin-bottom: 80px;
+  padding: 10px 20px;
+  background-color: black;
+  color: white;
+  border: none;
+  cursor: pointer;
+  font-size: 20px;
+  border-radius: 20px;
+}
+
 @media (max-width: 768px) {
   #shopping-cart-button {
     right: 20px;
   }
 }
 
-@media (max-width: 400px) {
+@media (max-width: 500px) {
   :root {
     --black-bar-width: 0;
   }

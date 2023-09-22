@@ -5,46 +5,55 @@ body, html {
 }
 
 .contact-us-header {
+  max-width: 100%;
   font-size: 4rem;
   border-bottom: 1px solid black;
+  overflow-wrap: break-word; /* Allow words to break and wrap to the next line */
+  word-wrap: break-word; /* Optional: For older browser compatibility */
 }
 
 .contact-us-page {
   width: 100%;
   height: 100vh;
-  text-align: left;
-  overflow-y: auto;
   display: flex;
-  flex-direction: column;
   justify-content: center;
+  align-items: center;
+  background-size: cover;
+  background-position: center;
+  position: relative;
   background: black;
+  overflow-y: auto;
 }
 
 .contact-us-content-and-bottom {
-  position: relative;
+  position: absolute;
   height: 100vh;
-  width: 100vw;
-  overflow-x: hidden;
+  width: 100%;
 }
 
 .contact-us-content {
-  margin-top: var(--black-bar-top-height);
-  margin-right: var(--black-bar-width);
-  margin-left: var(--black-bar-width);
-  overflow-x: hidden;
-  overflow-y: auto;
-  text-align: left;
+  padding: 5%;
   background-image: url('./img/background-no-logo.png');
-  scrollbar-width: none;
+  margin-left: var(--black-bar-width);
+  margin-right: var(--black-bar-width);
+  margin-top: var(--black-bar-top-height);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  overflow-y: auto;
+  min-height: calc(100vh - var(--black-bar-top-height));
+  overflow-x: hidden;
+
 }
 
 .contact-us-text-content {
-  margin: 5% 10%;
-  padding: 20px;
-  overflow-x: hidden;
+  width: 90%;
+  text-align: left;
   background-image: url('./img/background0-no-logo.jpg');
   border: 1px solid black;
   border-radius: 15px;
+  padding: 5%;
+  overflow-y: auto;
 }
 
 /* Hide Webkit scrollbars (Chrome, Safari, newer versions of Opera) */
@@ -61,139 +70,26 @@ body, html {
 /* Styles for sub-sections within contact-us-content */
 .sub-section {
   margin-bottom: 40px;
+  overflow-wrap: break-word; /* Allow words to break and wrap to the next line */
+  word-wrap: break-word; /* Optional: For older browser compatibility */
 }
 
 .sub-section h2 {
   font-size: 2rem;
   margin-bottom: 10px;
+  overflow-wrap: break-word; /* Allow words to break and wrap to the next line */
+  word-wrap: break-word; /* Optional: For older browser compatibility */
 }
 
 .sub-section p {
   font-size: 1.4rem;
   margin-bottom: 10px;
   line-height: 1.6;
-}
-
-.product-info {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
-.product-image-small {
-  padding: 10px;
-  width: 100px;
-  height: 100px;
-}
-
-.product-table {
-  overflow-x: auto;
-  margin-top: 5rem;
-  border-collapse: collapse;
-  width: 100%;
-  max-width: calc(100vw - 200px);
-}
-
-.product-table th,
-.product-table td {
-  border: 1px solid black;
-  padding: 8px;
-  align-items: center;
-  text-align: center;
-}
-
-
-.product-table th {
-  background-color: black;
-  color: white;
-}
-
-.product-cell {
-  display: flex;
-  align-items: center;
-}
-
-.product-info-small {
-  flex-grow: 1;
-  width: 100%;
-  align-items: center;
-  background: black;
-  color: white;
-}
-
-
-.roast-select {
-  margin-left: 20px;
-  margin-right: 20px;
-  padding: 10px 20px;
-  background-color: black;
-  color: white;
-  border: none;
-  cursor: pointer;
-  font-size: 20px;
-  border-radius: 20px;
-}
-
-.form-field input[type="checkbox"] {
-  flex: 1;
-  margin-right: 10px;
-}
-
-.form-field textarea {
-  resize: vertical;
-}
-
-.total-label {
-  font-weight: bold;
-  font-size: 1.2rem;
-  margin-top: 20px;
-}
-
-button {
-  margin-top: 20px;
-  margin-bottom: 80px;
-  padding: 10px 20px;
-  background-color: black;
-  color: white;
-  border: none;
-  cursor: pointer;
-  font-size: 20px;
-  border-radius: 20px;
-}
-
-.check-box {
-  transform: scale(2); /* Make the checkbox larger */
-  appearance: none; /* Remove default styles */
-  -webkit-appearance: none; /* For older versions of WebKit browsers */
-  background-color: white; /* Set the checkbox color to grey by default */
-  border: 2px solid rgb(0, 0, 0); /* Add a white border to the checkbox */
-  border-radius: 5px; /* Add rounded edges to the checkbox */
-  width: 20px; /* Set a fixed width */
-  height: 20px; /* Set a fixed height */
-  cursor: pointer; /* Add a pointer cursor */
-}
-
-/* Style the checkbox when checked */
-.check-box:checked {
-  background-color: rgb(34, 29, 29); /* Change the background color to black when checked */
-  border: 2px solid black; /* Change the border color to black when checked */
-}
-
-.quantity-input-edit {
-  background-color: black;
-  color: white;
-  border: none;
-  cursor: pointer;
-  font-size: 20px;
-  border-radius: 10px;
-  width: 8vh;
+  overflow-wrap: break-word; /* Allow words to break and wrap to the next line */
+  word-wrap: break-word; /* Optional: For older browser compatibility */
 }
 
 @media (max-width: 768px) {
-  .contact-us-content {
-    margin-left: 15vw;
-    margin-right: 15vw;
-  }
   .contact-us-header {
     font-size: 2.5rem;
   }
@@ -205,10 +101,10 @@ button {
   .sub-section p {
     font-size: 1rem;
   }
-  
-  .form-field label {
-    margin-left: 50px;
-    font-size: 1.2rem;
+}
+
+@media (max-width: 450px) {
+  .contact-us-header {
+    font-size: 2rem;
   }
-  
 }
