@@ -8,6 +8,7 @@
     background: black;
     background-position: center;
     position: relative;
+    overflow-x: hidden;
 }
 
 .name-and-image-container {

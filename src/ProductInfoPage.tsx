@@ -1,5 +1,5 @@
 import React, { useState, useRef, useEffect, useMemo } from 'react';
-import { useParams } from 'react-router-dom';
+import { useParams, useNavigate } from 'react-router-dom';
 import './ProductInfoPage.css';
 import DynamicImage from './DynamicImage';
 import { useDispatch, useSelector } from 'react-redux';
@@ -32,7 +32,7 @@ const ProductInfoPage = () => {
 
   // Set up Redux store access
   const dispatch = useDispatch();
-
+  const navigate = useNavigate(); // Initialize navigate
   
   // Create Memoized selector to get all cart items
   const selectCartItems = useMemo(() => {
@@ -75,7 +75,14 @@ const ProductInfoPage = () => {
   
   // Parse JSON product data to get data for product in question
   const foundProductData = productsData.products.find((product) => product.id === id);
-  
+
+  useEffect(() => {
+    if (!foundProductData) {
+      // Redirect to the homepage if the product data is not found
+      navigate('/rider-coffee-roaster');
+    }
+  }, [foundProductData, navigate]);
+
   const product: Product = {
     id: foundProductData?.id || "",
     name: foundProductData?.productName || "",
@@ -162,6 +169,49 @@ const ProductInfoPage = () => {
       }
     }
   };
+
+  const touchStartX = useRef<number | null>(null);
+
+  const SWIPE_THRESHOLD = 10;
+  
+  const handleImageTouchStart = (e: React.TouchEvent<HTMLImageElement>) => {
+    const touch = e.touches[0];
+    touchStartX.current = touch.clientX;
+  };
+
+  const handleImageTouchMove = (e: React.TouchEvent<HTMLImageElement>) => {
+    if (!touchStartX.current) return;
+    const touch = e.touches[0];
+    const deltaX = touchStartX.current - touch.clientX;
+
+    if (deltaX > SWIPE_THRESHOLD) {
+      handleRightArrowClick();
+      touchStartX.current = null;
+    } else if (deltaX < -SWIPE_THRESHOLD) {
+      handleLeftArrowClick();
+      touchStartX.current = null;
+    }
+  };
+
+  const handleImageTouchEnd = () => {
+    touchStartX.current = null;
+  };
+
+  useEffect(() => {
+    const imageElement = imgRef.current;
+
+    if (imageElement) {
+      imageElement.addEventListener('touchstart', handleImageTouchStart as any);
+      imageElement.addEventListener('touchmove', handleImageTouchMove as any);
+      imageElement.addEventListener('touchend', handleImageTouchEnd as any);
+
+      return () => {
+        imageElement.removeEventListener('touchstart', handleImageTouchStart as any);
+        imageElement.removeEventListener('touchmove', handleImageTouchMove as any);
+        imageElement.removeEventListener('touchend', handleImageTouchEnd as any);
+      };
+    }
+  }, [imgRef]);
 
   // Helper function to render the subscription dropdown
   const renderSubscriptionDropdown = () => {
@@ -287,7 +337,6 @@ const ProductInfoPage = () => {
               </div>
             </div>
           </div>
-
           <div className="product-info-panel">
             <div className="info-field">
               <h2>Description</h2>

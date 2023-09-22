@@ -22,6 +22,7 @@ body, html {
   position: relative;
   background: black;
   overflow-y: auto;
+  overflow-x: hidden;
 }
 
 .featured-products-content-and-bottom {

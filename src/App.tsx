@@ -4,7 +4,7 @@ import './App.css';
 import './LandingPage.css';
 import { Modal, List, ListItem, ListItemText } from '@mui/material';
 import MenuIcon from '@mui/icons-material/Menu';
-import { Link, Routes, Route, useNavigate } from 'react-router-dom';
+import { Link, Routes, Route, useNavigate, Navigate } from 'react-router-dom';
 import LandingPage from './LandingPage';
 import AboutUsPage from './AboutUsPage';
 import ContactUsPage from './ContactUsPage'; // Import the ContactUsPage component
@@ -95,7 +95,8 @@ const App: React.FC = () => {
         <Route path="/rider-coffee-roaster/sample-product" element={<ProductInfoPage />} />
         <Route path="/sample-product" element={<ProductInfoPage />} />
         <Route path="/rider-coffee-roaster/products/:id/:productName" element={<ProductInfoPage />} />
-        <Route path="/products/:id/:productName" element={<ProductInfoPage />} />
+        <Route path="*" element={<Navigate to="/rider-coffee-roaster" replace />} />
+        <Route path="*" element={"/rider-coffee-roaster"} />
       </Routes>
     </div>
   );
