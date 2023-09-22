@@ -79,7 +79,7 @@ const ProductInfoPage = () => {
   useEffect(() => {
     if (!foundProductData) {
       // Redirect to the homepage if the product data is not found
-      navigate('/rider-coffee-roaster');
+      navigate('/');
     }
   }, [foundProductData, navigate]);
 

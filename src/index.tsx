@@ -7,8 +7,8 @@ import './index.css';
 
 const root = createRoot(document.getElementById('root')!);
 root.render(
-    <BrowserRouter>
-      <Provider store={store}> {/* Wrap your App with the Provider */}
+    <BrowserRouter basename="/rider-coffee-roaster">
+      <Provider store={store}>
         <App />
       </Provider>
     </BrowserRouter>

@@ -294,7 +294,7 @@ Thank you and best regards
         <div className="order-item" key={item!.coffeeBagOrderItem!.id || ''}>
           <Link
             id="order-item-product-link"
-            to={`/rider-coffee-roaster/products/` + item!.product.id + "/" + formatString(item!.product.name) }
+            to={`/products/` + item!.product.id + "/" + formatString(item!.product.name) }
             key={item!.product.id}
             className="product-link"
             >

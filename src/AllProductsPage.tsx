@@ -64,7 +64,7 @@ const AllProductsPage = () => {
               {filteredProducts.map((product) => (
                 <Link
                   id="product-card-all-products-link"
-                  to={`/rider-coffee-roaster/products/` + product.id + "/" + formatString(product.name) }
+                  to={`/products/` + product.id + "/" + formatString(product.name) }
                   key={product.id}
                   className="product-card"
                 >

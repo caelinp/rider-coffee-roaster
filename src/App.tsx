@@ -44,29 +44,29 @@ const App: React.FC = () => {
           <br></br>
           <br></br>
           <List className="modal-list">
-            <ListItem className="modal-item" onClick={() => handleItemClick('/rider-coffee-roaster/')}>
+            <ListItem className="modal-item" onClick={() => handleItemClick('/')}>
               <ListItemText className="modal-item-text" primary="Home" />
             </ListItem>
-            <ListItem className="modal-item" onClick={() => handleItemClick('/rider-coffee-roaster/featured-products/')}>
+            <ListItem className="modal-item" onClick={() => handleItemClick('/featured-products/')}>
               <ListItemText className="modal-item-text" primary="Featured" />
             </ListItem>
-            <ListItem className="modal-item" onClick={() => handleItemClick('/rider-coffee-roaster/products/')}>
+            <ListItem className="modal-item" onClick={() => handleItemClick('/products/')}>
               <ListItemText className="modal-item-text" primary="Products" />
             </ListItem>
-            <ListItem className="modal-item" onClick={() => handleItemClick('/rider-coffee-roaster/about-us/')}>
+            <ListItem className="modal-item" onClick={() => handleItemClick('/about-us/')}>
               <ListItemText className="modal-item-text" primary="About Us" />
             </ListItem>
-            <ListItem className="modal-item" onClick={() => handleItemClick('/rider-coffee-roaster/contact-us/')}>
+            <ListItem className="modal-item" onClick={() => handleItemClick('/contact-us/')}>
               <ListItemText className="modal-item-text" primary="Contact Us" />
             </ListItem>
-            <ListItem className="modal-item" id="cart-modal-item" onClick={() => handleItemClick('/rider-coffee-roaster/shopping-cart/')}>
+            <ListItem className="modal-item" id="cart-modal-item" onClick={() => handleItemClick('/shopping-cart/')}>
               <ListItemText className="modal-item-text" primary="Your Cart" />
             </ListItem>
           </List>
         </div>
       </Modal>
       <div className="black-bar-top">
-        <Link to="/rider-coffee-roaster">
+        <Link to="/">
           <img src={logo} alt="Rider Coffee Roaster Logo" className="logo-small" />
         </Link>
       </div>
@@ -76,27 +76,17 @@ const App: React.FC = () => {
       </div>
 
       <div className="black-bar-side right"></div>
-      <Link to="/rider-coffee-roaster/shopping-cart">
+      <Link to="/shopping-cart">
         <img src={shoppingCartIcon} alt="shopping cart button" id="shopping-cart-button" />
       </Link>
       <Routes>
         <Route path="/" element={<LandingPage />} />
-        <Route path="/rider-coffee-roaster" element={<LandingPage />} />
         <Route path="/shopping-cart" element={<ShoppingCartPage/>} />
-        <Route path="/rider-coffee-roaster/shopping-cart" element={<ShoppingCartPage/>} />
-        <Route path="/rider-coffee-roaster/products" element={<AllProductsPage />} /> 
         <Route path="/products" element={<AllProductsPage />} /> 
-        <Route path="/rider-coffee-roaster/about-us" element={<AboutUsPage />} />
         <Route path="/about-us" element={<AboutUsPage />} />
-        <Route path="/rider-coffee-roaster/contact-us" element={<ContactUsPage />} />
         <Route path="/contact-us" element={<ContactUsPage />} />
-        <Route path="/rider-coffee-roaster/featured-products" element={<FeaturedProductsPage />} />
         <Route path="/featured-products" element={<FeaturedProductsPage />} />
-        <Route path="/rider-coffee-roaster/sample-product" element={<ProductInfoPage />} />
-        <Route path="/sample-product" element={<ProductInfoPage />} />
-        <Route path="/rider-coffee-roaster/products/:id/:productName" element={<ProductInfoPage />} />
-        <Route path="*" element={<Navigate to="/rider-coffee-roaster" replace />} />
-        <Route path="*" element={"/rider-coffee-roaster"} />
+        <Route path="*" element={<Navigate to="/" replace />} />
       </Routes>
     </div>
   );

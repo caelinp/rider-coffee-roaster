@@ -43,7 +43,7 @@ const FeaturedProductsPage = () => {
             {featuredProducts.map((product) => (
               <Link
                 id="product-card-featured-products-link"
-                to={`/rider-coffee-roaster/products/` + product.id + "/" + formatString(product.name) }
+                to={`/products/` + product.id + "/" + formatString(product.name) }
                 key={product.id}
                 className="product-card-featured"
               >
