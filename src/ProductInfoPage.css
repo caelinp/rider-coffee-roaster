@@ -316,12 +316,12 @@ p {
 }
 
 #add-to-cart-button:not([disabled]):hover, .quantity-control:hover, .option-input-field:hover, .option-input-field:active {
-  background:rgb(29, 17, 11);
+  background-image: url('./img/brown-leather.png');
   transform: scale(1.05);
 }
 
 #add-to-cart-button:not([disabled]):active {
-  background:rgb(57, 33, 22);
+  background-image: url('./img/brown-leather.png');
   transform: scale(1.07);
 }
 
@@ -341,12 +341,12 @@ p {
   border: 3px solid black;
   cursor: pointer;
   margin: 0 10px;
-  display: flex; /* Make the checkbox container a flex container */
-  justify-content: center; /* Center horizontally */
-  align-items: center; /* Center vertically */
-  /* Adjust line-height and font-size for the checkmark */
+  display: flex;
+  justify-content: center;
+  align-items: center;
   font-size: 1.2rem;
-  line-height: 2rem; /* Should be equal to the height for vertical centering */
+  line-height: 2rem;
+  background: none;
 }
 
 /* Custom checkmark */

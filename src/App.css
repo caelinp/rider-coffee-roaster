@@ -47,7 +47,7 @@ body {
 
 .black-bar-side {
   width: var(--black-bar-width);
-  background-color: black;
+  background-image: url('./img/black-leather.png');
   position: absolute;
   top: 0;
   bottom: 0;
@@ -58,7 +58,7 @@ body {
 
 .black-bar-top {
   height: var(--black-bar-top-height);
-  background-color: black;
+  background-image: url('./img/black-leather.png');
   position: absolute;
   top: 0;
   left: 0;
@@ -107,7 +107,7 @@ body {
 
 .black-bar-bottom {
   height: var(--black-bar-bottom-height);
-  background-color: black;
+  background-image: url('./img/black-leather.png');
   position: absolute;
   width: 100%;
   z-index: 1;
@@ -193,7 +193,7 @@ body {
 
 .modal-content {
   width: 250px;
-  background-color: black;
+  background-image: url('./img/black-leather.png');
   box-shadow: 2px 0px 5px rgba(0, 0, 0, 0.3);
   padding: 20px;
   color: white;
@@ -214,13 +214,13 @@ body {
   color: white;
   padding: 10px;
   transition: background-color 0.3s;
-  background-color: black;
+  background-image: url('./img/black-leather.png');
   cursor: pointer;
 }
 
 .modal-item:hover {
   transform: scale(1.1);
-  background:rgb(29, 17, 11)!important;
+  background-image: url('./img/brown-leather.png')!important;
   z-index: 1000;
 }
 
@@ -264,7 +264,7 @@ button {
   margin-top: 20px;
   margin-bottom: 80px;
   padding: 10px 20px;
-  background-color: black;
+  background-image: url('./img/black-leather.png');
   color: white;
   border: none;
   cursor: pointer;

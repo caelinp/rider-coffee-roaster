@@ -5,7 +5,7 @@ body, html {
 }
 
 .all-products-page {
-  background: black;
+  background-image: url('./img/black-leather.png');
   overflow-y: auto;
   display: flex;
   flex-direction: column;
@@ -50,7 +50,7 @@ body, html {
   position: sticky;
   max-width: 80vw;
   font-size: 1.5rem;
-  background-color: black;
+  background-image: url('./img/black-leather.png');
   color: white;
   border: 1px solid black;
   cursor: pointer;
@@ -63,7 +63,7 @@ body, html {
 
 .search-input:hover, .search-input:active {
   transform: scale(1.05);
-  background:rgb(29, 17, 11);
+  background-image: url('./img/brown-leather.png');
 }
 
 .products-container {
@@ -87,7 +87,7 @@ body, html {
 .product-card {
   text-decoration: none;
   color: inherit;
-  background-color: black;
+  background-image: url('./img/black-leather.png');
   color: white;
   padding: 5%;
   display: flex;
@@ -100,7 +100,7 @@ body, html {
 }
 
 .product-card:hover {
-  background:rgb(29, 17, 11);
+  background-image: url('./img/brown-leather.png');
   transform: scale(1.03) translateY(5px);
 }
 
