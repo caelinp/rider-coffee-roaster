@@ -66,7 +66,7 @@ const App: React.FC = () => {
         </div>
       </Modal>
       <div className="black-bar-top">
-        <Link to="/">
+        <Link to="/rider-coffee-roaster/">
           <img src={logo} alt="Rider Coffee Roaster Logo" className="logo-small" />
         </Link>
       </div>
@@ -81,12 +81,18 @@ const App: React.FC = () => {
       </Link>
       <Routes>
         <Route path="/" element={<LandingPage />} />
+        <Route path="/rider-coffee-roaster" element={<LandingPage />} />
         <Route path="/shopping-cart" element={<ShoppingCartPage/>} />
         <Route path="/products" element={<AllProductsPage />} /> 
+        <Route path="/rider-coffee-roaster/about-us" element={<AboutUsPage />} />
         <Route path="/about-us" element={<AboutUsPage />} />
+        <Route path="/rider-coffee-roaster/contact-us" element={<ContactUsPage />} />
         <Route path="/contact-us" element={<ContactUsPage />} />
+        <Route path="/rider-coffee-roaster/featured-products" element={<FeaturedProductsPage />} />
         <Route path="/featured-products" element={<FeaturedProductsPage />} />
-        <Route path="*" element={<Navigate to="/" replace />} />
+        <Route path="/rider-coffee-roaster/sample-product" element={<ProductInfoPage />} />
+        <Route path="/products/:id/:productName" element={<ProductInfoPage />} />
+        <Route path="*" element={<Navigate to="/rider-coffee-roaster" replace />} />
       </Routes>
     </div>
   );

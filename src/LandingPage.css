@@ -31,8 +31,6 @@ body, html {
   position: relative;
   overflow-y: auto;
   min-height: calc(100vh - var(--black-bar-top-height));
-  border-radius: 10px;
-  border: 4px solid #AFAFAF;
 
 }
 
