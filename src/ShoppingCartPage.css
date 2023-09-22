@@ -319,6 +319,15 @@ input[type="number"] {
     transform: scale(1.05);
 }
 
+.order-item-product-name {
+    text-decoration: none;
+}
+
+#order-item-product-link {
+    text-decoration: none;
+    color: black;
+}
+
 @media (max-width: 1150px) {
     #order-item-product-name-and-image-container {
         margin: 20px 0 20px 0;

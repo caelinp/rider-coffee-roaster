@@ -39,31 +39,24 @@ const FeaturedProductsPage = () => {
       <div className="featured-products-content-and-bottom">
         <div className="featured-products-content">
           <h1 className="featured-header">Featured Roasts</h1>
-          {featuredProducts.map((product) => (
-            <div className="link-container" key={product.id}>
+          <div className="featured-products-container">
+            {featuredProducts.map((product) => (
               <Link
                 id="product-card-featured-products-link"
                 to={`/rider-coffee-roaster/products/` + product.id + "/" + formatString(product.name) }
                 key={product.id}
-                className="product-link"
+                className="product-card-featured"
               >
-                <div className="product-card-featured" key={product.id}>
-                  <div className="product-image-featured-container">
-                    <DynamicImage className="product-image-featured" imageUrl={product.imageUrl} alt={product.name} />
-                  </div>
-                  <div className="product-details-featured">
-                    <h2 className="product-name-featured">{product.name}</h2>
-                    <p className="product-roast-featured">{product.roast.toLowerCase()}</p>
-                    <p className="product-notes-featured">notes: {product.notes}</p>
-                    <p className="product-farm-featured">{product.farm}</p>
-                  </div>
+                <DynamicImage className="product-image-featured" imageUrl={product.imageUrl} alt={product.name} />
+                <div className="product-details-featured">
+                  <h2 className="product-name-featured">{product.name}</h2>
+                  <p className="product-roast-featured">{product.roast.toLowerCase()}</p>
+                  <p className="product-notes-featured">notes: {product.notes}</p>
+                  <p className="product-farm-featured">{product.farm}</p>
                 </div>
-                <br></br>
-                <br></br>
-                <br></br>
               </Link>
-            </div>
-          ))}
+            ))}
+          </div>
         </div>
         <div className="black-bar-bottom"></div>
       </div>

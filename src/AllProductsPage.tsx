@@ -68,9 +68,7 @@ const AllProductsPage = () => {
                   key={product.id}
                   className="product-card"
                 >
-                  <div className="product-image-gridview-container">
-                    <DynamicImage className="product-image-gridview" imageUrl={product.imageUrl} alt={product.name} />
-                  </div>
+                  <DynamicImage className="product-image-gridview" imageUrl={product.imageUrl} alt={product.name} />
                   <div className="product-details">
                     <h3 className="product-name">{product.name}</h3>
                     <p className="product-price">{product.price}</p>
