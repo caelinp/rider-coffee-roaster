@@ -57,7 +57,7 @@ body, html {
   font-size: 1.5rem;
   border-radius: 15px;
   padding: 7px;
-  border: 10px solid black;
+  border: 5px solid black;
   border-radius: 20px;
 }
 
@@ -132,13 +132,13 @@ body, html {
   white-space: normal; /* Prevent the text from wrapping to the next line */
   text-overflow: hidden; /* Add ellipsis (...) if the text overflows vertically */
   overflow: hidden; /* Hide overflowing text */
-  border: 1px solid #FFF;
+  border-bottom: 1px solid #FFF;
   border-radius: 3px;
 }
 
 .product-price {
   font-size: 0.9rem;
-  border: 1px solid #FFF;
+  border-bottom: 1px solid #FFF;
   border-radius: 3px;
 }
 

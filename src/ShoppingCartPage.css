@@ -264,16 +264,18 @@ input[type="number"] {
   
 .form-field {
   display: flex;
-  align-items: center; /* Align labels and inputs on the same line */
+  align-items: center;
   margin: 20px
 }
 
 .form-field label {
   width: 15ch;
+  max-width: 100%;
   text-align: left;
   font-weight: bold;
   font-size: 1.2rem;
   justify-content: left;
+  word-wrap: break-word;
 }
 
 .form-field-input {
@@ -281,8 +283,7 @@ input[type="number"] {
   display: flex;
   flex-direction: column;
   align-items: left; 
-  width: 100%;
-  margin-right: 10px;
+  margin-right: 20px;
 }
 
 .form-field-input input {
@@ -291,6 +292,8 @@ input[type="number"] {
     padding: 10px;
     border-radius: 5px;
     width: 100%;
+    flex: 1;
+
 }
 
 .form-field input,
@@ -452,7 +455,6 @@ input[type="number"] {
 
     .form-field-input{
         width: 100%;
-        margin: 0;
     }
     .form-field-input input{
         width: 100%;
@@ -480,6 +482,8 @@ input[type="number"] {
 
     .form-field {
         flex-direction: column;
+        align-items: flex-start; 
+        margin: 30px;
     }
-    
+
 }

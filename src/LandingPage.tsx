@@ -3,7 +3,7 @@ import './LandingPage.css';
 import './App.css';
 import { Link } from 'react-router-dom'; // Import Link
 
-import logo from './img/icon-with-text.png';
+import logo from './img/metal-logo.gif';
 
 const LandingPage: React.FC = () => {
   useEffect(() => {

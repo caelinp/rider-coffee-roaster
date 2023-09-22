@@ -371,6 +371,7 @@ p {
 
 #subscription-dropdown {
   font-size: 1.3rem;
+  margin: 0;
 }
 
 @media (max-width: 1200px) {

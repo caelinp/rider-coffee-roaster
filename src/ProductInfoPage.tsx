@@ -172,7 +172,7 @@ const ProductInfoPage = () => {
 
   const touchStartX = useRef<number | null>(null);
 
-  const SWIPE_THRESHOLD = 10;
+  const SWIPE_THRESHOLD = 20;
   
   const handleImageTouchStart = (e: React.TouchEvent<HTMLImageElement>) => {
     const touch = e.touches[0];
