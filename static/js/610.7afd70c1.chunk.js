@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkrider_coffee_roaster=self.webpackChunkrider_coffee_roaster||[]).push([[610],{9610:function(e,r,a){e.exports=a.p+"static/media/metal-logo.73a0906bce4b6aef0542.png"}}]);
