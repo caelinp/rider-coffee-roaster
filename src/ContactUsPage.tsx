@@ -8,10 +8,7 @@ const ContactUsPage: React.FC = () => {
       <div className="contact-us-content-and-bottom">
         <div className="contact-us-content">
           <div className="contact-us-text-content">
-
             <h1 className="contact-us-header">Contact Us</h1>
-            <br></br>
-            <br></br>
             <div className="sub-section">
               <h2>Delivery Policy</h2>
               <p>We deliver to customers in Greater Vancouver every Friday.</p>
@@ -23,8 +20,8 @@ const ContactUsPage: React.FC = () => {
               <p>We're excited to work with you!</p>
             </div>
           </div>
-          </div>
-          <div className="black-bar-bottom"></div>
+        </div>
+        <div className="black-bar-bottom"></div>
       </div>
     </div>
   );

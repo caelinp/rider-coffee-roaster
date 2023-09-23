@@ -66,6 +66,9 @@ body {
   z-index: 1001;
   border-radius: 5px;
   border: 1px solid #AFAFAF;
+  display: flex; /* Add flexbox container */
+  justify-content: center; /* Center horizontally */
+  align-items: center; /* Center vertically */
 }
 
 .black-bar-bottom {
@@ -73,16 +76,13 @@ body {
   border-top: none;
   border-top-left-radius: 0;
   border-top-right-radius: 0;
-
 }
 
 .logo-small {
   display: block; /* Ensure the image is treated as a block element */
-  height: 100%;
+  height: var(--black-bar-top-height);
   width: auto;
-  margin: 0 auto; /* Center the image horizontally using margin */
 }
-
 
 .black-bar-side.left {
   left: 0;
