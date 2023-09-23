@@ -318,8 +318,9 @@ input[type="number"] {
     padding: 0 5%;
 }
 
-.clear-cart-button:disabled, .checkout-button:disabled {
+.clear-cart-button:disabled, .checkout-button:disabled, .submit-order-button:disabled {
     background:grey;
+    cursor: not-allowed;
 }
 
 .clear-cart-button:not([disabled]):hover, .checkout-button:not([disabled]):hover, .submit-order-button:not([disabled]):hover {

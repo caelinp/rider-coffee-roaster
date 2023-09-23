@@ -535,7 +535,6 @@ Thank you and best regards
               <button 
                 className="submit-order-button"           
                 onClick={handleSubmitOrder}
-                style={{ backgroundColor: !isCheckoutEnabled || !isFormComplete ? 'grey' : '' }}
                 disabled={!isCheckoutEnabled || !isFormComplete} // Disable the button if the form is not complete
             >
                 Submit Order

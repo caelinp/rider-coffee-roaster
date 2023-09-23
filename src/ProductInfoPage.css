@@ -320,6 +320,12 @@ p {
   transform: scale(1.05);
 }
 
+#add-to-cart-button:disabled {
+  background: grey;
+  cursor: not-allowed;
+
+}
+
 #add-to-cart-button:not([disabled]):active {
   background-image: url('./img/brown-leather.png');
   transform: scale(1.07);

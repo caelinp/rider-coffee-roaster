@@ -328,7 +328,6 @@ const ProductInfoPage = () => {
                 <button
                   id="add-to-cart-button"
                   disabled={quantity < 1}
-                  style={{ backgroundColor: quantity < 1 ? 'grey' : '' }}
                   onClick={()=>(handleAddItem(new CoffeeBagItem("0", product.id, quantity, selectedGrindSize, selectedWeight, selectedSubscriptionFrequency)))
                   }
                 >
