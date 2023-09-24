@@ -77,6 +77,7 @@
 }
 
 .close-button {
+    background: none;
     background-image: url("./img/remove-item.png");
     background-size: cover;
     color: white;
@@ -136,7 +137,7 @@ input[type="number"] {
 }
 
 .remove-button {
-    background-color: none;
+    background: none;
     background-image: url("./img/remove-item.png");
     background-size: cover;
     cursor: pointer;
