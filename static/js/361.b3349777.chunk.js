@@ -1,1 +1,0 @@
-"use strict";(self.webpackChunkrider_coffee_roaster=self.webpackChunkrider_coffee_roaster||[]).push([[361],{1361:function(e,r,a){e.exports=a.p+"static/media/black-leather.a78e7cc5996f9a632b55.png"}}]);

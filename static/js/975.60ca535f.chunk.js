@@ -1,1 +1,0 @@
-"use strict";(self.webpackChunkrider_coffee_roaster=self.webpackChunkrider_coffee_roaster||[]).push([[975],{3975:function(e,r,o){e.exports=o.p+"static/media/background0-no-logo.9224f435d3807ad84748.png"}}]);
