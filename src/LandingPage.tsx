@@ -23,8 +23,15 @@ const LandingPage: React.FC = () => {
       }
     }, 1000); // Adjust the delay as needed
 
+    const missionTimeout = setTimeout(() => {
+      const missionElement = document.querySelector(`.missions`);
+      if (missionElement) {
+        missionElement.classList.add('show');
+      }
+    }, 1100);
+
     // Delay before showing the missions
-    const missionDelays = [1500, 2500, 3500, 4500]; // Adjust the delays as needed
+    const missionDelays = [1500, 2500, 3000, 4000]; // Adjust the delays as needed
     for (let i = 0; i < missionDelays.length; i++) {
       const missionTimeout = setTimeout(() => {
         const missionElement = document.querySelector(`.mission${i}`);
@@ -40,7 +47,7 @@ const LandingPage: React.FC = () => {
       if (enterButton) {
         enterButton.classList.add('show');
       }
-    }, 5000); // Adjust the delay as needed
+    }, 4800); // Adjust the delay as needed
 
     return () => {
       clearTimeout(logoTimeout);

@@ -51,7 +51,7 @@ const ProductInfoPage = () => {
 
   const handleAddItem = (item: CoffeeBagItem) => {
     // Get the shopping cart button element by its id
-    const cartButton = document.getElementById('shopping-cart-button');
+    const cartButton = document.getElementById('shopping-cart-button-container');
   
     if (cartButton) {
       // Apply the scaling up effect by adding the CSS class

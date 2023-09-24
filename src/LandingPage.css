@@ -60,7 +60,7 @@ body, html {
 
 .mantra {
   font-style: italic;
-  font-size: 3rem;
+  font-size: 2rem;
   margin-top: 0px;
   margin-bottom: 30px;
 }
@@ -70,6 +70,9 @@ body, html {
   border-radius: 10px;
   background-color: white;
   background-image: url('./img/background0-no-logo.png');
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 1s, transform 1s;
 }
 
 .mission0,
@@ -92,7 +95,8 @@ body, html {
 .mission1.show,
 .mission2.show,
 .mission3.show,
-.mission4.show {
+.mission4.show,
+.missions.show {
   opacity: 1;
   transform: translateY(0);
 }
@@ -111,14 +115,14 @@ body, html {
   border: none;
   cursor: pointer;
   font-size: 2rem;
-  border-radius: 20px;
+  transition: ease-in-out 0.2s;
+  border-radius: 15px;
 }
 
 .enter-button:hover {
   background-color: #1e150f;
   background-image: url('./img/brown-leather.png');
   transform: scale(1.1);
-  transition: transform 0s;
 }
 
 /* Hide the scrollbar for Firefox */

@@ -128,16 +128,15 @@ body {
   max-width: calc(var(--black-bar-top-height) - 15px);
 }
 
-.menu-button:hover, .logo-small:hover, #shopping-cart-button:hover {
+.menu-button:hover, .logo-small:hover, #shopping-cart-button-container:hover {
   transform: scale(1.05);
 }
 
-#shopping-cart-button {
+#shopping-cart-button-container {
   cursor: pointer;
   z-index: 1002;
   margin-left: 10px;
   position: absolute;
-  color: #AFAFAF;
   top: 7px;
   right: 30px;
   height: calc(var(--black-bar-top-height) - 16px);
@@ -145,13 +144,36 @@ body {
   transition: 0.2s ease-in-out;
 }
 
+.cart-badge {
+  position: absolute;
+  top: 0;
+  right: 38px;
+  background-color: rgb(77, 12, 12);
+  color: white;
+  border-radius: 10px;
+  width: auto;
+  padding: 0 5px;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  font-size: 1rem;
+  font-family: 'Montserrat Alternates', sans-serif;
+}
+
+
+#shopping-cart-button {
+  height: 100%; /* Ensure the img takes the full height of the container */
+  width: auto;
+}
+
+
 /* CSS class for scaling up */
-#shopping-cart-button.scaling-up {
+#shopping-cart-button-container.scaling-up {
   transform: scale(1.2);
 }
 
 /* CSS class for scaling down */
-#shopping-cart-button.scaling-down {
+#shopping-cart-button-container.scaling-down {
   transform: scale(1);
 }
 
@@ -210,23 +232,23 @@ body {
 
 .MuiTypography-root {
   font-size: 1.5rem !important;
-  font-family: 'PlayFair Display SC', serif !important;
   font-family: 'Montserrat Alternates', sans-serif !important;
 }
 
 .modal-item {
   color: white;
   padding: 10px;
-  transition: background-color 0.3s;
   background-color: black;  
   background-image: url('./img/black-leather.png');
   cursor: pointer;
+  transition: background-image 0.2s, background-color 0.2s, ease-in-out 0.2s, transform 0.2s;
+  transform: scale(1);
 }
 
 .modal-item:hover {
   transform: scale(1.1);
-  background-image: url('./img/brown-leather.png')!important;
   background-color: #1e150f!important;
+  background-image: url('./img/brown-leather.png')!important;
   z-index: 1000;
 }
 
@@ -280,7 +302,7 @@ button {
 }
 
 @media (max-width: 768px) {
-  #shopping-cart-button {
+  #shopping-cart-button-container {
     right: 20px;
   }
 }

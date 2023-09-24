@@ -1,10 +1,11 @@
 /* App.tsx */
-import React, { useState} from 'react';
+import React, { useMemo, useState} from 'react';
 import './App.css';
 import './LandingPage.css';
 import { Modal, List, ListItem, ListItemText } from '@mui/material';
 import MenuIcon from '@mui/icons-material/Menu';
 import { Link, Routes, Route, useNavigate, Navigate } from 'react-router-dom';
+import { useSelector } from 'react-redux';
 import LandingPage from './LandingPage';
 import AboutUsPage from './AboutUsPage';
 import ContactUsPage from './ContactUsPage'; // Import the ContactUsPage component
@@ -14,6 +15,17 @@ import ProductInfoPage from './ProductInfoPage'; // Import the ProductInfoPage c
 import ShoppingCartPage from './ShoppingCartPage';
 import logo from "./img/icon-light-grey.png";
 import shoppingCartIcon from "./img/shopping-cart.png";
+import { CartState } from './CartSlice';
+
+const CartBadge: React.FC<{ count: number }> = ({ count }) => {
+  // Check if the count is greater than 1000
+  const displayCount = count > 1000 ? '1000+' : count.toString();
+
+  if (count > 0) {
+    return <div className="cart-badge">{displayCount}</div>;
+  }
+  return null;
+};
 
 const App: React.FC = () => {
   const [modalOpen, setModalOpen] = useState(false);
@@ -32,6 +44,17 @@ const App: React.FC = () => {
     navigate(newPath);
   };
 
+  // Use the useSelector hook to get the cart items from the Redux store
+  const cartItems = useSelector((state: { cart: CartState }) => {
+    return JSON.parse(state.cart.items);
+  });
+
+  // Calculate the number of cart items
+  const numberCartItems = useMemo(() => {
+    // Use reduce to sum the quantity field of each item
+    return cartItems.reduce((total: number, item: any) => total + item.quantity, 0);
+  }, [cartItems]); // Re-calculate when cartItems changes
+  
   return (
     <div className="App">
       <Modal
@@ -76,9 +99,12 @@ const App: React.FC = () => {
       </div>
 
       <div className="black-bar-side right"></div>
-      <Link to="/shopping-cart">
-        <img src={shoppingCartIcon} alt="shopping cart button" id="shopping-cart-button" />
-      </Link>
+      <div className="shopping-cart-button-container" id="shopping-cart-button-container">
+        <Link to="/shopping-cart">
+          <img src={shoppingCartIcon} alt="shopping cart button" id="shopping-cart-button" />
+        </Link>
+        <CartBadge count={numberCartItems} />
+      </div>
       <Routes>
         <Route path="/" element={<LandingPage />} />
         <Route path="/shopping-cart" element={<ShoppingCartPage/>} />
