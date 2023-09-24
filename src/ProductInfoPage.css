@@ -11,6 +11,7 @@ body, html {
   display: flex;
   justify-content: center;
   align-items: center;
+  background-color: black;  
   background-image: url('./img/black-leather.png');
   overflow-y: auto;
   overflow-x: hidden;
@@ -30,6 +31,7 @@ body, html {
   gap: 2rem;
   overflow-y: auto;
   overflow-x: hidden;
+  background-color: #c6bdb4;
   background-image: url('./img/background-no-logo.png');
 }
 
@@ -49,6 +51,7 @@ body, html {
   padding: 20px;
   width: 90%;
   height: fit-content;
+  background-color: white;
   background-image: url('./img/background0-no-logo.png');
 }
 
@@ -71,6 +74,7 @@ body, html {
   margin-top: 5rem;
   padding: 20px;
   width: 90%;
+  background-color: white;
   background-image: url('./img/background0-no-logo.png');
   margin-bottom: 5rem;
   display: flex;
@@ -239,6 +243,7 @@ p {
 
 .quantity-control {
   padding: 3px 10px;
+  background-color: black;  
   background-image: url('./img/black-leather.png');
   color: white;
   border: none;
@@ -269,7 +274,8 @@ p {
   margin-left: 1rem;
   text-align: right;
   font-family: 'Montserrat Alternates', sans-serif !important;
-  overflow: auto;
+  word-wrap: break-word;
+  overflow-wrap: break-word; /* Allow words to break and wrap to the next line */
 }
 
 /* Hide the scrollbar for Firefox */
@@ -291,6 +297,7 @@ p {
   margin-left: 20px;
   margin-right: 20px;
   padding: 3px 10px;
+  background-color: black;  
   background-image: url('./img/black-leather.png');
   color: white;
   border: none;
@@ -316,17 +323,19 @@ p {
 }
 
 #add-to-cart-button:not([disabled]):hover, .quantity-control:hover, .option-input-field:hover, .option-input-field:active {
+  background-color: #1e150f;
   background-image: url('./img/brown-leather.png');
   transform: scale(1.05);
 }
 
 #add-to-cart-button:disabled {
-  background: grey;
+  background-color: grey;
   cursor: not-allowed;
 
 }
 
 #add-to-cart-button:not([disabled]):active {
+  background-color: #1e150f;
   background-image: url('./img/brown-leather.png');
   transform: scale(1.07);
 }
@@ -339,7 +348,6 @@ p {
   width: 2rem;
   height: 2rem;
   border-radius: 10px;
-  background-color: white;
   appearance: none;
   -webkit-appearance: none;
   -moz-appearance: none;

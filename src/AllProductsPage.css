@@ -5,6 +5,7 @@ body, html {
 }
 
 .all-products-page {
+  background-color: black;  
   background-image: url('./img/black-leather.png');
   overflow-y: auto;
   display: flex;
@@ -21,6 +22,7 @@ body, html {
 }
 
 .all-products-content {
+  background-color: #c6bdb4;
   background-image: url('./img/background-no-logo.png');
   margin-top: var(--black-bar-top-height);
   margin-left: var(--black-bar-width);
@@ -50,6 +52,7 @@ body, html {
   position: sticky;
   max-width: 80vw;
   font-size: 1.5rem;
+  background-color: black;  
   background-image: url('./img/black-leather.png');
   color: white;
   border: 1px solid black;
@@ -63,11 +66,13 @@ body, html {
 
 .search-input:hover, .search-input:active {
   transform: scale(1.05);
+  background-color: #1e150f;
   background-image: url('./img/brown-leather.png');
 }
 
 .products-container {
   margin: 0 15%;
+  background-color: white;
   background-image: url('./img/background0-no-logo.png');
   border: 2px solid black;
   border-radius: 10px;
@@ -87,6 +92,7 @@ body, html {
 .product-card {
   text-decoration: none;
   color: inherit;
+  background-color: black;  
   background-image: url('./img/black-leather.png');
   color: white;
   padding: 5%;
@@ -100,6 +106,7 @@ body, html {
 }
 
 .product-card:hover {
+  background-color: #1e150f;
   background-image: url('./img/brown-leather.png');
   transform: scale(1.03) translateY(5px);
 }
@@ -120,6 +127,7 @@ body, html {
   align-items: center; /* Vertically center the text */
   justify-content: center; /* Horizontally center the text */
   word-wrap: break-word;
+  overflow-wrap: break-word; /* Allow words to break and wrap to the next line */
 }
 
 .product-name {
@@ -160,6 +168,7 @@ body, html {
 .all-products-header  {
   font-size: 4rem;
   word-wrap: break-word;
+  overflow-wrap: break-word; /* Allow words to break and wrap to the next line */
 }
 
 @media (max-width: 768px) {

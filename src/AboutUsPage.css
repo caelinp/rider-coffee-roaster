@@ -12,6 +12,7 @@ body, html {
   background-size: cover;
   background-position: center;
   position: relative;
+  background-color: black;  
   background-image: url('./img/black-leather.png');
   overflow-x: hidden;
   overflow-y: auto;
@@ -25,6 +26,7 @@ body, html {
 
 .about-us-content {
   padding: 5%;
+  background-color: #c6bdb4;
   background-image: url('./img/background-no-logo.png');
   margin-left: var(--black-bar-width);
   margin-right: var(--black-bar-width);
@@ -41,6 +43,7 @@ body, html {
 .about-us-text-content {
   width: 90%;
   text-align: left;
+  background-color: white;
   background-image: url('./img/background0-no-logo.png');
   border: 1px solid black;
   border-radius: 15px;

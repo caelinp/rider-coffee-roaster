@@ -519,7 +519,7 @@ Thank you and best regards
           <div className="cart-summary">
             <div className="cart-total">
               <label>{"Total: "}</label>
-              <p>${totalPrice.toFixed(2)}</p>
+              <p className="cart-total-price-text">${totalPrice.toFixed(2)}</p>
             </div>
             <button
                 className="checkout-button"

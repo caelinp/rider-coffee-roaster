@@ -13,6 +13,7 @@ body, html {
   background-position: center;
   position: relative;
   overflow-x: hidden;
+  background-color: black;
   background-image: url('./img/black-leather.png');
 }
 
@@ -24,6 +25,7 @@ body, html {
 .landing-content {
   padding: 0 10%;
   text-align: center;
+  background-color: #c6bdb4;
   background-image: url('./img/background-no-logo.png');
   margin-top: var(--black-bar-top-height);
   margin-left: var(--black-bar-width);
@@ -31,7 +33,6 @@ body, html {
   position: relative;
   overflow-y: auto;
   min-height: calc(100vh - var(--black-bar-top-height));
-
 }
 
 .logo,
@@ -62,6 +63,13 @@ body, html {
   font-size: 3rem;
   margin-top: 0px;
   margin-bottom: 30px;
+}
+
+.missions {
+  border: 1px solid black;
+  border-radius: 10px;
+  background-color: white;
+  background-image: url('./img/background0-no-logo.png');
 }
 
 .mission0,
@@ -97,6 +105,7 @@ body, html {
   margin-top: 10px;
   margin-bottom: 80px;
   padding: 10px 20px;
+  background-color: black;  
   background-image: url('./img/black-leather.png');
   color: white;
   border: none;
@@ -106,6 +115,7 @@ body, html {
 }
 
 .enter-button:hover {
+  background-color: #1e150f;
   background-image: url('./img/brown-leather.png');
   transform: scale(1.1);
   transition: transform 0s;

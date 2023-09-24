@@ -9,6 +9,7 @@ body, html {
   border-bottom: 1px solid black;
   width: 100%;
   word-wrap: break-word;
+  overflow-wrap: break-word; /* Allow words to break and wrap to the next line */
 }
 
 .featured-products-page {
@@ -20,6 +21,7 @@ body, html {
   background-size: cover;
   background-position: center;
   position: relative;
+  background-color: black;  
   background-image: url('./img/black-leather.png');
   overflow-y: auto;
   overflow-x: hidden;
@@ -33,6 +35,7 @@ body, html {
 
 .featured-products-content {
   padding: 0 10%;
+  background-color: #c6bdb4;
   background-image: url('./img/background-no-logo.png');
   margin-left: var(--black-bar-width);
   margin-right: var(--black-bar-width);
@@ -49,6 +52,7 @@ body, html {
 .product-card-featured {
   max-width: 350px;
   width: 100%;
+  background-color: black;  
   background-image: url('./img/black-leather.png');
   color: white;
   display: flex;
@@ -63,6 +67,7 @@ body, html {
 }
 
 .product-card-featured:hover {
+  background-color: #1e150f;
   background-image: url('./img/brown-leather.png');
   transform: scale(1.05);
 }
