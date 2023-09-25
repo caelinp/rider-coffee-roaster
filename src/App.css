@@ -149,6 +149,7 @@ body {
   top: 0;
   right: 38px;
   background-color: rgb(77, 12, 12);
+  background-image: url('./img/red-leather.png');
   color: white;
   border-radius: 10px;
   width: auto;
