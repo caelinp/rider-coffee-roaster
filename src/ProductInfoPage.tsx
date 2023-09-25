@@ -6,7 +6,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { addCoffeeBagItem, CartState } from './CartSlice'
 import CoffeeBagItem from './OrderItem';
 import { createSelector } from 'reselect'; // Import createSelector
-
+import { useSwipeable } from 'react-swipeable';
 import productsData from './json/products.json'; // Import the JSON file
 
 const DEFAULT_WEIGHT: string = "340g";
@@ -151,6 +151,16 @@ const ProductInfoPage = () => {
     );
   };
 
+  const swipeHandlers = useSwipeable({
+    onSwipedLeft: () => {
+      // Handle left swipe (e.g., show the next image)
+      handleLeftArrowClick();
+    },
+    onSwipedRight: () => {
+      // Handle right swipe (e.g., show the previous image)
+      handleRightArrowClick();
+    },
+  });
   
   const handleImageClick = (e: React.MouseEvent<HTMLImageElement>) => {
     e.preventDefault(); // Prevent the default behavior if needed
@@ -170,48 +180,6 @@ const ProductInfoPage = () => {
     }
   };
 
-  const touchStartX = useRef<number | null>(null);
-
-  const SWIPE_THRESHOLD = 30;
-  
-  const handleImageTouchStart = (e: React.TouchEvent<HTMLImageElement>) => {
-    const touch = e.touches[0];
-    touchStartX.current = touch.clientX;
-  };
-
-  const handleImageTouchMove = (e: React.TouchEvent<HTMLImageElement>) => {
-    if (!touchStartX.current) return;
-    const touch = e.touches[0];
-    const deltaX = touchStartX.current - touch.clientX;
-
-    if (deltaX > SWIPE_THRESHOLD) {
-      handleRightArrowClick();
-      touchStartX.current = null;
-    } else if (deltaX < -SWIPE_THRESHOLD) {
-      handleLeftArrowClick();
-      touchStartX.current = null;
-    }
-  };
-
-  const handleImageTouchEnd = () => {
-    touchStartX.current = null;
-  };
-
-  useEffect(() => {
-    const imageElement = imgRef.current;
-
-    if (imageElement) {
-      imageElement.addEventListener('touchstart', handleImageTouchStart as any);
-      imageElement.addEventListener('touchmove', handleImageTouchMove as any);
-      imageElement.addEventListener('touchend', handleImageTouchEnd as any);
-
-      return () => {
-        imageElement.removeEventListener('touchstart', handleImageTouchStart as any);
-        imageElement.removeEventListener('touchmove', handleImageTouchMove as any);
-        imageElement.removeEventListener('touchend', handleImageTouchEnd as any);
-      };
-    }
-  }, [imgRef]);
 
   // Helper function to render the subscription dropdown
   const renderSubscriptionDropdown = () => {
@@ -242,7 +210,14 @@ const ProductInfoPage = () => {
         <div className="product-info-content">
           <div className="product-info-order-panel">
               <h1 className="product-header">{product.name}</h1>
-            <DynamicImage className="product-main-image" imageUrl={imagesArray[currentImageIndex]} alt={product.name} onClick={handleImageClick} imgRef={imgRef} />
+              <DynamicImage 
+                className="product-main-image" 
+                imageUrl={imagesArray[currentImageIndex]} 
+                alt={product.name} 
+                onClick={handleImageClick} 
+                imgRef={imgRef} 
+                {...swipeHandlers}
+               />
             <div className="image-dots">
               <div className="image-arrow-left" id="left-arrow" onClick={handleLeftArrowClick}></div>
               {Object.keys(product.images).map((key, index) => (

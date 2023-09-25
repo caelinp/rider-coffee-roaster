@@ -47,13 +47,14 @@ const LandingPage: React.FC = () => {
       if (enterButton) {
         enterButton.classList.add('show');
       }
-    }, 4800); // Adjust the delay as needed
+    }, 4500); // Adjust the delay as needed
 
     return () => {
       clearTimeout(logoTimeout);
       clearTimeout(mantraTimeout);
       missionDelays.forEach((delay) => clearTimeout(delay));
       clearTimeout(enterButtonTimeout);
+      clearTimeout(missionTimeout);
     };
   }, []);
 
