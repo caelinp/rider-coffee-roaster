@@ -1,9 +1,9 @@
-import React, { useState, useRef, useEffect, useMemo } from 'react';
+import React, { useState, useRef, useEffect, useMemo, RefObject } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import './ProductInfoPage.css';
 import DynamicImage from './DynamicImage';
 import { useDispatch, useSelector } from 'react-redux';
-import { addCoffeeBagItem, CartState } from './CartSlice'
+import { addCoffeeBagItem, selectCartItems } from './CartSlice'
 import CoffeeBagItem from './OrderItem';
 import { createSelector } from 'reselect'; // Import createSelector
 import { useSwipeable } from 'react-swipeable';
@@ -33,17 +33,9 @@ const ProductInfoPage = () => {
   // Set up Redux store access
   const dispatch = useDispatch();
   const navigate = useNavigate(); // Initialize navigate
-  
-  // Create Memoized selector to get all cart items
-  const selectCartItems = useMemo(() => {
-    return createSelector(
-      (state: { cart: CartState }) => state.cart.items,
-      (items) => JSON.parse(items)
-    );
-  }, []);
 
   // Use the memoized selector function with useSelector
-  const cartItems = useSelector((state: { cart: CartState }) => selectCartItems(state));
+  const cartItems = useSelector(selectCartItems);
 
   useEffect(() => {
     // This code will run whenever cartItems changes
@@ -134,10 +126,8 @@ const ProductInfoPage = () => {
     setTotalPrice(isNaN(calculatedTotalPrice) ? 0 : calculatedTotalPrice);
   }, [quantity, selectedWeight, product.pricing]);
 
-
-
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
-  const imgRef = useRef<HTMLImageElement | null>(null);
+  const dynamicImageRef: RefObject<HTMLImageElement> = useRef(null);
 
   const handleLeftArrowClick = () => {
     setCurrentImageIndex((prevIndex) =>
@@ -150,22 +140,11 @@ const ProductInfoPage = () => {
       prevIndex === imagesArray.length - 1 ? 0 : prevIndex + 1
     );
   };
-
-  const swipeHandlers = useSwipeable({
-    onSwipedLeft: () => {
-      // Handle left swipe (e.g., show the next image)
-      handleLeftArrowClick();
-    },
-    onSwipedRight: () => {
-      // Handle right swipe (e.g., show the previous image)
-      handleRightArrowClick();
-    },
-  });
   
   const handleImageClick = (e: React.MouseEvent<HTMLImageElement>) => {
     e.preventDefault(); // Prevent the default behavior if needed
-    if (imgRef.current) {
-      const imageWidth = imgRef.current.clientWidth;
+    if (dynamicImageRef.current) {
+      const imageWidth = dynamicImageRef.current.clientWidth;
       const relativeClickX = e.nativeEvent.offsetX / imageWidth;
       let num_images: number = imagesArray.length || 0;
       if (relativeClickX < 0.5) {
@@ -179,7 +158,6 @@ const ProductInfoPage = () => {
       }
     }
   };
-
 
   // Helper function to render the subscription dropdown
   const renderSubscriptionDropdown = () => {
@@ -215,8 +193,7 @@ const ProductInfoPage = () => {
                 imageUrl={imagesArray[currentImageIndex]} 
                 alt={product.name} 
                 onClick={handleImageClick} 
-                imgRef={imgRef} 
-                {...swipeHandlers}
+                ref={dynamicImageRef} 
                />
             <div className="image-dots">
               <div className="image-arrow-left" id="left-arrow" onClick={handleLeftArrowClick}></div>

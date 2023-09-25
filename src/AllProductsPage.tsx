@@ -26,10 +26,10 @@ export const formatString = (inputString: string) => {
 const AllProductsPage = () => {
   // Create Product objects based on productsData.products
   const products: Product[] = productsData.products.map((productData, index) => ({
-    id: productData.id || `${index + 1}`,
-    name: productData.productName || `Product ${index + 1}`,
+    id: productData.id || '',
+    name: productData.productName || '',
     imageUrl: productData.images.bagImage || '',
-    price: productData.pricing.size2.price || "99.99"
+    price: productData.pricing.size2.price || ''
   }));
   // State for the search input
   const [searchQuery, setSearchQuery] = useState('');
@@ -52,7 +52,7 @@ const AllProductsPage = () => {
             <h1 className="all-products-header">All Products</h1>
               <input
                 className="search-input" 
-                id = "product-search"
+                id="product-search"
                 type="text"
                 placeholder="Search All Products"
                 value={searchQuery}
@@ -61,20 +61,24 @@ const AllProductsPage = () => {
           </div>
           <div className="products-container">
             <div className="products-grid">
-              {filteredProducts.map((product) => (
-                <Link
-                  id="product-card-all-products-link"
-                  to={`/products/` + product.id + "/" + formatString(product.name) }
-                  key={product.id}
-                  className="product-card"
-                >
-                  <DynamicImage className="product-image-gridview" imageUrl={product.imageUrl} alt={product.name} />
-                  <div className="product-details">
-                    <h3 className="product-name">{product.name}</h3>
-                    <p className="product-price">{product.price}</p>
-                  </div>
-                </Link>
-              ))}
+              {filteredProducts.length === 0 ? (
+                <p className="no-products-found">No products found.</p>
+              ) : (
+                filteredProducts.map((product) => (
+                  <Link
+                    id="product-card-all-products-link"
+                    to={`/products/` + product.id + "/" + formatString(product.name)}
+                    key={product.id}
+                    className="product-card"
+                  >
+                    <DynamicImage className="product-image-gridview" imageUrl={product.imageUrl} alt={product.name} />
+                    <div className="product-details">
+                      <h3 className="product-name">{product.name}</h3>
+                      <p className="product-price">{product.price}</p>
+                    </div>
+                  </Link>
+                ))
+              )}
             </div>
           </div>
         </div>

@@ -4,7 +4,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import { createSelector } from 'reselect';
 import { useDispatch, useSelector } from 'react-redux';
 import productsData from './json/products.json';
-import { updateCoffeeBagItem, removeCoffeeBagItem, clearCart, CartState } from './CartSlice';
+import { updateCoffeeBagItem, removeCoffeeBagItem, clearCart, selectCartItems } from './CartSlice';
 import CoffeeBagOrderItem from './OrderItem';
 import DynamicImage from './DynamicImage';
 import {formatString} from './AllProductsPage';
@@ -39,15 +39,10 @@ const ShoppingCartPage = () => {
 
   const navigate = useNavigate();
   // Create Memoized selector to get all cart items
-  const selectCartItems = useMemo(() => {
-    return createSelector(
-      (state: { cart: CartState }) => state.cart.items,
-      (items) => JSON.parse(items)
-    );
-  }, []);
+
 
   // Use the memoized selector function with useSelector
-  const cartItemsFromStore = useSelector((state: { cart: CartState }) => selectCartItems(state));
+  const cartItemsFromStore = useSelector(selectCartItems);
 
   // Convert the cart items to CoffeeBagOrderItem objects
   // Define your function to calculate coffeeBagOrderItems using arrow function

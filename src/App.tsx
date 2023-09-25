@@ -15,7 +15,7 @@ import ProductInfoPage from './ProductInfoPage'; // Import the ProductInfoPage c
 import ShoppingCartPage from './ShoppingCartPage';
 import logo from "./img/icon-light-grey.png";
 import shoppingCartIcon from "./img/shopping-cart.png";
-import { CartState } from './CartSlice';
+import { selectCartItems } from './CartSlice';
 
 const CartBadge: React.FC<{ count: number }> = ({ count }) => {
   // Check if the count is greater than 1000
@@ -44,17 +44,14 @@ const App: React.FC = () => {
     navigate(newPath);
   };
 
-  // Use the useSelector hook to get the cart items from the Redux store
-  const cartItems = useSelector((state: { cart: CartState }) => {
-    return JSON.parse(state.cart.items);
-  });
+  // Use the selectCartItems selector to get the cart items from the Redux store
+  const cartItems = useSelector(selectCartItems);
 
   // Calculate the number of cart items
   const numberCartItems = useMemo(() => {
     // Use reduce to sum the quantity field of each item
     return cartItems.reduce((total: number, item: any) => total + item.quantity, 0);
   }, [cartItems]); // Re-calculate when cartItems changes
-  
   return (
     <div className="App">
       <Modal

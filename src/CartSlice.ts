@@ -1,5 +1,6 @@
 // CartSlice.ts
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
+import { createSelector } from 'reselect';
 import CoffeeBagOrderItem from './OrderItem';
 
 export interface CartState {
@@ -114,6 +115,14 @@ const cartSlice = createSlice({
     },
   },
 });
+
+const selectCartItemsRaw = (state: { cart: CartState }) => state.cart.items;
+
+export const selectCartItems = createSelector(
+  [selectCartItemsRaw],
+  (items) => JSON.parse(items)
+);
+
 
 export const { removeItem, clearCart, addCoffeeBagItem, removeCoffeeBagItem, updateCoffeeBagItem } = cartSlice.actions;
 
