@@ -86,22 +86,22 @@ const App: React.FC = () => {
         </div>
       </Modal>
       <div className="black-bar-top">
+        <div className="menu-button" onClick={openModal}>
+          <MenuIcon fontSize="large" id="menu-icon" />
+        </div>
         <Link to="/rider-coffee-roaster/">
           <img src={logo} alt="Rider Coffee Roaster Logo" className="logo-small" />
         </Link>
+        <div className="shopping-cart-button-container" id="shopping-cart-button-container">
+          <Link to="/shopping-cart">
+            <img src={shoppingCartIcon} alt="shopping cart button" id="shopping-cart-button" />
+          </Link>
+          <CartBadge count={numberCartItems} />
+        </div>
       </div>
       <div className="black-bar-side left"></div>
-      <div className="menu-button" onClick={openModal}>
-        <MenuIcon fontSize="large" id="menu-icon" />
-      </div>
-
       <div className="black-bar-side right"></div>
-      <div className="shopping-cart-button-container" id="shopping-cart-button-container">
-        <Link to="/shopping-cart">
-          <img src={shoppingCartIcon} alt="shopping cart button" id="shopping-cart-button" />
-        </Link>
-        <CartBadge count={numberCartItems} />
-      </div>
+      
       <Routes>
         <Route path="/" element={<LandingPage />} />
         <Route path="/shopping-cart" element={<ShoppingCartPage/>} />

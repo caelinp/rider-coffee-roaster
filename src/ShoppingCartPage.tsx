@@ -34,21 +34,15 @@ const ShoppingCartPage = () => {
   const [country, setCountry] = useState('');
   const [postalCode, setPostalCode] = useState('');
   const dispatch = useDispatch();
-  // State variable to track if the email is valid
   const [isEmailValid, setIsEmailValid] = useState(true);
 
   const navigate = useNavigate();
-  // Create Memoized selector to get all cart items
 
-
-  // Use the memoized selector function with useSelector
   const cartItemsFromStore = useSelector(selectCartItems);
 
-  // Convert the cart items to CoffeeBagOrderItem objects
-  // Define your function to calculate coffeeBagOrderItems using arrow function
   const generateCoffeeBagOrderItems = (cartItemsFromStore: string[]) => {
     const coffeeBagOrderItems: CoffeeBagOrderItem[] = cartItemsFromStore.map((item: string) => {
-      return CoffeeBagOrderItem.fromObject(item); // Use the appropriate method to convert JSON to CoffeeBagOrderItem
+      return CoffeeBagOrderItem.fromObject(item);
     });
     return coffeeBagOrderItems;
   }
@@ -401,7 +395,7 @@ const emailContent =
       return (
         <form ref={emailFormRef} className="order-form">
           <h1>Order Form</h1>
-          <p id="order-form-instructions">Please fill out all required fields. When you are done, press Submit Order.<br></br><br></br></p>
+          <p id="order-form-instructions">Please fill out all required fields. When you are done, press Submit Order. This will.<br></br><br></br></p>
           <div className="form-field">
             <label>Email *</label>
             <div className="form-field-input">

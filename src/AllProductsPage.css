@@ -91,6 +91,11 @@ body, html {
   justify-items: center;
 }
 
+.no-products-found {
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+}
+
 .product-card {
   text-decoration: none;
   color: inherit;

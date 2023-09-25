@@ -192,7 +192,7 @@ const ProductInfoPage = () => {
         <div className="product-info-content">
           <div className="product-info-order-panel">
               <h1 className="product-header">{product.name}</h1>
-              <div {...swipeHandlers}> {/* Apply swipeable handlers to this div */}
+              <div {...swipeHandlers}>
               <DynamicImage 
                 className="product-main-image" 
                 imageUrl={imagesArray[currentImageIndex]} 

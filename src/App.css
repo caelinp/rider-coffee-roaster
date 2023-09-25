@@ -61,16 +61,16 @@ body {
   height: var(--black-bar-top-height);
   background-color: black;  
   background-image: url('./img/black-leather.png');
-  position: absolute;
+  position: fixed;
   top: 0;
   left: 0;
   right: 0;
   z-index: 1001;
   border-radius: 5px;
   border: 1px solid #AFAFAF;
-  display: flex; /* Add flexbox container */
-  justify-content: center; /* Center horizontally */
-  align-items: center; /* Center vertically */
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
 .black-bar-bottom {
@@ -82,8 +82,9 @@ body {
 
 .logo-small {
   display: block; /* Ensure the image is treated as a block element */
-  height: var(--black-bar-top-height);
+  height: 50px;
   width: auto;
+  position: relative;
 }
 
 .black-bar-side.left {
@@ -120,12 +121,13 @@ body {
   cursor: pointer;
   z-index: 1002;
   font-size: 48px;
-  margin-left: 10px;
-  position: absolute;
+  margin-left: 20px;
   color: #AFAFAF;
-  top: 10px;
-  left: 10px;
-  max-width: calc(var(--black-bar-top-height) - 15px);
+  height: 50px;
+  width: 50px;
+  min-width: 50px;
+  min-height: 50px;
+  position: relative;
 }
 
 .menu-button:hover, .logo-small:hover, #shopping-cart-button-container:hover {
@@ -135,13 +137,12 @@ body {
 #shopping-cart-button-container {
   cursor: pointer;
   z-index: 1002;
-  margin-left: 10px;
-  position: absolute;
-  top: 7px;
-  right: 30px;
-  height: calc(var(--black-bar-top-height) - 16px);
+  margin-right: 20px;
+  margin-bottom: 7px;
+  height: 50px;
   width: auto;
-  transition: 0.2s ease-in-out;
+  transition: 0.1s ease-in-out;
+  position: relative;
 }
 
 .cart-badge {
@@ -157,7 +158,6 @@ body {
   padding: 0 5px;
   display: flex;
   justify-content: flex-end;
-  align-items: center;
   font-size: 1rem;
   font-family: 'Montserrat Alternates', sans-serif;
 }
@@ -171,7 +171,7 @@ body {
 
 /* CSS class for scaling up */
 #shopping-cart-button-container.scaling-up {
-  transform: scale(1.2);
+  transform: scale(1.15);
 }
 
 /* CSS class for scaling down */
@@ -303,14 +303,16 @@ button {
   border-radius: 20px;
 }
 
-@media (max-width: 768px) {
-  #shopping-cart-button-container {
-    right: 20px;
-  }
-}
-
 @media (max-width: 500px) {
   :root {
     --black-bar-width: 0;
+  }
+
+  #shopping-cart-button-container {
+    margin-right: 10px;
+  }
+
+  .menu-button {
+    margin-left: 10px;
   }
 }

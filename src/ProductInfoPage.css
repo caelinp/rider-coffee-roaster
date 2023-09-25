@@ -322,7 +322,9 @@ p {
   border-radius: 15px;
   transform: scale(1);
   transition: ease-in-out 0.2s;
-  
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  max-width: 100%;
 }
 
 #quantity {
@@ -497,7 +499,7 @@ p {
   }
 }
 
-@media (max-width: 500px) {
+@media screen and (max-width: 500px) {
   .product-header {
     font-size: 2rem;
   }
@@ -506,9 +508,17 @@ p {
   }
 }
 
-@media screen and (max-width: 250px) {
+@media screen and (max-width: 270px) {
 
   #quantity {
     width: 40px;
   }
+}
+
+@media screen and (max-width: 215px) {
+
+  .quantity-control {
+    display: none;
+  }
+
 }
