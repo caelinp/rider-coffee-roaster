@@ -1,11 +1,10 @@
-import React, { useState, useRef, useEffect, useMemo, RefObject } from 'react';
+import React, { useState, useRef, useEffect, RefObject } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import './ProductInfoPage.css';
 import DynamicImage from './DynamicImage';
 import { useDispatch, useSelector } from 'react-redux';
 import { addCoffeeBagItem, selectCartItems } from './CartSlice'
 import CoffeeBagItem from './OrderItem';
-import { createSelector } from 'reselect'; // Import createSelector
 import { useSwipeable } from 'react-swipeable';
 import productsData from './json/products.json'; // Import the JSON file
 
@@ -159,6 +158,11 @@ const ProductInfoPage = () => {
     }
   };
 
+  const swipeHandlers = useSwipeable({
+    onSwipedLeft: () => handleRightArrowClick(),
+    onSwipedRight: () => handleLeftArrowClick(),
+  });
+
   // Helper function to render the subscription dropdown
   const renderSubscriptionDropdown = () => {
     if (isSubscriptionVisible) {
@@ -188,6 +192,7 @@ const ProductInfoPage = () => {
         <div className="product-info-content">
           <div className="product-info-order-panel">
               <h1 className="product-header">{product.name}</h1>
+              <div {...swipeHandlers}> {/* Apply swipeable handlers to this div */}
               <DynamicImage 
                 className="product-main-image" 
                 imageUrl={imagesArray[currentImageIndex]} 
@@ -195,6 +200,7 @@ const ProductInfoPage = () => {
                 onClick={handleImageClick} 
                 ref={dynamicImageRef} 
                />
+               </div>
             <div className="image-dots">
               <div className="image-arrow-left" id="left-arrow" onClick={handleLeftArrowClick}></div>
               {Object.keys(product.images).map((key, index) => (
