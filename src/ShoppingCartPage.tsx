@@ -221,55 +221,61 @@ const ShoppingCartPage = () => {
       return;
     }
 
-    // Construct the email subject
-    const emailSubject = 'Coffee Order for ' + name;
-    // Construct the email content using cartItemsWithProductInfo and form fields
-    const emailContent =
-    "New coffee order for " +
-    name +
-    "!\n\n" +
-    "Customer Information:\n" +
-    "\tName: " +
-    name + "\n" +
-    "\tEmail: " +
-    email + "\n" +
-    "\tStreet Address: " +
-    streetAddress + "\n" +
-    "\tCity: " +
-    city + "\n" +
-    "\tProvince/State: " +
-    province + "\n" +
-    "\tCountry: " +
-    country + "\n" +
-    "\tPostal Code: " +
-    postalCode + "\n\n" +
-    "Order Details:\n\n" +
-    cartItemsWithProductInfo
-      .map((item, index) => {
-        return (
-          "\tItem " +
-          (index + 1) + ":\n" +
-          "\t\tProduct: " +
-          item.product.name + "\n" +
-          "\t\tQuantity: " +
-          item.coffeeBagOrderItem.quantity + "\n" +
-          "\t\tBag Size: " +
-          item.coffeeBagOrderItem.bagSize + "\n" +
-          "\t\tGrind Size: " +
-          item.coffeeBagOrderItem.groundSize + "\n" +
-          "\t\tSubscription Frequency: " +
-          item.coffeeBagOrderItem.subscriptionFrequency + "\n" +
-          "\t\tPrice: $" +
-          parseFloat(item.price).toFixed(2) + "\n"
-        );
-      })
-      .join("\n") +
-    "\nOrder Total: $" +
-    totalPrice.toFixed(2) + "\n\n" +
-    "Thank you!\n\n";
+// Construct the email subject
+const emailSubject = 'Coffee Order for ' + name;
 
-    // Construct the mailto link
-    const mailtoLink = 'mailto:' + COMPANY_EMAIL_ADDRESS + '?subject=' + encodeURIComponent(emailSubject) + '&body=' + encodeURIComponent(emailContent);
+// Define line break and tab as URL-encoded equivalents
+const lineBreak = '%0D%0A';
+const tab = '%09';
+
+// Construct the email content using cartItemsWithProductInfo and form fields
+const emailContent =
+  'New coffee order for ' +
+  name +
+  '!' + lineBreak + lineBreak +
+  'Customer Information:' + lineBreak + lineBreak +
+  tab + 'Name: ' +
+  name + lineBreak +
+  tab + 'Email: ' +
+  email + lineBreak +
+  tab + 'Street Address: ' +
+  streetAddress + lineBreak +
+  tab + 'City: ' +
+  city + lineBreak +
+  tab + 'Province/State: ' +
+  province + lineBreak +
+  tab + 'Country: ' +
+  country + lineBreak +
+  tab + 'Postal Code: ' +
+  postalCode + lineBreak + lineBreak +
+  'Order Details:' + lineBreak + lineBreak +
+  cartItemsWithProductInfo
+    .map((item, index) => {
+      return (
+        tab + 'Item ' +
+        (index + 1) + ':' + lineBreak +
+        tab + tab + 'Product: ' +
+        item.product.name + lineBreak +
+        tab + tab + 'Quantity: ' +
+        item.coffeeBagOrderItem.quantity + lineBreak +
+        tab + tab + 'Bag Size: ' +
+        item.coffeeBagOrderItem.bagSize + lineBreak +
+        tab + tab + 'Grind Size: ' +
+        item.coffeeBagOrderItem.groundSize + lineBreak +
+        tab + tab + 'Subscription Frequency: ' +
+        item.coffeeBagOrderItem.subscriptionFrequency + lineBreak +
+        tab + tab + 'Price: $' +
+        parseFloat(item.price).toFixed(2) + lineBreak
+      );
+    })
+    .join(lineBreak + lineBreak) + lineBreak + lineBreak +
+  'Order Total: $' +
+  totalPrice.toFixed(2) + lineBreak + lineBreak +
+  'Thank you!' + lineBreak + lineBreak;
+
+  // Construct the mailto link
+  const mailtoLink = 'mailto:' + COMPANY_EMAIL_ADDRESS + '?subject=' + emailSubject + '&body=' + emailContent;
+
 
     // Open the default email client with the mailto link
     window.location.href = mailtoLink;
