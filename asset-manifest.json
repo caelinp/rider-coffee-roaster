@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/rider-coffee-roaster/static/css/main.64cc35d9.css",
-    "main.js": "/rider-coffee-roaster/static/js/main.48b7fbb1.js",
+    "main.css": "/rider-coffee-roaster/static/css/main.4aeece43.css",
+    "main.js": "/rider-coffee-roaster/static/js/main.050bbef7.js",
     "static/js/113.82d886b8.chunk.js": "/rider-coffee-roaster/static/js/113.82d886b8.chunk.js",
     "static/js/318.706cb997.chunk.js": "/rider-coffee-roaster/static/js/318.706cb997.chunk.js",
     "static/js/975.2ec9febe.chunk.js": "/rider-coffee-roaster/static/js/975.2ec9febe.chunk.js",
@@ -47,16 +47,16 @@
     "static/media/image2.jpg": "/rider-coffee-roaster/static/media/image2.4335eacca3ad5ea640f4.jpg",
     "static/media/remove-item.png": "/rider-coffee-roaster/static/media/remove-item.8965f827e1202372fb25.png",
     "static/media/icon.png": "/rider-coffee-roaster/static/media/icon.2f309e242629c01fe4c9.png",
-    "static/media/icon-light-grey.png": "/rider-coffee-roaster/static/media/icon-light-grey.616c03b1ead775d9f6b8.png",
+    "static/media/icon-light-grey.png": "/rider-coffee-roaster/static/media/icon-light-grey.1b9c4da8f2c627e7f187.png",
     "static/media/shopping-cart.png": "/rider-coffee-roaster/static/media/shopping-cart.8518e9049b9f200c592c.png",
     "static/media/icon-with-text.png": "/rider-coffee-roaster/static/media/icon-with-text.721c08636e87fd6acef8.png",
     "static/media/bean.png": "/rider-coffee-roaster/static/media/bean.9757027cd0702f1b9023.png",
     "index.html": "/rider-coffee-roaster/index.html",
-    "main.64cc35d9.css.map": "/rider-coffee-roaster/static/css/main.64cc35d9.css.map",
-    "main.48b7fbb1.js.map": "/rider-coffee-roaster/static/js/main.48b7fbb1.js.map"
+    "main.4aeece43.css.map": "/rider-coffee-roaster/static/css/main.4aeece43.css.map",
+    "main.050bbef7.js.map": "/rider-coffee-roaster/static/js/main.050bbef7.js.map"
   },
   "entrypoints": [
-    "static/css/main.64cc35d9.css",
-    "static/js/main.48b7fbb1.js"
+    "static/css/main.4aeece43.css",
+    "static/js/main.050bbef7.js"
   ]
 }
