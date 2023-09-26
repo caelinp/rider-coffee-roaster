@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkrider_coffee_roaster=self.webpackChunkrider_coffee_roaster||[]).push([[258],{7258:function(e,r,s){e.exports=s.p+"static/media/close-cart.267ba38f891d0ae3e580.png"}}]);
