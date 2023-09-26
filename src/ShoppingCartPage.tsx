@@ -9,6 +9,7 @@ import DynamicImage from './DynamicImage';
 import {formatString} from './AllProductsPage';
 
 const COMPANY_EMAIL_ADDRESS: string = "prestoncaelin@gmail.com";
+//const TAX_MULTIPLIER: number = 0.12;
 
 interface Product {
   id: string;
@@ -35,7 +36,6 @@ const ShoppingCartPage = () => {
   const [postalCode, setPostalCode] = useState('');
   const dispatch = useDispatch();
   const [isEmailValid, setIsEmailValid] = useState(true);
-  const [isPhoneNumberValid, setIsPhoneNumberValid] = useState(true);
 
   const navigate = useNavigate();
 
@@ -116,7 +116,7 @@ const ShoppingCartPage = () => {
   };
 
   const handleQuantityChange = (e: React.ChangeEvent<HTMLInputElement>, orderItem: CoffeeBagOrderItem) => {
-    const quantityUpdate = isNaN(parseInt(e.target.value)) ? 0 : parseInt(e.target.value);
+    const quantityUpdate = isNaN(parseInt(e.target.value)) || parseInt(e.target.value) < 0? 0 : parseInt(e.target.value);
     orderItem.setOrderQuantity(quantityUpdate);
     dispatch(updateCoffeeBagItem(orderItem.toJSONString()));
   };
@@ -186,7 +186,7 @@ const ShoppingCartPage = () => {
     if (!isNaN(phoneNumberInput))
     {
       const maxDigits = 11; // Max digits in a phone number including country code
-      phoneNumberString = phoneNumberInput.toString().slice(0, 11);
+      phoneNumberString = phoneNumberInput.toString().slice(0, maxDigits);
     }
     setPhoneNumber(phoneNumberString);
   };
@@ -267,6 +267,8 @@ const ShoppingCartPage = () => {
     name + lineBreak +
     tab + 'Email: ' +
     email + lineBreak +
+    tab + 'Phone Number: ' +
+    phoneNumber + lineBreak +
     tab + 'Street Address: ' +
     streetAddress + lineBreak +
     tab + 'City: ' +

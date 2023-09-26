@@ -36,7 +36,7 @@
 .cart-content {
     max-width: 80vw;
     width: fit-content;
-    min-width: 121ch;
+    min-width: 122ch;
     flex-direction: row;
     gap: 2rem;
     overflow-y: auto;
@@ -91,6 +91,7 @@
     display: flex;
     border-bottom: 2px ridge black;
     width: 100%;
+    overflow-x: hidden;
 }
 
 .item-options {
@@ -167,7 +168,7 @@ input[type="number"] {
 }
 
 #weight-option-cart {
-    width: 10ch;
+    width: 16ch;
 }
 
 #order-item-product-name-and-image-container {
