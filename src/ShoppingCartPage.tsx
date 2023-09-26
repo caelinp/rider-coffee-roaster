@@ -1,7 +1,6 @@
-import React, { useState, useEffect, useMemo, useCallback, useLayoutEffect} from 'react';
+import React, { useState, useEffect, useCallback, useLayoutEffect} from 'react';
 import './ShoppingCartPage.css';
 import { Link, useNavigate } from 'react-router-dom';
-import { createSelector } from 'reselect';
 import { useDispatch, useSelector } from 'react-redux';
 import productsData from './json/products.json';
 import { updateCoffeeBagItem, removeCoffeeBagItem, clearCart, selectCartItems } from './CartSlice';
@@ -210,62 +209,60 @@ const ShoppingCartPage = () => {
       return;
     }
 
-// Construct the email subject
-const emailSubject = 'Coffee Order for ' + name;
+  // Construct the email subject
+  const emailSubject = 'Coffee Order for ' + name;
 
-// Define line break and tab as URL-encoded equivalents
-const lineBreak = '%0D%0A';
-const tab = '%09';
+  // Define line break and tab as URL-encoded equivalents
+  const lineBreak = '%0D%0A';
+  const tab = '%09';
 
-// Construct the email content using cartItemsWithProductInfo and form fields
-const emailContent =
-  'New coffee order for ' +
-  name +
-  '!' + lineBreak + lineBreak +
-  'Customer Information:' + lineBreak + lineBreak +
-  tab + 'Name: ' +
-  name + lineBreak +
-  tab + 'Email: ' +
-  email + lineBreak +
-  tab + 'Street Address: ' +
-  streetAddress + lineBreak +
-  tab + 'City: ' +
-  city + lineBreak +
-  tab + 'Province/State: ' +
-  province + lineBreak +
-  tab + 'Country: ' +
-  country + lineBreak +
-  tab + 'Postal Code: ' +
-  postalCode + lineBreak + lineBreak +
-  'Order Details:' + lineBreak + lineBreak +
-  cartItemsWithProductInfo
-    .map((item, index) => {
-      return (
-        tab + 'Item ' +
-        (index + 1) + ':' + lineBreak +
-        tab + tab + 'Product: ' +
-        item.product.name + lineBreak +
-        tab + tab + 'Quantity: ' +
-        item.coffeeBagOrderItem.quantity + lineBreak +
-        tab + tab + 'Bag Size: ' +
-        item.coffeeBagOrderItem.bagSize + lineBreak +
-        tab + tab + 'Grind Size: ' +
-        item.coffeeBagOrderItem.groundSize + lineBreak +
-        tab + tab + 'Subscription Frequency: ' +
-        item.coffeeBagOrderItem.subscriptionFrequency + lineBreak +
-        tab + tab + 'Price: $' +
-        parseFloat(item.price).toFixed(2) + lineBreak
-      );
-    })
-    .join(lineBreak + lineBreak) + lineBreak + lineBreak +
-  'Order Total: $' +
-  totalPrice.toFixed(2) + lineBreak + lineBreak +
-  'Thank you!' + lineBreak + lineBreak;
+  // Construct the email content using cartItemsWithProductInfo and form fields
+  const emailContent =
+    'New coffee order for ' +
+    name +
+    '!' + lineBreak + lineBreak +
+    'Customer Information:' + lineBreak + lineBreak +
+    tab + 'Name: ' +
+    name + lineBreak +
+    tab + 'Email: ' +
+    email + lineBreak +
+    tab + 'Street Address: ' +
+    streetAddress + lineBreak +
+    tab + 'City: ' +
+    city + lineBreak +
+    tab + 'Province/State: ' +
+    province + lineBreak +
+    tab + 'Country: ' +
+    country + lineBreak +
+    tab + 'Postal Code: ' +
+    postalCode + lineBreak + lineBreak +
+    'Order Details:' + lineBreak + lineBreak +
+    cartItemsWithProductInfo
+      .map((item, index) => {
+        return (
+          tab + 'Item ' +
+          (index + 1) + ':' + lineBreak +
+          tab + tab + 'Product: ' +
+          item.product.name + lineBreak +
+          tab + tab + 'Quantity: ' +
+          item.coffeeBagOrderItem.quantity + lineBreak +
+          tab + tab + 'Bag Size: ' +
+          item.coffeeBagOrderItem.bagSize + lineBreak +
+          tab + tab + 'Grind Size: ' +
+          item.coffeeBagOrderItem.groundSize + lineBreak +
+          tab + tab + 'Subscription Frequency: ' +
+          item.coffeeBagOrderItem.subscriptionFrequency + lineBreak +
+          tab + tab + 'Price: $' +
+          parseFloat(item.price).toFixed(2) + lineBreak
+        );
+      })
+      .join(lineBreak + lineBreak) + lineBreak + lineBreak +
+    'Order Total: $' +
+    totalPrice.toFixed(2) + lineBreak + lineBreak +
+    'Thank you!' + lineBreak + lineBreak;
 
-  // Construct the mailto link
-  const mailtoLink = 'mailto:' + COMPANY_EMAIL_ADDRESS + '?subject=' + emailSubject + '&body=' + emailContent;
-
-
+    // Construct the mailto link
+    const mailtoLink = 'mailto:' + COMPANY_EMAIL_ADDRESS + '?subject=' + emailSubject + '&body=' + emailContent;
     // Open the default email client with the mailto link
     window.location.href = mailtoLink;
   };
@@ -395,7 +392,7 @@ const emailContent =
       return (
         <form ref={emailFormRef} className="order-form">
           <h1>Order Form</h1>
-          <p id="order-form-instructions">Please fill out all required fields. When you are done, press Submit Order. This will.<br></br><br></br></p>
+          <p id="order-form-instructions">Please fill out all required fields. When you are done, press Submit Order.<br></br><br></br></p>
           <div className="form-field">
             <label>Email *</label>
             <div className="form-field-input">
@@ -495,7 +492,21 @@ const emailContent =
       scrollToEmailForm();
     }
   }, [isEmailFormVisible]);
+
+
+  const zoomOutOnMobile = () => {
+    // Calculate the viewport width and set the desired initial scale
+    const viewportWidth = window.innerWidth || document.documentElement.clientWidth;
+    const desiredScale = viewportWidth / window.screen.width;
   
+    // Set the viewport meta tag with the new initial scale
+    const viewportMetaTag = document.querySelector('meta[name="viewport"]') as HTMLMetaElement;
+    if (viewportMetaTag) {
+      viewportMetaTag.content = `width=device-width, initial-scale=${desiredScale}`;
+    }
+  };
+
+
   return (
     <div className="cart-page">
     <div className="cart-page-content-and-bottom">

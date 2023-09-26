@@ -1,5 +1,4 @@
-/* App.tsx */
-import React, { useMemo, useState} from 'react';
+import React, { useMemo, useState, useEffect } from 'react';
 import './App.css';
 import './LandingPage.css';
 import { Modal, List, ListItem, ListItemText } from '@mui/material';
@@ -8,17 +7,16 @@ import { Link, Routes, Route, useNavigate, Navigate } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import LandingPage from './LandingPage';
 import AboutUsPage from './AboutUsPage';
-import ContactUsPage from './ContactUsPage'; // Import the ContactUsPage component
-import FeaturedProductsPage from './FeaturedProductsPage'; // Import the ContactUsPage component
-import AllProductsPage from './AllProductsPage'; // Import the AllProductsPage component
-import ProductInfoPage from './ProductInfoPage'; // Import the ProductInfoPage component
+import ContactUsPage from './ContactUsPage';
+import FeaturedProductsPage from './FeaturedProductsPage';
+import AllProductsPage from './AllProductsPage';
+import ProductInfoPage from './ProductInfoPage';
 import ShoppingCartPage from './ShoppingCartPage';
 import logo from "./img/icon-light-grey.png";
 import shoppingCartIcon from "./img/shopping-cart.png";
 import { selectCartItems } from './CartSlice';
 
 const CartBadge: React.FC<{ count: number }> = ({ count }) => {
-  // Check if the count is greater than 1000
   const displayCount = count > 1000 ? '1000+' : count.toString();
 
   if (count > 0) {
@@ -44,14 +42,32 @@ const App: React.FC = () => {
     navigate(newPath);
   };
 
-  // Use the selectCartItems selector to get the cart items from the Redux store
   const cartItems = useSelector(selectCartItems);
 
-  // Calculate the number of cart items
   const numberCartItems = useMemo(() => {
-    // Use reduce to sum the quantity field of each item
     return cartItems.reduce((total: number, item: any) => total + item.quantity, 0);
-  }, [cartItems]); // Re-calculate when cartItems changes
+  }, [cartItems]);
+
+  // Handle viewport height adjustments
+  const adjustViewportHeight = () => {
+    const vh = window.innerHeight * 0.01;
+    document.documentElement.style.setProperty('--vh', `${vh}px`);
+    document.body.style.transform = 'scale(1)';
+  };
+
+  useEffect(() => {
+    adjustViewportHeight(); // Initial adjustment
+    window.addEventListener('resize', adjustViewportHeight);
+    window.addEventListener('focusin', adjustViewportHeight);
+    window.addEventListener('focusout', adjustViewportHeight);
+
+    return () => {
+      window.removeEventListener('resize', adjustViewportHeight);
+      window.removeEventListener('focusin', adjustViewportHeight);
+      window.removeEventListener('focusout', adjustViewportHeight);
+    };
+  }, []);
+
   return (
     <div className="App">
       <Modal

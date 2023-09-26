@@ -8,21 +8,15 @@
     background-color: black;    
     background-image: url('./img/black-leather.png');
     background-position: center;
-    position: relative;
+    position: fixed;
     overflow-x: hidden;
 }
 
-.name-and-image-container {
-    margin-left: 20px;
-    margin-right: 20px;
-    transform: scale(1);
-    transition: ease-in-out 0.2s;
-}
+
 
 .cart-page-content-and-bottom{
-    position: absolute;
+    position: relative;
     height: 100vh;    
-    position: absolute;
     height: 100vh;
     width: 100%;
 }
@@ -38,6 +32,7 @@
     flex-direction: column;
     align-items: center;
     overflow-y: auto;
+    overflow-x: hidden;
     min-height: calc(100vh - var(--black-bar-top-height));
 }
 
@@ -123,6 +118,7 @@
 .item-option {
     flex-wrap: wrap;
     padding: 10px;
+    max-width: 100%;
 }
 
 .item-option label {
@@ -181,6 +177,8 @@ input[type="number"] {
     width: 15ch;
     transform: scale(1);
     transition: ease-in-out 0.2s;
+    margin-left: 20px;
+    margin-right: 20px;
 }
 
 #grind-size-option-cart {
@@ -218,6 +216,9 @@ input[type="number"] {
     border-radius: 15px;
     transform: scale(1);
     transition: ease-in-out 0.2s;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    max-width: 100%;
 }
 
 .price-text {
@@ -375,8 +376,16 @@ input[type="number"] {
 
 @media (max-width: 1150px) {
     #order-item-product-name-and-image-container {
-        margin: 20px 0 20px 0;
+        margin: 20px;
+        width: 30ch;
+        max-width: 60vw;
     }
+
+    .order-item-image {
+        width: 100%;
+        height: auto;
+    }
+
     .order-item {
         width: 100%;
         overflow: hidden;

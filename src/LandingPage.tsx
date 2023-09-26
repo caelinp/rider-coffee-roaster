@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect } from 'react';
 import './LandingPage.css';
 import './App.css';
 import { Link } from 'react-router-dom'; // Import Link
@@ -33,7 +33,7 @@ const LandingPage: React.FC = () => {
     // Delay before showing the missions
     const missionDelays = [1500, 2500, 3000, 4000]; // Adjust the delays as needed
     for (let i = 0; i < missionDelays.length; i++) {
-      const missionTimeout = setTimeout(() => {
+      setTimeout(() => {
         const missionElement = document.querySelector(`.mission${i}`);
         if (missionElement) {
           missionElement.classList.add('show');
