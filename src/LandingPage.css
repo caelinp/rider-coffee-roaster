@@ -66,8 +66,8 @@ body, html {
 }
 
 .missions {
-  padding: 3% 0;
-  border: 1px solid black;
+  padding: 5% 0;
+  border: 2px ridge black;
   border-radius: 10px;
   background-color: white;
   background-image: url('./img/background0-no-logo.png');
@@ -107,7 +107,7 @@ body, html {
 }
 
 .enter-button {
-  margin-top: 10px;
+  margin-top: 30px;
   margin-bottom: 80px;
   padding: 10px 20px;
   background-color: black;  

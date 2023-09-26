@@ -12,7 +12,6 @@
     position: fixed;
 }
 
-
 .cart-page-content-and-bottom{
     position: absolute;
     height: 100vh;    
@@ -43,7 +42,7 @@
     overflow-y: auto;
     overflow-x: hidden;
     color: black;
-    border: 1px solid black;
+    border: 2px ridge black;
     border-radius: 15px;
     background-color: white;
     background-image: url('./img/background0-no-logo.png');
@@ -51,8 +50,8 @@
 
 .order-items-container {
     width: 100%;
-    border-bottom: 1px solid black;
-    border-top: 1px solid black;
+    border-bottom: 2px ridge black;
+    border-top: 2px ridge black;
     overflow: auto;
     min-height: 1rem;
 }
@@ -90,7 +89,7 @@
 
 .order-item {
     display: flex;
-    border-bottom: 1px solid black;
+    border-bottom: 2px ridge black;
     width: 100%;
 }
 
@@ -109,7 +108,7 @@
     width: 80px;
     height: 80px;
     object-fit: cover;
-    border: 1px solid black;
+    border: 2px ridge black;
     border-radius: 5px;
 }
 
@@ -120,7 +119,7 @@
 }
 
 .item-option label {
-    border-bottom: 1px solid black;
+    border-bottom: 2px ridge black;
     font-weight: bold;
 }
 
@@ -172,11 +171,11 @@ input[type="number"] {
 }
 
 #order-item-product-name-and-image-container {
-    width: 15ch;
+    width: 12ch;
     transform: scale(1);
     transition: ease-in-out 0.2s;
-    margin-left: 20px;
-    margin-right: 20px;
+    margin-left: 1ch;
+    margin-right: 1ch;
 }
 
 #grind-size-option-cart {
@@ -192,11 +191,13 @@ input[type="number"] {
 }
 
 #price-label-and-text-cart {
-    width: 20ch;
+    width: 15ch;
     overflow: hidden;
     align-items: center;
     justify-content: center;
     padding-left: 0;
+    margin-left: 1ch;
+    margin-right: 1ch;
 }
 
 #quantity-input-cart {
@@ -323,7 +324,7 @@ input[type="number"] {
 .form-field textarea {
     width: 100%;
     padding: 5px;
-    border: 1px solid black;
+    border: 2px ridge black;
     border-radius: 4px;
     text-align: left;
     max-width: 500px; 
@@ -331,12 +332,12 @@ input[type="number"] {
 
 .order-form h1 {
     padding-top: var(--black-bar-top-height);
-    border-bottom: 1px solid black;
-    border-top: 1px solid black;
+    border-bottom: 2px ridge black;
+    border-top: 2px ridge black;
 }
 
 #order-form-instructions {
-    border-bottom: 1px solid black;
+    border-bottom: 2px ridge black;
     padding: 0 5%;
 }
 
@@ -372,7 +373,7 @@ input[type="number"] {
     color: black;
 }
 
-@media (max-width: 1150px) {
+@media (max-width: 1120px) {
     #order-item-product-name-and-image-container {
         margin: 20px;
         width: 30ch;

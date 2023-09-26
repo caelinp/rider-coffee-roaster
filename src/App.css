@@ -53,11 +53,10 @@ body {
   top: 0;
   bottom: 0;
   z-index: 1000;
-  border-top: 1px solid #AFAFAF;
-  border-radius: 5px;
+  border-top: 1px outset #AFAFAF;
 }
 
-.modal-open {
+.drawer-open {
   position: absolute;
 }
 
@@ -71,7 +70,7 @@ body {
   right: 0;
   z-index: 1001;
   border-radius: 5px;
-  border: 1px solid #AFAFAF;
+  border: 1px outset #AFAFAF;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -89,8 +88,7 @@ body {
   display: flex;
   align-items: center;
   padding-left: 10px;
-  border-left: 1px solid #AFAFAF;
-  border-radius: 5px;
+  border-left: 1px outset #AFAFAF;
   z-index: 1000;
 
 }
@@ -100,8 +98,7 @@ body {
   display: flex;
   align-items: center;
   padding-right: 10px;
-  border-right: 1px solid #AFAFAF;
-  border-radius: 5px;
+  border-right: 1px outset #AFAFAF;
   z-index: 1000;
 }
 
@@ -180,14 +177,6 @@ body {
   transform: scale(1);
 }
 
-.MuiModal-root {
-  display: flex; 
-  position: fixed; /* Use fixed position to keep the modal in place */
-  top: 0; /* Position from the top */
-  left: -250px; /* Initially position the modal off-screen to the left */
-  animation: slideInModal 0.3s forwards; /* Apply the slide animation */
-}
-
 .MuiSvgIcon-root {
   width: 90%;
   height: auto !important; /* Maintain the aspect ratio */
@@ -195,43 +184,11 @@ body {
   min-height: 50px !important;
 }
 
-/* Define the keyframe animation */
-@keyframes slideInModal {
-  from {
-    left: -250px; /* Start position off-screen to the left */
-  }
-  to {
-    left: 0; /* End position to be fully visible */
-  }
-}
-
-/* Add a new keyframe animation for sliding out the modal */
-@keyframes slideOutModal {
-  from {
-    left: 0; /* Start position fully visible */
-  }
-  to {
-    left: -250px; /* End position off-screen to the left */
-  }
-}
-
 .MuiSvgIcon-root {
   width: 100% !important;
 }
 
-.modal-content {
-  width: 250px;
-  background-color: black;  
-  background-image: url('./img/black-leather.png');
-  box-shadow: 2px 0px 5px rgba(0, 0, 0, 0.3);
-  padding: 20px;
-  color: white;
-  outline: none;
-  background-color: red;
-  z-index: 10000;
-}
-
-.modal-list {
+.drawer-list {
   padding: 0;
 }
 
@@ -240,24 +197,44 @@ body {
   font-family: 'Montserrat Alternates', sans-serif !important;
 }
 
-.modal-item {
+.drawer-content {
+  width: 250px;
+  max-width: 250px;
+  background-color: black;
+  background-image: url('./img/black-leather.png');
+  color: white;
+  height: 100%; /* Adjust the height as needed */
+  display: flex;
+  flex-direction: column;
+  padding-top: var(--black-bar-top-height);
+  border: 1px outset #AFAFAF;
+  border-radius: 3px;
+}
+
+.drawer-item {
   color: white;
   padding: 10px;
-  background-color: black;  
+  background-color: black;
   background-image: url('./img/black-leather.png');
+  border: 1px outset #AFAFAF;
+  border-radius: 3px;
   cursor: pointer;
-  transition: background-image 0.2s, background-color 0.2s, ease-in-out 0.2s, transform 0.2s;
-  transform: scale(1);
+  transition: background-color 0.2s, transform 0.2s;
+  width: fit-content;
 }
 
-.modal-item:hover {
-  transform: scale(1.1);
+.drawer-item:hover {
   background-color: #1e150f!important;
-  background-image: url('./img/brown-leather.png')!important;
-  z-index: 1000;
+  background-image: url('./img/brown-leather.png');
+  transform: scale(1.1)
 }
 
-.modal-item::before {
+.drawer-item-text {
+  font-size: 1.5rem !important;
+  font-family: 'Montserrat Alternates', sans-serif !important;
+}
+
+.drawer-item::before {
   content: "";
   display: inline-block;
   width: 2rem;
@@ -269,8 +246,42 @@ body {
   margin-right: 10px; /* Add some space between the image and text */
 }
 
-#cart-modal-item::before {
+/* Update the cart item icon */
+#cart-drawer-item::before {
   background-image: url('./img/shopping-cart.png'); /* Replace with your image source path */
+}
+
+.nav-drawer {
+  position: fixed;
+  animation-duration: 0.2s; /* Adjust the duration as needed */
+  animation-timing-function: ease-in-out; /* Adjust the timing function as needed */
+}
+
+/* Apply the slideIn and slideOut animations */
+.drawer-open {
+  animation-name: slideIn;
+}
+
+.drawer-closed {
+  animation-name: slideOut;
+}
+
+@keyframes slideIn {
+  from {
+    transform: translateX(-100%);
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+
+@keyframes slideOut {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-100%);
+  }
 }
 
 /* For Chrome, Safari, and newer versions of Opera */

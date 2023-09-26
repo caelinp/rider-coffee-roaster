@@ -27,6 +27,7 @@ const ShoppingCartPage = () => {
   const [isEmailFormVisible, setIsEmailFormVisible] = useState(false); // State variable for rendering the email form
   const [email, setEmail] = useState('');
   const [name, setName] = useState('');
+  const [phoneNumber, setPhoneNumber] = useState('');
   const [streetAddress, setStreetAddress] = useState('');
   const [city, setCity] = useState('');
   const [province, setProvince] = useState('');
@@ -34,6 +35,7 @@ const ShoppingCartPage = () => {
   const [postalCode, setPostalCode] = useState('');
   const dispatch = useDispatch();
   const [isEmailValid, setIsEmailValid] = useState(true);
+  const [isPhoneNumberValid, setIsPhoneNumberValid] = useState(true);
 
   const navigate = useNavigate();
 
@@ -132,10 +134,17 @@ const ShoppingCartPage = () => {
   };
 
   const handleKeyPressFormField = (event: React.KeyboardEvent<HTMLInputElement>) => {
-    console.log("here we are");
     if (event.key === 'Enter') {
-      console.log("here we are");
       handleSubmitOrder();
+    }
+  };
+
+  const handleKeyPressPhoneNumberField = (event: React.KeyboardEvent<HTMLInputElement>) => {
+    if (event.key === 'Enter') {
+      handlePhoneNumberBlur();
+      handleSubmitOrder();
+    } else if (event.key === 'Backspace') {
+      setPhoneNumber("");
     }
   };
 
@@ -170,6 +179,40 @@ const ShoppingCartPage = () => {
   const handleNameChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setName(e.target.value);
   };
+  
+  const handlePhoneNumberChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    let phoneNumberInput = parseInt(e.target.value)
+    let phoneNumberString = "";
+    if (!isNaN(phoneNumberInput))
+    {
+      const maxDigits = 11; // Max digits in a phone number including country code
+      phoneNumberString = phoneNumberInput.toString().slice(0, 11);
+    }
+    setPhoneNumber(phoneNumberString);
+  };
+
+  const formatPhoneNumber = (input: string): string => {
+    const numericInput = input.replace(/\D/g, '');
+  
+    if (numericInput.length === 11) {
+      const countryCode = numericInput.charAt(0);
+      const areaCode = numericInput.substr(1, 3);
+      const middlePart = numericInput.substr(4, 3);
+      const lastPart = numericInput.substr(7);
+      return `+${countryCode}-(${areaCode})-${middlePart}-${lastPart}`;
+    } else if (numericInput.length === 10) {
+      const areaCode = numericInput.substr(0, 3);
+      const middlePart = numericInput.substr(3, 3);
+      const lastPart = numericInput.substr(6);
+      return `(${areaCode})-${middlePart}-${lastPart}`;
+    } else {
+      return input;
+    }
+  };
+
+  const handlePhoneNumberBlur = () => {
+    setPhoneNumber(formatPhoneNumber(phoneNumber));
+  };
 
   const handleStreetAddressChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setStreetAddress(e.target.value);
@@ -193,8 +236,6 @@ const ShoppingCartPage = () => {
 
   // Handler function for submitting the order
   const handleSubmitOrder = () => {
-    console.log("here we are");
-
     // Check if all required fields are filled
     if (
       email.trim() === '' ||
@@ -392,7 +433,19 @@ const ShoppingCartPage = () => {
       return (
         <form ref={emailFormRef} className="order-form">
           <h1>Order Form</h1>
-          <p id="order-form-instructions">Please fill out all required fields. When you are done, press Submit Order.<br></br><br></br></p>
+          <p id="order-form-instructions">Please fill out all required fields. When you are done, press Submit Order. This will generate an order email in your device's mail client. <br></br><br></br></p>
+          <div className="form-field">
+            <label>Name *</label>
+            <div className="form-field-input">
+              <input
+                type="text"
+                required
+                value={name}
+                onChange={handleNameChange}
+                onKeyDown={(e) => handleKeyPressFormField(e)}
+              />
+            </div>
+          </div>
           <div className="form-field">
             <label>Email *</label>
             <div className="form-field-input">
@@ -406,14 +459,16 @@ const ShoppingCartPage = () => {
             </div>
           </div>
           <div className="form-field">
-            <label>Name *</label>
+            <label>Phone Number *</label>
             <div className="form-field-input">
               <input
-                type="text"
+                type="tel"
                 required
-                value={name}
-                onChange={handleNameChange}
-                onKeyDown={(e) => handleKeyPressFormField(e)}
+                value={phoneNumber}
+                onChange={handlePhoneNumberChange}
+                onKeyDown={(e) => handleKeyPressPhoneNumberField(e)}
+                onBlur={handlePhoneNumberBlur}
+                pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}"
               />
             </div>
           </div>

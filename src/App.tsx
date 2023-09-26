@@ -1,7 +1,7 @@
-import React, { useMemo, useState, useEffect } from 'react';
+import React, { useMemo, useState } from 'react';
 import './App.css';
 import './LandingPage.css';
-import { Modal, List, ListItem, ListItemText } from '@mui/material';
+import { Drawer, List, ListItem, ListItemText } from '@mui/material';
 import MenuIcon from '@mui/icons-material/Menu';
 import { Link, Routes, Route, useNavigate, Navigate } from 'react-router-dom';
 import { useSelector } from 'react-redux';
@@ -26,19 +26,19 @@ const CartBadge: React.FC<{ count: number }> = ({ count }) => {
 };
 
 const App: React.FC = () => {
-  const [modalOpen, setModalOpen] = useState(false);
+  const [drawerOpen, setDrawerOpen] = useState(false);
   const navigate = useNavigate();
 
-  const openModal = () => {
-    setModalOpen(true);
+  const openDrawer = () => {
+    setDrawerOpen(true);
   };
 
-  const closeModal = () => {
-    setModalOpen(false);
+  const closeDrawer = () => {
+    setDrawerOpen(false);
   };
 
   const handleItemClick = (newPath: string) => {
-    closeModal();
+    closeDrawer();
     navigate(newPath);
   };
 
@@ -48,61 +48,39 @@ const App: React.FC = () => {
     return cartItems.reduce((total: number, item: any) => total + item.quantity, 0);
   }, [cartItems]);
 
-  // Handle viewport height adjustments
-  const adjustViewportHeight = () => {
-    const vh = window.innerHeight * 0.01;
-    document.documentElement.style.setProperty('--vh', `${vh}px`);
-    document.body.style.transform = 'scale(1)';
-  };
-
-  useEffect(() => {
-    adjustViewportHeight(); // Initial adjustment
-    window.addEventListener('resize', adjustViewportHeight);
-    window.addEventListener('focusin', adjustViewportHeight);
-    window.addEventListener('focusout', adjustViewportHeight);
-
-    return () => {
-      window.removeEventListener('resize', adjustViewportHeight);
-      window.removeEventListener('focusin', adjustViewportHeight);
-      window.removeEventListener('focusout', adjustViewportHeight);
-    };
-  }, []);
-
   return (
     <div className="App">
-      <Modal
-        open={modalOpen}
-        onClose={closeModal}
-        className={modalOpen ? 'modal-open' : 'modal-closed'}
+      <Drawer
+        anchor="left"
+        open={drawerOpen}
+        onClose={closeDrawer}
+        className={drawerOpen ? 'nav-drawer drawer-open' : 'nav-drawer drawer-closed'}
       >
-        <div className="modal-content">
-          <br></br>
-          <br></br>
-          <br></br>
-          <List className="modal-list">
-            <ListItem className="modal-item" onClick={() => handleItemClick('/')}>
-              <ListItemText className="modal-item-text" primary="Home" />
+        <div className="drawer-content">
+          <List className="drawer-list">
+            <ListItem className="drawer-item" onClick={() => handleItemClick('/')}>
+              <ListItemText className="drawer-item-text" primary="Home" />
             </ListItem>
-            <ListItem className="modal-item" onClick={() => handleItemClick('/featured-products/')}>
-              <ListItemText className="modal-item-text" primary="Featured" />
+            <ListItem className="drawer-item" onClick={() => handleItemClick('/featured-products/')}>
+              <ListItemText className="drawer-item-text" primary="Featured" />
             </ListItem>
-            <ListItem className="modal-item" onClick={() => handleItemClick('/products/')}>
-              <ListItemText className="modal-item-text" primary="Products" />
+            <ListItem className="drawer-item" onClick={() => handleItemClick('/products/')}>
+              <ListItemText className="drawer-item-text" primary="Products" />
             </ListItem>
-            <ListItem className="modal-item" onClick={() => handleItemClick('/about-us/')}>
-              <ListItemText className="modal-item-text" primary="About Us" />
+            <ListItem className="drawer-item" onClick={() => handleItemClick('/about-us/')}>
+              <ListItemText className="drawer-item-text" primary="About Us" />
             </ListItem>
-            <ListItem className="modal-item" onClick={() => handleItemClick('/contact-us/')}>
-              <ListItemText className="modal-item-text" primary="Contact Us" />
+            <ListItem className="drawer-item" onClick={() => handleItemClick('/contact-us/')}>
+              <ListItemText className="drawer-item-text" primary="Contact Us" />
             </ListItem>
-            <ListItem className="modal-item" id="cart-modal-item" onClick={() => handleItemClick('/shopping-cart/')}>
-              <ListItemText className="modal-item-text" primary="Your Cart" />
+            <ListItem className="drawer-item" id="cart-drawer-item" onClick={() => handleItemClick('/shopping-cart/')}>
+              <ListItemText className="drawer-item-text" primary="Your Cart" />
             </ListItem>
           </List>
         </div>
-      </Modal>
+      </Drawer>
       <div className="black-bar-top">
-        <div className="menu-button" onClick={openModal}>
+        <div className="menu-button" onClick={openDrawer}>
           <MenuIcon fontSize="large" id="menu-icon" />
         </div>
         <Link to="/rider-coffee-roaster/">
