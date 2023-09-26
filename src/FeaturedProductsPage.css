@@ -20,7 +20,7 @@ body, html {
   align-items: center;
   background-size: cover;
   background-position: center;
-  position: relative;
+  position: fixed;
   background-color: black;  
   background-image: url('./img/black-leather.png');
   overflow-y: auto;
@@ -142,17 +142,17 @@ body, html {
 }
 
 /* Hide the scrollbar for Firefox */
-.featured-products-content {
+.featured-products-page {
   scrollbar-width: thin;
   scrollbar-color: transparent transparent;
 }
 
 /* Hide the scrollbar for Chrome, Edge, and Safari */
-.featured-products-content::-webkit-scrollbar {
+.featured-products-page::-webkit-scrollbar {
   width: 6px; /* Adjust the width as needed */
 }
 
-.featured-products-content::-webkit-scrollbar-thumb {
+.featured-products-page::-webkit-scrollbar-thumb {
   background-color: transparent;
 }
 

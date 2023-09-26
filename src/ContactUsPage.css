@@ -20,7 +20,7 @@ body, html {
   align-items: center;
   background-size: cover;
   background-position: center;
-  position: relative;
+  position: fixed;
   background-color: black;  
   background-image: url('./img/black-leather.png');
   overflow-x: hidden;
@@ -60,14 +60,19 @@ body, html {
   overflow-y: auto;
 }
 
+.contact-us-page-page {
+  scrollbar-width: thin;
+  scrollbar-color: transparent transparent;
+}
+
 /* Hide Webkit scrollbars (Chrome, Safari, newer versions of Opera) */
-.contact-us-content::-webkit-scrollbar {
+.contact-us-page::-webkit-scrollbar {
   width: 0.1rem;
   background-color: transparent;
 }
 
 /* Hide Firefox scrollbar */
-.contact-us-content {
+.contact-us-page {
   scrollbar-width: none;
 }
 

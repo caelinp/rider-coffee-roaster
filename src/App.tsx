@@ -117,7 +117,6 @@ const App: React.FC = () => {
       </div>
       <div className="black-bar-side left"></div>
       <div className="black-bar-side right"></div>
-      
       <Routes>
         <Route path="/" element={<LandingPage />} />
         <Route path="/shopping-cart" element={<ShoppingCartPage/>} />

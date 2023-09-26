@@ -9,13 +9,13 @@
     background-image: url('./img/black-leather.png');
     background-position: center;
     overflow-x: hidden;
+    position: fixed;
 }
 
 
 .cart-page-content-and-bottom{
-    position: relative;
+    position: absolute;
     height: 100vh;    
-    height: 100vh;
     width: 100%;
 }
 
@@ -228,17 +228,17 @@ input[type="number"] {
 }
 
 /* Hide the scrollbar for Firefox */
-.order-items-container {
+.cart-page {
     scrollbar-width: thin;
     scrollbar-color: transparent transparent;
   }
   
 /* Hide the scrollbar for Chrome, Edge, and Safari */
-.order-items-container::-webkit-scrollbar {
+.cart-page::-webkit-scrollbar {
   width: 6px; /* Adjust the width as needed */
 }
 
-.order-items-container::-webkit-scrollbar-thumb {
+.cart-page::-webkit-scrollbar-thumb {
   background-color: transparent;
 }
 

@@ -1,6 +1,7 @@
 /* App.css */
 .App {
   text-align: center;
+  position: fixed;
 }
 
 .App-logo {
@@ -48,12 +49,16 @@ body {
 .black-bar-side {
   width: var(--black-bar-width);
   background-image: url('./img/black-leather.png');
-  position: absolute;
+  position: fixed;
   top: 0;
   bottom: 0;
-  z-index: 1;
+  z-index: 1000;
   border-top: 1px solid #AFAFAF;
   border-radius: 5px;
+}
+
+.modal-open {
+  position: absolute;
 }
 
 .black-bar-top {
@@ -70,13 +75,6 @@ body {
   display: flex;
   justify-content: space-between;
   align-items: center;
-}
-
-.black-bar-bottom {
-  border-radius: 5px;
-  border-top: none;
-  border-top-left-radius: 0;
-  border-top-right-radius: 0;
 }
 
 .logo-small {
@@ -114,6 +112,10 @@ body {
   position: absolute;
   width: 100%;
   z-index: 1;
+  border-radius: 5px;
+  border-top: none;
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
 }
 
 .menu-button {
@@ -225,7 +227,8 @@ body {
   padding: 20px;
   color: white;
   outline: none;
-
+  background-color: red;
+  z-index: 10000;
 }
 
 .modal-list {

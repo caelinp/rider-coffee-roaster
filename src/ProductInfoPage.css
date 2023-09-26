@@ -19,7 +19,7 @@ body, html {
 }
 
 .product-info-content-and-bottom {
-  position: relative;
+  position: absolute;
   height: 100vh;
 }
 
@@ -128,17 +128,17 @@ p {
 }
 
 /* Hide the scrollbar for Firefox */
-.product-info-content {
+.product-info-page {
   scrollbar-width: thin;
   scrollbar-color: transparent transparent;
 }
 
 /* Hide the scrollbar for Chrome, Edge, and Safari */
-.product-info-content::-webkit-scrollbar {
+.product-info-page::-webkit-scrollbar {
   width: 6px;
 }
 
-.product-info-content::-webkit-scrollbar-thumb {
+.product-info-page::-webkit-scrollbar-thumb {
   background-color: transparent;
 }
 

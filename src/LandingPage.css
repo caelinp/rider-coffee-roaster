@@ -11,7 +11,7 @@ body, html {
   justify-content: center;
   background-size: cover;
   background-position: center;
-  position: relative;
+  position: fixed;
   overflow-x: hidden;
   background-color: black;
   background-image: url('./img/black-leather.png');
@@ -127,17 +127,17 @@ body, html {
 }
 
 /* Hide the scrollbar for Firefox */
-.landing-content {
+.landing-page {
   scrollbar-width: thin;
   scrollbar-color: transparent transparent;
 }
 
 /* Hide the scrollbar for Chrome, Edge, and Safari */
-.landing-content::-webkit-scrollbar {
+.landing-page::-webkit-scrollbar {
   width: 6px; /* Adjust the width as needed */
 }
 
-.landing-content::-webkit-scrollbar-thumb {
+.landing-page::-webkit-scrollbar-thumb {
   background-color: transparent;
 }
 
