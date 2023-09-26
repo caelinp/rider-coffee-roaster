@@ -493,20 +493,6 @@ const ShoppingCartPage = () => {
     }
   }, [isEmailFormVisible]);
 
-
-  const zoomOutOnMobile = () => {
-    // Calculate the viewport width and set the desired initial scale
-    const viewportWidth = window.innerWidth || document.documentElement.clientWidth;
-    const desiredScale = viewportWidth / window.screen.width;
-  
-    // Set the viewport meta tag with the new initial scale
-    const viewportMetaTag = document.querySelector('meta[name="viewport"]') as HTMLMetaElement;
-    if (viewportMetaTag) {
-      viewportMetaTag.content = `width=device-width, initial-scale=${desiredScale}`;
-    }
-  };
-
-
   return (
     <div className="cart-page">
     <div className="cart-page-content-and-bottom">

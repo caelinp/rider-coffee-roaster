@@ -1,7 +1,6 @@
 /* App.css */
 .App {
   text-align: center;
-  position: relative;
 }
 
 .App-logo {
@@ -226,6 +225,7 @@ body {
   padding: 20px;
   color: white;
   outline: none;
+
 }
 
 .modal-list {

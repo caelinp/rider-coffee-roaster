@@ -8,10 +8,8 @@
     background-color: black;    
     background-image: url('./img/black-leather.png');
     background-position: center;
-    position: fixed;
     overflow-x: hidden;
 }
-
 
 
 .cart-page-content-and-bottom{
