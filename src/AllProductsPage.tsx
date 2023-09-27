@@ -10,6 +10,7 @@ interface Product {
   name: string;
   imageUrl: string;
   price: string;
+  roast: string;
 }
 
 export const formatString = (inputString: string) => {
@@ -29,7 +30,8 @@ const AllProductsPage = () => {
     id: productData.id || '',
     name: productData.productName || '',
     imageUrl: productData.images.bagImage || '',
-    price: productData.pricing.size2.price || ''
+    price: productData.pricing.size2.price || '',
+    roast: productData.roast || ''
   }));
   // State for the search input
   const [searchQuery, setSearchQuery] = useState('');
@@ -74,7 +76,7 @@ const AllProductsPage = () => {
                     <DynamicImage className="product-image-gridview" imageUrl={product.imageUrl} alt={product.name} />
                     <div className="product-details">
                       <h3 className="product-name">{product.name}</h3>
-                      <p className="product-price">{product.price}</p>
+                      <p className="product-roast">{product.roast}</p>
                     </div>
                   </Link>
                 ))

@@ -286,7 +286,8 @@ const ProductInfoPage = () => {
                   </button>
                 </div>
               </div>
-              <div className="option" id="total">
+            </div>
+            <div className="total">
                 <label className={`label-total ${selectedSubscriptionFrequency !== NO_SUBSCRIPTION ? 'discounted' : ''}`}>
                   Total:
                 </label>
@@ -295,14 +296,13 @@ const ProductInfoPage = () => {
                 </div>
               </div>
               {selectedSubscriptionFrequency !== NO_SUBSCRIPTION && (
-                <div className="option" id="discounted-total">
+                <div className="discounted-total">
                   <label className="label-total-discount">After savings:</label>
                   <div className="total-discount-price-text">
                     {"$" + (totalPrice * (1 - getDiscountMultiplier())).toFixed(2)}
                   </div>
                 </div>
               )}
-            </div>
             <div className="add-and-subscribe-button-container">
               <div className="subscribe-checkbox-container">
                 <label className="label-subscribe" htmlFor="subscribe-checkbox">Subscribe & Save:</label>

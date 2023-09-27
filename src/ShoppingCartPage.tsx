@@ -198,7 +198,7 @@ const ShoppingCartPage = () => {
   // Handler function for email input change
   const handleEmailChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const inputEmail = e.target.value;
-    setEmail(inputEmail);
+    setEmail(sanitizeInput(inputEmail));
 
     // Regular expression pattern for a valid email format
     const emailPattern = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
@@ -211,7 +211,7 @@ const ShoppingCartPage = () => {
   };
 
   const handleNameChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setName(e.target.value);
+    setName(sanitizeInput(e.target.value));
   };
   
   const handlePhoneNumberChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -222,7 +222,7 @@ const ShoppingCartPage = () => {
       const maxDigits = 11; // Max digits in a phone number including country code
       phoneNumberString = phoneNumberInput.toString().slice(0, maxDigits);
     }
-    setPhoneNumber(phoneNumberString);
+    setPhoneNumber(sanitizeInput(phoneNumberString));
   };
 
   const formatPhoneNumber = (input: string): string => {
@@ -249,23 +249,23 @@ const ShoppingCartPage = () => {
   };
 
   const handleStreetAddressChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setStreetAddress(e.target.value);
+    setStreetAddress(sanitizeInput(e.target.value));
   };
 
   const handleCityChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setCity(e.target.value);
+    setCity(sanitizeInput(e.target.value));
   };
 
   const handleProvinceChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setProvince(e.target.value);
+    setProvince(sanitizeInput(e.target.value));
   };
 
   const handleCountryChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setCountry(e.target.value);
+    setCountry(sanitizeInput(e.target.value));
   };
 
   const handlePostalCodeChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setPostalCode(e.target.value.toUpperCase());
+    setPostalCode(sanitizeInput(e.target.value).toUpperCase());
   };
 
   // Handler function for submitting the order
