@@ -55,10 +55,8 @@ body, html {
   background-color: black;  
   background-image: url('./img/black-leather.png');
   color: white;
-  border: 2px ridge black;
   cursor: pointer;
   font-size: 1.5rem;
-  border-radius: 15px;
   padding: 7px;
   border: 3px solid black;
   border-radius: 20px;
@@ -150,14 +148,12 @@ body, html {
   text-overflow: hidden; /* Add ellipsis (...) if the text overflows vertically */
   overflow: hidden; /* Hide overflowing text */
   border-bottom: 2px ridge #FFF;
-  border-radius: 3px;
   font-family: 'PlayFair Display SC', serif !important;
 }
 
 .product-price {
   font-size: 0.9rem;
   border-bottom: 2px ridge #FFF;
-  border-radius: 3px;
 }
 
 /* Hide the scrollbar for Firefox */

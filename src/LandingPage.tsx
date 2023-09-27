@@ -28,10 +28,10 @@ const LandingPage: React.FC = () => {
       if (missionElement) {
         missionElement.classList.add('show');
       }
-    }, 1100);
+    }, 1500);
 
     // Delay before showing the missions
-    const missionDelays = [1500, 2500, 3000, 4000]; // Adjust the delays as needed
+    const missionDelays = [1500, 2300, 3100, 3900]; // Adjust the delays as needed
     for (let i = 0; i < missionDelays.length; i++) {
       setTimeout(() => {
         const missionElement = document.querySelector(`.mission${i}`);
