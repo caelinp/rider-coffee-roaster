@@ -7,6 +7,7 @@ import { addCoffeeBagItem, selectCartItems } from './CartSlice'
 import CoffeeBagItem from './OrderItem';
 import { useSwipeable } from 'react-swipeable';
 import productsData from './json/products.json'; // Import the JSON file
+import { sanitizeQuantityInput } from './ShoppingCartPage';
 
 const DEFAULT_WEIGHT: string = "340g";
 const NO_SUBSCRIPTION: string = "none";
@@ -102,7 +103,12 @@ const ProductInfoPage = () => {
 
   const imagesArray: string[] = Object.values(product.images);
   const grindSizeOptions = ['Whole Bean', 'Coarse', 'Medium-Coarse', 'Medium', 'Fine', 'Extra Fine'];
-  const subscriptionFrequencyOptions = ['every week', 'every 2 weeks', 'every month'];
+  const subscriptionFrequencyOptions = [
+    { frequency: 'every week', discount: 0.2 },
+    { frequency: 'every 2 weeks', discount: 0.18 },
+    { frequency: 'every month', discount: 0.15 },
+  ];
+
   const [selectedGrindSize, setSelectedGrindSize] = useState('Whole Bean');
   const [quantity, setQuantity] = useState(1);
   const [totalPrice, setTotalPrice] = useState(0);
@@ -110,15 +116,49 @@ const ProductInfoPage = () => {
   const [selectedSubscriptionFrequency, setSelectedSubscriptionFrequency] = useState(NO_SUBSCRIPTION);
   const [isSubscriptionVisible, setIsSubscriptionVisible] = useState<boolean>(false);
 
+    // Helper function to get the discount multiplier based on the selected subscription frequency
+  const getDiscountMultiplier = () => {
+    const selectedOption = subscriptionFrequencyOptions.find((option) => option.frequency === selectedSubscriptionFrequency);
+    return selectedOption ? selectedOption.discount : 0;
+  };
+  const dropdownOptions = subscriptionFrequencyOptions.map((option) => {
+    const formattedOption = `${option.frequency} (save ${option.discount * 100}%)`;
+    return (
+      <option key={option.frequency} value={option.frequency}>
+        {formattedOption}
+      </option>
+    );
+  });
+
   const toggleSubscription = () => {
     if (!isSubscriptionVisible) {
-      setSelectedSubscriptionFrequency(subscriptionFrequencyOptions[0]); // Set to the first option
+      setSelectedSubscriptionFrequency(subscriptionFrequencyOptions[0]['frequency']); // Set to the first option
     } else {
       setSelectedSubscriptionFrequency(NO_SUBSCRIPTION);
     }
     setIsSubscriptionVisible(!isSubscriptionVisible);
   };
 
+  // Helper function to render the subscription dropdown
+  const renderSubscriptionDropdown = () => {
+    if (isSubscriptionVisible) {
+      return (
+        <div className="subscription-dropdown-container" >
+          <select 
+            className="option-input-field"
+            id="subscription-dropdown"
+            value={selectedSubscriptionFrequency}
+            onChange={(e) => setSelectedSubscriptionFrequency(e.target.value)}
+          >
+            {dropdownOptions}
+          </select>
+        </div>
+      );
+    }
+    return null; // Return null if the dropdown is not visible
+  };
+
+  
   useEffect(() => {
     // Calculate the total price whenever quantity or weight changes
     const calculatedTotalPrice = quantity * parseFloat(product.pricing[selectedWeight]);
@@ -162,29 +202,6 @@ const ProductInfoPage = () => {
     onSwipedLeft: () => handleRightArrowClick(),
     onSwipedRight: () => handleLeftArrowClick(),
   });
-
-  // Helper function to render the subscription dropdown
-  const renderSubscriptionDropdown = () => {
-    if (isSubscriptionVisible) {
-      return (
-        <div className="subscription-dropdown-container" >
-          <select 
-            className="option-input-field"
-            id="subscription-dropdown"
-            value={selectedSubscriptionFrequency}
-            onChange={(e) => setSelectedSubscriptionFrequency(e.target.value)}
-          >
-            {subscriptionFrequencyOptions.map((option) => (
-              <option key={option} value={option}>
-                {option}
-              </option>
-            ))}
-          </select>
-        </div>
-      );
-    }
-    return null; // Return null if the dropdown is not visible
-  };
 
   return (
     <div className="product-info-page">
@@ -253,7 +270,13 @@ const ProductInfoPage = () => {
                     id="quantity"
                     type="number"
                     value={quantity === 0 ? "0" : quantity.toString().replace(/^0+/, '')}
-                    onChange={(e) => setQuantity(Math.max(0, Number(e.target.value)))}
+                    onKeyDown={(e) => {
+                      // Prevent the period (.) character from being entered
+                      if (e.key === '.') {
+                        e.preventDefault();
+                      }
+                    }}
+                    onChange={(e) => setQuantity(Math.max(0, Number(sanitizeQuantityInput(e.target.value))))}
                   />
                   <button
                     className="quantity-control" id="increase-quantity-control"
@@ -264,15 +287,25 @@ const ProductInfoPage = () => {
                 </div>
               </div>
               <div className="option" id="total">
-                <label className="label-total">Total:</label>
-                <span className="total-price-text">
-                {"$" + totalPrice.toFixed(2)}
-              </span>
+                <label className={`label-total ${selectedSubscriptionFrequency !== NO_SUBSCRIPTION ? 'discounted' : ''}`}>
+                  Total:
+                </label>
+                <div className={`total-price-text ${selectedSubscriptionFrequency !== NO_SUBSCRIPTION ? 'discounted' : ''}`}>
+                  {"$" + totalPrice.toFixed(2)}
+                </div>
               </div>
+              {selectedSubscriptionFrequency !== NO_SUBSCRIPTION && (
+                <div className="option" id="discounted-total">
+                  <label className="label-total-discount">After savings:</label>
+                  <div className="total-discount-price-text">
+                    {"$" + (totalPrice * (1 - getDiscountMultiplier())).toFixed(2)}
+                  </div>
+                </div>
+              )}
             </div>
             <div className="add-and-subscribe-button-container">
               <div className="subscribe-checkbox-container">
-                <label className="label-subscribe" htmlFor="subscribe-checkbox">Subscribe and Save:</label>
+                <label className="label-subscribe" htmlFor="subscribe-checkbox">Subscribe & Save:</label>
                 <input
                   className="option-input-field"
                   type="checkbox"

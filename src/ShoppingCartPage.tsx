@@ -9,7 +9,7 @@ import DynamicImage from './DynamicImage';
 import {formatString} from './AllProductsPage';
 
 const COMPANY_EMAIL_ADDRESS: string = "prestoncaelin@gmail.com";
-//const TAX_MULTIPLIER: number = 0.12;
+const TAX_MULTIPLIER: number = 0.12;
 
 interface Product {
   id: string;
@@ -18,10 +18,25 @@ interface Product {
   pricing: { [key: string]: string };
 }
 
+export const sanitizeInput = (input: string) => {
+  return input.trim().replace(/\s+/g, ' ');
+};
+
+export const sanitizeQuantityInput = (input: string) => {
+  let quantitySanitized = sanitizeInput(input);
+  let quantityInteger = parseInt(quantitySanitized);
+  return isNaN(quantityInteger) || quantityInteger < 0 ? 0 : quantityInteger;
+};
+
 const ShoppingCartPage = () => {
   const [totalPrice, setTotalPrice] = useState(0);
   const grindSizeOptions = ['Whole Bean', 'Coarse', 'Medium-Coarse', 'Medium', 'Fine', 'Extra Fine'];
-  const subscriptionFrequencyOptions = ['none', 'every week', 'every 2 weeks', 'every month'];
+  const subscriptionFrequencyOptions = [
+    { frequency: 'none', discount: 0 },
+    { frequency: 'every week', discount: 0.2 },
+    { frequency: 'every 2 weeks', discount: 0.18 },
+    { frequency: 'every month', discount: 0.15 },
+  ];
   const [cartItemsWithProductInfo, setCartItemsWithProductInfo] = useState<{ product: Product; coffeeBagOrderItem: CoffeeBagOrderItem; price: string }[]>([]);
   const [coffeeBagOrderItems, setCoffeeBagOrderItems] = useState<CoffeeBagOrderItem[]>([]);
   const [isCheckoutEnabled, setIsCheckoutEnabled] = useState(false); // State variable for enabling checkout
@@ -36,6 +51,21 @@ const ShoppingCartPage = () => {
   const [postalCode, setPostalCode] = useState('');
   const dispatch = useDispatch();
   const [isEmailValid, setIsEmailValid] = useState(true);
+
+  // Helper function to get the discount multiplier based on the selected subscription frequency
+  const getDiscountMultiplier = (selectedSubscriptionFrequency: string) => {
+    const selectedOption = subscriptionFrequencyOptions.find((option) => option.frequency === selectedSubscriptionFrequency);
+    return selectedOption ? selectedOption.discount : 0;
+  };
+
+  const dropdownOptions = subscriptionFrequencyOptions.map((option) => {
+    const formattedOption = `${option.frequency}`;
+    return (
+      <option key={option.frequency} value={option.frequency}>
+        {formattedOption}
+      </option>
+    );
+  });
 
   const navigate = useNavigate();
 
@@ -78,7 +108,7 @@ const ShoppingCartPage = () => {
         return {
           product: product,
           coffeeBagOrderItem: coffeeBagItem,
-          price: (parseFloat(product.pricing[coffeeBagItem.bagSize]) * coffeeBagItem.quantity).toString()
+          price: (parseFloat(product.pricing[coffeeBagItem.bagSize]) * coffeeBagItem.quantity * (1 - getDiscountMultiplier(coffeeBagItem.subscriptionFrequency))).toString()
         };
       }
 
@@ -101,6 +131,8 @@ const ShoppingCartPage = () => {
     }
   }, [cartItemsWithProductInfo]);
 
+  const taxTotal = totalPrice * TAX_MULTIPLIER;
+
   const handleCloseCart = () => {
     navigate('/products');
   };
@@ -116,7 +148,7 @@ const ShoppingCartPage = () => {
   };
 
   const handleQuantityChange = (e: React.ChangeEvent<HTMLInputElement>, orderItem: CoffeeBagOrderItem) => {
-    const quantityUpdate = isNaN(parseInt(e.target.value)) || parseInt(e.target.value) < 0? 0 : parseInt(e.target.value);
+    const quantityUpdate = sanitizeQuantityInput(e.target.value);
     orderItem.setOrderQuantity(quantityUpdate);
     dispatch(updateCoffeeBagItem(orderItem.toJSONString()));
   };
@@ -130,6 +162,8 @@ const ShoppingCartPage = () => {
   const handleKeyPressQuantity = (event: React.KeyboardEvent<HTMLInputElement>, orderItem: CoffeeBagOrderItem) => {
     if (event.key === 'Enter' && orderItem.quantity === 0) {
       dispatch(removeCoffeeBagItem(orderItem.id));
+    } else if (event.key === '.') {
+      event.preventDefault();
     }
   };
 
@@ -375,7 +409,7 @@ const ShoppingCartPage = () => {
                 className="option-input-field-cart"
                 id="quantity-input-cart"
                 type="number"
-                value={item!.coffeeBagOrderItem!.quantity === 0 ? "0" : item!.coffeeBagOrderItem!.quantity.toString().replace(/^0+/, '')}
+                value={ item!.coffeeBagOrderItem!.quantity === 0 ? "0" : item!.coffeeBagOrderItem!.quantity.toString().replace(/^0+/, '')}
                 onChange={(e) => handleQuantityChange(e, item!.coffeeBagOrderItem)}
                 onBlur={() => handleQuantityBlur(item!.coffeeBagOrderItem)}
                 onKeyDown={(e) => handleKeyPressQuantity(e, item!.coffeeBagOrderItem)}
@@ -384,18 +418,14 @@ const ShoppingCartPage = () => {
             <div className="item-option" id="subscription-option-cart">
               <label>Subscription:</label>
               <select className="option-input-field-cart" value={item!.coffeeBagOrderItem!.subscriptionFrequency} onChange={(e) => handleSubscriptionChange(e, item!.coffeeBagOrderItem)}>
-                {subscriptionFrequencyOptions.map((option) => (
-                  <option key={option} value={option}>
-                    {option}
-                  </option>
-                ))}
+                {dropdownOptions}
               </select>
             </div>
         </div>
         <div className="price-and-remove-container">
           <div className="item-option" id="price-label-and-text-cart">
             <label>Price:</label>
-            <p className="price-text">${parseFloat(item.price).toFixed(2)}</p>
+            <p className="price-text">${(parseFloat(item.price)).toFixed(2)}</p>
           </div>
           <div className="item-option">
             <button className="remove-button" onClick={() => handleRemoveItem(item!.coffeeBagOrderItem)}></button>
@@ -576,9 +606,17 @@ const ShoppingCartPage = () => {
             {renderOrderItems()}
           </div>
           <div className="cart-summary">
-            <div className="cart-total">
-              <label>{"Total: "}</label>
-              <p className="cart-total-price-text">${totalPrice.toFixed(2)}</p>
+            <div className="cart-total-before-tax">
+              <label>{"Items total: "}</label>
+              <p className="cart-total-price-before-tax-text">${totalPrice.toFixed(2)}</p>
+            </div>
+            <div className="tax-total">
+              <label>{"Tax: "}</label>
+              <p className="tax-total-price-text">${taxTotal.toFixed(2)}</p>
+            </div>
+            <div className="cart-total-after-tax">
+              <label>{"Order total: "}</label>
+              <p className="cart-total-price-after-tax-text">${(parseFloat(totalPrice.toFixed(2)) + parseFloat(taxTotal.toFixed(2))).toFixed(2)}</p>
             </div>
             <button
                 className="checkout-button"

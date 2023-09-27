@@ -152,20 +152,35 @@ input[type="number"] {
     transform: scale(1.1);
 }
 
-.cart-total {
+.cart-total-before-tax, .cart-total-after-tax, .tax-total {
     text-align: left;
     display: flex;
     justify-content: space-between;
-    align-items: center;
-    margin: 20px;
-    font-size: 1.8rem;
+    align-items: flex-start;
+    margin-left: 20px;
+    margin-right: 20px;
+    margin-top: 20px;
+    font-size: 1.2rem;
+    padding-left: 3%;
+    padding-right: 3%;
 }
 
-.cart-total-price-text {
+.tax-total {
+    border-bottom: 1px solid black;
+}
+
+.cart-total-after-tax, .cart-total-price-after-tax-text {
+    font-size: 1.5rem;
+    color: rgb(126, 33, 33);
+}
+
+.cart-total-price-before-tax-text, .tax-total-price-text, .cart-total-price-after-tax-text {
     width: 15ch;
     word-wrap: break-word;
     overflow-wrap: break-word;
     text-align: right;
+    margin-top: 0;
+    margin-left: 20px;
 }
 
 #weight-option-cart {
@@ -198,6 +213,7 @@ input[type="number"] {
     align-items: center;
     justify-content: center;
     padding-left: 0;
+    padding-right: 0;
     margin-left: 1ch;
     margin-right: 1ch;
 }
@@ -523,5 +539,29 @@ input[type="number"] {
         align-items: flex-start; 
         margin: 30px;
     }
+}
+
+
+@media (max-width: 520px) {
+    .cart-total-price-before-tax-text, .tax-total-price-text, .cart-total-price-after-tax-text {
+        width: 10ch;
+    }
+}
+
+@media (max-width: 350px) {
+    .cart-total-before-tax, .cart-total-after-tax, .tax-total {
+        flex-direction: column;
+        align-items: center;
+    }
+    .cart-total-before-tax label, .cart-total-after-tax label, .tax-total label {
+        margin-bottom: 10px;
+        text-align: center;
+    }
+    .cart-total-price-before-tax-text, .tax-total-price-text, .cart-total-price-after-tax-text {
+        width: 100%;
+        margin: 0;
+        text-align: center;
+    }
 
 }
+

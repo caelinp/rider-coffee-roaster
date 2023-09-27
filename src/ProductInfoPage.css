@@ -106,8 +106,6 @@ p {
   gap: 20px;
   align-items: center;
   text-align: center;
-  max-width: 80%;
-  padding: 0 20%;
   justify-content: center;  
   margin-top:0;
 }
@@ -269,20 +267,34 @@ p {
 
 .label-total {
   margin-top: 0;
-  text-align: center;
+  text-align: left;
   font-size: 2rem;
   margin-right: 0.5rem;
-  margin-left: 1rem;
+}
+
+.label-total-discount {
+  text-align: left;
+  margin-top: 0;
+  font-size: 1.5rem;
+  margin-right: 0.5rem;
+  color: rgb(126, 33, 33);
+
 }
 
 #total {
   text-align: left;
   display: flex;
   justify-content: space-between;
-  align-items: center;
+  align-items: flex-start;
   margin: 20px;
-  font-size: 1.8rem;
+}
 
+#discounted-total {
+  text-align: left;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin: 20px;
 }
 
 .total-price-text {
@@ -292,21 +304,42 @@ p {
   text-align: right;
   font-family: 'Montserrat Alternates', sans-serif !important;
   word-wrap: break-word;
-  overflow-wrap: break-word; /* Allow words to break and wrap to the next line */
+  overflow-wrap: break-word;
+}
+
+.total-discount-price-text {
+  width: 15ch;
+  font-size: 1.5rem;
+  margin-left: 1rem;
+  text-align: right;
+  font-family: 'Montserrat Alternates', sans-serif !important;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  color: rgb(126, 33, 33);
+}
+
+.label-total.discounted {
+  font-size: 1.5rem;
+}
+
+.total-price-text.discounted {
+  color: grey;
+  font-size: 1.5rem;
+  text-decoration: line-through;
 }
 
 /* Hide the scrollbar for Firefox */
-.total-price-text {
+.total-price-text, .total-discount-price-text {
   scrollbar-width: thin;
   scrollbar-color: transparent transparent;
 }
 
 /* Hide the scrollbar for Chrome, Edge, and Safari */
-.total-price-text::-webkit-scrollbar {
+.total-price-text::-webkit-scrollbar, .total-discount-price-text::-webkit-scrollbar {
   width: 6px; /* Adjust the width as needed */
 }
 
-.total-price-text::-webkit-scrollbar-thumb {
+.total-price-text::-webkit-scrollbar-thumb, .total-discount-price-text::-webkit-scrollbar-thumb {
   background-color: transparent;
 }
 
@@ -410,7 +443,7 @@ p {
 }
 
 #subscription-dropdown {
-  font-size: 1.3rem;
+  font-size: 1.5rem;
   margin: 0;
 }
 
@@ -436,7 +469,7 @@ p {
   }
 }
 
-@media (max-width: 768px) {
+@media screen and (max-width: 768px) {
   .label-weight,
   .label-grind-size,
   .label-quantity {
@@ -444,12 +477,25 @@ p {
     margin: 0 0 10px 0;
   }
 
-  .label-subscribe {
-    font-size: 1.1rem;
+  #total, #discounted-total {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-top: 3rem;
+  }
+  
+  .total-price-text, .total-price-text.discounted, .total-discount-price-text {
+    font-size: 1.5rem;
+    width: 10ch;
   }
 
-  .total-price-text {
-    width: 5ch;
+  .label-total-discount, .label-total.discounted, .label-total {
+    text-align: left;
+    font-size: 1.5rem;
+  }
+
+  .label-subscribe {
+    font-size: 1.1rem;
   }
 
   #quantity {
@@ -479,19 +525,6 @@ p {
     align-items: center;
     flex-direction: column;
   }
-
-  .label-total {
-    text-align: center;
-    font-size: 2rem;
-    margin: 20px 0;
-  }
-  
-  .total-price-text {
-    width: 90%;
-    margin: 0;
-    font-size: 1.5rem;
-    text-align: center;
-  }
 }
 
 @media (max-width: 600px) {
@@ -500,12 +533,61 @@ p {
   }
 }
 
-@media screen and (max-width: 500px) {
+@media screen and (max-width: 510px) {
   .product-header {
     font-size: 2rem;
   }
   .info-field h2 {
     font-size: 1.5rem;
+  }
+
+  .total-price-text, .total-price-text.discounted, .total-discount-price-text {
+    margin: 0;
+    font-size: 1.2rem;
+    margin-left: 10px;
+  }
+
+  .label-total-discount, .label-total.discounted, .label-total {
+    margin: 0;
+    margin-left: 10px;
+    font-size: 1.2rem;
+  }
+  
+  #total, #discounted-total {
+    margin-left: 10px;
+    margin-right: 10px;
+  }
+
+  #subscription-dropdown {
+    font-size: 1.2rem;
+  }
+}
+
+@media screen and (max-width: 430px) {
+  .total-price-text, .total-price-text.discounted, .total-discount-price-text {
+    width: 10ch;
+  }
+}
+
+@media screen and (max-width: 350px) {
+  #total, #discounted-total {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .total-price-text, .total-price-text.discounted, .total-discount-price-text {
+    text-align: center;
+    margin: 20px;
+    width: 100%;
+  }
+
+  .label-total-discount, .label-total.discounted, .label-total {
+    text-align: center;
+    font-size: 1.5rem;
+  }
+
+  #subscription-dropdown {
+    font-size: 1rem;
   }
 }
 
