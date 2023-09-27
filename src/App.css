@@ -53,7 +53,6 @@ body {
   top: 0;
   bottom: 0;
   z-index: 1000;
-  border-top: 1px outset #AFAFAF;
 }
 
 .drawer-open {
@@ -69,8 +68,7 @@ body {
   left: 0;
   right: 0;
   z-index: 1001;
-  border-radius: 5px;
-  border: 1px outset #AFAFAF;
+  border: 1px solid #AFAFAF;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -88,7 +86,7 @@ body {
   display: flex;
   align-items: center;
   padding-left: 10px;
-  border-left: 1px outset #AFAFAF;
+  border-left: 1px solid #AFAFAF;
   z-index: 1000;
 
 }
@@ -98,7 +96,7 @@ body {
   display: flex;
   align-items: center;
   padding-right: 10px;
-  border-right: 1px outset #AFAFAF;
+  border-right: 1px solid #AFAFAF;
   z-index: 1000;
 }
 
@@ -111,8 +109,6 @@ body {
   z-index: 1;
   border-radius: 5px;
   border-top: none;
-  border-top-left-radius: 0;
-  border-top-right-radius: 0;
 }
 
 .menu-button {
@@ -166,7 +162,6 @@ body {
   width: auto;
 }
 
-
 /* CSS class for scaling up */
 #shopping-cart-button-container.scaling-up {
   transform: scale(1.15);
@@ -207,8 +202,8 @@ body {
   display: flex;
   flex-direction: column;
   padding-top: var(--black-bar-top-height);
-  border: 1px outset #AFAFAF;
-  border-radius: 3px;
+  border: 1px solid #AFAFAF;
+  overflow-x: hidden;
 }
 
 .drawer-item {
@@ -216,7 +211,6 @@ body {
   padding: 10px;
   background-color: black;
   background-image: url('./img/black-leather.png');
-  border: 1px outset #AFAFAF;
   border-radius: 3px;
   cursor: pointer;
   transition: background-color 0.2s, transform 0.2s;
@@ -226,7 +220,7 @@ body {
 .drawer-item:hover {
   background-color: #1e150f!important;
   background-image: url('./img/brown-leather.png');
-  transform: scale(1.1)
+  transform: scale(1.05)
 }
 
 .drawer-item-text {
