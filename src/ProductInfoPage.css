@@ -222,14 +222,6 @@ p {
   margin-top: 1rem;
   display: flex;
   max-width: 100vw;
-  justify-content: center;
-  width: fit-content;
-}
-
-#quantity-option {
-  display: flex;
-  height: fit-content;
-  width: fit-content;
 }
 
 .order-options {
@@ -247,10 +239,20 @@ p {
   font-size: 1.5rem;
   margin-left: 1rem;
   margin-top: 15px;
+  width: 8ch;
+  text-align: left;
 }
 
 .label-subscribe {
   font-size: 1.5rem;
+}
+
+#decrease-quantity-control {
+  margin-left: 0;
+}
+
+#increase-quantity-control {
+  margin-right: 0;
 }
 
 .quantity-control {
@@ -267,10 +269,9 @@ p {
 }
 
 .quantity-input {
-  margin-left: 10px;
+  margin-left: 20px;
   margin-top: 0px;
   height: fit-content;
-  max-width: 300px;
   width: fit-content;
 }
 
@@ -371,7 +372,7 @@ p {
 }
 
 #quantity {
-  width: 30%; 
+  width: 80px; 
   padding-left: 15px;
   padding-right: 15px;
 }
@@ -484,6 +485,8 @@ p {
   .label-quantity {
     font-size: 1.1rem;
     margin: 0 0 10px 0;
+    width: 8ch;
+    text-align: left;
   }
 
   .total, .discounted-total {
@@ -508,12 +511,6 @@ p {
   }
 
   #quantity {
-    width: 80px;
-    max-width: 50%;
-    margin: 0;
-  }
-
-  .quantity-input {
     margin: 0;
   }
 
@@ -571,6 +568,17 @@ p {
     margin-top: 10px;
     flex-direction: column;
   }
+
+  .quantity-input {
+    margin: 0;
+  }
+
+  .label-weight,
+  .label-grind-size,
+  .label-quantity {
+    width: 8ch;
+    text-align: center;
+  }
 }
 
 @media screen and (max-width: 430px) {
@@ -599,22 +607,25 @@ p {
   #subscription-dropdown {
     font-size: 1rem;
   }
-  
-  #grind-size {
-    max-width: 10ch;
-  }
 }
 
 @media screen and (max-width: 270px) {
 
   #quantity {
-    max-width: 40px;
+    max-width: 3ch;
+  }
+
+  .quantity-control {
+    display: none;
+  }
+
+  #grind-size {
+    max-width: 10ch;
   }
 
 }
 
 @media screen and (max-width: 215px) {
-
   .quantity-control {
     display: none;
   }
