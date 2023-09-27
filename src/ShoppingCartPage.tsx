@@ -211,7 +211,7 @@ const ShoppingCartPage = () => {
   };
 
   const handleNameChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setName(sanitizeInput(e.target.value));
+    setName(e.target.value);
   };
   
   const handlePhoneNumberChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -249,23 +249,23 @@ const ShoppingCartPage = () => {
   };
 
   const handleStreetAddressChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setStreetAddress(sanitizeInput(e.target.value));
+    setStreetAddress(e.target.value);
   };
 
   const handleCityChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setCity(sanitizeInput(e.target.value));
+    setCity(e.target.value);
   };
 
   const handleProvinceChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setProvince(sanitizeInput(e.target.value));
+    setProvince(e.target.value);
   };
 
   const handleCountryChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setCountry(sanitizeInput(e.target.value));
+    setCountry(e.target.value);
   };
 
   const handlePostalCodeChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setPostalCode(sanitizeInput(e.target.value).toUpperCase());
+    setPostalCode(e.target.value.toUpperCase());
   };
 
   // Handler function for submitting the order
@@ -289,7 +289,7 @@ const ShoppingCartPage = () => {
 
   // Define line break and tab as URL-encoded equivalents
   const lineBreak = '%0D%0A';
-  const tab = '%09';
+  const tab = '    ';
 
   // Construct the email content using cartItemsWithProductInfo and form fields
   const emailContent =
@@ -298,21 +298,21 @@ const ShoppingCartPage = () => {
     '!' + lineBreak + lineBreak +
     'Customer Information:' + lineBreak + lineBreak +
     tab + 'Name: ' +
-    name + lineBreak +
+    sanitizeInput(name) + lineBreak +
     tab + 'Email: ' +
-    email + lineBreak +
+    sanitizeInput(email) + lineBreak +
     tab + 'Phone Number: ' +
-    phoneNumber + lineBreak +
+    sanitizeInput(phoneNumber) + lineBreak +
     tab + 'Street Address: ' +
-    streetAddress + lineBreak +
+    sanitizeInput(streetAddress) + lineBreak +
     tab + 'City: ' +
-    city + lineBreak +
+    sanitizeInput(city) + lineBreak +
     tab + 'Province/State: ' +
-    province + lineBreak +
+    sanitizeInput(province) + lineBreak +
     tab + 'Country: ' +
-    country + lineBreak +
+    sanitizeInput(country) + lineBreak +
     tab + 'Postal Code: ' +
-    postalCode + lineBreak + lineBreak +
+    sanitizeInput(postalCode) + lineBreak + lineBreak +
     'Order Details:' + lineBreak + lineBreak +
     cartItemsWithProductInfo
       .map((item, index) => {
@@ -334,8 +334,12 @@ const ShoppingCartPage = () => {
         );
       })
       .join(lineBreak + lineBreak) + lineBreak + lineBreak +
+    'Item Total: $' +
+    totalPrice.toFixed(2) + lineBreak +
+    'Tax Total: $' +
+    taxTotal.toFixed(2) + lineBreak +
     'Order Total: $' +
-    totalPrice.toFixed(2) + lineBreak + lineBreak +
+    (parseFloat(totalPrice.toFixed(2)) + parseFloat(taxTotal.toFixed(2))).toFixed(2) + lineBreak + lineBreak +
     'Thank you!' + lineBreak + lineBreak;
 
     // Construct the mailto link
