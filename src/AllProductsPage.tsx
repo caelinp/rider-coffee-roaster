@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 import DynamicImage from './DynamicImage';
 // Import the JSON data
 import productsData from './json/products.json';
+import Footer from './Footer';
 
 interface Product {
   id: string;
@@ -84,7 +85,7 @@ const AllProductsPage = () => {
             </div>
           </div>
         </div>
-        <div className="black-bar-bottom"></div>
+        <Footer></Footer>
       </div>
     </div>
   );

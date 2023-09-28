@@ -1,6 +1,6 @@
-// ContactUsPage.tsx
 import React from 'react';
 import './ContactUsPage.css';
+import Footer from './Footer';
 
 const ContactUsPage: React.FC = () => {
   return (
@@ -12,16 +12,16 @@ const ContactUsPage: React.FC = () => {
             <div className="sub-section">
               <h2>Delivery Policy</h2>
               <p>We deliver to customers in Greater Vancouver every Friday.</p>
-              <p>Contact us at delivery@ridercoffee.com for more information.</p>
+              <p>Email us at <a href="mailto:delivery@ridercoffee.com">delivery@ridercoffee.com</a> or give us a call at <a href="tel:+1234567890">(123)-456-7890</a> for more information.</p>
             </div>
             <div className="sub-section">
               <h2>Business and Wholesale Inquiries</h2>
-              <p>For business inquiries, please contact us at business@ridercoffee.com.</p>
+              <p>For business and wholesale inquiries, please email us at <a href="mailto:business@ridercoffee.com">business@ridercoffee.com</a> or give us a call at <a href="tel:+1234567890">(123)-456-7890</a>.</p>
               <p>We're excited to work with you!</p>
             </div>
           </div>
         </div>
-        <div className="black-bar-bottom"></div>
+        <Footer></Footer>
       </div>
     </div>
   );

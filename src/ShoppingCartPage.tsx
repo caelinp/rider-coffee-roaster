@@ -8,6 +8,7 @@ import { updateCoffeeBagItem, removeCoffeeBagItem, clearCart, selectCartItems } 
 import CoffeeBagOrderItem from './OrderItem';
 import DynamicImage from './DynamicImage';
 import {formatString} from './AllProductsPage';
+import Footer from './Footer';
 
 const COMPANY_EMAIL_ADDRESS: string = "prestoncaelin@gmail.com";
 const TAX_MULTIPLIER: number = 0.12;
@@ -664,7 +665,7 @@ const [isModalOpen, setIsModalOpen] = useState(false);
             )}
           </div>
         </div>
-      <div className="black-bar-bottom"></div>
+        <Footer></Footer>
     </div>
     <Modal
         open={isModalOpen}

@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import './LandingPage.css';
 import './App.css';
 import { Link } from 'react-router-dom'; // Import Link
-
+import Footer from './Footer'
 import logo from './img/metal-logo.gif';
 
 const LandingPage: React.FC = () => {
@@ -82,7 +82,7 @@ const LandingPage: React.FC = () => {
               <button className="enter-button">Enter</button>
             </Link>
           </div>
-          <div className="black-bar-bottom"></div>
+          <Footer></Footer>
         </div>
     </div>
   );

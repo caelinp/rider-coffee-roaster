@@ -100,17 +100,6 @@ body {
   z-index: 1000;
 }
 
-.black-bar-bottom {
-  height: var(--black-bar-bottom-height);
-  background-color: black;  
-  background-image: url('./img/black-leather.png');
-  position: absolute;
-  width: 100%;
-  z-index: 1;
-  border-radius: 5px;
-  border-top: none;
-}
-
 .menu-button {
   cursor: pointer;
   z-index: 1002;
@@ -293,7 +282,6 @@ input[type="number"] {
 }
 
 :root {
-  --black-bar-bottom-height: 200px;
   --black-bar-width: 5vw;
   --black-bar-top-height: 70px;
 }

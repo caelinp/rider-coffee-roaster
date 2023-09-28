@@ -8,6 +8,7 @@ import CoffeeBagItem from './OrderItem';
 import { useSwipeable } from 'react-swipeable';
 import productsData from './json/products.json'; // Import the JSON file
 import { sanitizeQuantityInput } from './ShoppingCartPage';
+import Footer from './Footer';
 
 const DEFAULT_WEIGHT: string = "340g";
 const NO_SUBSCRIPTION: string = "none";
@@ -362,7 +363,7 @@ const ProductInfoPage = () => {
             </div>
           </div>
         </div>
-        <div className="black-bar-bottom"></div>
+        <Footer></Footer>
       </div>
     </div>
   );

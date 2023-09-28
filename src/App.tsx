@@ -83,7 +83,7 @@ const App: React.FC = () => {
         <div className="menu-button" onClick={openDrawer}>
           <MenuIcon fontSize="large" id="menu-icon" />
         </div>
-        <Link to="/rider-coffee-roaster/">
+        <Link to="/">
           <img src={logo} alt="Rider Coffee Roaster Logo" className="logo-small" />
         </Link>
         <div className="shopping-cart-button-container" id="shopping-cart-button-container">
