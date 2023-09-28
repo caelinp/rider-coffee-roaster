@@ -2,6 +2,7 @@ import React, { useState, useEffect, useCallback, useLayoutEffect, useMemo} from
 import './ShoppingCartPage.css';
 import { Link, useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
+import { Modal } from '@mui/material';
 import productsData from './json/products.json';
 import { updateCoffeeBagItem, removeCoffeeBagItem, clearCart, selectCartItems } from './CartSlice';
 import CoffeeBagOrderItem from './OrderItem';
@@ -51,6 +52,7 @@ const ShoppingCartPage = () => {
   const [postalCode, setPostalCode] = useState('');
   const dispatch = useDispatch();
   const [isEmailValid, setIsEmailValid] = useState(true);
+const [isModalOpen, setIsModalOpen] = useState(false);
 
   // Helper function to get the discount multiplier based on the selected subscription frequency
   const getDiscountMultiplier = useCallback((selectedSubscriptionFrequency: string) => {
@@ -355,8 +357,13 @@ const ShoppingCartPage = () => {
     const mailtoLink = 'mailto:' + COMPANY_EMAIL_ADDRESS + '?subject=' + emailSubject + '&body=' + emailContent;
     // Open the default email client with the mailto link
     window.location.href = mailtoLink;
+    setIsModalOpen(true);
   };
 
+  // Function to close the modal
+  const closeModal = () => {
+    setIsModalOpen(false);
+  };
   // Check if all required form fields are filled
   const isFormComplete =
     isEmailValid &&
@@ -378,6 +385,10 @@ const ShoppingCartPage = () => {
           <p>
             Your cart is empty.
           </p>
+          <button 
+            className="go-to-products-button" onClick={()=> {navigate('/products/')}} 
+          >Continue Shopping</button>
+          
         </div>
       );
     } else {
@@ -629,8 +640,8 @@ const ShoppingCartPage = () => {
               <p className="tax-total-price-text">${taxTotal.toFixed(2)}</p>
             </div>
             <div className="cart-total-after-tax">
-              <label>{"Order total: "}</label>
-              <p className="cart-total-price-after-tax-text">${(parseFloat(totalPrice.toFixed(2)) + parseFloat(taxTotal.toFixed(2))).toFixed(2)}</p>
+              <label><strong>{"Order total: "}</strong></label>
+              <p className="cart-total-price-after-tax-text"><strong>${(parseFloat(totalPrice.toFixed(2)) + parseFloat(taxTotal.toFixed(2))).toFixed(2)}</strong></p>
             </div>
             <button
                 className="checkout-button"
@@ -655,6 +666,36 @@ const ShoppingCartPage = () => {
         </div>
       <div className="black-bar-bottom"></div>
     </div>
+    <Modal
+        open={isModalOpen}
+        onClose={closeModal}
+        aria-labelledby="modal-title"
+        aria-describedby="modal-description"
+      >
+        <div className="modal">
+          <div className="modal-content">
+            <p id="modal-title">Have you sent your order email?</p>
+            <div className="modal-buttons-container">
+              <button
+                className="modal-button"
+                onClick={() => {
+                  closeModal();
+                  handleClearCart();
+                  navigate('/products');
+                }}
+              >
+                Yes! Clear Cart
+              </button>
+              <button
+                className="modal-button"
+                onClick={closeModal}
+              >
+                No, Return to Cart
+              </button>
+            </div>
+          </div>
+        </div>
+      </Modal>
   </div>
 );
 };

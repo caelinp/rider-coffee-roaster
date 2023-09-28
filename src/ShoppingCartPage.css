@@ -36,7 +36,7 @@
 .cart-content {
     max-width: 80vw;
     width: fit-content;
-    min-width: 122ch;
+    min-width: 128ch;
     flex-direction: row;
     gap: 2rem;
     overflow-y: auto;
@@ -156,10 +156,11 @@ input[type="number"] {
     text-align: left;
     display: flex;
     justify-content: space-between;
-    align-items: flex-start;
+    align-items: flex-end;
     margin-left: 20px;
     margin-right: 20px;
     margin-top: 20px;
+    padding-bottom: 10px;
     font-size: 1.2rem;
     padding-left: 3%;
     padding-right: 3%;
@@ -170,17 +171,24 @@ input[type="number"] {
 }
 
 .cart-total-after-tax, .cart-total-price-after-tax-text {
-    font-size: 1.5rem;
     color: rgb(126, 33, 33);
+
 }
 
 .cart-total-price-before-tax-text, .tax-total-price-text, .cart-total-price-after-tax-text {
-    width: 15ch;
     word-wrap: break-word;
     overflow-wrap: break-word;
     text-align: right;
     margin-top: 0;
     margin-left: 20px;
+    max-width: 30ch;
+    margin-bottom: 0;
+}
+
+.cart-total-before-tax label, .cart-total-after-tax label, .tax-total label {
+    text-align: left;
+    width: 15ch;
+    align-self: flex-start;
 }
 
 #weight-option-cart {
@@ -307,11 +315,16 @@ input[type="number"] {
     margin-top: 4rem;
     font-style: bold;
 }
-  
+
+.order-form {
+    align-items: center;
+    text-align: center;
+}
 .form-field {
   display: flex;
   align-items: center;
   margin: 20px
+
 }
 
 .form-field label {
@@ -329,7 +342,6 @@ input[type="number"] {
   flex: 1;
   display: flex;
   flex-direction: column;
-  align-items: left; 
   margin-right: 20px;
 }
 
@@ -339,7 +351,7 @@ input[type="number"] {
     background-image: url('./img/black-leather.png');
     padding: 10px;
     border-radius: 5px;
-    width: 100%;
+    display: flex;
     flex: 1;
 
 }
@@ -398,6 +410,71 @@ input[type="number"] {
     color: black;
 }
 
+.go-to-products-button {
+    margin-top: 0;
+    margin-bottom: 2rem;
+    font-size: 1rem;
+    transition: ease-in-out 0.2s;
+    transform: scale(1);
+}
+
+.go-to-products-button:hover {
+    background-color: #1e150f;
+    background-image: url('./img/brown-leather.png');
+    transform: scale(1.05);
+}
+
+/* CSS for the Modal */
+.modal {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    border: 1px solid black;
+
+  }
+  
+  .modal-content {
+    background-color: white;
+    background-image: url('./img/background0-no-logo.png');
+    color: black;
+    width: 90%;
+    max-width: 400px; /* Adjust the maximum width as needed */
+    padding: 20px;
+    border-radius: 8px;
+    border: 1px solid black;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    text-align: center; /* Center-align all text within the modal */
+  }
+  
+  .modal-buttons-container {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+    transition: ease-in-out 0.2s;
+    transform: scale(1);
+    max-width: 100%;
+    flex-direction: row;
+  }
+
+  .modal-button{
+    margin: 10px;
+    transition: ease-in-out 0.2s;
+    transform: scale(1);
+    font-size: 1rem
+  }
+
+  .modal-button:hover {
+    background-color: #1e150f;
+    background-image: url('./img/brown-leather.png');
+    transform: scale(1.05);
+  }
+  
+  /* Add margin to the top button for spacing */
+  .modal-buttons button:first-child {
+    margin-right: 10px;
+  }
+
 @media (max-width: 1120px) {
     #order-item-product-name-and-image-container {
         margin: 20px;
@@ -440,7 +517,7 @@ input[type="number"] {
     }
 
     .cart-content {
-        min-width: 90ch;
+        min-width: 96ch;
     }
 
     .cart-page-content-and-bottom {
@@ -523,7 +600,7 @@ input[type="number"] {
     }
 }
 
-@media (max-width: 840px) {
+@media (max-width: 900px) {
     .cart-content {
         min-width: 80vw;
     }
@@ -546,28 +623,54 @@ input[type="number"] {
         align-items: flex-start; 
         margin: 30px;
     }
-}
-
-
-@media (max-width: 520px) {
     .cart-total-price-before-tax-text, .tax-total-price-text, .cart-total-price-after-tax-text {
-        width: 10ch;
+        width: 24ch;
     }
 }
 
+@media (max-width: 600px) {
+    .cart-total-price-before-tax-text, .tax-total-price-text, .cart-total-price-after-tax-text {
+        width: 15ch;
+    }
+}
+
+@media (max-width: 500px) {
+    .cart-total-price-before-tax-text, .tax-total-price-text, .cart-total-price-after-tax-text {
+        width: 10ch;
+        align-items: flex-end;
+    }
+}
+
+
+
 @media (max-width: 350px) {
+    .cart-total-price-before-tax-text, .tax-total-price-text, .cart-total-price-after-tax-text {
+        width: 7ch;
+        font-size: 1rem;
+    }
+    .cart-total-before-tax, .cart-total-after-tax, .tax-total {
+        font-size: 1rem;
+    }
+    .modal-buttons-container {
+        flex-direction: column;
+    }
+}
+
+@media (max-width: 250px) {
     .cart-total-before-tax, .cart-total-after-tax, .tax-total {
         flex-direction: column;
         align-items: center;
-    }
-    .cart-total-before-tax label, .cart-total-after-tax label, .tax-total label {
-        margin-bottom: 10px;
-        text-align: center;
+        justify-content: center;
+
     }
     .cart-total-price-before-tax-text, .tax-total-price-text, .cart-total-price-after-tax-text {
-        width: 100%;
         margin: 0;
         text-align: center;
+        justify-content: center;
+    }
+    .cart-total-before-tax label, .cart-total-after-tax label, .tax-total label {
+        text-align: center;
+        justify-content: center;
     }
 
 }
