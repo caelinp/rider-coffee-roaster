@@ -35,8 +35,7 @@
 
 .cart-content {
     max-width: 80vw;
-    width: fit-content;
-    min-width: 128ch;
+    width: 130ch;
     flex-direction: row;
     gap: 2rem;
     overflow-y: auto;
@@ -92,6 +91,7 @@
     border-bottom: 2px ridge black;
     width: 100%;
     overflow-x: hidden;
+    justify-content: space-between;
 }
 
 .item-options {
@@ -376,6 +376,8 @@ input[type="number"] {
 #order-form-instructions {
     border-bottom: 2px ridge black;
     padding: 0 5%;
+    text-align: left;
+    margin-bottom: 3rem;
 }
 
 .clear-cart-button:disabled, .checkout-button:disabled, .submit-order-button:disabled {
@@ -475,7 +477,7 @@ input[type="number"] {
     margin-right: 10px;
   }
 
-@media (max-width: 1120px) {
+@media (max-width: 1200px) {
     #order-item-product-name-and-image-container {
         margin: 20px;
         width: 30ch;
@@ -490,7 +492,7 @@ input[type="number"] {
     .order-item {
         width: 100%;
         overflow: hidden;
-        justify-content: center;
+        justify-content: space-between;
         align-items: center;
     }
 
