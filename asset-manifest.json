@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/rider-coffee-roaster/static/css/main.d0d968ca.css",
-    "main.js": "/rider-coffee-roaster/static/js/main.becd2b6d.js",
+    "main.css": "/rider-coffee-roaster/static/css/main.bdc4b0eb.css",
+    "main.js": "/rider-coffee-roaster/static/js/main.41d348ac.js",
     "static/js/113.82d886b8.chunk.js": "/rider-coffee-roaster/static/js/113.82d886b8.chunk.js",
     "static/js/318.706cb997.chunk.js": "/rider-coffee-roaster/static/js/318.706cb997.chunk.js",
     "static/js/975.2ec9febe.chunk.js": "/rider-coffee-roaster/static/js/975.2ec9febe.chunk.js",
@@ -54,11 +54,11 @@
     "static/media/icon-with-text.png": "/rider-coffee-roaster/static/media/icon-with-text.721c08636e87fd6acef8.png",
     "static/media/bean.png": "/rider-coffee-roaster/static/media/bean.9757027cd0702f1b9023.png",
     "index.html": "/rider-coffee-roaster/index.html",
-    "main.d0d968ca.css.map": "/rider-coffee-roaster/static/css/main.d0d968ca.css.map",
-    "main.becd2b6d.js.map": "/rider-coffee-roaster/static/js/main.becd2b6d.js.map"
+    "main.bdc4b0eb.css.map": "/rider-coffee-roaster/static/css/main.bdc4b0eb.css.map",
+    "main.41d348ac.js.map": "/rider-coffee-roaster/static/js/main.41d348ac.js.map"
   },
   "entrypoints": [
-    "static/css/main.d0d968ca.css",
-    "static/js/main.becd2b6d.js"
+    "static/css/main.bdc4b0eb.css",
+    "static/js/main.41d348ac.js"
   ]
 }
