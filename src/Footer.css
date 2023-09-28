@@ -1,6 +1,5 @@
 /* FooterLinks.css */
 .footer {
-    background: none;
     color: white;
     padding: 10px 0;
     display: flex;
@@ -10,7 +9,7 @@
     z-index: 10008;
     text-align: left;
     font-family: 'Montserrat Alternates', sans-serif;
-    width: 90%;
+    width: 100%;
   }
   
   .footer-links {
@@ -30,9 +29,9 @@
     text-decoration: none;
     text-align: center;
     justify-content: center;
-    margin-right: 15px; /* Adjust as needed for spacing between links */
-    margin-left: 15px; /* Adjust as needed for spacing between links */
-    margin-top: 20px; /* Adjust as needed for spacing between links */
+    margin-right: 1rem; /* Adjust as needed for spacing between links */
+    margin-left: 1rem; /* Adjust as needed for spacing between links */
+    margin-top: 1rem; /* Adjust as needed for spacing between links */
     white-space: nowrap; /* Prevent text from wrapping to the next line */
     z-index: 10008;
   }
@@ -42,14 +41,12 @@
   }
   
   .copyright {
-    margin-top: 2rem;
-    margin-bottom: 1rem;
-    margin-left: 1rem;
+    margin: 2rem;
   }
   
   .black-bar-bottom {
-    height: var(--black-bar-bottom-height);
-    min-height: fit-content;
+    min-height: var(--black-bar-bottom-height);
+    height: fit-content;
     background-color: black;  
     background-image: url('./img/black-leather.png');
     position: absolute;
