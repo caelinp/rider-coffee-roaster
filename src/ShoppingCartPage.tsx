@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useCallback, useLayoutEffect} from 'react';
+import React, { useState, useEffect, useCallback, useLayoutEffect, useMemo} from 'react';
 import './ShoppingCartPage.css';
 import { Link, useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
@@ -31,12 +31,12 @@ export const sanitizeQuantityInput = (input: string) => {
 const ShoppingCartPage = () => {
   const [totalPrice, setTotalPrice] = useState(0);
   const grindSizeOptions = ['Whole Bean', 'Coarse', 'Medium-Coarse', 'Medium', 'Fine', 'Extra Fine'];
-  const subscriptionFrequencyOptions = [
+  const subscriptionFrequencyOptions = useMemo(() => [
     { frequency: 'none', discount: 0 },
     { frequency: 'every week', discount: 0.2 },
     { frequency: 'every 2 weeks', discount: 0.18 },
     { frequency: 'every month', discount: 0.15 },
-  ];
+  ], []);  
   const [cartItemsWithProductInfo, setCartItemsWithProductInfo] = useState<{ product: Product; coffeeBagOrderItem: CoffeeBagOrderItem; price: string }[]>([]);
   const [coffeeBagOrderItems, setCoffeeBagOrderItems] = useState<CoffeeBagOrderItem[]>([]);
   const [isCheckoutEnabled, setIsCheckoutEnabled] = useState(false); // State variable for enabling checkout
@@ -53,10 +53,10 @@ const ShoppingCartPage = () => {
   const [isEmailValid, setIsEmailValid] = useState(true);
 
   // Helper function to get the discount multiplier based on the selected subscription frequency
-  const getDiscountMultiplier = (selectedSubscriptionFrequency: string) => {
+  const getDiscountMultiplier = useCallback((selectedSubscriptionFrequency: string) => {
     const selectedOption = subscriptionFrequencyOptions.find((option) => option.frequency === selectedSubscriptionFrequency);
     return selectedOption ? selectedOption.discount : 0;
-  };
+  }, [subscriptionFrequencyOptions]);
 
   const dropdownOptions = subscriptionFrequencyOptions.map((option) => {
     const formattedOption = `${option.frequency}`;
@@ -114,7 +114,7 @@ const ShoppingCartPage = () => {
 
       return null; // Handle the case where the product is not found
     }).filter(Boolean) as { product: Product; coffeeBagOrderItem: CoffeeBagOrderItem; price: string }[]; // Remove any null entries
-  }, [])
+  }, [getDiscountMultiplier])
 
   useEffect(() => {
     setCartItemsWithProductInfo(generateCartItemsWithProductInfo(coffeeBagOrderItems));
@@ -215,14 +215,21 @@ const ShoppingCartPage = () => {
   };
   
   const handlePhoneNumberChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    let phoneNumberInput = parseInt(e.target.value)
+    let phoneNumberInput = e.target.value.replace(/\D/g, '')
     let phoneNumberString = "";
-    if (!isNaN(phoneNumberInput))
+    if (phoneNumberInput)
     {
       const maxDigits = 11; // Max digits in a phone number including country code
       phoneNumberString = phoneNumberInput.toString().slice(0, maxDigits);
     }
-    setPhoneNumber(sanitizeInput(phoneNumberString));
+    if (phoneNumberString.length >= 10)
+    {
+      setPhoneNumber(formatPhoneNumber(phoneNumberString));
+    }
+    else
+    {
+      setPhoneNumber(sanitizeInput(phoneNumberString));
+    }
   };
 
   const formatPhoneNumber = (input: string): string => {
@@ -230,14 +237,14 @@ const ShoppingCartPage = () => {
   
     if (numericInput.length === 11) {
       const countryCode = numericInput.charAt(0);
-      const areaCode = numericInput.substr(1, 3);
-      const middlePart = numericInput.substr(4, 3);
-      const lastPart = numericInput.substr(7);
+      const areaCode = numericInput.slice(1, 4);
+      const middlePart = numericInput.slice(4, 7);
+      const lastPart = numericInput.slice(7);
       return `+${countryCode}-(${areaCode})-${middlePart}-${lastPart}`;
     } else if (numericInput.length === 10) {
-      const areaCode = numericInput.substr(0, 3);
-      const middlePart = numericInput.substr(3, 3);
-      const lastPart = numericInput.substr(6);
+      const areaCode = numericInput.slice(0, 3);
+      const middlePart = numericInput.slice(3, 6);
+      const lastPart = numericInput.slice(6);
       return `(${areaCode})-${middlePart}-${lastPart}`;
     } else {
       return input;
@@ -272,6 +279,8 @@ const ShoppingCartPage = () => {
   const handleSubmitOrder = () => {
     // Check if all required fields are filled
     if (
+      !isFormComplete ||
+      !isCheckoutEnabled ||
       email.trim() === '' ||
       name.trim() === '' ||
       streetAddress.trim() === '' ||
@@ -495,7 +504,7 @@ const ShoppingCartPage = () => {
             </div>
           </div>
           <div className="form-field">
-            <label>Phone Number *</label>
+            <label>Phone Number </label>
             <div className="form-field-input">
               <input
                 type="tel"
@@ -568,6 +577,7 @@ const ShoppingCartPage = () => {
               />
             </div>
           </div>
+          <p className="required-field-text"><strong>* Required Field</strong></p>
         </form>
       );
     }

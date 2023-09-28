@@ -300,6 +300,13 @@ input[type="number"] {
 .cart-summary {
     display: column;
 }
+
+.required-field-text {
+    text-align: left;
+    margin: 20px;
+    margin-top: 4rem;
+    font-style: bold;
+}
   
 .form-field {
   display: flex;
