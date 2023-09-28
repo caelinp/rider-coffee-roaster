@@ -9,12 +9,12 @@ body, html {
   overflow-y: auto;
   display: flex;
   justify-content: center;
-  background-size: cover;
   background-position: center;
   position: fixed;
   overflow-x: hidden;
   background-color: black;
   background-image: url('./img/black-leather.png');
+  background-size: auto;
 }
 
 .landing-content-and-bottom {
@@ -117,13 +117,12 @@ body, html {
   cursor: pointer;
   font-size: 2rem;
   transition: ease-in-out 0.2s;
-  border-radius: 15px;
 }
 
 .enter-button:hover {
   background-color: #1e150f;
   background-image: url('./img/brown-leather.png');
-  transform: scale(1.1);
+  transform: scale(1.03);
 }
 
 /* Hide the scrollbar for Firefox */

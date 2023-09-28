@@ -36,9 +36,11 @@ body, html {
 }
 
 .all-products-header {
-  border-bottom: 2px ridge black;
+  border-bottom: 1px solid black;
   font-size: 4rem;
   max-width: 70vw;
+  word-wrap: break-word;
+  overflow-wrap: break-word; /* Allow words to break and wrap to the next line */
 }
 
 .search-header-container {
@@ -59,13 +61,13 @@ body, html {
   font-size: 1.5rem;
   padding: 7px;
   border: 3px solid black;
-  border-radius: 20px;
+  border-radius: 10px;
   transform: scale(1);
   transition: ease-in-out 0.2s;
 }
 
 .search-input:hover, .search-input:active {
-  transform: scale(1.05);
+  transform: scale(1.03);
   background-color: #1e150f;
   background-image: url('./img/brown-leather.png');
 }
@@ -169,12 +171,6 @@ body, html {
 
 .products-container::-webkit-scrollbar-thumb {
   background-color: transparent;
-}
-
-.all-products-header  {
-  font-size: 4rem;
-  word-wrap: break-word;
-  overflow-wrap: break-word; /* Allow words to break and wrap to the next line */
 }
 
 @media (max-width: 768px) {

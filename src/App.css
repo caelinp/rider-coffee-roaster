@@ -18,6 +18,8 @@
 .App-header {
   background-color: #282c34;
   background-image: url('./img/black-leather.png');
+  background-size: auto;
+  background-repeat: repeat;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
@@ -48,7 +50,7 @@ body {
 
 .black-bar-side {
   width: var(--black-bar-width);
-  background-image: url('./img/black-leather.png');
+  background: none;
   position: fixed;
   top: 0;
   bottom: 0;
@@ -72,6 +74,8 @@ body {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  border-bottom-right-radius: 3px;
+  border-bottom-left-radius: 3px;
 }
 
 .logo-small {
@@ -296,7 +300,7 @@ button {
   border: none;
   cursor: pointer;
   font-size: 20px;
-  border-radius: 20px;
+  border-radius: 10px;
 }
 
 @media (max-width: 500px) {

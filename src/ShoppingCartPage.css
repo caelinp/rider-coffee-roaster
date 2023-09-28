@@ -7,6 +7,7 @@
     background-size: contain;
     background-color: black;    
     background-image: url('./img/black-leather.png');
+    background-size: auto;
     background-position: center;
     overflow-x: hidden;
     position: fixed;
@@ -64,7 +65,7 @@
 }
 
 .cart-header h1 {
-    margin: 2%;
+    margin: 20px;
     font-style: bold;
     font-size: 3rem;
 }
@@ -238,7 +239,7 @@ input[type="number"] {
     border: none;
     cursor: pointer;
     font-size: 1rem;
-    border-radius: 15px;
+    border-radius: 10px;
     transform: scale(1);
     transition: ease-in-out 0.2s;
     word-wrap: break-word;
@@ -389,18 +390,18 @@ input[type="number"] {
 .clear-cart-button:not([disabled]):hover, .checkout-button:not([disabled]):hover, .submit-order-button:not([disabled]):hover {
     background-color: #1e150f;
     background-image: url('./img/brown-leather.png');
-    transform: scale(1.05);
+    transform: scale(1.03);
     transition: ease-in-out 0.2s;
 }
 
 .option-input-field-cart:hover {
     background-color: #1e150f;
     background-image: url('./img/brown-leather.png');
-    transform: scale(1.05);
+    transform: scale(1.03);
 }
 
 #order-item-product-name-and-image-container:hover {
-    transform: scale(1.05);
+    transform: scale(1.03);
 }
 
 .order-item-product-name {
@@ -423,7 +424,7 @@ input[type="number"] {
 .go-to-products-button:hover {
     background-color: #1e150f;
     background-image: url('./img/brown-leather.png');
-    transform: scale(1.05);
+    transform: scale(1.03);
 }
 
 /* CSS for the Modal */
@@ -469,7 +470,7 @@ input[type="number"] {
   .modal-button:hover {
     background-color: #1e150f;
     background-image: url('./img/brown-leather.png');
-    transform: scale(1.05);
+    transform: scale(1.03);
   }
   
   /* Add margin to the top button for spacing */
@@ -547,7 +548,6 @@ input[type="number"] {
 
     .cart-header h1 {
         font-size: 2.5rem;
-        margin: 0 10px;
     }
 
     .item-option {
@@ -555,10 +555,6 @@ input[type="number"] {
         padding-top: 0;
         padding-bottom: 0;
         margin-bottom: 0;
-    }
-    
-    .order-item-image {
-        margin-top: 5px;
     }
 
     .item-option label {
@@ -617,7 +613,6 @@ input[type="number"] {
 
     .cart-header h1 {
         font-size: 2rem;
-        margin: 0 10px;
     }
 
     .form-field {

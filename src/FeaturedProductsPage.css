@@ -6,7 +6,7 @@ body, html {
 
 .featured-header {
   font-size: 4rem;
-  border-bottom: 2px ridge black;
+  border-bottom: 1px solid black;
   width: 100%;
   word-wrap: break-word;
   overflow-wrap: break-word; /* Allow words to break and wrap to the next line */
@@ -23,6 +23,7 @@ body, html {
   position: fixed;
   background-color: black;  
   background-image: url('./img/black-leather.png');
+  background-size: auto;
   overflow-y: auto;
   overflow-x: hidden;
 }
@@ -71,7 +72,7 @@ body, html {
 .product-card-featured:hover {
   background-color: #1e150f;
   background-image: url('./img/brown-leather.png');
-  transform: scale(1.05);
+  transform: scale(1.03);
 }
 
 .product-image-featured {

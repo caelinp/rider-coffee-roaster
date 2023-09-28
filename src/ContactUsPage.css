@@ -7,7 +7,7 @@ body, html {
 .contact-us-header {
   max-width: 100%;
   font-size: 4rem;
-  border-bottom: 2px ridge black;
+  border-bottom: 1px solid black;
   overflow-wrap: break-word; /* Allow words to break and wrap to the next line */
   word-wrap: break-word; /* Optional: For older browser compatibility */
 }
@@ -18,11 +18,11 @@ body, html {
   display: flex;
   justify-content: center;
   align-items: center;
-  background-size: cover;
   background-position: center;
   position: fixed;
   background-color: black;  
   background-image: url('./img/black-leather.png');
+  background-size: auto;
   overflow-x: hidden;
   overflow-y: auto;
 }

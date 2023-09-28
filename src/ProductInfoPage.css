@@ -16,6 +16,7 @@ body, html {
   overflow-y: auto;
   overflow-x: hidden;
   position: fixed;
+  background-size: auto;
 }
 
 .product-info-content-and-bottom {
@@ -68,7 +69,7 @@ body, html {
 }
 
 .product-main-image:hover {
-  transform: scale(1.05);
+  transform: scale(1.03);
 }
 
 .product-info-panel {
@@ -263,9 +264,11 @@ p {
   border: none;
   cursor: pointer;
   font-size: 20px;
-  border-radius: 20px;
+  border-radius: 2rem;
   margin-left: 0px;
   margin-right: 0px;
+  width: 2rem;
+  height: 2rem;
 }
 
 .quantity-input {
@@ -363,7 +366,7 @@ p {
   border: none;
   cursor: pointer;
   font-size: 1.5rem;
-  border-radius: 15px;
+  border-radius: 10px;
   transform: scale(1);
   transition: ease-in-out 0.2s;
   word-wrap: break-word;
@@ -392,8 +395,8 @@ p {
 #add-to-cart-button:not([disabled]):hover, .quantity-control:hover, .option-input-field:hover, .option-input-field:active {
   background-color: #1e150f;
   background-image: url('./img/brown-leather.png');
-  transform: scale(1.05);  
-  transition: ease-in-out 0.2s;
+  transform: scale(1.03);  
+  transition: ease-in-out 0.1s;
 }
 
 #add-to-cart-button:disabled {
