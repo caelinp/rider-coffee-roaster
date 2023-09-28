@@ -67,6 +67,7 @@
 .logo-footer {
     margin-top: 2rem;
     width: 50%;
+    max-width: 300px;
 }
 
 .copyright-and-logo {
