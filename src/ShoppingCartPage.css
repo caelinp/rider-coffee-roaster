@@ -43,7 +43,7 @@
     overflow-x: hidden;
     color: black;
     border: 2px ridge black;
-    border-radius: 15px;
+    border-radius: 5px;
     background-color: white;
     background-image: url('./img/background0-no-logo.png');
 }
@@ -444,7 +444,7 @@ input[type="number"] {
     width: 90%;
     max-width: 400px; /* Adjust the maximum width as needed */
     padding: 20px;
-    border-radius: 8px;
+    border-radius: 5px;
     border: 1px solid black;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
     text-align: center; /* Center-align all text within the modal */

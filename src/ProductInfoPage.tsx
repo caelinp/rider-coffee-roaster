@@ -148,7 +148,7 @@ const ProductInfoPage = () => {
           <select 
             className="option-input-field"
             id="subscription-dropdown"
-            value={selectedSubscriptionFrequency}
+            value={selectedSubscriptionFrequency }
             onChange={(e) => setSelectedSubscriptionFrequency(e.target.value)}
           >
             {dropdownOptions}

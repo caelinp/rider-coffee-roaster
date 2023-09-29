@@ -55,7 +55,7 @@ body, html {
   background-color: white;
   background-image: url('./img/background0-no-logo.png');
   border: 2px ridge black;
-  border-radius: 15px;
+  border-radius: 5px;
   padding: 5%;
   overflow-y: auto;
 }

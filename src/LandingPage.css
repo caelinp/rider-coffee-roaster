@@ -68,7 +68,7 @@ body, html {
 .missions {
   padding: 5% 0;
   border: 2px ridge black;
-  border-radius: 10px;
+  border-radius: 5px;
   background-color: white;
   background-image: url('./img/background0-no-logo.png');
   opacity: 0;
