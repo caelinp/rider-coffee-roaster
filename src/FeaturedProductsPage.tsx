@@ -51,8 +51,8 @@ const FeaturedProductsPage = () => {
                 <DynamicImage className="product-image-featured" imageUrl={product.imageUrl} alt={product.name} />
                 <div className="product-details-featured">
                   <h2 className="product-name-featured">{product.name}</h2>
+                  <p className="product-notes-featured">{product.notes}</p>
                   <p className="product-roast-featured">{product.roast.toLowerCase()}</p>
-                  <p className="product-notes-featured">notes: {product.notes}</p>
                   <p className="product-farm-featured">{product.farm}</p>
                 </div>
               </Link>
