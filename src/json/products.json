@@ -30,9 +30,8 @@
         }
       },
       "images": {
-        "bagImage": "product1.jpg",
-        "graphicImage": "product2.jpg",
-        "farmImage": "product3.jpg"
+        "bagImage": "product_images/trail_rider/bag.jpg",
+        "graphicImage": "product_images/trail_rider/graphic.jpg"
       },
       "url": "0/trail-rider"
     },
@@ -66,9 +65,8 @@
         }
       },
       "images": {
-        "bagImage": "product1.jpg",
-        "graphicImage": "product2.jpg",
-        "farmImage": "product3.jpg"
+        "bagImage": "product_images/low_rider/bag.jpg",
+        "graphicImage": "product_images/low_rider/graphic.jpg"
       },
       "url": "1/low-rider"
     },
@@ -102,9 +100,8 @@
         }
       },
       "images": {
-        "bagImage": "product1.jpg",
-        "graphicImage": "product2.jpg",
-        "farmImage": "product3.jpg"
+        "bagImage": "product_images/easy_rider/bag.jpg",
+        "graphicImage": "product_images/easy_rider/graphic.jpg"
       },
       "url": "2/easy-rider"
     }

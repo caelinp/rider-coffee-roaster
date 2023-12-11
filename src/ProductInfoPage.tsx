@@ -25,6 +25,7 @@ interface Product {
   process: string;
   varietal: string;
   notes: string;
+  roast: string;
   pricing: { [key: string]: string };
 }
 
@@ -91,6 +92,7 @@ const ProductInfoPage = () => {
     process: foundProductData?.process || "",
     varietal: foundProductData?.varietal || "",
     notes: foundProductData?.notes || "",
+    roast: foundProductData?.roast || "",
     pricing: Object.entries(foundProductData?.pricing || {}).reduce((acc, [key, value]) => {
       if (value?.weight) {
         acc[value.weight] = value.price || '';
@@ -332,6 +334,10 @@ const ProductInfoPage = () => {
             <div className="info-field">
               <h2>Description</h2>
               <p>{product.description}</p>
+            </div>
+            <div className="info-field">
+              <h2>Roast</h2>
+              <p>{product.roast.replace(/roast/gi, "")}</p>
             </div>
             <div className="info-field">
               <h2>Farmer</h2>
