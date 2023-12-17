@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/rider-coffee-roaster/static/css/main.2f32998e.css",
-    "main.js": "/rider-coffee-roaster/static/js/main.8052db3d.js",
+    "main.js": "/rider-coffee-roaster/static/js/main.7d68dab5.js",
     "static/js/113.82d886b8.chunk.js": "/rider-coffee-roaster/static/js/113.82d886b8.chunk.js",
     "static/js/318.706cb997.chunk.js": "/rider-coffee-roaster/static/js/318.706cb997.chunk.js",
     "static/js/975.2ec9febe.chunk.js": "/rider-coffee-roaster/static/js/975.2ec9febe.chunk.js",
@@ -24,28 +24,28 @@
     "static/js/490.6aa81f86.chunk.js": "/rider-coffee-roaster/static/js/490.6aa81f86.chunk.js",
     "static/js/708.a26a145b.chunk.js": "/rider-coffee-roaster/static/js/708.a26a145b.chunk.js",
     "static/js/810.6b41967c.chunk.js": "/rider-coffee-roaster/static/js/810.6b41967c.chunk.js",
-    "static/js/605.a2c7694f.chunk.js": "/rider-coffee-roaster/static/js/605.a2c7694f.chunk.js",
-    "static/js/652.1d8f5a13.chunk.js": "/rider-coffee-roaster/static/js/652.1d8f5a13.chunk.js",
-    "static/js/302.d3255773.chunk.js": "/rider-coffee-roaster/static/js/302.d3255773.chunk.js",
-    "static/js/763.c67f0388.chunk.js": "/rider-coffee-roaster/static/js/763.c67f0388.chunk.js",
-    "static/js/415.64201451.chunk.js": "/rider-coffee-roaster/static/js/415.64201451.chunk.js",
-    "static/js/38.cfc809ba.chunk.js": "/rider-coffee-roaster/static/js/38.cfc809ba.chunk.js",
+    "static/js/605.1197cf07.chunk.js": "/rider-coffee-roaster/static/js/605.1197cf07.chunk.js",
+    "static/js/652.bd2319bb.chunk.js": "/rider-coffee-roaster/static/js/652.bd2319bb.chunk.js",
+    "static/js/302.cc4ba87a.chunk.js": "/rider-coffee-roaster/static/js/302.cc4ba87a.chunk.js",
+    "static/js/763.22e0248a.chunk.js": "/rider-coffee-roaster/static/js/763.22e0248a.chunk.js",
+    "static/js/415.43d2e5ea.chunk.js": "/rider-coffee-roaster/static/js/415.43d2e5ea.chunk.js",
+    "static/js/38.45b88f2c.chunk.js": "/rider-coffee-roaster/static/js/38.45b88f2c.chunk.js",
     "static/js/296.5d240309.chunk.js": "/rider-coffee-roaster/static/js/296.5d240309.chunk.js",
     "static/js/464.5440d905.chunk.js": "/rider-coffee-roaster/static/js/464.5440d905.chunk.js",
     "static/js/570.765f2a39.chunk.js": "/rider-coffee-roaster/static/js/570.765f2a39.chunk.js",
+    "static/media/bag.jpg": "/rider-coffee-roaster/static/media/bag.3b0976abb33bdb9f47cc.jpg",
     "static/media/metal.png": "/rider-coffee-roaster/static/media/metal.8227df97b675a49abcc1.png",
     "static/media/burlap_sack.png": "/rider-coffee-roaster/static/media/burlap_sack.83613822203344c0a835.png",
     "static/media/background-alpha.png": "/rider-coffee-roaster/static/media/background-alpha.a58c3e656063b4d83d57.png",
+    "static/media/graphic.jpg": "/rider-coffee-roaster/static/media/graphic.1351473b4da19fa1a6eb.jpg",
     "static/media/background1-no-logo.png": "/rider-coffee-roaster/static/media/background1-no-logo.c086bf629000e652e25d.png",
     "static/media/background0.jpg": "/rider-coffee-roaster/static/media/background0.7219ba19b8ae0b264494.jpg",
-    "static/media/graphic.jpg": "/rider-coffee-roaster/static/media/graphic.f216f30a4b4c883e3753.jpg",
     "static/media/metal-logo.gif": "/rider-coffee-roaster/static/media/metal-logo.bf2c6f9a930359447bd7.gif",
     "static/media/metal-logo.png": "/rider-coffee-roaster/static/media/metal-logo.73a0906bce4b6aef0542.png",
     "static/media/background-no-logo.png": "/rider-coffee-roaster/static/media/background-no-logo.f91da74bcabefb69f203.png",
     "static/media/background1.jpg": "/rider-coffee-roaster/static/media/background1.1646ab98ecde35c82536.jpg",
     "static/media/image1.jpg": "/rider-coffee-roaster/static/media/image1.5526a9453b7d30e92d22.jpg",
     "static/media/brown-leather.png": "/rider-coffee-roaster/static/media/brown-leather.89fbc3b8cc195420ce51.png",
-    "static/media/bag.jpg": "/rider-coffee-roaster/static/media/bag.c97fccd1295863607675.jpg",
     "static/media/black-leather.png": "/rider-coffee-roaster/static/media/black-leather.6c933722ec0c4cd39e21.png",
     "static/media/product2.jpg": "/rider-coffee-roaster/static/media/product2.c29c0a9febb674c0dfdd.jpg",
     "static/media/grey-leather.png": "/rider-coffee-roaster/static/media/grey-leather.992a312985d64224cf2e.png",
@@ -63,10 +63,10 @@
     "static/media/bean.png": "/rider-coffee-roaster/static/media/bean.9757027cd0702f1b9023.png",
     "index.html": "/rider-coffee-roaster/index.html",
     "main.2f32998e.css.map": "/rider-coffee-roaster/static/css/main.2f32998e.css.map",
-    "main.8052db3d.js.map": "/rider-coffee-roaster/static/js/main.8052db3d.js.map"
+    "main.7d68dab5.js.map": "/rider-coffee-roaster/static/js/main.7d68dab5.js.map"
   },
   "entrypoints": [
     "static/css/main.2f32998e.css",
-    "static/js/main.8052db3d.js"
+    "static/js/main.7d68dab5.js"
   ]
 }
