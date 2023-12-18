@@ -47,7 +47,7 @@ const LandingPage: React.FC = () => {
       if (enterButton) {
         enterButton.classList.add('show');
       }
-    }, 4500); // Adjust the delay as needed
+    }, 1500); // Adjust the delay as needed
 
     return () => {
       clearTimeout(logoTimeout);
