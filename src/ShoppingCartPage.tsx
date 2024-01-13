@@ -10,8 +10,8 @@ import DynamicImage from './DynamicImage';
 import {formatString} from './AllProductsPage';
 import Footer from './Footer';
 
-const COMPANY_EMAIL_ADDRESS: string = "prestoncaelin@gmail.com";
-const TAX_MULTIPLIER: number = 0.12;
+const COMPANY_EMAIL_ADDRESS: string = "order@ridercoffeeroaster.com";
+const TAX_MULTIPLIER: number = 0.05;
 
 interface Product {
   id: string;
@@ -32,7 +32,7 @@ export const sanitizeQuantityInput = (input: string) => {
 
 const ShoppingCartPage = () => {
   const [totalPrice, setTotalPrice] = useState(0);
-  const grindSizeOptions = ['Whole Bean', 'Coarse', 'Medium-Coarse', 'Medium', 'Fine', 'Extra Fine'];
+  const grindSizeOptions = ['Whole Bean', 'French Press', 'Drip', 'Espresso'];
   const subscriptionFrequencyOptions = useMemo(() => [
     { frequency: 'none', discount: 0 },
     { frequency: 'every week', discount: 0.2 },
@@ -359,6 +359,7 @@ const [isModalOpen, setIsModalOpen] = useState(false);
     // Open the default email client with the mailto link
     window.location.href = mailtoLink;
     setIsModalOpen(true);
+    
   };
 
   // Function to close the modal

@@ -18,15 +18,15 @@
       "pricing": {
         "size1": {
           "weight": "250g",
-          "price": "11.99"
+          "price": "15"
         },
         "size2": {
           "weight": "340g",
-          "price": "18.99"
+          "price": "20"
         },
         "size3": {
-          "weight": "500g",
-          "price": "24.99"
+          "weight": "1700g",
+          "price": "80"
         }
       },
       "images": {
@@ -53,15 +53,15 @@
       "pricing": {
         "size1": {
           "weight": "250g",
-          "price": "11.99"
+          "price": "15"
         },
         "size2": {
           "weight": "340g",
-          "price": "18.99"
+          "price": "20"
         },
         "size3": {
           "weight": "500g",
-          "price": "24.99"
+          "price": "80"
         }
       },
       "images": {
@@ -88,15 +88,15 @@
       "pricing": {
         "size1": {
           "weight": "250g",
-          "price": "15.99"
+          "price": "20"
         },
         "size2": {
           "weight": "340g",
-          "price": "21.99"
+          "price": "15"
         },
         "size3": {
           "weight": "500g",
-          "price": "27.99"
+          "price": "80"
         }
       },
       "images": {

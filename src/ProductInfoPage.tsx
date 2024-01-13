@@ -105,7 +105,7 @@ const ProductInfoPage = () => {
   const initialWeight = foundProductData?.pricing?.size2?.weight || DEFAULT_WEIGHT;
 
   const imagesArray: string[] = Object.values(product.images);
-  const grindSizeOptions = ['Whole Bean', 'Coarse', 'Medium-Coarse', 'Medium', 'Fine', 'Extra Fine'];
+  const grindSizeOptions = ['Whole Bean', 'French Press', 'Drip', 'Espresso'];
   const subscriptionFrequencyOptions = [
     { frequency: 'every week', discount: 0.2 },
     { frequency: 'every 2 weeks', discount: 0.18 },

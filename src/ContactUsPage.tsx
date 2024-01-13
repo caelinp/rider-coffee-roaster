@@ -11,12 +11,12 @@ const ContactUsPage: React.FC = () => {
             <h1 className="contact-us-header">Contact Us</h1>
             <div className="sub-section">
               <h2>Delivery Policy</h2>
-              <p>We deliver to customers in Greater Vancouver every Friday.</p>
-              <p>Email us at <a href="mailto:delivery@ridercoffee.com">delivery@ridercoffee.com</a> or give us a call at <a href="tel:+1234567890">(123)-456-7890</a> for more information.</p>
+              <p>We deliver to customers in Greater Vancouver every Sunday.</p>
+              <p>Email us at <a href="mailto:info@ridercoffee.com">info@ridercoffee.com</a> or give us a call at <a href="tel:+6048173200">(604)-817-3200</a> for more information.</p>
             </div>
             <div className="sub-section">
               <h2>Business and Wholesale Inquiries</h2>
-              <p>For business and wholesale inquiries, please email us at <a href="mailto:business@ridercoffee.com">business@ridercoffee.com</a> or give us a call at <a href="tel:+1234567890">(123)-456-7890</a>.</p>
+              <p>For business and wholesale inquiries, please email us at <a href="mailto:info@ridercoffee.com">info@ridercoffee.com</a> or give us a call at <a href="tel:+6048173200">(604)-817-3200</a>.</p>
               <p>We're excited to work with you!</p>
             </div>
           </div>
