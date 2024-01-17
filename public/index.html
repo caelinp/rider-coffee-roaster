@@ -28,6 +28,15 @@
       work correctly both with client-side routing and a non-root public URL.
       Learn how to configure a non-root public URL by running `npm run build`.
     -->
+    <script>
+      (function() {
+        var redirectPath = sessionStorage.getItem('redirectPath');
+        if (redirectPath) {
+          sessionStorage.removeItem('redirectPath'); // Clear the session storage entry to avoid redirect loops
+          window.history.replaceState(null, null, redirectPath);
+        }
+      })();
+    </script>
     <title>Rider Coffee Roaster</title>
   </head>
   <body>
