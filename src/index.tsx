@@ -4,7 +4,6 @@ import { Provider } from 'react-redux';
 import { store } from './Store';
 import App from './App';
 import './index.css';
-import './img/icon-with-text_gold.png';
 
 const rootElement = document.getElementById('root');
 if (rootElement) {
