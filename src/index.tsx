@@ -7,7 +7,7 @@ import './index.css';
 
 const root = createRoot(document.getElementById('root')!);
 root.render(
-    <BrowserRouter basename="/rider-coffee-roaster">
+    <BrowserRouter basename="/">
       <Provider store={store}>
         <App />
       </Provider>
