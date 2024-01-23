@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useCallback, useLayoutEffect, useMemo} from 'react';
+import React, { useState, useEffect, useCallback, useLayoutEffect, useMemo } from 'react';
 import './ShoppingCartPage.css';
 import { Link, useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
@@ -7,7 +7,7 @@ import productsData from './json/products.json';
 import { updateCoffeeBagItem, removeCoffeeBagItem, clearCart, selectCartItems } from './CartSlice';
 import CoffeeBagOrderItem from './OrderItem';
 import DynamicImage from './DynamicImage';
-import {formatString} from './AllProductsPage';
+import { formatString } from './AllProductsPage';
 import Footer from './Footer';
 
 const COMPANY_EMAIL_ADDRESS: string = "order@ridercoffeeroaster.com";
@@ -38,7 +38,7 @@ const ShoppingCartPage = () => {
     { frequency: 'every week', discount: 0.2 },
     { frequency: 'every 2 weeks', discount: 0.18 },
     { frequency: 'every month', discount: 0.15 },
-  ], []);  
+  ], []);
   const [cartItemsWithProductInfo, setCartItemsWithProductInfo] = useState<{ product: Product; coffeeBagOrderItem: CoffeeBagOrderItem; price: string }[]>([]);
   const [coffeeBagOrderItems, setCoffeeBagOrderItems] = useState<CoffeeBagOrderItem[]>([]);
   const [isCheckoutEnabled, setIsCheckoutEnabled] = useState(false); // State variable for enabling checkout
@@ -53,7 +53,7 @@ const ShoppingCartPage = () => {
   const [postalCode, setPostalCode] = useState('');
   const dispatch = useDispatch();
   const [isEmailValid, setIsEmailValid] = useState(true);
-const [isModalOpen, setIsModalOpen] = useState(false);
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
   // Helper function to get the discount multiplier based on the selected subscription frequency
   const getDiscountMultiplier = useCallback((selectedSubscriptionFrequency: string) => {
@@ -216,28 +216,25 @@ const [isModalOpen, setIsModalOpen] = useState(false);
   const handleNameChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setName(e.target.value);
   };
-  
+
   const handlePhoneNumberChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     let phoneNumberInput = e.target.value.replace(/\D/g, '')
     let phoneNumberString = "";
-    if (phoneNumberInput)
-    {
+    if (phoneNumberInput) {
       const maxDigits = 11; // Max digits in a phone number including country code
       phoneNumberString = phoneNumberInput.toString().slice(0, maxDigits);
     }
-    if (phoneNumberString.length >= 10)
-    {
+    if (phoneNumberString.length >= 10) {
       setPhoneNumber(formatPhoneNumber(phoneNumberString));
     }
-    else
-    {
+    else {
       setPhoneNumber(sanitizeInput(phoneNumberString));
     }
   };
 
   const formatPhoneNumber = (input: string): string => {
     const numericInput = input.replace(/\D/g, '');
-  
+
     if (numericInput.length === 11) {
       const countryCode = numericInput.charAt(0);
       const areaCode = numericInput.slice(1, 4);
@@ -296,70 +293,70 @@ const [isModalOpen, setIsModalOpen] = useState(false);
       return;
     }
 
-  // Construct the email subject
-  const emailSubject = 'Coffee Order for ' + name;
+    // Construct the email subject
+    const emailSubject = 'Coffee Order for ' + name;
 
-  // Define line break and tab as URL-encoded equivalents
-  const lineBreak = '%0D%0A';
-  const tab = '    ';
+    // Define line break and tab as URL-encoded equivalents
+    const lineBreak = '%0D%0A';
+    const tab = '    ';
 
-  // Construct the email content using cartItemsWithProductInfo and form fields
-  const emailContent =
-    'New coffee order for ' +
-    name +
-    '!' + lineBreak + lineBreak +
-    'Customer Information:' + lineBreak + lineBreak +
-    tab + 'Name: ' +
-    sanitizeInput(name) + lineBreak +
-    tab + 'Email: ' +
-    sanitizeInput(email) + lineBreak +
-    tab + 'Phone Number: ' +
-    sanitizeInput(phoneNumber) + lineBreak +
-    tab + 'Street Address: ' +
-    sanitizeInput(streetAddress) + lineBreak +
-    tab + 'City: ' +
-    sanitizeInput(city) + lineBreak +
-    tab + 'Province/State: ' +
-    sanitizeInput(province) + lineBreak +
-    tab + 'Country: ' +
-    sanitizeInput(country) + lineBreak +
-    tab + 'Postal Code: ' +
-    sanitizeInput(postalCode) + lineBreak + lineBreak +
-    'Order Details:' + lineBreak + lineBreak +
-    cartItemsWithProductInfo
-      .map((item, index) => {
-        return (
-          tab + 'Item ' +
-          (index + 1) + ':' + lineBreak +
-          tab + tab + 'Product: ' +
-          item.product.name + lineBreak +
-          tab + tab + 'Quantity: ' +
-          item.coffeeBagOrderItem.quantity + lineBreak +
-          tab + tab + 'Bag Size: ' +
-          item.coffeeBagOrderItem.bagSize + lineBreak +
-          tab + tab + 'Grind Size: ' +
-          item.coffeeBagOrderItem.groundSize + lineBreak +
-          tab + tab + 'Subscription Frequency: ' +
-          item.coffeeBagOrderItem.subscriptionFrequency + lineBreak +
-          tab + tab + 'Price: $' +
-          parseFloat(item.price).toFixed(2) + lineBreak
-        );
-      })
-      .join(lineBreak + lineBreak) + lineBreak + lineBreak +
-    'Item Total: $' +
-    totalPrice.toFixed(2) + lineBreak +
-    'Tax Total: $' +
-    taxTotal.toFixed(2) + lineBreak +
-    'Order Total: $' +
-    (parseFloat(totalPrice.toFixed(2)) + parseFloat(taxTotal.toFixed(2))).toFixed(2) + lineBreak + lineBreak +
-    'Thank you!' + lineBreak + lineBreak;
+    // Construct the email content using cartItemsWithProductInfo and form fields
+    const emailContent =
+      'New coffee order for ' +
+      name +
+      '!' + lineBreak + lineBreak +
+      'Customer Information:' + lineBreak + lineBreak +
+      tab + 'Name: ' +
+      sanitizeInput(name) + lineBreak +
+      tab + 'Email: ' +
+      sanitizeInput(email) + lineBreak +
+      tab + 'Phone Number: ' +
+      sanitizeInput(phoneNumber) + lineBreak +
+      tab + 'Street Address: ' +
+      sanitizeInput(streetAddress) + lineBreak +
+      tab + 'City: ' +
+      sanitizeInput(city) + lineBreak +
+      tab + 'Province/State: ' +
+      sanitizeInput(province) + lineBreak +
+      tab + 'Country: ' +
+      sanitizeInput(country) + lineBreak +
+      tab + 'Postal Code: ' +
+      sanitizeInput(postalCode) + lineBreak + lineBreak +
+      'Order Details:' + lineBreak + lineBreak +
+      cartItemsWithProductInfo
+        .map((item, index) => {
+          return (
+            tab + 'Item ' +
+            (index + 1) + ':' + lineBreak +
+            tab + tab + 'Product: ' +
+            item.product.name + lineBreak +
+            tab + tab + 'Quantity: ' +
+            item.coffeeBagOrderItem.quantity + lineBreak +
+            tab + tab + 'Bag Size: ' +
+            item.coffeeBagOrderItem.bagSize + lineBreak +
+            tab + tab + 'Grind Size: ' +
+            item.coffeeBagOrderItem.groundSize + lineBreak +
+            tab + tab + 'Subscription Frequency: ' +
+            item.coffeeBagOrderItem.subscriptionFrequency + lineBreak +
+            tab + tab + 'Price: $' +
+            parseFloat(item.price).toFixed(2) + lineBreak
+          );
+        })
+        .join(lineBreak + lineBreak) + lineBreak + lineBreak +
+      'Item Total: $' +
+      totalPrice.toFixed(2) + lineBreak +
+      'Tax Total: $' +
+      taxTotal.toFixed(2) + lineBreak +
+      'Order Total: $' +
+      (parseFloat(totalPrice.toFixed(2)) + parseFloat(taxTotal.toFixed(2))).toFixed(2) + lineBreak + lineBreak +
+      'Thank you!' + lineBreak + lineBreak;
 
     // Construct the mailto link
     const mailtoLink = 'mailto:' + COMPANY_EMAIL_ADDRESS + '?subject=' + emailSubject + '&body=' + emailContent;
     // Open the default email client with the mailto link
     window.location.href = mailtoLink;
     setIsModalOpen(true);
-    
+
   };
 
   // Function to close the modal
@@ -377,20 +374,20 @@ const [isModalOpen, setIsModalOpen] = useState(false);
     country.trim() !== '' &&
     postalCode.trim() !== '';
 
-   // Helper function to render order items or empty cart message
+  // Helper function to render order items or empty cart message
   const renderOrderItems = () => {
     if (cartItemsWithProductInfo.length === 0) {
-      
+
       // Render an empty cart message
       return (
         <div className="empty-cart-message">
           <p>
             Your cart is empty.
           </p>
-          <button 
-            className="go-to-products-button" onClick={()=> {navigate('/products/')}} 
+          <button
+            className="go-to-products-button" onClick={() => { navigate('/products/') }}
           >Continue Shopping</button>
-          
+
         </div>
       );
     } else {
@@ -399,10 +396,10 @@ const [isModalOpen, setIsModalOpen] = useState(false);
         <div className="order-item" key={item!.coffeeBagOrderItem!.id || ''}>
           <Link
             id="order-item-product-link"
-            to={`/products/` + item!.product.id + "/" + formatString(item!.product.name) }
+            to={`/products/` + item!.product.id + "/" + formatString(item!.product.name)}
             key={item!.product.id}
             className="product-link"
-            >
+          >
             <div className="item-option" id="order-item-product-name-and-image-container">
               <label className="order-item-product-name">{item!.product.name || ''}</label><br></br>
               <DynamicImage className="order-item-image" imageUrl={item!.product?.image} alt={item!.product.name} />
@@ -435,7 +432,7 @@ const [isModalOpen, setIsModalOpen] = useState(false);
                 className="option-input-field-cart"
                 id="quantity-input-cart"
                 type="number"
-                value={ item!.coffeeBagOrderItem!.quantity === 0 ? "0" : item!.coffeeBagOrderItem!.quantity.toString().replace(/^0+/, '')}
+                value={item!.coffeeBagOrderItem!.quantity === 0 ? "0" : item!.coffeeBagOrderItem!.quantity.toString().replace(/^0+/, '')}
                 onChange={(e) => handleQuantityChange(e, item!.coffeeBagOrderItem)}
                 onBlur={() => handleQuantityBlur(item!.coffeeBagOrderItem)}
                 onKeyDown={(e) => handleKeyPressQuantity(e, item!.coffeeBagOrderItem)}
@@ -447,17 +444,17 @@ const [isModalOpen, setIsModalOpen] = useState(false);
                 {dropdownOptions}
               </select>
             </div>
-        </div>
-        <div className="price-and-remove-container">
-          <div className="item-option" id="price-label-and-text-cart">
-            <label>Price:</label>
-            <p className="price-text">${(parseFloat(item.price)).toFixed(2)}</p>
           </div>
-          <div className="item-option">
-            <button className="remove-button" onClick={() => handleRemoveItem(item!.coffeeBagOrderItem)}></button>
+          <div className="price-and-remove-container">
+            <div className="item-option" id="price-label-and-text-cart">
+              <label>Price:</label>
+              <p className="price-text">${(parseFloat(item.price)).toFixed(2)}</p>
+            </div>
+            <div className="item-option">
+              <button className="remove-button" onClick={() => handleRemoveItem(item!.coffeeBagOrderItem)}></button>
+            </div>
           </div>
         </div>
-      </div>
       ));
     }
   };
@@ -491,7 +488,22 @@ const [isModalOpen, setIsModalOpen] = useState(false);
       return (
         <form ref={emailFormRef} className="order-form">
           <h1>Order Form</h1>
-          <p id="order-form-instructions">Please fill out all required fields. When you are done, press Submit Order. This will generate an order email in your device's mail client. <br></br><br></br></p>
+          <div id="order-form-instructions">
+            <p>Please fill out all required fields on the form to place your order. Once you have completed the form, click on the <strong>'Submit Order'</strong> button. This action will generate an order email using your device's default mail client.</p>
+            <div className="instruction">
+              <p>After you send the email, your order will be transmitted directly to us. Within 24 hours of sending your order, you will receive an email from us. This email will serve to:</p>
+              <ul>
+                <li>Confirm the receipt of your order.</li>
+                <li>Provide information on payment options, including instructions for e-transfer and the option for cash on delivery.</li>
+                <li>Discuss delivery options and schedule a time that is convenient for you.</li>
+                <li>Address any additional details or clarifications needed for your order.</li>
+              </ul>
+            </div>
+            <div className="instruction">
+              <p>We are committed to making your ordering experience as smooth and enjoyable as possible. If you have any questions or require assistance at any stage, please feel free to <Link to="/contact-us/" className="contact-us-link">Contact Us</Link>.</p>
+              <p>Thank you for choosing <strong>Rider Coffee Roaster</strong>! We eagerly await the opportunity to serve you.</p>
+            </div>
+          </div>
           <div className="form-field">
             <label>Name *</label>
             <div className="form-field-input">
@@ -609,43 +621,43 @@ const [isModalOpen, setIsModalOpen] = useState(false);
 
   return (
     <div className="cart-page">
-    <div className="cart-page-content-and-bottom">
-      <div className="cart-page-content">
-        <div className="cart-content">
-          <div className="cart-summary">
-            <div className="cart-header">
-              <h1>Your Cart</h1>
-              <button className="close-button" onClick={handleCloseCart}></button>
+      <div className="cart-page-content-and-bottom">
+        <div className="cart-page-content">
+          <div className="cart-content">
+            <div className="cart-summary">
+              <div className="cart-header">
+                <h1>Your Cart</h1>
+                <button className="close-button" onClick={handleCloseCart}></button>
+              </div>
+              <div className="cart-item-count-and-clear">
+                <p className="cart-item-count">
+                  {cartItemsWithProductInfo.length + (cartItemsWithProductInfo.length === 1 ? " Item in Cart" : " Items in Cart")}
+                </p>
+                <button
+                  className="clear-cart-button" onClick={handleClearCart}
+                  disabled={cartItemsWithProductInfo.length === 0}
+                >
+                  Clear Cart
+                </button>
+              </div>
             </div>
-            <div className="cart-item-count-and-clear">
-              <p className="cart-item-count">
-                {cartItemsWithProductInfo.length + (cartItemsWithProductInfo.length === 1 ? " Item in Cart" : " Items in Cart")} 
-              </p>
-              <button 
-                className="clear-cart-button" onClick={handleClearCart} 
-                disabled={cartItemsWithProductInfo.length === 0}
-              >
-                Clear Cart
-              </button>
+            <div className="order-items-container">
+              {renderOrderItems()}
             </div>
-          </div>
-          <div className="order-items-container">
-            {renderOrderItems()}
-          </div>
-          <div className="cart-summary">
-            <div className="cart-total-before-tax">
-              <label>{"Items total: "}</label>
-              <p className="cart-total-price-before-tax-text">${totalPrice.toFixed(2)}</p>
-            </div>
-            <div className="tax-total">
-              <label>{"Tax: "}</label>
-              <p className="tax-total-price-text">${taxTotal.toFixed(2)}</p>
-            </div>
-            <div className="cart-total-after-tax">
-              <label><strong>{"Order total: "}</strong></label>
-              <p className="cart-total-price-after-tax-text"><strong>${(parseFloat(totalPrice.toFixed(2)) + parseFloat(taxTotal.toFixed(2))).toFixed(2)}</strong></p>
-            </div>
-            <button
+            <div className="cart-summary">
+              <div className="cart-total-before-tax">
+                <label>{"Items total: "}</label>
+                <p className="cart-total-price-before-tax-text">${totalPrice.toFixed(2)}</p>
+              </div>
+              <div className="tax-total">
+                <label>{"Tax: "}</label>
+                <p className="tax-total-price-text">${taxTotal.toFixed(2)}</p>
+              </div>
+              <div className="cart-total-after-tax">
+                <label><strong>{"Order total: "}</strong></label>
+                <p className="cart-total-price-after-tax-text"><strong>${(parseFloat(totalPrice.toFixed(2)) + parseFloat(taxTotal.toFixed(2))).toFixed(2)}</strong></p>
+              </div>
+              <button
                 className="checkout-button"
                 onClick={handleCheckout}
                 disabled={!isCheckoutEnabled} // Disable the button when the cart is empty
@@ -656,19 +668,19 @@ const [isModalOpen, setIsModalOpen] = useState(false);
             {/* Render the email form */}
             {renderEmailForm()}
             {isEmailFormVisible && (
-              <button 
-                className="submit-order-button"           
+              <button
+                className="submit-order-button"
                 onClick={handleSubmitOrder}
                 disabled={!isCheckoutEnabled || !isFormComplete} // Disable the button if the form is not complete
-            >
+              >
                 Submit Order
               </button>
             )}
           </div>
         </div>
         <Footer></Footer>
-    </div>
-    <Modal
+      </div>
+      <Modal
         open={isModalOpen}
         onClose={closeModal}
         aria-labelledby="modal-title"
@@ -698,8 +710,8 @@ const [isModalOpen, setIsModalOpen] = useState(false);
           </div>
         </div>
       </Modal>
-  </div>
-);
+    </div>
+  );
 };
 
 export default ShoppingCartPage;

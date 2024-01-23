@@ -427,7 +427,6 @@ input[type="number"] {
     transform: scale(1.03);
 }
 
-/* CSS for the Modal */
 .modal {
     display: flex;
     justify-content: center;
@@ -473,9 +472,18 @@ input[type="number"] {
     transform: scale(1.03);
   }
   
-  /* Add margin to the top button for spacing */
   .modal-buttons button:first-child {
     margin-right: 10px;
+  }
+
+  .contact-us-link {
+    text-decoration: none;
+    color: black;
+    font-weight: bold;
+  }
+
+  ul {
+    font-family: 'Montserrat Alternates', sans-serif;
   }
 
 @media (max-width: 1200px) {
