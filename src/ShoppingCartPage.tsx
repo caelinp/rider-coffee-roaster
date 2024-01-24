@@ -500,7 +500,7 @@ const ShoppingCartPage = () => {
               </ul>
             </div>
             <div className="instruction">
-              <p>We are committed to making your ordering experience as smooth and enjoyable as possible. If you have any questions or require assistance at any stage, please feel free to <Link to="/contact-us/" className="contact-us-link">Contact Us</Link>.</p>
+              <p>We are committed to making your ordering experience as smooth and enjoyable as possible. If you have any questions or require assistance at any stage, please feel free to <Link to="/contact-us/" className="contact-us-link">contact us</Link>.</p>
               <p>Thank you for choosing <strong>Rider Coffee Roaster</strong>! We eagerly await the opportunity to serve you.</p>
             </div>
           </div>
