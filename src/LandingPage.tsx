@@ -69,7 +69,7 @@ const LandingPage: React.FC = () => {
                 Great coffee doesn’t have to be difficult.
               </p>
               <p className="mission1">
-                Rider Coffee Roaster believes in making specialty coffee accessible to every lifestyle. We roast highly traceable specialty grade coffee in a way that reflects the novelty of its origin. Our roast profiles are thoughtfully developed to meet the diverse palette of today’s coffee drinker. Commited to building sustainable relationships from farm to cup, we exist to link growers of exceptional coffee with the diverse community of coffee lovers.
+                Rider Coffee Roaster believes in making specialty coffee accessible to every lifestyle. We roast highly traceable specialty grade coffee in a way that reflects the novelty of its origin. Our roast profiles are thoughtfully developed to meet the diverse palette of today’s coffee drinker. Committed to building sustainable relationships from farm to cup, we exist to link growers of exceptional coffee with the diverse community of coffee lovers.
               </p>
               <p className="mission2">
                 We love culture and community.
