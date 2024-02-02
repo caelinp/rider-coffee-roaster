@@ -1,6 +1,6 @@
 // DynamicImage.tsx
 import React, { useEffect, useState, forwardRef, ForwardedRef } from 'react';
-import defaultImage from './img/default_image.jpg';
+import defaultImage from './img/icon-with-text_gold.png';
 
 interface DynamicImageProps {
   imageUrl: string;
