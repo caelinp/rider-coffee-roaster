@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkrider_coffee_roaster=self.webpackChunkrider_coffee_roaster||[]).push([[34],{6034:(e,r,s)=>{e.exports=s.p+"static/media/burlap_sack.83613822203344c0a835.png"}}]);
