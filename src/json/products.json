@@ -18,11 +18,11 @@
       "pricing": {
         "size1": {
           "weight": "250g",
-          "price": "15"
+          "price": "17"
         },
         "size2": {
           "weight": "340g",
-          "price": "20"
+          "price": "22"
         },
         "size3": {
           "weight": "1700g",
@@ -53,11 +53,11 @@
       "pricing": {
         "size1": {
           "weight": "250g",
-          "price": "15"
+          "price": "17"
         },
         "size2": {
           "weight": "340g",
-          "price": "20"
+          "price": "22"
         },
         "size3": {
           "weight": "1700g",
@@ -88,11 +88,11 @@
       "pricing": {
         "size1": {
           "weight": "250g",
-          "price": "20"
+          "price": "17"
         },
         "size2": {
           "weight": "340g",
-          "price": "15"
+          "price": "22"
         },
         "size3": {
           "weight": "1700g",
