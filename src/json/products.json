@@ -17,15 +17,7 @@
       "roast": "Medium Roast",
       "pricing": {
         "size1": {
-          "weight": "250g",
-          "price": "17"
-        },
-        "size2": {
-          "weight": "340g",
-          "price": "22"
-        },
-        "size3": {
-          "weight": "1700g",
+          "weight": "5 pounds",
           "price": "80"
         }
       },
@@ -52,15 +44,7 @@
       "roast": "Medium Dark Roast",
       "pricing": {
         "size1": {
-          "weight": "250g",
-          "price": "17"
-        },
-        "size2": {
-          "weight": "340g",
-          "price": "22"
-        },
-        "size3": {
-          "weight": "1700g",
+          "weight": "5 pounds",
           "price": "80"
         }
       },
@@ -87,15 +71,7 @@
       "roast": "Espresso Classico",
       "pricing": {
         "size1": {
-          "weight": "250g",
-          "price": "17"
-        },
-        "size2": {
-          "weight": "340g",
-          "price": "22"
-        },
-        "size3": {
-          "weight": "1700g",
+          "weight": "50lb",
           "price": "80"
         }
       },

@@ -12,6 +12,7 @@ import Footer from './Footer';
 
 const COMPANY_EMAIL_ADDRESS: string = "order@ridercoffeeroaster.com";
 const TAX_MULTIPLIER: number = 0.05;
+const SHIPPING_COST: number = 20.00;
 
 interface Product {
   id: string;
@@ -347,8 +348,10 @@ const ShoppingCartPage = () => {
       totalPrice.toFixed(2) + lineBreak +
       'Tax Total: $' +
       taxTotal.toFixed(2) + lineBreak +
+      'Shipping Total: $' + 
+      SHIPPING_COST.toFixed(2) + lineBreak +
       'Order Total: $' +
-      (parseFloat(totalPrice.toFixed(2)) + parseFloat(taxTotal.toFixed(2))).toFixed(2) + lineBreak + lineBreak +
+      (parseFloat(totalPrice.toFixed(2)) + parseFloat(taxTotal.toFixed(2)) + parseFloat(SHIPPING_COST.toFixed(2))).toFixed(2) + lineBreak + lineBreak +
       'Thank you!' + lineBreak + lineBreak;
 
     // Construct the mailto link
@@ -408,7 +411,7 @@ const ShoppingCartPage = () => {
           <div className="item-options">
             <div className="item-option" id="weight-option-cart">
               <label>Weight:</label>
-              <select className="option-input-field-cart" value={item!.coffeeBagOrderItem!.bagSize} onChange={(e) => handleWeightChange(e, item!.coffeeBagOrderItem)}>
+              <select className="option-input-field-cart" value={item!.coffeeBagOrderItem!.bagSize} onChange={(e) => handleWeightChange(e, item!.coffeeBagOrderItem)} disabled={true}>
                 {Object.keys(item!.product.pricing || {}).map((option) => (
                   <option key={option} value={option}>
                     {option}
@@ -653,9 +656,13 @@ const ShoppingCartPage = () => {
                 <label>{"Tax: "}</label>
                 <p className="tax-total-price-text">${taxTotal.toFixed(2)}</p>
               </div>
+              <div className="shipping-total">
+                <label>{"Shipping: "}</label>
+                <p className="shipping-total-price-text">${SHIPPING_COST}</p>
+              </div>
               <div className="cart-total-after-tax">
                 <label><strong>{"Order total: "}</strong></label>
-                <p className="cart-total-price-after-tax-text"><strong>${(parseFloat(totalPrice.toFixed(2)) + parseFloat(taxTotal.toFixed(2))).toFixed(2)}</strong></p>
+                <p className="cart-total-price-after-tax-text"><strong>${(parseFloat(totalPrice.toFixed(2)) + parseFloat(taxTotal.toFixed(2)) + parseFloat(SHIPPING_COST.toFixed(2))).toFixed(2)}</strong></p>
               </div>
               <button
                 className="checkout-button"

@@ -31,7 +31,7 @@ const AllProductsPage = () => {
     id: productData.id || '',
     name: productData.productName || '',
     imageUrl: productData.images.bagImage || '',
-    price: productData.pricing.size2.price || '',
+    price: productData.pricing.size1.price || '',
     roast: productData.roast || ''
   }));
   // State for the search input

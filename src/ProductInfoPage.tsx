@@ -10,7 +10,7 @@ import productsData from './json/products.json'; // Import the JSON file
 import { sanitizeQuantityInput } from './ShoppingCartPage';
 import Footer from './Footer';
 
-const DEFAULT_WEIGHT: string = "340g";
+const DEFAULT_WEIGHT: string = "5lb";
 const NO_SUBSCRIPTION: string = "none";
 
 interface Product {
@@ -102,7 +102,7 @@ const ProductInfoPage = () => {
   };
 
   // this is the initial weight value in the weight dropdown, and the associated price will be the first shown. size2 is 340g for now.
-  const initialWeight = foundProductData?.pricing?.size2?.weight || DEFAULT_WEIGHT;
+  const initialWeight = foundProductData?.pricing?.size1?.weight || DEFAULT_WEIGHT;
 
   const imagesArray: string[] = Object.values(product.images);
   const grindSizeOptions = ['Whole Bean', 'French Press', 'Drip', 'Espresso'];
@@ -234,7 +234,7 @@ const ProductInfoPage = () => {
             <div className="order-options">
               <div className="option">
                 <label className="label-weight" htmlFor="weight">Weight:</label>
-                <select className="option-input-field"
+                {/* <select className="option-input-field"
                   id="weight"
                   value={selectedWeight}
                   onChange={(e) => setSelectedWeight(e.target.value)}
@@ -244,7 +244,12 @@ const ProductInfoPage = () => {
                       {option}
                     </option>
                   ))}
-                </select>
+                </select> */}
+                <div className="option-input-field"
+                  id="weight"
+                >
+                {selectedWeight}
+                </div>
               </div>
               <div className="option">
                 <label className="label-grind-size" htmlFor="grindSize">Grind Size:</label>

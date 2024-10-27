@@ -28,7 +28,7 @@ const FeaturedProductsPage = () => {
       id: productData?.id || `${index + 1}`, // Use optional chaining to avoid errors if fields are missing
       name: productData?.productName || `Product ${index + 1}`,
       imageUrl: productData?.images?.graphicImage || '',
-      price: productData?.pricing?.size2?.price || "99.99", 
+      price: productData?.pricing?.size1?.price || "99.99", 
       notes: productData?.notes || "no notes", 
       farm: productData?.farm || "no farm", 
       roast: productData?.roast || "no roast", 

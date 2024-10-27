@@ -153,7 +153,7 @@ input[type="number"] {
     transform: scale(1.1);
 }
 
-.cart-total-before-tax, .cart-total-after-tax, .tax-total {
+.cart-total-before-tax, .cart-total-after-tax, .tax-total, .shipping-total {
     text-align: left;
     display: flex;
     justify-content: space-between;
@@ -167,7 +167,7 @@ input[type="number"] {
     padding-right: 3%;
 }
 
-.tax-total {
+.shipping-total {
     border-bottom: 1px solid black;
 }
 
@@ -176,7 +176,7 @@ input[type="number"] {
 
 }
 
-.cart-total-price-before-tax-text, .tax-total-price-text, .cart-total-price-after-tax-text {
+.cart-total-price-before-tax-text, .tax-total-price-text, .shipping-total-price-text, .cart-total-price-after-tax-text {
     word-wrap: break-word;
     overflow-wrap: break-word;
     text-align: right;
@@ -186,7 +186,7 @@ input[type="number"] {
     margin-bottom: 0;
 }
 
-.cart-total-before-tax label, .cart-total-after-tax label, .tax-total label {
+.cart-total-before-tax label, .cart-total-after-tax label, .tax-total label, .shipping-total label {
     text-align: left;
     width: 15ch;
     align-self: flex-start;
@@ -572,10 +572,10 @@ input[type="number"] {
         margin-bottom: 0;
     }
 
-    .option-input-field-cart {
-        margin-bottom: 10px;
+    #weight-input-cart {
+        margin-top: 2rem !important;
     }
-    
+
     .item-option select, .item-option input, .item-option label {
         margin-top: 5px;
     }
@@ -628,19 +628,19 @@ input[type="number"] {
         align-items: flex-start; 
         margin: 30px;
     }
-    .cart-total-price-before-tax-text, .tax-total-price-text, .cart-total-price-after-tax-text {
+    .cart-total-price-before-tax-text, .tax-total-price-text, .cart-total-price-after-tax-text, .shipping-total-price-text {
         width: 24ch;
     }
 }
 
 @media (max-width: 600px) {
-    .cart-total-price-before-tax-text, .tax-total-price-text, .cart-total-price-after-tax-text {
+    .cart-total-price-before-tax-text, .tax-total-price-text, .cart-total-price-after-tax-text, .shipping-total-price-text {
         width: 15ch;
     }
 }
 
 @media (max-width: 500px) {
-    .cart-total-price-before-tax-text, .tax-total-price-text, .cart-total-price-after-tax-text {
+    .cart-total-price-before-tax-text, .tax-total-price-text, .cart-total-price-after-tax-text, .shipping-total-price-text {
         width: 10ch;
         align-items: flex-end;
     }
@@ -649,11 +649,11 @@ input[type="number"] {
 
 
 @media (max-width: 350px) {
-    .cart-total-price-before-tax-text, .tax-total-price-text, .cart-total-price-after-tax-text {
+    .cart-total-price-before-tax-text, .tax-total-price-text, .cart-total-price-after-tax-text, .shipping-total-price-text {
         width: 7ch;
         font-size: 1rem;
     }
-    .cart-total-before-tax, .cart-total-after-tax, .tax-total {
+    .cart-total-before-tax, .cart-total-after-tax, .tax-total, .shipping-total {
         font-size: 1rem;
     }
     .modal-buttons-container {
@@ -662,18 +662,18 @@ input[type="number"] {
 }
 
 @media (max-width: 250px) {
-    .cart-total-before-tax, .cart-total-after-tax, .tax-total {
+    .cart-total-before-tax, .cart-total-after-tax, .tax-total, .shipping-total {
         flex-direction: column;
         align-items: center;
         justify-content: center;
 
     }
-    .cart-total-price-before-tax-text, .tax-total-price-text, .cart-total-price-after-tax-text {
+    .cart-total-price-before-tax-text, .tax-total-price-text, .cart-total-price-after-tax-text, .shipping-total-price-text {
         margin: 0;
         text-align: center;
         justify-content: center;
     }
-    .cart-total-before-tax label, .cart-total-after-tax label, .tax-total label {
+    .cart-total-before-tax label, .cart-total-after-tax label, .tax-total label, .shipping-total label {
         text-align: center;
         justify-content: center;
     }
